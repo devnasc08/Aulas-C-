@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kaua.nsantos3\\source\\repos\\Senac\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{871CF6C5-E18D-4AB0-8904-9778845540D4}|PrimeiroProjeto\\PrimeiroProjeto.csproj|c:\\users\\kaua.nsantos3\\source\\repos\\senac\\primeiroprojeto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{871CF6C5-E18D-4AB0-8904-9778845540D4}|PrimeiroProjeto\\PrimeiroProjeto.csproj|solutionrelative:primeiroprojeto\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\source\\repos\\Senac\\PrimeiroProjeto\\Program.cs",
+              "RelativeDocumentMoniker": "PrimeiroProjeto\\Program.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\source\\repos\\Senac\\PrimeiroProjeto\\Program.cs",
+              "RelativeToolTip": "PrimeiroProjeto\\Program.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAiwFYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T17:00:59.206Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
