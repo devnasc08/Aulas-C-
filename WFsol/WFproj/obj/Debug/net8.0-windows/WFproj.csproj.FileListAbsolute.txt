@@ -1,0 +1,17 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\bin\Debug\net8.0-windows\WFproj.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\bin\Debug\net8.0-windows\WFproj.deps.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\bin\Debug\net8.0-windows\WFproj.runtimeconfig.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\bin\Debug\net8.0-windows\WFproj.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\bin\Debug\net8.0-windows\WFproj.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.Form1.resources
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.csproj.GenerateResource.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.AssemblyInfoInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.AssemblyInfo.cs
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.sourcelink.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\refint\WFproj.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\WFproj.genruntimeconfig.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\WFsol\WFproj\obj\Debug\net8.0-windows\ref\WFproj.dll
