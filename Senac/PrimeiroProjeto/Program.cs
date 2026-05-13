@@ -110,7 +110,11 @@ namespace PrimeiroProjeto  // Agrupamento de Classes
             {
                 Console.WriteLine("num: igual a 10");
             }
-            Console.WriteLine("Próxima Linha");
+            else
+            {
+                Console.WriteLine("Num diferente de 10");
+            }
+                Console.WriteLine("Próxima Linha");
 
 
 

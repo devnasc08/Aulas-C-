@@ -6,3 +6,11 @@ C:\Users\kaua.nsantos3\source\repos\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProj
 C:\Users\kaua.nsantos3\source\repos\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.exe
 C:\Users\kaua.nsantos3\source\repos\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.pdb
 C:\Users\kaua.nsantos3\source\repos\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\bin\Debug\PrimeiroProjeto.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\bin\Debug\PrimeiroProjeto.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\bin\Debug\PrimeiroProjeto.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\Senac\PrimeiroProjeto\obj\Debug\PrimeiroProjeto.pdb

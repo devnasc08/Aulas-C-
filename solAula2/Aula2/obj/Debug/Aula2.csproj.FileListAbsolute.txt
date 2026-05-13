@@ -1,0 +1,8 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\bin\Debug\Aula2.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\bin\Debug\Aula2.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\bin\Debug\Aula2.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\obj\Debug\Aula2.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\obj\Debug\Aula2.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\obj\Debug\Aula2.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\obj\Debug\Aula2.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\solAula2\Aula2\obj\Debug\Aula2.exe.config
