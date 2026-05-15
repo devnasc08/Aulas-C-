@@ -19,3 +19,4 @@ C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.FrmNovoCliente.resources
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.FrmServicos.resources
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.FrmProduto.resources
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.FrmComponente.resources

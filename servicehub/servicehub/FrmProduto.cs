@@ -17,14 +17,49 @@ namespace Servicehub
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FrmProduto_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (txtCodBarras.Text != string.Empty || txtDescricao.Text != string.Empty)
+            {
+                // Dados
+                string codBarras = txtCodBarras.Text;
+                string descricao = txtDescricao.Text;
+                decimal preco = udPreco.Value;
+                string unidade = txtUnidVenda.Text;
+                string categoria = cbCategoria.SelectedItem?.ToString() ?? "Sem Categoria";
+                decimal estoqueMin = udEstqMinimo.Value;
+                bool descontinuado = checkDescontinuado.Checked;
+
+
+                string status = descontinuado ? "Descontinuado" : "Ativo";
+                string linhaProduto = $"{codBarras} \n| {descricao.ToUpper()} \n| Preco: {preco:C2} \n| Est. Min: {estoqueMin} \n| {status}";
+
+                listBox1.Items.Add(linhaProduto);
+
+            }
+        }
+        // Limpar campos
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtCodBarras.Clear();
+            txtDescricao.Clear();
+            txtUnidVenda.Clear();
+            cbCategoria.SelectedIndex = 0;
+            udEstqMinimo.Value = 0;
+            udClassDesconto.Value = 0;
+            checkDescontinuado.Checked = false;
+            udPreco.Value = 0;
+            txtCodBarras.Focus();
         }
     }
 }
