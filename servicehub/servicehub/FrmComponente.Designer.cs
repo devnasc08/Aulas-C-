@@ -37,6 +37,23 @@
             comboBox1 = new ComboBox();
             label2 = new Label();
             textBox2 = new TextBox();
+            dgvServicos = new DataGridView();
+            clnId = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnDescricao = new DataGridViewTextBoxColumn();
+            clnPreco = new DataGridViewTextBoxColumn();
+            clnDescontinuado = new DataGridViewTextBoxColumn();
+            dgvUsers = new DataGridView();
+            usersId = new DataGridViewTextBoxColumn();
+            usersNome = new DataGridViewTextBoxColumn();
+            usersEmail = new DataGridViewTextBoxColumn();
+            dataGridView1 = new DataGridView();
+            slcId = new DataGridViewTextBoxColumn();
+            slcDescricaoProblema = new DataGridViewTextBoxColumn();
+            button3 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvServicos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -69,9 +86,9 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Location = new Point(0, 754);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.Size = new Size(1533, 22);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -121,13 +138,140 @@
             textBox2.TabIndex = 7;
             textBox2.Visible = false;
             // 
+            // dgvServicos
+            // 
+            dgvServicos.AllowUserToAddRows = false;
+            dgvServicos.AllowUserToDeleteRows = false;
+            dgvServicos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvServicos.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnDescricao, clnPreco, clnDescontinuado });
+            dgvServicos.Location = new Point(521, 18);
+            dgvServicos.Name = "dgvServicos";
+            dgvServicos.ReadOnly = true;
+            dgvServicos.RowHeadersVisible = false;
+            dgvServicos.Size = new Size(659, 210);
+            dgvServicos.TabIndex = 8;
+            // 
+            // clnId
+            // 
+            clnId.Frozen = true;
+            clnId.HeaderText = "id";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            clnId.Width = 40;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 200;
+            // 
+            // clnDescricao
+            // 
+            clnDescricao.Frozen = true;
+            clnDescricao.HeaderText = "Descricao";
+            clnDescricao.Name = "clnDescricao";
+            clnDescricao.ReadOnly = true;
+            clnDescricao.Width = 206;
+            // 
+            // clnPreco
+            // 
+            clnPreco.Frozen = true;
+            clnPreco.HeaderText = "Preco";
+            clnPreco.Name = "clnPreco";
+            clnPreco.ReadOnly = true;
+            // 
+            // clnDescontinuado
+            // 
+            clnDescontinuado.Frozen = true;
+            clnDescontinuado.HeaderText = "Descontinuado";
+            clnDescontinuado.Name = "clnDescontinuado";
+            clnDescontinuado.ReadOnly = true;
+            // 
+            // dgvUsers
+            // 
+            dgvUsers.AllowUserToAddRows = false;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Columns.AddRange(new DataGridViewColumn[] { usersId, usersNome, usersEmail });
+            dgvUsers.Location = new Point(521, 234);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.RowHeadersVisible = false;
+            dgvUsers.Size = new Size(494, 153);
+            dgvUsers.TabIndex = 9;
+            // 
+            // usersId
+            // 
+            usersId.Frozen = true;
+            usersId.HeaderText = "Id";
+            usersId.Name = "usersId";
+            usersId.ReadOnly = true;
+            usersId.Width = 50;
+            // 
+            // usersNome
+            // 
+            usersNome.HeaderText = "Nome";
+            usersNome.Name = "usersNome";
+            usersNome.ReadOnly = true;
+            usersNome.Width = 200;
+            // 
+            // usersEmail
+            // 
+            usersEmail.HeaderText = "Email";
+            usersEmail.Name = "usersEmail";
+            usersEmail.ReadOnly = true;
+            usersEmail.Width = 200;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { slcId, slcDescricaoProblema });
+            dataGridView1.Location = new Point(521, 431);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(377, 173);
+            dataGridView1.TabIndex = 10;
+            // 
+            // slcId
+            // 
+            slcId.Frozen = true;
+            slcId.HeaderText = "Id";
+            slcId.Name = "slcId";
+            slcId.ReadOnly = true;
+            slcId.Width = 50;
+            // 
+            // slcDescricaoProblema
+            // 
+            slcDescricaoProblema.Frozen = true;
+            slcDescricaoProblema.HeaderText = "Descrição Problema";
+            slcDescricaoProblema.Name = "slcDescricaoProblema";
+            slcDescricaoProblema.ReadOnly = true;
+            slcDescricaoProblema.Width = 200;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(904, 581);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 11;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // FrmComponente
             // 
             AcceptButton = button1;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1533, 776);
+            Controls.Add(button3);
+            Controls.Add(dataGridView1);
+            Controls.Add(dgvUsers);
+            Controls.Add(dgvServicos);
             Controls.Add(textBox2);
             Controls.Add(label2);
             Controls.Add(comboBox1);
@@ -140,6 +284,9 @@
             Name = "FrmComponente";
             Text = "FrmComponente";
             Load += FrmComponente_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvServicos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -155,5 +302,19 @@
         private ComboBox comboBox1;
         private Label label2;
         private TextBox textBox2;
+        private DataGridView dgvServicos;
+        private DataGridView dgvUsers;
+        private DataGridViewTextBoxColumn usersId;
+        private DataGridViewTextBoxColumn usersNome;
+        private DataGridViewTextBoxColumn usersEmail;
+        private DataGridViewTextBoxColumn clnId;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnDescricao;
+        private DataGridViewTextBoxColumn clnPreco;
+        private DataGridViewTextBoxColumn clnDescontinuado;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn slcId;
+        private DataGridViewTextBoxColumn slcDescricaoProblema;
+        private Button button3;
     }
 }

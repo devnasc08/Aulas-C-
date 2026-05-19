@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Servicehub
 {
@@ -16,6 +17,9 @@ namespace Servicehub
         {
             InitializeComponent();
         }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -138,7 +142,47 @@ namespace Servicehub
 
         private void FrmComponente_Load(object sender, EventArgs e)
         {
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "select * from servicos";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                dgvServicos.Rows.Add();
+                int linha = dgvServicos.RowCount - 1;
+                //MessageBox.Show(dgvServicos.RowCount.ToString());
+                dgvServicos.Rows[linha].Cells[0].Value = dr.GetInt32(0);
+                dgvServicos.Rows[linha].Cells[1].Value = dr.GetString(1);
+                dgvServicos.Rows[linha].Cells[2].Value = dr.GetString(2);
+                dgvServicos.Rows[linha].Cells[3].Value = dr.GetDouble(3);
+                dgvServicos.Rows[linha].Cells[4].Value = dr.GetBoolean(4);
 
+                //MessageBox.Show(dgvServicos.RowCount.ToString());
+                //listBox1.Items.Add(dr.GetString(1));
+
+            }
+            dr.Close();
+            cmd = Banco.Abrir();
+            cmd.CommandText = "select id, nome, email from usuarios where ativo=1";
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                dgvUsers.Rows.Add();
+                dgvUsers.Rows[0].Cells[0].Value = dr.GetInt32(0);
+                dgvUsers.Rows[0].Cells[1].Value = dr.GetString(1);
+                dgvUsers.Rows[0].Cells[2].Value = dr.GetString(2);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "select * from solicitacoes";
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                
+            }
         }
     }
 }
