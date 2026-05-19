@@ -171,18 +171,24 @@ namespace Servicehub
                 dgvUsers.Rows[0].Cells[1].Value = dr.GetString(1);
                 dgvUsers.Rows[0].Cells[2].Value = dr.GetString(2);
             }
-
+            dr.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dgvSolicitacoes.Rows.Clear();
             var cmd = Banco.Abrir();
             cmd.CommandText = "select * from solicitacoes";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                
+                dgvSolicitacoes.Rows.Add();
+                int lines2 = dgvSolicitacoes.RowCount - 1; 
+                dgvSolicitacoes.Rows[lines2].Cells[0].Value = dr.GetInt32(0);
+                dgvSolicitacoes.Rows[lines2].Cells[1].Value = dr.GetString(1);
+                // Nenhum teste realizado! 
             }
         }
+
     }
 }

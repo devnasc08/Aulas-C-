@@ -47,13 +47,13 @@
             usersId = new DataGridViewTextBoxColumn();
             usersNome = new DataGridViewTextBoxColumn();
             usersEmail = new DataGridViewTextBoxColumn();
-            dataGridView1 = new DataGridView();
+            dgvSolicitacoes = new DataGridView();
             slcId = new DataGridViewTextBoxColumn();
             slcDescricaoProblema = new DataGridViewTextBoxColumn();
             button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvServicos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSolicitacoes).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -86,9 +86,9 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Location = new Point(0, 754);
+            statusStrip1.Location = new Point(0, 727);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1533, 22);
+            statusStrip1.Size = new Size(1370, 22);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -222,18 +222,18 @@
             usersEmail.ReadOnly = true;
             usersEmail.Width = 200;
             // 
-            // dataGridView1
+            // dgvSolicitacoes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { slcId, slcDescricaoProblema });
-            dataGridView1.Location = new Point(521, 431);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(377, 173);
-            dataGridView1.TabIndex = 10;
+            dgvSolicitacoes.AllowUserToAddRows = false;
+            dgvSolicitacoes.AllowUserToDeleteRows = false;
+            dgvSolicitacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSolicitacoes.Columns.AddRange(new DataGridViewColumn[] { slcId, slcDescricaoProblema });
+            dgvSolicitacoes.Location = new Point(509, 431);
+            dgvSolicitacoes.Name = "dgvSolicitacoes";
+            dgvSolicitacoes.ReadOnly = true;
+            dgvSolicitacoes.RowHeadersVisible = false;
+            dgvSolicitacoes.Size = new Size(377, 173);
+            dgvSolicitacoes.TabIndex = 10;
             // 
             // slcId
             // 
@@ -267,9 +267,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = button2;
-            ClientSize = new Size(1533, 776);
+            ClientSize = new Size(1370, 749);
             Controls.Add(button3);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvSolicitacoes);
             Controls.Add(dgvUsers);
             Controls.Add(dgvServicos);
             Controls.Add(textBox2);
@@ -286,7 +286,7 @@
             Load += FrmComponente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvServicos).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSolicitacoes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -312,7 +312,7 @@
         private DataGridViewTextBoxColumn clnDescricao;
         private DataGridViewTextBoxColumn clnPreco;
         private DataGridViewTextBoxColumn clnDescontinuado;
-        private DataGridView dataGridView1;
+        private DataGridView dgvSolicitacoes;
         private DataGridViewTextBoxColumn slcId;
         private DataGridViewTextBoxColumn slcDescricaoProblema;
         private Button button3;
