@@ -1,0 +1,8 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\bin\Debug\JogoRPG.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\bin\Debug\JogoRPG.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\bin\Debug\JogoRPG.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\obj\Debug\JogoRPG.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\obj\Debug\JogoRPG.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\obj\Debug\JogoRPG.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\obj\Debug\JogoRPG.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\JogoRPG\JogoRPG\obj\Debug\JogoRPG.exe.config

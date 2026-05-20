@@ -160,10 +160,10 @@ namespace Servicehub
                 //listBox1.Items.Add(dr.GetString(1));
 
             }
-            dr.Close();
+            //dr.Close();
             cmd = Banco.Abrir();
             cmd.CommandText = "select id, nome, email from usuarios where ativo=1";
-            dr = cmd.ExecuteReader();
+            //dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 dgvUsers.Rows.Add();
@@ -171,7 +171,7 @@ namespace Servicehub
                 dgvUsers.Rows[0].Cells[1].Value = dr.GetString(1);
                 dgvUsers.Rows[0].Cells[2].Value = dr.GetString(2);
             }
-            dr.Close();
+            //dr.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
