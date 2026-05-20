@@ -1,0 +1,7 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\bin\Debug\array.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\bin\Debug\array.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\bin\Debug\array.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\obj\Debug\array.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\obj\Debug\array.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\obj\Debug\array.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\array\array\obj\Debug\array.pdb
