@@ -48,18 +48,5 @@ namespace Servicehub
 
             }
         }
-        // Limpar campos
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            txtCodBarras.Clear();
-            txtDescricao.Clear();
-            txtUnidVenda.Clear();
-            cbCategoria.SelectedIndex = 0;
-            udEstqMinimo.Value = 0;
-            udClassDesconto.Value = 0;
-            checkDescontinuado.Checked = false;
-            udPreco.Value = 0;
-            txtCodBarras.Focus();
-        }
     }
 }

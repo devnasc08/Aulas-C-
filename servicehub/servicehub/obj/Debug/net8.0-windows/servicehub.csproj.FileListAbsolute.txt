@@ -72,3 +72,4 @@ C:\Users\Kauã\Documents\Aulas-C-\servicehub\servicehub\obj\Debug\net8.0-windows
 C:\Users\Kauã\Documents\Aulas-C-\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.pdb
 C:\Users\Kauã\Documents\Aulas-C-\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.genruntimeconfig.cache
 C:\Users\Kauã\Documents\Aulas-C-\servicehub\servicehub\obj\Debug\net8.0-windows\ref\Servicehub.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.Properties.Resources.resources

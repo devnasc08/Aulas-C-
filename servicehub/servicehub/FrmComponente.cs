@@ -163,13 +163,14 @@ namespace Servicehub
             //dr.Close();
             cmd = Banco.Abrir();
             cmd.CommandText = "select id, nome, email from usuarios where ativo=1";
-            //dr = cmd.ExecuteReader();
+            dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 dgvUsers.Rows.Add();
-                dgvUsers.Rows[0].Cells[0].Value = dr.GetInt32(0);
-                dgvUsers.Rows[0].Cells[1].Value = dr.GetString(1);
-                dgvUsers.Rows[0].Cells[2].Value = dr.GetString(2);
+                int line = dgvUsers.RowCount - 1;
+                dgvUsers.Rows[line].Cells[0].Value = dr.GetInt32(0);
+                dgvUsers.Rows[line].Cells[1].Value = dr.GetString(1);
+                dgvUsers.Rows[line].Cells[2].Value = dr.GetString(2);
             }
             //dr.Close();
         }
@@ -178,10 +179,12 @@ namespace Servicehub
         {
             dgvSolicitacoes.Rows.Clear();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from solicitacoes";
+            cmd.CommandText = "select id, descricao_problema from solicitacoes";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
+                dgvSolicitacoes.Rows.Clear();
+
                 dgvSolicitacoes.Rows.Add();
                 int lines2 = dgvSolicitacoes.RowCount - 1; 
                 dgvSolicitacoes.Rows[lines2].Cells[0].Value = dr.GetInt32(0);
