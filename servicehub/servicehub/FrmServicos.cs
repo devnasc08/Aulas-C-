@@ -90,11 +90,16 @@ namespace Servicehub
             }
             else 
             {
+                string id = txtId.Text;
+                string nome = txtNome.Text;
+                string descricao = txtDescricao.Text;
+                double preco = (double)nudPreco.Value;
                 string descont = cbDescontinuado.Checked ? "1" : "0";
                 decimal pre = nudPreco.Value;
+                
 
                 var cmd = Banco.Abrir();
-                cmd.CommandText = $"update servicos set nome = '{txtNome.Text}', descricao = '{txtDescricao.Text}'," +
+                cmd.CommandText = $"update servicos set nome = '{nome}', descricao = '{txtDescricao.Text}'," +
                     $"preco = '{pre}', descontinuado = '{descont}' where id = '{txtId.Text}'";
                 if (cmd.ExecuteNonQuery() > 0)
                 {

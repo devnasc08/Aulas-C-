@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -23,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -39,15 +39,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FrmServicos.cs [Projeto]",
+              "Title": "FrmServicos.cs [Design]",
               "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs",
               "RelativeDocumentMoniker": "servicehub\\FrmServicos.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs [Projeto]",
-              "RelativeToolTip": "servicehub\\FrmServicos.cs [Projeto]",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs [Design]",
+              "RelativeToolTip": "servicehub\\FrmServicos.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T17:54:45.957Z",
               "IsPinned": true,
-              "EditorCaption": " [Projeto]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -59,8 +59,7 @@
               "RelativeToolTip": "servicehub\\FrmProduto.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T18:31:40.923Z",
-              "IsPinned": true,
-              "EditorCaption": " [Projeto]"
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -82,7 +81,7 @@
               "RelativeDocumentMoniker": "servicehub\\FrmServicos.cs",
               "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs",
               "RelativeToolTip": "servicehub\\FrmServicos.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAIwGEAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAIwGAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-21T18:58:00.263Z",
               "EditorCaption": ""
@@ -97,8 +96,7 @@
               "RelativeToolTip": "servicehub\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T19:34:51.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-21T19:34:51.788Z"
             },
             {
               "$type": "Document",
@@ -122,8 +120,7 @@
               "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmComponente.cs [Projeto]",
               "RelativeToolTip": "servicehub\\FrmComponente.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T19:41:07.795Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2026-05-21T19:41:07.795Z"
             }
           ]
         }

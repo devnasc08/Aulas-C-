@@ -1,0 +1,8 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\bin\Debug\Datas.exe.config
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\bin\Debug\Datas.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\bin\Debug\Datas.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\obj\Debug\Datas.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\obj\Debug\Datas.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\obj\Debug\Datas.exe
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\obj\Debug\Datas.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\Datas\Datas\obj\Debug\Datas.exe.config
