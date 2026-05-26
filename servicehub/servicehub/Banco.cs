@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceHubClass;
+
 
 using MySql.Data.MySqlClient;
 
@@ -10,7 +12,7 @@ namespace Servicehub
 {
     public class Banco
     {
-
+        
 
         // -- String de conexão com o Banco de Dados (MariaDB)
         public static string? StrConn { get; set; }

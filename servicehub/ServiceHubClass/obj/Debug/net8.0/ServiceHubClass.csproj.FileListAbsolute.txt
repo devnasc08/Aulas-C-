@@ -1,0 +1,12 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\bin\Debug\net8.0\ServiceHubClass.deps.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\bin\Debug\net8.0\ServiceHubClass.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\bin\Debug\net8.0\ServiceHubClass.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.AssemblyInfoInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.AssemblyInfo.cs
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.sourcelink.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\refint\ServiceHubClass.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ref\ServiceHubClass.dll
