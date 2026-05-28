@@ -10,3 +10,4 @@ C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\ne
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\refint\ServiceHubClass.dll
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.pdb
 C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ref\ServiceHubClass.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\ServiceHubClass\obj\Debug\net8.0\ServiceHubClass.csproj.AssemblyReference.cache

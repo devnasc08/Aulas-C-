@@ -1,0 +1,777 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema well7877_comercialtds
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema well7877_comercialtds
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS comercialti101 ;
+USE comercialti101 ;
+
+-- -----------------------------------------------------
+-- Table `niveis`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `niveis` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NOT NULL,
+  `sigla` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 7;
+
+INSERT INTO `niveis` VALUES (1,'Administrador','adm'),(2,'Caixa','cxa'),(3,'Atendente','atd'),(4,'Estoquista','est'),(5,'Gerente','ger'),(6,'Vendedor','vnd');
+
+-- -----------------------------------------------------
+-- Table `usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(60) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `senha` VARCHAR(255) NOT NULL,
+  `nivel_id` INT(11) NOT NULL,
+  `ativo` BIT(1) NOT NULL DEFAULT b'1',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  INDEX `fk_usuarios_niveis1_idx` (`nivel_id` ASC) ,
+  CONSTRAINT `fk_usuarios_niveis1`
+    FOREIGN KEY (`nivel_id`)
+    REFERENCES `niveis` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 1076;
+
+INSERT INTO `usuarios` VALUES (1001,'Maria das Couves','macouves@gmail.com','$2y$10$J6wGoRZcTdqGPg/D0Y/M5uWg51xlz77tF1Q5qidgg0nSce5oP1AE2',3,_binary ''),(1002,'Miriam das Couves','micouves@gmail.com','e10adc3949ba59abbe56e057f20f883e',3,_binary ''),(1003,'Wellington Santos','well@gmail.com','$2y$10$05xnUtsJD8nuNPDvYqgWreDRqQTrJuMy8dmPdijX65.V0dDxkaN.S',1,_binary ''),(1004,'João das Couves','jocouves@gmail.com','e10adc3949ba59abbe56e057f20f883e',2,_binary ''),(1005,'Andressa Helena Garcia da Cruz','andressa.cruz@tds01.com','123456',3,_binary ''),(1006,'Erik Carvalho da Silva','erik.silva@tds01.com','123456',3,_binary ''),(1007,'Everson Alves dos Reis','everson.reis@tds01.com','123456',3,_binary ''),(1008,'Gabriel Cabral Mendes Mariano','gabriel.mariano@tds01.com','$2y$10$anl8wjk1uIwCbPa3VBHLXeCTr0GDaGMXucqIjV38o8pY2A2vTvHxW',5,_binary ''),(1009,'Isaac Oliveira Loiola','isaac.loiola@tds01.com','$2y$10$0.F5iUA.QZ0PSuxD/m7sD.Zdp/y9rg3JxmsuRWQ1ilTEWjgy0itl.',1,_binary ''),(1010,'Kaua Moraes da Silva','kaua.silva@tds01.com','123456',3,_binary ''),(1011,'Kaua Phreederyk Mercury da Conceica Rocha','kaua.rocha@tds01.com','123456',3,_binary ''),(1012,'Nicole Nayeli Condori Tipola','nicole.tipola@tds01.com','123456',3,_binary ''),(1013,'Rafael Pereira da Silva','rafael.silva@tds01.com','123456',3,_binary ''),(1014,'Eduardo Guedes','edu_guedes_na_cozinha@gmail.com','0c87e841afe51a35d956437bade16285',2,_binary ''),(1015,'Osvaldo Melo ','valdinho_mel@gmail.com','$2y$10$WsyQvK6uFNhb2h3rjsc/xOFdmRCLv.3p6R.T2tA0Z9Tt1pVHSOhkO',4,_binary ''),(1017,'Urqui','urqui@gmail.com','$2y$10$gxukhZN0ZQ9/d/kDbd.bhO94bivP5/uk4aVlZqsbpxxUa5mP4Y8d6',3,_binary ''),(1018,'Mario da Silva','masil@gmail.com','$2y$10$Miyj6Oh.sRwvPJ4VUB7nbu6MSGtKRLXlM/Q1hUB5YUIoRMz.99tsK',4,_binary ''),(1021,'Adriana Fonseca dos Reis','drica614@hotmail.com','$2y$10$yeyqgTHeFLsWNK1xt1EJNO4SJxjLdv7CwQ3FatyD41jZu8eBW5m/y',3,_binary ''),(1022,'Ronildo','ronny@gmail.com','$2y$10$xl.WOkUQlLHmYniHS//4ru/3l216M4M/s1L.Mt06UKdTTqUlR5/7G',3,_binary ''),(1023,'Manoel Lima','malima','$2y$10$VAHYhcxg8cxY/cik8QZN5.dB8x.jaR5SiaCrlHYze8.yyad2gGxNO',2,_binary ''),(1024,'digdin','digdig@du.com','$2y$10$sMfuUh.8ljlfbEui6OB9veiqAmSvSmeBhI2sZ8xLfO6Q7o.dFk8GS',1,_binary ''),(1025,'Rojerio Souza','ronjo@gmail.com','$2y$10$AaNIgu5X7WucsyD/cR3SVe7JZm7fRXgH6/STvL0ofW5UN5RVbrKNC',4,_binary ''),(1027,'Emerson Alves dos Reis','emerson.alves@gmail.com','$2y$10$C2sBfs128OTLeWB3EKdJpektKZGQUrHREyL09LnuPZOZTIP/dFJUK',4,_binary ''),(1028,'Wellington de Oliveira','well_oliver@gmail.com','$2y$10$yw/jJk9d5LBnrACHXcmlf.tfjBT/8W/VZ46NwZwWd1oSnx3edU5xO',1,_binary ''),(1029,'erik','erik@gmail.com','$2y$10$48LWgoWpZF4FFo/S8cqySurLSSetWdW9YbwBEbvgXs6yWph99LmyG',1,_binary ''),(1032,'Zuck enberg','zuzu@gmail.com','$2y$10$hSkJ.QBosDecSLkgOgIVdO3FKETOebuSL4UZD82X87s/uqE4vvIR2',2,_binary ''),(1033,'kauathebest','kaua@123','$2y$10$XaGAgfnZjLnaJt6Sm0EAdObvUc0VN.roghMkn01A7RMkDx9uQk2YW',2,_binary ''),(1034,'Mirte Maria','mima@gmail.com','$2y$10$ZSZHwNGsOBR4RVAAMOpVQeSnl7cu4DFtUZbjzhYpisaV.Vt340sKK',2,_binary ''),(1035,'Julia da Silva Oliveira','juju@gmail.com','$2y$10$GdseYfgGUC43LG0ZYw/bLOLWlaCstBdWciHLLE56eX2N26lxn7OE6',3,_binary ''),(1036,'Volyn Rhaba','volba@raboo.com','$2y$10$tbIkaIaT3EM9VQeqCjBVkuY6LXxpJ90KxaoC7fXtK10PODoBk9FfW',3,_binary ''),(1037,'Carolina MAria da Silva','carolma@gmail.com','$2y$10$phtBrC7HxcV/IBnuOLh9sO9pl79j4.hEeDg433RQ0N7leoUeKPYHe',4,_binary ''),(1038,'Pedro Silva Stocker','pedro.stocker@gmail.com.br','$2y$10$.KwS6M4LRyrqY76h4bsnVuUa21yQROtBVvN27nOovbUCI2WJcMg42',3,_binary ''),(1039,'kaueee','ka@gmail.com','$2y$10$K1L8.u5uPwb1VQcw9ryEJOLr2M8XGdJpXnDRy0kE9qkdxRYFoEuVe',4,_binary ''),(1040,'Mario da Silva','masil@gail.com','$2y$10$JZ2xEFHGfiSY894W8esX.OHzPaz8QzWRlswxsEJdBlkAWyYP0I2v6',4,_binary ''),(1043,'Mario da Silva','masi@gail.com','$2y$10$VURe7FIJqumfrLOxHoVn4uIKg8jBms667DUTijDNRGiOn2j3CPzRi',4,_binary ''),(1044,'Mario da Silva','masi@gil.com','$2y$10$lo/suCyREe25iUWwpVxIJe7NN0s2nQIpbs7L.zI7Ue1ByGBI5Iehq',4,_binary ''),(1045,'nicole nao fez','nicole@naofez.com','$2y$10$n9S.Y3L5dMIDDtriBMQggeeaDxvrvlGH54BLnLpzTl5441ioQJZCO',2,_binary ''),(1046,'Maria Maria Couves','mamamama@gmail','$2y$10$vdpLoQZRfpyr5Z/7MWXPNuq95.3cTobPXVgzfOaeX/Qk6feLVTXvm',1,_binary ''),(1047,'Ricardo da Silva Oliveira','ricardo@gmail.com','$2y$10$GpFB/E7dQ3ZEsqz3xQrlcuvFQsRvG88IqfxHOHpMN9Y78u/ElBGH6',2,_binary ''),(1050,'Marquinhos','marcooos.doval@hotmail.com','$2y$10$XvBd/mSOkMtd8IueXlGqWO9ruA2bHHfGrnUJf.V6gnpoJm4KQpXuO',2,_binary ''),(1051,'Murilo Silva','murilo.silva@gmail.com.br','$2y$10$7wb0hHeU6g1RiLE7baZpIuSH.dNi5f.WRTKk3O8R.BbGYQa0bO0p6',2,_binary ''),(1053,'nicolefaltafazer','nicolenaofez@gmail.com','$2y$10$XvLk5jGuCb7jxGQFoZ2NYOVo/j9D2V3kuOt/fyppF6.vC/.ARQ9M.',2,_binary ''),(1055,'kauaobrabo','kaua@gmail.com','$2y$10$Og6VK6rXOPx7DRfZ2c7kP.Tn/nqdytNpyafels5Cil1iPhAJzs1kK',2,_binary ''),(1057,'Todomundotestando','allworld@gmail.com','$2y$10$faQmmRJyDIiv4fgySeZ3FeweemZLOgcm7w35KkSojuLYbUT5vl9zm',4,_binary ''),(1058,'Cutie Stunning','cust@gmail.com','$2y$10$bpsuWKf6i3YIkjWC8gxIyutVrPJxoiaWiUoE.W5k1Pn0.si2Dx0du',2,_binary ''),(1059,'erik','erik#@DAD','$2y$10$0nosbpPRWs0XypCow2MQTeZNSZyoiJ.7ldgtWlqknLbUREiwUcNAS',1,_binary ''),(1060,'Luis Gomes','gomeess@gmail.com','$2y$10$0zalumE3KbyLHYKwCG5IFejyk5V3lmynju4HOWEostiVvDb.qYbLC',3,_binary ''),(1061,'Gabriel Munhoz','gabriel.munhoz@gmail.com.br','$2y$10$9OhwEGjZtkA8o1PpJ6OQHeXut2.n0rGEcLdUR3RYVLxQ.qHSv6gOi',4,_binary ''),(1062,'Marcos Lima','marco@gmail.com','$2y$10$DiInVBoVkRlt1fNR6OGnguolERBiLHRXpF/ryp51Ww10BnWOmiXL6',4,_binary ''),(1063,'nicole','nicole@gmail.com','$2y$10$ygXEC5tpKePJELTm8vafy.kAoLK7MFA4N8Mgzqziek04Foi9GlvMy',1,_binary ''),(1064,'Guilherme Cabral','gui.cabral@gmail.com','$2y$10$U3ZuVf5AXT/7T7jVN5A6hu6V9ikm.N1evll2XXdmmvMo0avB6nCfm',4,_binary ''),(1065,'Operador','operador@gmail.com','$2y$10$brxXc7Eg73It4hLhiRcNseK7H5BC74PHO3RSFndcsgEtTIgsUA6qy',2,_binary ''),(1066,'Paulo de Vendas','paulo@gmail.com','$2y$10$YRc.LtrhyOsMIr8tEsdc9uQonZad7LbHnaDtY8W2Q4F1MOtNhL2Yy',6,_binary ''),(1073,'Mercury','lulukinhas@gmail.com','$2y$10$sV1z0XkF2uYKhB/mG7.51eFcJTkxpY7ED6fQ4vS8BZB001pO9sgwS',1,_binary ''),(1074,'erik','omaismias@toptpm','$2y$10$u31neKIvc/Tpv4jp7GDcWeawEXWZL0YMcAE.iQ3IX8dWnm0nQN2f.',4,_binary ''),(1075,'lenovo','lenovo@gmail.com','$2y$10$CY8H2fe7qqg.NirIBLFzbOGhPcLow7J6Hn6p20Dr5EkSkjc4aMg1.',1,_binary '');
+
+-- -----------------------------------------------------
+-- Table `caixas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `caixas` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT(4) NOT NULL,
+  `data_abertura` DATETIME NOT NULL,
+  `saldo_inicial` DECIMAL(10,2) NOT NULL,
+  `status` CHAR(1) NOT NULL DEFAULT 'A',
+  PRIMARY KEY (`id`),
+  INDEX `fk_Caixa_Usuarios1_idx` (`usuario_id` ASC) ,
+  CONSTRAINT `fk_Caixa_Usuarios1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `categorias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `sigla` CHAR(3) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 245;
+
+INSERT INTO `categorias` VALUES (1,'Missangas & Confecção de Joias',NULL),(2,'Decoração de tecidos',NULL),(3,'Tricô & Suprimentos de Crochê',NULL),(4,'Suprimentos para impressão',NULL),(5,'Estamparia de Suprimentos',NULL),(6,'Produtos de Costura',NULL),(7,'Artesanato & Hobby Tecido',NULL),(8,'Suprimentos para agulhas',NULL),(9,'Artes, Ofícios e Costura',NULL),(10,'Pintura, Desenho e Suprimentos de Arte',NULL),(11,'Suprimentos Artesanais e Materiais',NULL),(12,'Suprimentos para embrulho de presente',NULL),(13,'Decorações de Festa',NULL),(14,'Tintas Automotivas e Suprimentos para Tintas',NULL),(15,'Equipamentos para Serviços Pesados e Veículos Comerciais',NULL),(16,'Pneus Automotivos e Rodas',NULL),(17,'Ferramentas Automotivas e Equipamentos',NULL),(18,'Peças e Acessórios de Performance Automotiva',NULL),(19,'Cuidados com o carro',NULL),(20,'Óleos e Fluidos',NULL),(21,'Peças de Reposição Automotivas',NULL),(22,'Luzes, Lâmpadas e Indicadores',NULL),(23,'Acessórios para interiores automotivos',NULL),(24,'Acessórios Automotivos Externos',NULL),(25,'Mercadoria para entusiastas automotivos',NULL),(26,'Eletrônica Automotiva e Acessórios',NULL),(27,'RV Parts &Acessórios',NULL),(28,'Motocicleta',NULL),(29,'Produtos para Fraldas para Bebês',NULL),(30,'Suprimentos de alimentação para bebês',NULL),(31,'Gravidez & Produtos para Maternidade',NULL),(32,'Cadeirinhas para Carros de Segurança Infantil e Acessórios',NULL),(33,'Produtos de segurança para bebês',NULL),(34,'Produtos para treinamento de toalete',NULL),(35,'Produtos para Cuidados com o Bebê',NULL),(36,'Equipamento de viagem para bebés',NULL),(37,'Atividade do bebê e produtos de entretenimento',NULL),(38,'Presentes de Bebê',NULL),(39,'Papelaria para Bebês',NULL),(40,'Mobiliário de Creche, Roupa de Cama e Decoração',NULL),(41,'Bebê',NULL),(42,'Infantil Roupas e Calçados',NULL),(43,'Carrinhos de bebê e acessórios',NULL),(44,'Beleza e Cuidados Pessoais',NULL),(45,'Perfumes e Fragrâncias',NULL),(46,'Produtos para cuidados com o cabelo',NULL),(47,'Maquiagem',NULL),(48,'Produtos de cuidados da pele',NULL),(49,'Ferramentas de Beleza e Acessórios',NULL),(50,'Produtos para Cuidados com Pé, Mão e Unhas',NULL),(51,'Produtos de Higiene Pessoal',NULL),(52,'Produtos de barbear e depilação',NULL),(53,'Servidores de Computador',NULL),(54,'Armazenamento de dados',NULL),(55,'Monitores de computador',NULL),(56,'Computadores & Tablets',NULL),(57,'Peças de reposição de comprimidos',NULL),(58,'Redes de Computadores',NULL),(59,'Componentes do computador',NULL),(60,'Acessórios para Tablets',NULL),(61,'Acessórios para laptop',NULL),(62,'Componentes externos do computador',NULL),(63,'Tecnologia vestível',NULL),(64,'Televisores e Produtos de Vídeo',NULL),(65,'GPS & Navegação',NULL),(66,'Fones de ouvido & Earbuds',NULL),(67,'Eletrônica de Escritório',NULL),(68,'Áudio portátil & Vídeo',NULL),(69,'Leitores de eBook e Acessórios',NULL),(70,'Celulares e Acessórios',NULL),(71,'Acessórios e Suprimentos',NULL),(72,'Projetores de vídeo',NULL),(73,'Eletrônica veicular',NULL),(74,'Câmera & Foto',NULL),(75,'Segurança e Equipamentos de Vigilância',NULL),(76,'Computadores',NULL),(77,'Home Áudio e Produtos de Teatro',NULL),(78,'Consoles de videogame e acessórios',NULL),(79,'Roupas para Meninos',NULL),(80,'Acessórios para Meninos',NULL),(81,'Joias para meninos',NULL),(82,'Relógios para Meninos',NULL),(83,'Sapatos para Meninos',NULL),(84,'Roupas Femininas',NULL),(85,'Acessórios para Meninas',NULL),(86,'Joias Femininas',NULL),(87,'Relógios para Meninas',NULL),(88,'Sapatos Femininos',NULL),(89,'Uniformes Escolares para Meninas',NULL),(90,'Bolsas de viagem',NULL),(91,'Sacolas de Viagem',NULL),(92,'Sacos de Vestuário',NULL),(93,'Conjuntos de Bagagem',NULL),(94,'Malas',NULL),(95,'Acessórios de Viagem',NULL),(96,'Guarda-chuvas',NULL),(97,'Mochilas',NULL),(98,'Bagagem',NULL),(99,'Bolsas para laptop',NULL),(100,'Vestuário Masculino',NULL),(101,'Acessórios Masculinos',NULL),(102,'Relógios Masculinos',NULL),(103,'Calçados Masculinos',NULL),(104,'Vestuário Feminino',NULL),(105,'Bolsas Femininas',NULL),(106,'Acessórios Femininos',NULL),(107,'Relógios Femininos',NULL),(108,'Calçados Femininos',NULL),(109,'Joias Femininas',NULL),(110,'Mobiliário Infantil',NULL),(111,'Cartões-presente',NULL),(112,'Produtos de higiene bucal',NULL),(113,'Produtos Visão',NULL),(114,'Produtos de Bem-Estar e Relaxamento',NULL),(115,'Produtos para Cuidados com o Bebê e Crianças',NULL),(116,'Suprimentos Domésticos',NULL),(117,'Produtos para cuidados com a saúde',NULL),(118,'Dieta & Nutrição Esportiva',NULL),(119,'Suprimentos Médicos de Uso Doméstico e Equipamentos',NULL),(120,'Produtos de bem-estar sexual',NULL),(121,'Saúde e Domicílio',NULL),(122,'Produtos de Nutrição Esportiva',NULL),(123,'Papelaria & Suprimentos para Embrulho de Presente',NULL),(124,'Produtos para Portas Comerciais',NULL),(125,'Produtos de Transmissão de Energia',NULL),(126,'Materiais Industriais',NULL),(127,'Industrial Hardware',NULL),(128,'Produtos Abrasivos e de Acabamento',NULL),(129,'Adesivos Industriais, Selantes e Lubrificantes',NULL),(130,'Produtos para Movimentação de Materiais',NULL),(131,'Testar, Medir e Inspecionar',NULL),(132,'Energia Industrial & Ferramentas Manuais',NULL),(133,'Hidráulica, Pneumática e Hidráulica',NULL),(134,'Filtração',NULL),(135,'Componentes Eletrônicos',NULL),(136,'Laboratório e Produtos Científicos',NULL),(137,'Zeladoria e Abastecimento de Saneamento',NULL),(138,'Produtos de Segurança e Saúde Ocupacional',NULL),(139,'Ferramentas de Corte',NULL),(140,'Fixadores',NULL),(141,'Materiais para Educação Científica',NULL),(142,'Equipamentos de Food Service e Suprimentos',NULL),(143,'Produtos de Manufatura Aditiva',NULL),(144,'Suprimentos médicos profissionais',NULL),(145,'Suprimentos Odontológicos Profissionais',NULL),(146,'Embalagem e Envio de Suprimentos',NULL),(147,'Equipamentos para lojas de varejo e equipamentos',NULL),(148,'Industrial e Científica',NULL),(149,'Produtos de Banho',NULL),(150,'Roupa de cama',NULL),(151,'Home decoração Produtos',NULL),(152,'Mobiliário',NULL),(153,'Material de limpeza doméstica',NULL),(154,'Iluminação Doméstica e Ventiladores de Teto',NULL),(155,'Cozinha e Jantar',NULL),(156,'Aquecimento, Resfriamento e Qualidade do Ar',NULL),(157,'Loja Infantil em Casa',NULL),(158,'Armazenamento doméstico & Organização',NULL),(159,'Arte de parede',NULL),(160,'Aspiradores de pó e cuidados com o piso',NULL),(161,'Produtos de Engomadoria',NULL),(162,'Suprimentos para Festas',NULL),(163,'Suprimentos para pássaros de estimação',NULL),(164,'Suprimentos Cat',NULL),(165,'Suprimentos para cães',NULL),(166,'Peixes e Animais de Estimação Aquáticos',NULL),(167,'Suprimentos para cavalos',NULL),(168,'Répteis e suprimentos para anfíbios',NULL),(169,'Suprimentos para Pequenos Animais',NULL),(170,'Casa Inteligente: Novos Dispositivos Inteligentes',NULL),(171,'Casa Inteligente: Assistentes de Voz e Hubs',NULL),(172,'Casa Inteligente: Fechaduras Inteligentes e Entrada',NULL),(173,'Casa Inteligente: Entretenimento Doméstico',NULL),(174,'Casa Inteligente: Wi-Fi e Rede',NULL),(175,'Casa Inteligente: Câmeras e Sistemas de Segurança',NULL),(176,'Casa Inteligente: Iluminação',NULL),(177,'Casa Inteligente: Plugues e Tomadas',NULL),(178,'Casa Inteligente: Aspiradores e Mops',NULL),(179,'Termostatos domésticos inteligentes - Verificador de Compatibilidade',NULL),(180,'Casa Inteligente: Gramado e Jardim',NULL),(181,'Casa Inteligente: Outras Soluções',NULL),(182,'Casa Inteligente - Aquecimento e Refrigeração',NULL),(183,'Esportes & Fitness',NULL),(184,'Recreação ao ar livre',NULL),(185,'Esportes & Ar Livre',NULL),(186,'Eletrodomésticos',NULL),(187,'Bombas e Equipamentos Hidráulicos',NULL),(188,'Pintura, Tratamentos de Parede e Suprimentos',NULL),(189,'Segurança & Segurança',NULL),(190,'Lâmpadas',NULL),(191,'Ferramentas Elétricas & Ferramentas Manuais',NULL),(192,'Utensílios de cozinha e banho',NULL),(193,'Iluminação & Ventiladores de Teto',NULL),(194,'Equipamentos Elétricos',NULL),(195,'Hardware',NULL),(196,'Material de Construção',NULL),(197,'Medição & Layout',NULL),(198,'Solda & Solda',NULL),(199,'Ferramentas',NULL),(200,'Suprimentos para festas infantis',NULL),(201,'Figuras de Brinquedo e Conjuntos de jogos',NULL),(202,'Novidade Brinquedos & Diversões',NULL),(203,'Suprimentos de Artes e Artesanato',NULL),(204,'Brinquedos de construção',NULL),(205,'Bonecas e Acessórios',NULL),(206,'Eletrônica Infantil',NULL),(207,'Jogos & Acessórios',NULL),(208,'Brinquedos de Aprendizagem e Educação',NULL),(209,'Fantoches e Teatros de Marionetas',NULL),(210,'Enigmas',NULL),(211,'Esportes e Brinquedos ao Ar Livre',NULL),(212,'bichos de pelúcia e brinquedos de pelúcia',NULL),(213,'Brinquedos para bebês e crianças',NULL),(214,'Triciclos, Scooters e Vagões',NULL),(215,'Brinquedos de dedo',NULL),(216,'Conjuntos de jogos de veículos de brinquedo',NULL),(217,'Brincadeiras Infantis Trens e Bondes',NULL),(218,'Brincadeiras Infantis Caminhões',NULL),(219,'Carros de Brincar com Crianças e Carros de Corrida',NULL),(220,'Barcos de Brincadeiras Infantis',NULL),(221,'Ônibus para crianças',NULL),(222,'Tratores Infantis',NULL),(223,'Carros Caça-Níqueis, Pistas de Corrida e Acessórios',NULL),(224,'Sony PSP Jogos, Consoles e Acessórios',NULL),(225,'Nintendo DS Jogos, Consoles e Acessórios',NULL),(226,'Jogos PlayStation 3, Consoles e Acessórios',NULL),(227,'Jogos Wii, Consoles e Acessórios',NULL),(228,'Jogos Xbox 360, Consoles e Acessórios',NULL),(229,'Jogos para Mac & Acessórios',NULL),(230,'Nintendo 3DS & 2DS Consoles, Jogos e Acessórios',NULL),(231,'Sistemas Legados',NULL),(232,'Jogos PlayStation Vita, Consolas e Acessórios',NULL),(233,'Jogos Wii U, Consoles e Acessórios',NULL),(234,'Jogos PlayStation 4, Consoles e Acessórios',NULL),(235,'Jogos Xbox One, Consoles e Acessórios',NULL),(236,'Jogos eletrônicos',NULL),(237,'Serviços de Jogos de Vídeo Online',NULL),(238,'Hardware de Realidade Virtual e Acessórios',NULL),(239,'Nintendo Switch Consoles, Jogos e Acessórios',NULL),(240,'Consolas, Jogos e Acessórios PlayStation 5',NULL),(241,'Xbox Series X & S Consoles, Jogos e Acessórios',NULL),(242,'Jogos para PC & Acessórios',NULL),(243,'Roupas para Meninas e Sapatos',NULL),(244,'Uniformes Escolares para Meninos',NULL);
+
+-- -----------------------------------------------------
+-- Table `clientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `telefone` CHAR(14) NULL DEFAULT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `data_nasc` DATE NULL DEFAULT NULL,
+  `data_cad` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `ativo` BIT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 118;
+
+INSERT INTO `clientes` VALUES (1,'Larissa Silva','27857028835','2979802917','larissa.silva0@cliente.com','1986-12-21','2026-01-26 12:12:19',_binary ''),(2,'Paula Oliveira','26081942863','8519377334','paula.oliveira1@cliente.com','1984-10-21','2026-01-26 12:12:19',_binary ''),(3,'Julia Ribeiro','79252267436','8532384467','julia.ribeiro2@cliente.com','1991-10-08','2026-01-26 12:12:19',_binary ''),(4,'Tiago Lima','18842740124','7047977519','tiago.lima3@cliente.com','1980-06-07','2026-01-26 12:12:19',_binary ''),(5,'Otávio Souza','92060897118','2090482033','otávio.souza4@cliente.com','1974-10-20','2026-01-26 12:12:19',_binary ''),(6,'Carlos Carvalho','47381473035','6544378695','carlos.carvalho5@cliente.com','1989-04-09','2026-01-26 12:12:19',_binary ''),(7,'Carlos Oliveira','85294242523','9093954022','carlos.oliveira6@cliente.com','1991-01-19','2026-01-26 12:12:19',_binary ''),(8,'Daniela Martins','15390369179','6583409527','daniela.martins7@cliente.com','1978-03-10','2026-01-26 12:12:19',_binary ''),(9,'Carlos Martins','24949354269','5957437383','carlos.martins8@cliente.com','1989-04-10','2026-01-26 12:12:19',_binary ''),(10,'Tiago Lima','46953532087','2537583317','tiago.lima9@cliente.com','1999-04-26','2026-01-26 12:12:19',_binary ''),(11,'Viviane Oliveira','13089652547','6407548296','viviane.oliveira10@cliente.com','1979-05-20','2026-01-26 12:12:19',_binary ''),(12,'Carlos Dias','47004278227','5380541224','carlos.dias11@cliente.com','1982-10-23','2026-01-26 12:12:19',_binary ''),(13,'Kaio Lima','14839355104','2028774751','kaio.lima12@cliente.com','1973-02-23','2026-01-26 12:12:19',_binary ''),(14,'Daniela Martins','45048419333','8028244720','daniela.martins13@cliente.com','1991-11-06','2026-01-26 12:12:19',_binary ''),(15,'Kaio Lima','45348032897','5060940120','kaio.lima14@cliente.com','1995-01-07','2026-01-26 12:12:19',_binary ''),(16,'Paula Carvalho','70463217727','2187658055','paula.carvalho15@cliente.com','1991-03-26','2026-01-26 12:12:19',_binary ''),(17,'Sara Carvalho','19578988970','5541863649','sara.carvalho16@cliente.com','1980-01-03','2026-01-26 12:12:19',_binary ''),(18,'Marcos Dias','89112996863','5926892451','marcos.dias17@cliente.com','1987-03-23','2026-01-26 12:12:19',_binary ''),(19,'Rafael Dias','98422701654','3202936416','rafael.dias18@cliente.com','1971-12-26','2026-01-26 12:12:19',_binary ''),(20,'Eduardo Souza','21182159596','6916212749','eduardo.souza19@cliente.com','1993-06-07','2026-01-26 12:12:19',_binary ''),(21,'Otávio Pereira','80044551159','6694048773','otávio.pereira20@cliente.com','1970-08-27','2026-01-26 12:12:19',_binary ''),(22,'Helena Souza','82549512218','1679170002','helena.souza21@cliente.com','1971-08-18','2026-01-26 12:12:19',_binary ''),(23,'Ana Carvalho','57201544570','7912755125','ana.carvalho22@cliente.com','1989-03-23','2026-01-26 12:12:20',_binary ''),(24,'Larissa Pereira','85230327693','4695370680','larissa.pereira23@cliente.com','1978-10-08','2026-01-26 12:12:20',_binary ''),(25,'Julia Ribeiro','28412358240','9165167258','julia.ribeiro24@cliente.com','1974-12-18','2026-01-26 12:12:20',_binary ''),(26,'Gustavo Carvalho','73426327599','6735671088','gustavo.carvalho25@cliente.com','1973-03-02','2026-01-26 12:12:20',_binary ''),(27,'Marcos Dias','74292328647','9218098486','marcos.dias26@cliente.com','1998-07-02','2026-01-26 12:12:20',_binary ''),(28,'Daniela Pereira','97704008080','1972338922','daniela.pereira27@cliente.com','1984-08-07','2026-01-26 12:12:20',_binary ''),(29,'Julia Pereira','39281844628','4774447226','julia.pereira28@cliente.com','1998-03-28','2026-01-26 12:12:20',_binary ''),(30,'Gustavo Souza','41810337922','5870419295','gustavo.souza29@cliente.com','1992-05-17','2026-01-26 12:12:20',_binary ''),(31,'Eduardo Souza','60265491513','6645603968','eduardo.souza30@cliente.com','1971-12-03','2026-01-26 12:12:20',_binary ''),(32,'Carlos Pereira','55216250937','1197696754','carlos.pereira31@cliente.com','1972-09-03','2026-01-26 12:12:20',_binary ''),(33,'Gustavo Souza','48674204578','6248082364','gustavo.souza32@cliente.com','1985-02-11','2026-01-26 12:12:20',_binary ''),(34,'Paula Ribeiro','45784419038','5049160949','paula.ribeiro33@cliente.com','1974-01-11','2026-01-26 12:12:20',_binary ''),(35,'Paula Gomes','39286107271','8400327630','paula.gomes34@cliente.com','1972-11-27','2026-01-26 12:12:20',_binary ''),(36,'Ana Silva','41872446143','4838022937','ana.silva35@cliente.com','1974-09-18','2026-01-26 12:12:20',_binary ''),(37,'Fernanda Martins','45941848203','8384135672','fernanda.martins36@cliente.com','1994-05-15','2026-01-26 12:12:20',_binary ''),(38,'Larissa Souza','15364548748','3367994703','larissa.souza37@cliente.com','1983-09-04','2026-01-26 12:12:20',_binary ''),(39,'Paula Ribeiro','77245877141','1594389945','paula.ribeiro38@cliente.com','1977-01-10','2026-01-26 12:12:20',_binary ''),(40,'Daniela Pereira','91035812843','8678244281','daniela.pereira39@cliente.com','1997-11-24','2026-01-26 12:12:20',_binary ''),(41,'Kaio Silva','10630284160','6805276836','kaio.silva40@cliente.com','1982-02-28','2026-01-26 12:12:20',_binary ''),(42,'Ana Martins','45974380566','2013143984','ana.martins41@cliente.com','1974-10-19','2026-01-26 12:12:20',_binary ''),(43,'Rafael Lima','17512278623','2819106212','rafael.lima42@cliente.com','1998-06-28','2026-01-26 12:12:20',_binary ''),(44,'Sara Carvalho','95480034140','4249642321','sara.carvalho43@cliente.com','1977-12-19','2026-01-26 12:12:20',_binary ''),(45,'Otávio Oliveira','95369071180','1252715389','otávio.oliveira44@cliente.com','1982-03-22','2026-01-26 12:12:20',_binary ''),(46,'Helena Souza','61064338097','6864750273','helena.souza45@cliente.com','1996-07-22','2026-01-26 12:12:20',_binary ''),(47,'Marcos Pereira','44861957578','2273232406','marcos.pereira46@cliente.com','1997-05-28','2026-01-26 12:12:20',_binary ''),(48,'Marcos Lima','63454436255','2216915098','marcos.lima47@cliente.com','1973-02-07','2026-01-26 12:12:21',_binary ''),(49,'Julia Lima','40313219364','4110652414','julia.lima48@cliente.com','1973-12-21','2026-01-26 12:12:21',_binary ''),(50,'Tiago Souza','36373504922','5449797886','tiago.souza49@cliente.com','1997-07-21','2026-01-26 12:12:21',_binary ''),(51,'Otávio Lima','17900338853','7757152771','otávio.lima50@cliente.com','1977-11-20','2026-01-26 12:12:21',_binary ''),(52,'Larissa Silva','29030245172','4050167819','larissa.silva51@cliente.com','1976-12-15','2026-01-26 12:12:21',_binary ''),(53,'Sara Oliveira','80992903889','2930961514','sara.oliveira52@cliente.com','1984-07-21','2026-01-26 12:12:21',_binary ''),(54,'Ana Oliveira','79167696764','5481706874','ana.oliveira53@cliente.com','1997-04-12','2026-01-26 12:12:21',_binary ''),(55,'Natália Lima','84796609166','2099733961','natália.lima54@cliente.com','1990-09-04','2026-01-26 12:12:21',_binary ''),(56,'Helena Ribeiro','41419535962','5742409208','helena.ribeiro55@cliente.com','1990-05-17','2026-01-26 12:12:21',_binary ''),(57,'Igor Souza','34541548719','6214569659','igor.souza56@cliente.com','1990-01-12','2026-01-26 12:12:21',_binary ''),(58,'Marcos Carvalho','74312904723','7517274241','marcos.carvalho57@cliente.com','1983-12-19','2026-01-26 12:12:21',_binary ''),(59,'Marcos Martins','83363533580','8989284339','marcos.martins58@cliente.com','1982-05-12','2026-01-26 12:12:21',_binary ''),(60,'Larissa Oliveira','70571300550','5763920530','larissa.oliveira59@cliente.com','1998-05-15','2026-01-26 12:12:21',_binary ''),(61,'Carlos Lima','75972202592','9505415432','carlos.lima60@cliente.com','1992-04-08','2026-01-26 12:12:21',_binary ''),(62,'Rafael Souza','80602092378','4782664052','rafael.souza61@cliente.com','1982-01-01','2026-01-26 12:12:21',_binary ''),(63,'Kaio Ribeiro','37378096115','6300062573','kaio.ribeiro62@cliente.com','1999-05-07','2026-01-26 12:12:21',_binary ''),(64,'Carlos Gomes','81151946594','4590416046','carlos.gomes63@cliente.com','1993-12-24','2026-01-26 12:12:21',_binary ''),(65,'Julia Gomes','95023428400','1476103479','julia.gomes64@cliente.com','1982-11-18','2026-01-26 12:12:21',_binary ''),(66,'Paula Silva','34626987750','7067830657','paula.silva65@cliente.com','1991-10-13','2026-01-26 12:12:21',_binary ''),(67,'Ana Gomes','69547235287','6652676905','ana.gomes66@cliente.com','1973-02-23','2026-01-26 12:12:21',_binary ''),(68,'Helena Lima','62567436981','8941070338','helena.lima67@cliente.com','1980-11-12','2026-01-26 12:12:21',_binary ''),(69,'Paula Martins','80880218351','9235223097','paula.martins68@cliente.com','1974-07-16','2026-01-26 12:12:21',_binary ''),(70,'Helena Souza','55121383762','1060773268','helena.souza69@cliente.com','1997-07-13','2026-01-26 12:12:21',_binary ''),(71,'Viviane Gomes','22018916696','7654089258','viviane.gomes70@cliente.com','1984-04-11','2026-01-26 12:12:21',_binary ''),(72,'Bruno Pereira','81916430431','2344063786','bruno.pereira71@cliente.com','1980-11-18','2026-01-26 12:12:21',_binary ''),(73,'Marcos Oliveira','95659311630','7728818716','marcos.oliveira72@cliente.com','1970-09-20','2026-01-26 12:12:21',_binary ''),(74,'Igor Carvalho','49569602583','3266703831','igor.carvalho73@cliente.com','1991-07-03','2026-01-26 12:12:22',_binary ''),(75,'Eduardo Ribeiro','96143419605','2564759219','eduardo.ribeiro74@cliente.com','1977-12-05','2026-01-26 12:12:22',_binary ''),(76,'Julia Martins','12521703712','7978751773','julia.martins75@cliente.com','1970-02-21','2026-01-26 12:12:22',_binary ''),(77,'Julia Pereira','65284384330','5554416141','julia.pereira76@cliente.com','1981-05-23','2026-01-26 12:12:22',_binary ''),(78,'Bruno Gomes','40058215088','8048406243','bruno.gomes77@cliente.com','1999-03-14','2026-01-26 12:12:22',_binary ''),(79,'Bruno Dias','55590041353','4429111496','bruno.dias78@cliente.com','1995-05-20','2026-01-26 12:12:22',_binary ''),(80,'Marcos Souza','18192657080','3658297322','marcos.souza79@cliente.com','1983-11-08','2026-01-26 12:12:22',_binary ''),(81,'Ana Martins','34783737552','1152964834','ana.martins80@cliente.com','1993-02-11','2026-01-26 12:12:22',_binary ''),(82,'Carlos Souza','91456526576','6224606522','carlos.souza81@cliente.com','1983-03-26','2026-01-26 12:12:22',_binary ''),(83,'Paula Gomes','26975699304','5324221011','paula.gomes82@cliente.com','1993-02-20','2026-01-26 12:12:22',_binary ''),(84,'Daniela Ribeiro','65250316522','7375468975','daniela.ribeiro83@cliente.com','1996-11-27','2026-01-26 12:12:22',_binary ''),(85,'Julia Oliveira','74670853406','7783747248','julia.oliveira84@cliente.com','1980-10-07','2026-01-26 12:12:22',_binary ''),(86,'Fernanda Souza','27723020114','5869412054','fernanda.souza85@cliente.com','1989-07-10','2026-01-26 12:12:22',_binary ''),(87,'Rafael Ribeiro','43095432395','2573446464','rafael.ribeiro86@cliente.com','1990-03-01','2026-01-26 12:12:22',_binary ''),(88,'Igor Ribeiro','80028963551','7323000852','igor.ribeiro87@cliente.com','1987-08-23','2026-01-26 12:12:22',_binary ''),(89,'Eduardo Oliveira','72508778523','8219988018','eduardo.oliveira88@cliente.com','1990-11-25','2026-01-26 12:12:22',_binary ''),(90,'Natália Martins','23683072564','2235368519','natália.martins89@cliente.com','1982-10-04','2026-01-26 12:12:22',_binary ''),(91,'Tiago Souza','10038186978','2513485211','tiago.souza90@cliente.com','1986-09-12','2026-01-26 12:12:22',_binary ''),(92,'Fernanda Carvalho','59296373243','8519612551','fernanda.carvalho91@cliente.com','1970-06-09','2026-01-26 12:12:22',_binary ''),(93,'Helena Ribeiro','52920862851','6042559140','helena.ribeiro92@cliente.com','1996-05-10','2026-01-26 12:12:22',_binary ''),(94,'Kaio Gomes','51000335647','7601937421','kaio.gomes93@cliente.com','1992-04-20','2026-01-26 12:12:22',_binary ''),(95,'Julia Pereira','37089359916','6736816083','julia.pereira94@cliente.com','1983-12-12','2026-01-26 12:12:22',_binary ''),(96,'Larissa Gomes','40119211003','7724265785','larissa.gomes95@cliente.com','1976-12-09','2026-01-26 12:12:22',_binary ''),(97,'Paula Souza','63571266746','5385485835','paula.souza96@cliente.com','1977-11-27','2026-01-26 12:12:22',_binary ''),(98,'Carlos Carvalho','36487715184','7143099628','carlos.carvalho97@cliente.com','1975-01-20','2026-01-26 12:12:22',_binary ''),(99,'Carlos Oliveira','16972997818','1467932380','carlos.oliveira98@cliente.com','1994-02-19','2026-01-26 12:12:23',_binary ''),(100,'Julia Martins','27064119380','4362031794','julia.martins99@cliente.com','1973-11-16','2026-01-26 12:12:23',_binary ''),(101,'Gabriel Cabral','09582582749','941381718','gabriel.cmmariano@gmail.com','2006-11-20','2026-01-26 12:13:21',_binary ''),(102,'Isaac Testedo API','55892241876','11997641030','isaacoliveirakopi@gmail.com','2000-01-21','2026-01-26 14:23:57',_binary ''),(103,'João Silva','12345678901','joao@email.com','11987654321','1990-01-15','2026-01-27 11:07:16',_binary ''),(107,'João Silva','12345578901','joaa@email.com','11587654321','1990-01-15','2026-01-27 11:17:00',_binary ''),(109,'erdkcarvf','12315578901','11597054321','11597654321','1990-01-15','2026-01-27 11:17:37',_binary ''),(110,'Everson Reis','42278466944','11949192628','everson.alves18@hotmail.com','1993-11-07','2026-01-27 11:46:37',_binary ''),(111,'Ze da Silva Pereira','44007755077','11947172469','ze.silva@gmail.com','2000-01-14','2026-01-27 12:59:18',_binary ''),(112,'Matheus Faria','23443245655','11949192628','matheus.faria@gmail.com','1993-11-07','2026-01-28 11:33:01',_binary ''),(113,'Caio Lionel','74152685423','9854235814','caio.lionel@hotmail.com.br','2006-12-04','2026-02-03 12:06:22',_binary ''),(114,'erik Carvalho','4648889816','11981314806','erik@erikgmail','2026-03-05','2026-02-03 12:20:30',_binary ''),(115,'Rita de Cassia','23456343244','11456328785','rita_cassia18@hotmail.com','1992-02-02','2026-02-03 12:59:32',_binary ''),(116,'Adi das Couves','53790650072','11949171776','adidascouves@hotmail.com','1989-02-11','2026-02-03 13:06:46',_binary ''),(117,'Nike prime','88271314009','11949191886','nikejunior@hotmail.com','2026-01-05','2026-02-03 13:34:15',_binary '');
+
+-- -----------------------------------------------------
+-- Table `enderecos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `enderecos` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `cliente_id` INT(4) NOT NULL,
+  `cep` CHAR(8) NOT NULL,
+  `logradouro` VARCHAR(100) NULL DEFAULT NULL,
+  `numero` VARCHAR(40) NOT NULL,
+  `complemento` VARCHAR(60) NULL DEFAULT NULL,
+  `bairro` VARCHAR(60) NOT NULL,
+  `cidade` VARCHAR(60) NOT NULL,
+  `uf` CHAR(2) NOT NULL,
+  `tipo_endereco` CHAR(3) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_table1_clientes_idx` (`cliente_id` ASC) ,
+  CONSTRAINT `fk_table1_clientes`
+    FOREIGN KEY (`cliente_id`)
+    REFERENCES `clientes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 101;
+
+INSERT INTO `enderecos` VALUES (1,1,'88481753','Rua Martins','396',NULL,'Centro','São Paulo','SP','RES'),(2,2,'64054321','Rua Pereira','850',NULL,'Centro','São Paulo','SP','RES'),(3,3,'34459149','Rua Lima','720',NULL,'Centro','São Paulo','SP','RES'),(4,4,'15260714','Rua Pereira','623',NULL,'Centro','São Paulo','SP','RES'),(5,5,'75187054','Rua Dias','568',NULL,'Centro','São Paulo','SP','RES'),(6,6,'82651606','Rua Lima','332',NULL,'Centro','São Paulo','SP','RES'),(7,7,'29908392','Rua Oliveira','930',NULL,'Centro','São Paulo','SP','RES'),(8,8,'44656631','Rua Martins','157',NULL,'Centro','São Paulo','SP','RES'),(9,9,'79595436','Rua Gomes','103',NULL,'Centro','São Paulo','SP','RES'),(10,10,'48275601','Rua Oliveira','207',NULL,'Centro','São Paulo','SP','RES'),(11,11,'45393343','Rua Oliveira','669',NULL,'Centro','São Paulo','SP','RES'),(12,12,'67914928','Rua Carvalho','888',NULL,'Centro','São Paulo','SP','RES'),(13,13,'52313755','Rua Carvalho','846',NULL,'Centro','São Paulo','SP','RES'),(14,14,'88965265','Rua Carvalho','28',NULL,'Centro','São Paulo','SP','RES'),(15,15,'97286160','Rua Souza','772',NULL,'Centro','São Paulo','SP','RES'),(16,16,'89731500','Rua Pereira','602',NULL,'Centro','São Paulo','SP','RES'),(17,17,'73311727','Rua Silva','834',NULL,'Centro','São Paulo','SP','RES'),(18,18,'30779939','Rua Oliveira','527',NULL,'Centro','São Paulo','SP','RES'),(19,19,'96106601','Rua Pereira','119',NULL,'Centro','São Paulo','SP','RES'),(20,20,'88042727','Rua Gomes','3',NULL,'Centro','São Paulo','SP','RES'),(21,21,'10519650','Rua Silva','264',NULL,'Centro','São Paulo','SP','RES'),(22,22,'50756547','Rua Carvalho','903',NULL,'Centro','São Paulo','SP','RES'),(23,23,'20352840','Rua Dias','397',NULL,'Centro','São Paulo','SP','RES'),(24,24,'51088742','Rua Souza','406',NULL,'Centro','São Paulo','SP','RES'),(25,25,'91510747','Rua Souza','259',NULL,'Centro','São Paulo','SP','RES'),(26,26,'40206551','Rua Silva','388',NULL,'Centro','São Paulo','SP','RES'),(27,27,'70272897','Rua Lima','122',NULL,'Centro','São Paulo','SP','RES'),(28,28,'14039834','Rua Oliveira','498',NULL,'Centro','São Paulo','SP','RES'),(29,29,'43005018','Rua Carvalho','173',NULL,'Centro','São Paulo','SP','RES'),(30,30,'21856527','Rua Gomes','316',NULL,'Centro','São Paulo','SP','RES'),(31,31,'25452501','Rua Lima','895',NULL,'Centro','São Paulo','SP','RES'),(32,32,'19997831','Rua Pereira','272',NULL,'Centro','São Paulo','SP','RES'),(33,33,'69844525','Rua Silva','64',NULL,'Centro','São Paulo','SP','RES'),(34,34,'85962364','Rua Ribeiro','162',NULL,'Centro','São Paulo','SP','RES'),(35,35,'64487011','Rua Silva','188',NULL,'Centro','São Paulo','SP','RES'),(36,36,'85531502','Rua Ribeiro','401',NULL,'Centro','São Paulo','SP','RES'),(37,37,'84517395','Rua Ribeiro','895',NULL,'Centro','São Paulo','SP','RES'),(38,38,'55454140','Rua Ribeiro','294',NULL,'Centro','São Paulo','SP','RES'),(39,39,'66366308','Rua Lima','768',NULL,'Centro','São Paulo','SP','RES'),(40,40,'51154892','Rua Dias','297',NULL,'Centro','São Paulo','SP','RES'),(41,41,'85503033','Rua Lima','522',NULL,'Centro','São Paulo','SP','RES'),(42,42,'10944962','Rua Dias','724',NULL,'Centro','São Paulo','SP','RES'),(43,43,'21852464','Rua Pereira','36',NULL,'Centro','São Paulo','SP','RES'),(44,44,'21021962','Rua Martins','291',NULL,'Centro','São Paulo','SP','RES'),(45,45,'91581778','Rua Martins','192',NULL,'Centro','São Paulo','SP','RES'),(46,46,'65763943','Rua Silva','836',NULL,'Centro','São Paulo','SP','RES'),(47,47,'53989064','Rua Pereira','305',NULL,'Centro','São Paulo','SP','RES'),(48,48,'88633856','Rua Oliveira','503',NULL,'Centro','São Paulo','SP','RES'),(49,49,'49858417','Rua Gomes','801',NULL,'Centro','São Paulo','SP','RES'),(50,50,'99515154','Rua Gomes','291',NULL,'Centro','São Paulo','SP','RES'),(51,51,'84756831','Rua Oliveira','261',NULL,'Centro','São Paulo','SP','RES'),(52,52,'83300651','Rua Gomes','149',NULL,'Centro','São Paulo','SP','RES'),(53,53,'61048832','Rua Dias','769',NULL,'Centro','São Paulo','SP','RES'),(54,54,'44751633','Rua Lima','66',NULL,'Centro','São Paulo','SP','RES'),(55,55,'74627173','Rua Martins','833',NULL,'Centro','São Paulo','SP','RES'),(56,56,'75623770','Rua Lima','94',NULL,'Centro','São Paulo','SP','RES'),(57,57,'80716742','Rua Gomes','153',NULL,'Centro','São Paulo','SP','RES'),(58,58,'71532391','Rua Silva','258',NULL,'Centro','São Paulo','SP','RES'),(59,59,'13789785','Rua Ribeiro','512',NULL,'Centro','São Paulo','SP','RES'),(60,60,'51890992','Rua Silva','219',NULL,'Centro','São Paulo','SP','RES'),(61,61,'44616416','Rua Oliveira','4',NULL,'Centro','São Paulo','SP','RES'),(62,62,'72566672','Rua Ribeiro','919',NULL,'Centro','São Paulo','SP','RES'),(63,63,'41556962','Rua Souza','355',NULL,'Centro','São Paulo','SP','RES'),(64,64,'20152686','Rua Dias','789',NULL,'Centro','São Paulo','SP','RES'),(65,65,'69614878','Rua Ribeiro','249',NULL,'Centro','São Paulo','SP','RES'),(66,66,'50272129','Rua Lima','305',NULL,'Centro','São Paulo','SP','RES'),(67,67,'94326636','Rua Pereira','235',NULL,'Centro','São Paulo','SP','RES'),(68,68,'96370919','Rua Gomes','266',NULL,'Centro','São Paulo','SP','RES'),(69,69,'72090661','Rua Dias','883',NULL,'Centro','São Paulo','SP','RES'),(70,70,'96061303','Rua Souza','426',NULL,'Centro','São Paulo','SP','RES'),(71,71,'98981176','Rua Dias','820',NULL,'Centro','São Paulo','SP','RES'),(72,72,'22833690','Rua Oliveira','259',NULL,'Centro','São Paulo','SP','RES'),(73,73,'18967730','Rua Carvalho','714',NULL,'Centro','São Paulo','SP','RES'),(74,74,'78544503','Rua Dias','688',NULL,'Centro','São Paulo','SP','RES'),(75,75,'77224879','Rua Souza','629',NULL,'Centro','São Paulo','SP','RES'),(76,76,'87198813','Rua Lima','390',NULL,'Centro','São Paulo','SP','RES'),(77,77,'59813729','Rua Carvalho','839',NULL,'Centro','São Paulo','SP','RES'),(78,78,'47631216','Rua Lima','74',NULL,'Centro','São Paulo','SP','RES'),(79,79,'71656235','Rua Carvalho','31',NULL,'Centro','São Paulo','SP','RES'),(80,80,'16581095','Rua Souza','159',NULL,'Centro','São Paulo','SP','RES'),(81,81,'14737522','Rua Pereira','825',NULL,'Centro','São Paulo','SP','RES'),(82,82,'65967579','Rua Gomes','606',NULL,'Centro','São Paulo','SP','RES'),(83,83,'76927141','Rua Pereira','215',NULL,'Centro','São Paulo','SP','RES'),(84,84,'63622239','Rua Pereira','917',NULL,'Centro','São Paulo','SP','RES'),(85,85,'39570214','Rua Lima','194',NULL,'Centro','São Paulo','SP','RES'),(86,86,'95282935','Rua Silva','788',NULL,'Centro','São Paulo','SP','RES'),(87,87,'84339294','Rua Dias','332',NULL,'Centro','São Paulo','SP','RES'),(88,88,'17885165','Rua Lima','356',NULL,'Centro','São Paulo','SP','RES'),(89,89,'41590164','Rua Ribeiro','634',NULL,'Centro','São Paulo','SP','RES'),(90,90,'77904454','Rua Dias','813',NULL,'Centro','São Paulo','SP','RES'),(91,91,'23384654','Rua Gomes','105',NULL,'Centro','São Paulo','SP','RES'),(92,92,'87559808','Rua Gomes','881',NULL,'Centro','São Paulo','SP','RES'),(93,93,'41771340','Rua Oliveira','750',NULL,'Centro','São Paulo','SP','RES'),(94,94,'84795590','Rua Oliveira','539',NULL,'Centro','São Paulo','SP','RES'),(95,95,'10458963','Rua Oliveira','386',NULL,'Centro','São Paulo','SP','RES'),(96,96,'74639480','Rua Ribeiro','23',NULL,'Centro','São Paulo','SP','RES'),(97,97,'20803174','Rua Silva','279',NULL,'Centro','São Paulo','SP','RES'),(98,98,'56891488','Rua Martins','386',NULL,'Centro','São Paulo','SP','RES'),(99,99,'54167178','Rua Martins','328',NULL,'Centro','São Paulo','SP','RES'),(100,100,'61583668','Rua Ribeiro','611',NULL,'Centro','São Paulo','SP','RES');
+
+-- -----------------------------------------------------
+-- Table `produtos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `cod_barras` VARCHAR(60) NOT NULL,
+  `descricao` VARCHAR(60) NOT NULL,
+  `valor_unit` DECIMAL(10,2) NOT NULL,
+  `unidade_venda` VARCHAR(12) NOT NULL,
+  `categoria_id` INT(4) NOT NULL,
+  `estoque_minimo` DECIMAL(10,2) NOT NULL,
+  `classe_desconto` DECIMAL(10,2) NULL DEFAULT NULL,
+  `imagem` BLOB NULL DEFAULT NULL,
+  `data_cad` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `descontinuado` BIT(1) NULL DEFAULT b'1',
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `idProduto_UNIQUE` (`id` ASC) ,
+  UNIQUE INDEX `Produtocol_UNIQUE` (`cod_barras` ASC) ,
+  INDEX `fk_Produto_Categorias1_idx` (`categoria_id` ASC) ,
+  CONSTRAINT `fk_Produto_Categorias1`
+    FOREIGN KEY (`categoria_id`)
+    REFERENCES `categorias` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 50;
+
+INSERT INTO `produtos` VALUES (1,'7894563120876','Parafuso para motor de arranque caixa 10un',9.98,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:04',_binary ''),(2,'7894564583876','Pretinho pneus',11.98,'unidade',19,0.00,0.20,NULL,'2026-01-26 12:08:04',_binary ''),(3,'7894564488876','Pastilha de freio para Fusca caixa com jogo',25.79,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:04',_binary ''),(4,'7894647680876','Pneu Pirelli 14 175x60',529.74,'unidade',16,0.00,0.00,NULL,'2026-01-26 12:08:04',_binary ''),(5,'7894564159876','Oleo Lubrax 5w30 Litro',34.98,'unidade',20,0.00,0.15,NULL,'2026-01-26 12:08:04',_binary ''),(6,'7897521120876','Limpador de parabrisas Dyna DX18 par',65.64,'unidade',21,0.00,0.00,NULL,'2026-01-26 12:08:04',_binary ''),(7,'7894541258876','Bateria Moura 60A',463.98,'unidade',21,0.00,0.05,NULL,'2026-01-26 12:08:04',_binary ''),(8,'7894563125874','Radiador Denso Fusca 66',897.98,'unidade',21,0.00,0.00,NULL,'2026-01-26 12:08:04',_binary ''),(9,'7891000000001','Filtro de óleo Bosch',29.90,'unidade',20,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(10,'7891000000002','Filtro de ar esportivo',89.90,'unidade',20,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(11,'7891000000003','Correia dentada Gates',119.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(12,'7891000000004','Velas NGK Iridium jogo 4un',159.90,'unidade',21,0.00,0.15,NULL,'2026-01-26 12:08:13',_binary ''),(13,'7891000000005','Amortecedor traseiro Cofap',349.90,'unidade',16,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(14,'7891000000006','Amortecedor dianteiro Cofap',369.90,'unidade',16,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(15,'7891000000007','Disco de freio ventilado',229.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(16,'7891000000008','Tambor de freio',199.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(17,'7891000000009','Cabo de embreagem',59.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(18,'7891000000010','Cabo de acelerador',49.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(19,'7891000000011','Bomba de combustível elétrica',189.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(20,'7891000000012','Bomba d’água',139.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(21,'7891000000013','Mangueira do radiador',49.90,'unidade',21,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(22,'7891000000014','Termostato válvula',79.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(23,'7891000000015','Sensor de temperatura',99.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(24,'7891000000016','Sensor MAP',189.90,'unidade',21,0.00,0.15,NULL,'2026-01-26 12:08:13',_binary ''),(25,'7891000000017','Sensor de rotação',149.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(26,'7891000000018','Pastilha de freio dianteira',129.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(27,'7891000000019','Pastilha de freio traseira',119.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(28,'7891000000020','Disco de embreagem',289.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(29,'7891000000021','Plato de embreagem',319.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(30,'7891000000022','Rolamento de embreagem',129.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(31,'7891000000023','Caixa de direção hidráulica',1890.00,'unidade',16,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(32,'7891000000024','Terminal de direção',79.90,'unidade',21,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(33,'7891000000025','Barra axial',99.90,'unidade',21,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(34,'7891000000026','Bucha de suspensão',39.90,'unidade',21,0.00,0.03,NULL,'2026-01-26 12:08:13',_binary ''),(35,'7891000000027','Coxim do motor',129.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(36,'7891000000028','Coxim do câmbio',139.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(37,'7891000000029','Junta do cabeçote',189.90,'unidade',21,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(38,'7891000000030','Jogo de juntas completo',349.90,'unidade',21,0.00,0.12,NULL,'2026-01-26 12:08:13',_binary ''),(39,'7891000000031','Óleo motor 10W40 1L',32.90,'unidade',20,0.00,0.15,NULL,'2026-01-26 12:08:13',_binary ''),(40,'7891000000032','Óleo câmbio 80W90 1L',39.90,'unidade',20,0.00,0.15,NULL,'2026-01-26 12:08:13',_binary ''),(41,'7891000000033','Fluido de freio DOT4',24.90,'unidade',20,0.00,0.10,NULL,'2026-01-26 12:08:13',_binary ''),(42,'7891000000034','Aditivo radiador',19.90,'unidade',20,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(43,'7891000000035','Palheta limpador par',69.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(44,'7891000000036','Motor de partida',899.90,'unidade',16,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(45,'7891000000037','Alternador 90A',1099.90,'unidade',16,0.00,0.05,NULL,'2026-01-26 12:08:13',_binary ''),(46,'7891000000038','Regulador de voltagem',89.90,'unidade',21,0.00,0.08,NULL,'2026-01-26 12:08:13',_binary ''),(47,'7891000000039','Relé automotivo',19.90,'unidade',21,0.00,0.03,NULL,'2026-01-26 12:08:13',_binary ''),(48,'7891000000040','Fusível automotivo kit',14.90,'unidade',21,0.00,0.02,NULL,'2026-01-26 12:08:13',_binary '');
+
+-- -----------------------------------------------------
+-- Table `estoques`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `estoques` (
+  `produto_id` INT(4) NOT NULL,
+  `quantidade` DECIMAL(10,2) NOT NULL,
+  `data_ultimo_movimento` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
+  INDEX `fk_Estoque_Produto1_idx` (`produto_id` ASC) ,
+  CONSTRAINT `fk_Estoque_Produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `produtos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+INSERT INTO `estoques` VALUES (1,-20.00,'2026-01-27 03:00:00'),(2,-4.00,'2026-01-26 03:00:00'),(3,0.00,'2026-01-26 03:00:00'),(4,0.00,'2026-01-26 03:00:00'),(5,0.00,'2026-01-26 03:00:00'),(6,0.00,'2026-01-26 03:00:00'),(7,-12.00,'2026-01-26 03:00:00'),(8,0.00,'2026-01-26 03:00:00'),(9,-294.20,'2026-01-26 03:00:00'),(10,-4.00,'2026-01-27 03:00:00'),(11,0.00,'2026-01-26 03:00:00'),(12,0.00,'2026-01-26 03:00:00'),(13,0.00,'2026-01-26 03:00:00'),(14,0.00,'2026-01-26 03:00:00'),(15,0.00,'2026-01-26 03:00:00'),(16,-8.00,'2026-01-26 03:00:00'),(17,0.00,'2026-01-26 03:00:00'),(18,0.00,'2026-01-26 03:00:00'),(19,0.00,'2026-01-26 03:00:00'),(20,0.00,'2026-01-26 03:00:00'),(21,0.00,'2026-01-26 03:00:00'),(22,0.00,'2026-01-26 03:00:00'),(23,0.00,'2026-01-26 03:00:00'),(24,0.00,'2026-01-26 03:00:00'),(25,0.00,'2026-01-26 03:00:00'),(26,0.00,'2026-01-26 03:00:00'),(27,0.00,'2026-01-26 03:00:00'),(28,0.00,'2026-01-26 03:00:00'),(29,0.00,'2026-01-26 03:00:00'),(30,0.00,'2026-01-26 03:00:00'),(31,0.00,'2026-01-26 03:00:00'),(32,0.00,'2026-01-26 03:00:00'),(33,0.00,'2026-01-26 03:00:00'),(34,0.00,'2026-01-26 03:00:00'),(35,0.00,'2026-01-26 03:00:00'),(36,-10.00,'2026-01-30 03:00:00'),(37,0.00,'2026-01-26 03:00:00'),(38,0.00,'2026-01-26 03:00:00'),(39,0.00,'2026-01-26 03:00:00'),(40,0.00,'2026-01-26 03:00:00'),(41,0.00,'2026-01-26 03:00:00'),(42,0.00,'2026-01-26 03:00:00'),(43,0.00,'2026-01-26 03:00:00'),(44,0.00,'2026-01-26 03:00:00'),(45,0.00,'2026-01-26 03:00:00'),(46,-2.00,'2026-01-27 03:00:00'),(47,-2.00,'2026-01-27 03:00:00'),(48,-5.00,'2026-01-30 03:00:00');
+
+-- -----------------------------------------------------
+-- Table `fornecedores`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `fornecedores` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `razao_social` VARCHAR(100) NOT NULL,
+  `fantasia` VARCHAR(40) NOT NULL,
+  `cnpj` CHAR(14) NOT NULL,
+  `contato` VARCHAR(60) NULL DEFAULT NULL,
+  `telefone` VARCHAR(45) NULL DEFAULT NULL,
+  `email` VARCHAR(60) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `cnpj_UNIQUE` (`cnpj` ASC) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `pedidos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pedidos` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT(4) NOT NULL,
+  `cliente_id` INT(4) NOT NULL,
+  `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `status` CHAR(1) NOT NULL DEFAULT 'A',
+  `desconto` DECIMAL(10,2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Pedido_Usuarios1_idx` (`usuario_id` ASC) ,
+  INDEX `fk_Pedido_Clientes1_idx` (`cliente_id` ASC) ,
+  CONSTRAINT `fk_Pedido_Clientes1`
+    FOREIGN KEY (`cliente_id`)
+    REFERENCES `clientes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Pedido_Usuarios1`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 100887;
+
+INSERT INTO `pedidos` VALUES (100009,1001,96,'2026-01-26 12:17:58','B',1.00),(100010,1001,90,'2026-01-26 12:22:03','E',10.00),(100011,1002,5,'2026-01-26 12:32:49','A',0.00),(100012,1004,20,'2026-01-26 12:33:02','C',1.50),(100013,1004,91,'2026-01-26 12:38:00','A',0.00),(100014,1003,101,'2026-01-26 12:46:51','F',100.00),(100015,1010,2,'2026-01-26 13:35:09','A',NULL),(100016,1011,101,'2026-01-26 13:38:51','A',1.03),(100017,1010,2,'2026-01-26 13:39:32','A',1.00),(100018,1011,101,'2026-01-26 13:44:55','A',0.00),(100019,1011,101,'2026-01-26 13:44:59','A',0.00),(100020,1012,30,'2026-01-26 13:52:53','A',0.00),(100021,1011,3,'2026-01-26 14:20:04','A',0.00),(100022,1011,3,'2026-01-26 14:20:21','A',0.00),(100023,1011,3,'2026-01-26 14:21:17','A',0.00),(100024,1011,3,'2026-01-26 14:21:41','A',0.00),(100025,1011,3,'2026-01-26 14:22:42','A',0.00),(100026,1008,101,'2026-01-26 14:29:56','A',0.00),(100027,1011,1,'2026-01-26 14:34:41','A',0.00),(100028,1001,1,'2026-01-26 14:41:53','A',0.00),(100029,1002,2,'2026-01-26 14:42:22','A',0.00),(100030,1011,102,'2026-01-26 14:44:19','A',0.00),(100031,1011,102,'2026-01-26 14:45:17','A',0.00),(100032,1002,2,'2026-01-26 14:46:01','B',0.00),(100035,1006,85,'2026-01-28 13:47:17','A',0.00),(100038,1006,85,'2026-01-28 13:49:56','A',0.00),(100042,1005,93,'2026-01-28 14:11:29','A',0.00),(100043,1009,13,'2026-01-28 14:39:45','A',0.00),(100044,1009,13,'2026-01-28 14:40:51','A',0.00),(100045,1010,20,'2026-01-28 14:44:14','A',0.00),(100046,1001,30,'2026-01-29 18:24:54','A',0.00),(100047,1001,40,'2026-01-29 19:55:58','A',0.00),(100048,1008,101,'2026-01-29 20:54:28','A',0.00),(100049,1009,2,'2026-01-29 20:55:22','A',0.00),(100050,1007,1,'2026-01-29 20:55:29','A',0.00),(100051,1012,4,'2026-01-29 20:55:31','A',0.00),(100052,1010,112,'2026-01-29 20:55:32','A',0.00),(100053,1006,10,'2026-01-29 20:56:11','A',0.00),(100054,1003,24,'2026-01-29 20:56:42','A',0.00),(100055,1010,112,'2026-01-30 11:43:53','A',0.00),(100056,1007,1,'2026-01-30 12:42:51','A',0.00),(100057,1003,25,'2026-01-30 17:06:56','A',0.00),(100058,1003,33,'2026-01-30 19:11:02','A',0.00),(100059,1003,33,'2026-01-30 19:13:20','A',0.00),(100060,1003,33,'2026-01-30 19:14:42','A',0.00),(100061,1003,33,'2026-01-30 19:15:23','A',0.00),(100062,1003,33,'2026-01-30 19:15:45','A',0.00),(100063,1003,33,'2026-01-30 19:16:35','A',0.00),(100064,1003,33,'2026-01-30 19:16:47','A',0.00),(100065,1003,33,'2026-01-30 19:18:44','A',0.00),(100066,1003,33,'2026-01-30 19:20:55','A',0.00),(100067,1003,33,'2026-01-30 19:21:36','A',0.00),(100068,1003,33,'2026-01-30 19:23:02','A',0.00),(100069,1003,33,'2026-01-30 19:23:46','A',0.00),(100070,1003,33,'2026-01-30 19:23:52','A',0.00),(100071,1003,33,'2026-01-30 19:24:44','A',0.00),(100072,1003,33,'2026-01-30 19:24:54','A',0.00),(100073,1003,33,'2026-01-30 19:25:26','A',0.00),(100074,1003,33,'2026-01-30 19:28:02','A',0.00),(100075,1003,33,'2026-01-30 19:28:39','A',0.00),(100076,1003,33,'2026-01-30 19:29:17','A',0.00),(100077,1003,33,'2026-01-30 19:29:42','A',0.00),(100078,1003,33,'2026-01-30 19:29:51','A',0.00),(100079,1003,33,'2026-01-30 19:30:52','A',0.00),(100080,1003,33,'2026-01-30 19:34:17','A',0.00),(100081,1003,33,'2026-01-30 19:36:04','A',0.00),(100082,1003,33,'2026-01-30 19:40:50','A',0.00),(100083,1003,33,'2026-01-30 19:42:45','A',0.00),(100084,1003,33,'2026-01-30 19:44:01','A',0.00),(100085,1003,33,'2026-01-30 19:44:12','A',0.00),(100086,1003,33,'2026-01-30 19:49:52','A',0.00),(100087,1003,33,'2026-01-30 19:50:49','A',0.00),(100088,1003,33,'2026-01-30 20:12:14','A',0.00),(100089,1003,33,'2026-01-30 20:12:44','A',0.00),(100090,1003,33,'2026-01-30 20:12:48','A',0.00),(100091,1003,33,'2026-01-30 20:13:17','A',0.00),(100092,1003,33,'2026-01-30 20:14:20','A',0.00),(100093,1003,33,'2026-01-30 20:14:23','A',0.00),(100094,1003,33,'2026-01-30 20:14:25','A',0.00),(100095,1003,33,'2026-01-30 20:15:11','A',0.00),(100096,1003,33,'2026-01-30 20:15:14','A',0.00),(100097,1003,33,'2026-01-30 20:15:18','A',0.00),(100098,1003,33,'2026-01-30 20:15:39','A',0.00),(100099,1003,33,'2026-01-30 20:15:58','A',0.00),(100100,1003,33,'2026-01-30 20:15:59','A',0.00),(100101,1003,33,'2026-01-30 20:19:17','A',0.00),(100102,1003,33,'2026-01-30 20:19:21','A',0.00),(100103,1003,33,'2026-01-30 20:19:35','A',0.00),(100104,1003,33,'2026-02-02 11:30:28','A',0.00),(100105,1003,33,'2026-02-02 11:30:34','A',0.00),(100106,1003,33,'2026-02-02 11:30:57','A',0.00),(100107,1003,33,'2026-02-02 11:31:09','A',0.00),(100108,1003,33,'2026-02-02 11:35:25','A',0.00),(100109,1003,33,'2026-02-02 11:36:07','A',0.00),(100110,1003,33,'2026-02-02 11:36:30','A',0.00),(100111,1003,33,'2026-02-02 11:36:59','A',0.00),(100112,1003,33,'2026-02-02 11:37:05','A',0.00),(100113,1003,33,'2026-02-02 11:37:50','A',0.00),(100114,1003,33,'2026-02-02 11:38:34','A',0.00),(100115,1003,33,'2026-02-02 11:39:17','A',0.00),(100116,1003,33,'2026-02-02 11:41:48','A',0.00),(100117,1003,33,'2026-02-02 11:42:29','A',0.00),(100118,1003,33,'2026-02-02 11:42:53','A',0.00),(100119,1003,33,'2026-02-02 11:43:00','A',0.00),(100120,1003,33,'2026-02-02 11:57:40','A',0.00),(100121,1003,33,'2026-02-02 11:57:42','A',0.00),(100122,1003,33,'2026-02-02 11:58:39','A',0.00),(100123,1003,33,'2026-02-02 11:59:09','A',0.00),(100124,1003,33,'2026-02-02 11:59:21','A',0.00),(100125,1003,33,'2026-02-02 12:00:11','A',0.00),(100126,1003,33,'2026-02-02 12:00:12','A',0.00),(100127,1003,33,'2026-02-02 12:01:12','A',0.00),(100128,1003,33,'2026-02-02 12:03:27','A',0.00),(100129,1003,33,'2026-02-02 12:04:05','A',0.00),(100130,1003,33,'2026-02-02 12:05:22','A',0.00),(100131,1003,33,'2026-02-02 12:05:23','A',0.00),(100132,1003,33,'2026-02-02 12:05:26','A',0.00),(100133,1003,33,'2026-02-02 12:05:26','A',0.00),(100134,1003,33,'2026-02-02 12:08:35','A',0.00),(100135,1003,33,'2026-02-02 12:11:06','A',0.00),(100136,1003,33,'2026-02-02 12:11:48','A',0.00),(100137,1003,33,'2026-02-02 12:12:16','A',0.00),(100138,1003,33,'2026-02-02 12:12:36','A',0.00),(100139,1003,33,'2026-02-02 12:17:34','A',0.00),(100140,1003,33,'2026-02-02 12:17:52','A',0.00),(100141,1003,33,'2026-02-02 12:17:57','A',0.00),(100142,1003,33,'2026-02-02 12:18:10','A',0.00),(100143,1003,33,'2026-02-02 12:18:11','A',0.00),(100144,1003,33,'2026-02-02 12:18:12','A',0.00),(100145,1003,33,'2026-02-02 12:18:14','A',0.00),(100146,1003,33,'2026-02-02 12:18:19','A',0.00),(100147,1003,33,'2026-02-02 12:18:32','A',0.00),(100148,1003,33,'2026-02-02 12:18:35','A',0.00),(100149,1003,33,'2026-02-02 12:18:37','A',0.00),(100150,1003,33,'2026-02-02 12:18:42','A',0.00),(100151,1003,33,'2026-02-02 12:19:05','A',0.00),(100152,1003,33,'2026-02-02 12:19:47','A',0.00),(100153,1003,33,'2026-02-02 12:20:04','A',0.00),(100154,1003,33,'2026-02-02 12:20:09','A',0.00),(100155,1003,33,'2026-02-02 12:20:12','A',0.00),(100156,1003,33,'2026-02-02 12:20:21','A',0.00),(100157,1003,33,'2026-02-02 12:20:33','A',0.00),(100158,1003,33,'2026-02-02 12:20:56','A',0.00),(100159,1003,33,'2026-02-02 12:21:03','A',0.00),(100160,1003,33,'2026-02-02 12:21:14','A',0.00),(100161,1003,33,'2026-02-02 12:21:19','A',0.00),(100162,1003,33,'2026-02-02 12:21:21','A',0.00),(100163,1003,33,'2026-02-02 12:21:28','A',0.00),(100164,1003,33,'2026-02-02 12:21:32','A',0.00),(100165,1003,33,'2026-02-02 12:21:34','A',0.00),(100166,1003,33,'2026-02-02 12:21:46','A',0.00),(100167,1003,33,'2026-02-02 12:21:47','A',0.00),(100168,1003,33,'2026-02-02 12:21:48','A',0.00),(100169,1003,33,'2026-02-02 12:21:50','A',0.00),(100170,1003,33,'2026-02-02 12:21:52','A',0.00),(100171,1003,33,'2026-02-02 12:21:54','A',0.00),(100172,1003,33,'2026-02-02 12:21:58','A',0.00),(100173,1003,33,'2026-02-02 12:22:00','A',0.00),(100174,1003,33,'2026-02-02 12:22:05','A',0.00),(100175,1003,33,'2026-02-02 12:22:09','A',0.00),(100176,1003,33,'2026-02-02 12:22:13','A',0.00),(100177,1003,33,'2026-02-02 12:22:15','A',0.00),(100178,1003,33,'2026-02-02 12:22:18','A',0.00),(100179,1003,33,'2026-02-02 12:23:39','A',0.00),(100180,1003,33,'2026-02-02 12:24:55','A',0.00),(100181,1003,33,'2026-02-02 12:27:24','A',0.00),(100182,1003,33,'2026-02-02 12:27:31','A',0.00),(100183,1003,33,'2026-02-02 12:27:33','A',0.00),(100184,1003,33,'2026-02-02 12:27:34','A',0.00),(100185,1003,33,'2026-02-02 12:27:41','A',0.00),(100186,1003,33,'2026-02-02 12:27:46','A',0.00),(100187,1003,33,'2026-02-02 12:27:46','A',0.00),(100188,1003,33,'2026-02-02 12:27:50','A',0.00),(100189,1003,33,'2026-02-02 12:27:57','A',0.00),(100190,1003,33,'2026-02-02 12:27:58','A',0.00),(100191,1003,33,'2026-02-02 12:27:59','A',0.00),(100192,1003,33,'2026-02-02 12:28:01','A',0.00),(100193,1003,33,'2026-02-02 12:28:05','A',0.00),(100194,1003,33,'2026-02-02 12:29:06','A',0.00),(100195,1003,33,'2026-02-02 12:29:06','A',0.00),(100196,1003,33,'2026-02-02 12:29:09','A',0.00),(100197,1003,33,'2026-02-02 12:29:09','A',0.00),(100198,1003,33,'2026-02-02 12:29:16','A',0.00),(100199,1003,33,'2026-02-02 12:29:16','A',0.00),(100200,1003,33,'2026-02-02 12:29:19','A',0.00),(100201,1003,33,'2026-02-02 12:29:19','A',0.00),(100202,1003,33,'2026-02-02 12:29:25','A',0.00),(100203,1003,33,'2026-02-02 12:29:25','A',0.00),(100204,1003,33,'2026-02-02 12:29:29','A',0.00),(100205,1003,33,'2026-02-02 12:29:29','A',0.00),(100206,1003,33,'2026-02-02 12:29:35','A',0.00),(100207,1003,33,'2026-02-02 12:29:35','A',0.00),(100208,1003,33,'2026-02-02 12:30:07','A',0.00),(100209,1003,33,'2026-02-02 12:30:07','A',0.00),(100210,1003,33,'2026-02-02 12:30:12','A',0.00),(100211,1003,33,'2026-02-02 12:30:13','A',0.00),(100212,1003,33,'2026-02-02 12:30:13','A',0.00),(100213,1003,33,'2026-02-02 12:30:14','A',0.00),(100214,1003,33,'2026-02-02 12:30:14','A',0.00),(100215,1003,33,'2026-02-02 12:30:16','A',0.00),(100216,1003,33,'2026-02-02 12:30:16','A',0.00),(100217,1003,33,'2026-02-02 12:30:18','A',0.00),(100218,1003,33,'2026-02-02 12:30:18','A',0.00),(100219,1003,33,'2026-02-02 12:30:30','A',0.00),(100220,1003,33,'2026-02-02 12:30:31','A',0.00),(100221,1003,33,'2026-02-02 12:30:34','A',0.00),(100222,1003,33,'2026-02-02 12:30:34','A',0.00),(100223,1003,33,'2026-02-02 12:30:36','A',0.00),(100224,1003,33,'2026-02-02 12:30:38','A',0.00),(100225,1003,33,'2026-02-02 12:30:38','A',0.00),(100226,1003,33,'2026-02-02 12:30:41','A',0.00),(100227,1003,33,'2026-02-02 12:30:44','A',0.00),(100228,1003,33,'2026-02-02 12:30:52','A',0.00),(100229,1003,33,'2026-02-02 12:30:52','A',0.00),(100230,1003,33,'2026-02-02 12:30:53','A',0.00),(100231,1003,33,'2026-02-02 12:31:00','A',0.00),(100232,1003,33,'2026-02-02 12:32:22','A',0.00),(100233,1003,33,'2026-02-02 12:32:22','A',0.00),(100234,1003,33,'2026-02-02 12:32:24','A',0.00),(100235,1003,33,'2026-02-02 12:32:24','A',0.00),(100236,1003,33,'2026-02-02 12:32:26','A',0.00),(100237,1003,33,'2026-02-02 12:32:26','A',0.00),(100238,1003,33,'2026-02-02 12:32:26','A',0.00),(100239,1003,33,'2026-02-02 12:32:28','A',0.00),(100240,1003,33,'2026-02-02 12:32:28','A',0.00),(100241,1003,33,'2026-02-02 12:32:32','A',0.00),(100242,1003,33,'2026-02-02 12:32:38','A',0.00),(100243,1003,33,'2026-02-02 12:32:38','A',0.00),(100244,1003,33,'2026-02-02 12:32:39','A',0.00),(100245,1003,33,'2026-02-02 12:32:39','A',0.00),(100246,1003,33,'2026-02-02 12:32:42','A',0.00),(100247,1003,33,'2026-02-02 12:32:42','A',0.00),(100248,1003,33,'2026-02-02 12:32:43','A',0.00),(100249,1003,33,'2026-02-02 12:32:46','A',0.00),(100250,1003,33,'2026-02-02 12:32:46','A',0.00),(100251,1003,33,'2026-02-02 12:32:46','A',0.00),(100252,1003,33,'2026-02-02 12:32:47','A',0.00),(100253,1003,33,'2026-02-02 12:32:47','A',0.00),(100254,1003,33,'2026-02-02 12:33:00','A',0.00),(100255,1003,33,'2026-02-02 12:33:00','A',0.00),(100256,1003,33,'2026-02-02 12:33:01','A',0.00),(100257,1003,33,'2026-02-02 12:33:01','A',0.00),(100258,1003,33,'2026-02-02 12:33:02','A',0.00),(100259,1003,33,'2026-02-02 12:33:02','A',0.00),(100260,1003,33,'2026-02-02 12:33:07','A',0.00),(100261,1003,33,'2026-02-02 12:33:08','A',0.00),(100262,1003,33,'2026-02-02 12:34:13','A',0.00),(100263,1003,33,'2026-02-02 12:34:13','A',0.00),(100264,1003,33,'2026-02-02 12:34:19','A',0.00),(100265,1003,33,'2026-02-02 12:34:34','A',0.00),(100266,1003,33,'2026-02-02 12:34:34','A',0.00),(100267,1003,33,'2026-02-02 12:34:39','A',0.00),(100268,1003,33,'2026-02-02 12:34:39','A',0.00),(100269,1003,33,'2026-02-02 12:34:40','A',0.00),(100270,1003,33,'2026-02-02 12:34:42','A',0.00),(100271,1003,33,'2026-02-02 12:34:44','A',0.00),(100272,1003,33,'2026-02-02 12:35:19','A',0.00),(100273,1003,33,'2026-02-02 12:35:21','A',0.00),(100274,1003,33,'2026-02-02 12:36:31','A',0.00),(100275,1003,33,'2026-02-02 12:36:31','A',0.00),(100276,1003,33,'2026-02-02 12:36:34','A',0.00),(100277,1003,33,'2026-02-02 12:36:34','A',0.00),(100278,1003,33,'2026-02-02 12:36:38','A',0.00),(100279,1003,33,'2026-02-02 12:36:38','A',0.00),(100280,1003,33,'2026-02-02 12:36:44','A',0.00),(100281,1003,33,'2026-02-02 12:36:44','A',0.00),(100282,1003,33,'2026-02-02 12:36:45','A',0.00),(100283,1003,33,'2026-02-02 12:36:45','A',0.00),(100284,1003,33,'2026-02-02 12:36:49','A',0.00),(100285,1003,33,'2026-02-02 12:37:34','A',0.00),(100286,1003,33,'2026-02-02 12:37:34','A',0.00),(100287,1003,33,'2026-02-02 12:37:48','A',0.00),(100288,1003,33,'2026-02-02 12:37:48','A',0.00),(100289,1003,33,'2026-02-02 12:37:53','A',0.00),(100290,1003,33,'2026-02-02 12:37:53','A',0.00),(100291,1003,33,'2026-02-02 12:40:33','A',0.00),(100292,1003,33,'2026-02-02 12:40:33','A',0.00),(100293,1003,33,'2026-02-02 12:40:44','A',0.00),(100294,1003,33,'2026-02-02 12:40:44','A',0.00),(100295,1003,33,'2026-02-02 12:40:48','A',0.00),(100296,1003,33,'2026-02-02 12:40:49','A',0.00),(100297,1003,33,'2026-02-02 12:40:51','A',0.00),(100298,1003,33,'2026-02-02 12:40:51','A',0.00),(100299,1003,33,'2026-02-02 12:41:28','A',0.00),(100300,1003,33,'2026-02-02 12:41:28','A',0.00),(100301,1003,33,'2026-02-02 12:45:02','A',0.00),(100302,1003,33,'2026-02-02 12:45:02','A',0.00),(100303,1003,33,'2026-02-02 12:45:08','A',0.00),(100304,1003,33,'2026-02-02 12:46:16','A',0.00),(100305,1003,33,'2026-02-02 12:46:16','A',0.00),(100306,1003,33,'2026-02-02 12:46:19','A',0.00),(100307,1003,33,'2026-02-02 12:46:19','A',0.00),(100308,1003,33,'2026-02-02 12:46:35','A',0.00),(100309,1003,33,'2026-02-02 12:46:46','A',0.00),(100310,1003,33,'2026-02-02 12:46:46','A',0.00),(100311,1003,33,'2026-02-02 12:46:49','A',0.00),(100312,1003,33,'2026-02-02 12:46:49','A',0.00),(100313,1003,33,'2026-02-02 12:46:49','A',0.00),(100314,1003,33,'2026-02-02 12:46:52','A',0.00),(100315,1003,33,'2026-02-02 12:47:36','A',0.00),(100316,1003,33,'2026-02-02 12:47:36','A',0.00),(100317,1003,33,'2026-02-02 12:47:40','A',0.00),(100318,1003,33,'2026-02-02 12:48:03','A',0.00),(100319,1003,33,'2026-02-02 12:48:03','A',0.00),(100320,1003,33,'2026-02-02 12:48:18','A',0.00),(100321,1003,33,'2026-02-02 12:49:19','A',0.00),(100322,1003,33,'2026-02-02 12:49:19','A',0.00),(100323,1003,33,'2026-02-02 12:49:25','A',0.00),(100324,1003,33,'2026-02-02 12:49:25','A',0.00),(100325,1003,33,'2026-02-02 12:49:29','A',0.00),(100326,1003,33,'2026-02-02 12:49:31','A',0.00),(100327,1003,33,'2026-02-02 13:01:13','A',0.00),(100328,1003,33,'2026-02-02 13:01:13','A',0.00),(100329,1003,33,'2026-02-02 13:01:15','A',0.00),(100330,1003,33,'2026-02-02 13:01:16','A',0.00),(100331,1003,33,'2026-02-02 13:01:21','A',0.00),(100332,1003,33,'2026-02-02 13:01:23','A',0.00),(100333,1003,33,'2026-02-02 13:01:25','A',0.00),(100334,1003,33,'2026-02-02 13:01:25','A',0.00),(100335,1003,33,'2026-02-02 13:02:11','A',0.00),(100336,1003,33,'2026-02-02 13:02:11','A',0.00),(100337,1003,33,'2026-02-02 13:02:19','A',0.00),(100338,1003,33,'2026-02-02 13:02:42','A',0.00),(100339,1003,33,'2026-02-02 13:02:42','A',0.00),(100340,1003,33,'2026-02-02 13:02:48','A',0.00),(100341,1003,33,'2026-02-02 13:02:48','A',0.00),(100342,1003,33,'2026-02-02 13:02:49','A',0.00),(100343,1003,33,'2026-02-02 13:02:49','A',0.00),(100344,1003,33,'2026-02-02 13:02:54','A',0.00),(100345,1003,33,'2026-02-02 13:04:05','A',0.00),(100346,1003,33,'2026-02-02 13:04:05','A',0.00),(100347,1003,33,'2026-02-02 13:04:10','A',0.00),(100348,1003,33,'2026-02-02 13:04:25','A',0.00),(100349,1003,33,'2026-02-02 13:04:27','A',0.00),(100350,1003,33,'2026-02-02 13:04:32','A',0.00),(100351,1003,33,'2026-02-02 13:04:32','A',0.00),(100352,1003,33,'2026-02-02 13:04:33','A',0.00),(100353,1003,33,'2026-02-02 13:04:34','A',0.00),(100354,1003,33,'2026-02-02 13:04:36','A',0.00),(100355,1003,33,'2026-02-02 13:04:36','A',0.00),(100356,1003,33,'2026-02-02 13:04:40','A',0.00),(100357,1003,33,'2026-02-02 13:04:41','A',0.00),(100358,1003,33,'2026-02-02 13:04:41','A',0.00),(100359,1003,33,'2026-02-02 13:04:46','A',0.00),(100360,1003,33,'2026-02-02 13:04:46','A',0.00),(100361,1003,33,'2026-02-02 13:04:46','A',0.00),(100362,1003,33,'2026-02-02 13:04:53','A',0.00),(100363,1003,33,'2026-02-02 13:04:53','A',0.00),(100364,1003,33,'2026-02-02 13:04:54','A',0.00),(100365,1003,33,'2026-02-02 13:05:07','A',0.00),(100366,1003,33,'2026-02-02 13:10:27','A',0.00),(100367,1003,33,'2026-02-02 13:10:27','A',0.00),(100368,1003,33,'2026-02-02 13:10:30','A',0.00),(100369,1003,33,'2026-02-02 13:10:39','A',0.00),(100370,1003,33,'2026-02-02 13:10:39','A',0.00),(100371,1003,33,'2026-02-02 13:10:41','A',0.00),(100372,1003,33,'2026-02-02 13:10:43','A',0.00),(100373,1003,33,'2026-02-02 13:10:43','A',0.00),(100374,1003,33,'2026-02-02 13:10:46','A',0.00),(100375,1003,33,'2026-02-02 13:10:47','A',0.00),(100376,1003,33,'2026-02-02 13:11:04','A',0.00),(100377,1003,33,'2026-02-02 13:11:04','A',0.00),(100378,1003,33,'2026-02-02 13:11:19','A',0.00),(100379,1003,33,'2026-02-02 13:11:19','A',0.00),(100380,1003,33,'2026-02-02 13:11:24','A',0.00),(100381,1003,33,'2026-02-02 13:11:24','A',0.00),(100382,1003,33,'2026-02-02 13:11:25','A',0.00),(100383,1003,33,'2026-02-02 13:11:26','A',0.00),(100384,1003,33,'2026-02-02 13:11:26','A',0.00),(100385,1003,33,'2026-02-02 13:11:31','A',0.00),(100386,1003,33,'2026-02-02 13:11:33','A',0.00),(100387,1003,33,'2026-02-02 13:11:33','A',0.00),(100388,1003,33,'2026-02-02 13:11:34','A',0.00),(100389,1003,33,'2026-02-02 13:11:35','A',0.00),(100390,1003,33,'2026-02-02 13:11:36','A',0.00),(100391,1003,33,'2026-02-02 13:11:36','A',0.00),(100392,1003,33,'2026-02-02 13:11:36','A',0.00),(100393,1003,33,'2026-02-02 13:11:40','A',0.00),(100394,1003,33,'2026-02-02 13:11:46','A',0.00),(100395,1003,33,'2026-02-02 13:11:46','A',0.00),(100396,1003,33,'2026-02-02 13:11:51','A',0.00),(100397,1003,33,'2026-02-02 13:11:51','A',0.00),(100398,1003,33,'2026-02-02 13:11:56','A',0.00),(100399,1003,33,'2026-02-02 13:12:05','A',0.00),(100400,1003,33,'2026-02-02 13:12:05','A',0.00),(100401,1003,33,'2026-02-02 13:12:12','A',0.00),(100402,1003,33,'2026-02-02 13:12:42','A',0.00),(100403,1003,33,'2026-02-02 13:12:42','A',0.00),(100404,1003,33,'2026-02-02 13:12:45','A',0.00),(100405,1003,33,'2026-02-02 13:12:52','A',0.00),(100406,1003,33,'2026-02-02 13:13:02','A',0.00),(100407,1003,33,'2026-02-02 13:13:02','A',0.00),(100408,1003,33,'2026-02-02 13:13:05','A',0.00),(100409,1003,33,'2026-02-02 13:13:05','A',0.00),(100410,1003,33,'2026-02-02 13:13:05','A',0.00),(100411,1003,33,'2026-02-02 13:13:08','A',0.00),(100412,1003,33,'2026-02-02 13:48:05','A',0.00),(100413,1003,33,'2026-02-02 13:48:05','A',0.00),(100414,1003,33,'2026-02-02 13:48:18','A',0.00),(100415,1003,33,'2026-02-02 13:48:18','A',0.00),(100416,1003,33,'2026-02-02 13:48:20','A',0.00),(100417,1003,33,'2026-02-02 13:48:20','A',0.00),(100418,1003,33,'2026-02-02 13:48:26','A',0.00),(100419,1003,33,'2026-02-02 13:48:26','A',0.00),(100420,1003,33,'2026-02-02 13:48:27','A',0.00),(100421,1003,33,'2026-02-02 13:48:27','A',0.00),(100422,1003,33,'2026-02-02 13:48:28','A',0.00),(100423,1003,33,'2026-02-02 13:48:28','A',0.00),(100424,1003,33,'2026-02-02 13:48:30','A',0.00),(100425,1003,33,'2026-02-02 13:48:30','A',0.00),(100426,1003,33,'2026-02-02 13:48:34','A',0.00),(100427,1003,33,'2026-02-02 13:48:34','A',0.00),(100428,1003,33,'2026-02-02 13:48:37','A',0.00),(100429,1003,33,'2026-02-02 13:48:37','A',0.00),(100430,1003,33,'2026-02-02 13:49:08','A',0.00),(100431,1003,33,'2026-02-02 13:49:08','A',0.00),(100432,1003,33,'2026-02-02 13:49:23','A',0.00),(100433,1003,33,'2026-02-02 13:49:23','A',0.00),(100434,1003,33,'2026-02-02 13:49:35','A',0.00),(100435,1003,33,'2026-02-02 13:49:35','A',0.00),(100436,1003,33,'2026-02-02 13:49:37','A',0.00),(100437,1003,33,'2026-02-02 13:49:37','A',0.00),(100438,1003,33,'2026-02-02 13:49:44','A',0.00),(100439,1003,33,'2026-02-02 13:49:44','A',0.00),(100440,1003,33,'2026-02-02 13:49:46','A',0.00),(100441,1003,33,'2026-02-02 13:49:46','A',0.00),(100442,1003,33,'2026-02-02 13:49:48','A',0.00),(100443,1003,33,'2026-02-02 13:49:48','A',0.00),(100444,1003,33,'2026-02-02 13:49:52','A',0.00),(100445,1003,33,'2026-02-02 13:49:52','A',0.00),(100446,1003,33,'2026-02-02 13:53:52','A',0.00),(100447,1003,33,'2026-02-02 13:53:52','A',0.00),(100448,1003,33,'2026-02-02 13:53:55','A',0.00),(100449,1003,33,'2026-02-02 13:53:55','A',0.00),(100450,1003,33,'2026-02-02 13:53:58','A',0.00),(100451,1003,33,'2026-02-02 13:53:58','A',0.00),(100452,1003,33,'2026-02-02 13:54:00','A',0.00),(100453,1003,33,'2026-02-02 13:54:00','A',0.00),(100454,1003,33,'2026-02-02 13:54:05','A',0.00),(100455,1003,33,'2026-02-02 13:54:05','A',0.00),(100456,1003,33,'2026-02-02 13:54:08','A',0.00),(100457,1003,33,'2026-02-02 13:54:08','A',0.00),(100458,1003,33,'2026-02-02 13:54:21','A',0.00),(100459,1003,33,'2026-02-02 13:54:21','A',0.00),(100460,1003,33,'2026-02-02 13:54:25','A',0.00),(100461,1003,33,'2026-02-02 13:54:25','A',0.00),(100462,1003,33,'2026-02-02 13:54:27','A',0.00),(100463,1003,33,'2026-02-02 13:54:27','A',0.00),(100464,1003,33,'2026-02-02 13:54:33','A',0.00),(100465,1003,33,'2026-02-02 13:54:33','A',0.00),(100466,1003,33,'2026-02-02 13:54:42','A',0.00),(100467,1003,33,'2026-02-02 13:54:42','A',0.00),(100468,1003,33,'2026-02-02 13:54:45','A',0.00),(100469,1003,33,'2026-02-02 13:54:45','A',0.00),(100470,1003,33,'2026-02-02 14:01:00','A',0.00),(100471,1003,33,'2026-02-02 14:02:57','A',0.00),(100472,1003,33,'2026-02-02 14:02:57','A',0.00),(100473,1003,33,'2026-02-02 14:02:57','A',0.00),(100474,1003,33,'2026-02-02 14:04:23','A',0.00),(100475,1003,33,'2026-02-02 14:04:31','A',0.00),(100476,1003,33,'2026-02-02 14:04:34','A',0.00),(100477,1003,33,'2026-02-02 14:04:35','A',0.00),(100478,1003,33,'2026-02-02 14:04:39','A',0.00),(100479,1003,33,'2026-02-02 14:04:40','A',0.00),(100480,1003,33,'2026-02-02 14:04:43','A',0.00),(100481,1003,33,'2026-02-02 14:04:45','A',0.00),(100482,1003,33,'2026-02-02 14:04:47','A',0.00),(100483,1003,33,'2026-02-02 14:04:51','A',0.00),(100484,1003,33,'2026-02-02 14:04:54','A',0.00),(100485,1003,33,'2026-02-02 14:04:55','A',0.00),(100486,1003,33,'2026-02-02 14:05:01','A',0.00),(100487,1003,33,'2026-02-02 14:05:02','A',0.00),(100488,1003,33,'2026-02-02 14:05:04','A',0.00),(100489,1003,33,'2026-02-02 14:05:10','A',0.00),(100490,1003,33,'2026-02-02 14:05:12','A',0.00),(100491,1003,33,'2026-02-02 14:05:45','A',0.00),(100492,1003,33,'2026-02-02 14:05:47','A',0.00),(100493,1003,33,'2026-02-02 14:05:48','A',0.00),(100494,1003,33,'2026-02-02 14:05:50','A',0.00),(100495,1003,33,'2026-02-02 14:05:51','A',0.00),(100496,1003,33,'2026-02-02 14:05:54','A',0.00),(100497,1003,33,'2026-02-02 14:05:55','A',0.00),(100498,1003,33,'2026-02-02 14:05:57','A',0.00),(100499,1003,33,'2026-02-02 14:05:58','A',0.00),(100500,1003,33,'2026-02-02 14:05:59','A',0.00),(100501,1003,33,'2026-02-02 14:06:04','A',0.00),(100502,1003,33,'2026-02-02 14:06:06','A',0.00),(100503,1003,33,'2026-02-02 14:06:08','A',0.00),(100504,1003,33,'2026-02-02 14:06:12','A',0.00),(100505,1003,33,'2026-02-02 14:06:14','A',0.00),(100506,1003,33,'2026-02-02 14:06:17','A',0.00),(100507,1003,33,'2026-02-02 14:06:21','A',0.00),(100508,1003,33,'2026-02-02 14:06:22','A',0.00),(100509,1003,33,'2026-02-02 14:06:22','A',0.00),(100510,1003,33,'2026-02-02 14:06:24','A',0.00),(100511,1003,33,'2026-02-02 14:06:24','A',0.00),(100512,1003,33,'2026-02-02 14:06:29','A',0.00),(100513,1003,33,'2026-02-02 14:06:40','A',0.00),(100514,1003,33,'2026-02-02 14:06:47','A',0.00),(100515,1003,33,'2026-02-02 14:06:49','A',0.00),(100516,1003,33,'2026-02-02 14:06:51','A',0.00),(100517,1003,33,'2026-02-02 14:07:03','A',0.00),(100518,1003,33,'2026-02-02 14:07:08','A',0.00),(100519,1003,33,'2026-02-02 14:07:13','A',0.00),(100520,1003,33,'2026-02-02 14:07:18','A',0.00),(100521,1003,33,'2026-02-02 14:07:28','A',0.00),(100522,1003,33,'2026-02-02 14:07:30','A',0.00),(100523,1003,33,'2026-02-02 14:07:40','A',0.00),(100524,1003,33,'2026-02-02 14:07:41','A',0.00),(100525,1003,33,'2026-02-02 14:07:47','A',0.00),(100526,1003,33,'2026-02-02 14:07:50','A',0.00),(100527,1003,33,'2026-02-02 14:07:57','A',0.00),(100528,1003,33,'2026-02-02 14:07:58','A',0.00),(100529,1003,33,'2026-02-02 14:08:03','A',0.00),(100530,1003,33,'2026-02-02 14:08:05','A',0.00),(100531,1003,33,'2026-02-02 14:08:07','A',0.00),(100532,1003,33,'2026-02-02 14:08:08','A',0.00),(100533,1003,33,'2026-02-02 14:08:12','A',0.00),(100534,1003,33,'2026-02-02 14:08:15','A',0.00),(100535,1003,33,'2026-02-02 14:08:16','A',0.00),(100536,1003,33,'2026-02-02 14:08:18','A',0.00),(100537,1003,33,'2026-02-02 14:08:21','A',0.00),(100538,1003,33,'2026-02-02 14:08:22','A',0.00),(100539,1003,33,'2026-02-02 14:08:28','A',0.00),(100540,1003,33,'2026-02-02 14:08:28','A',0.00),(100541,1003,33,'2026-02-02 14:08:31','A',0.00),(100542,1003,33,'2026-02-02 14:08:31','A',0.00),(100543,1003,33,'2026-02-02 14:08:34','A',0.00),(100544,1003,33,'2026-02-02 14:08:34','A',0.00),(100545,1003,33,'2026-02-02 14:08:39','A',0.00),(100546,1003,33,'2026-02-02 14:08:43','A',0.00),(100547,1003,33,'2026-02-02 14:08:43','A',0.00),(100548,1003,33,'2026-02-02 14:08:44','A',0.00),(100549,1003,33,'2026-02-02 14:08:44','A',0.00),(100550,1003,33,'2026-02-02 14:08:48','A',0.00),(100551,1003,33,'2026-02-02 14:08:49','A',0.00),(100552,1003,33,'2026-02-02 14:08:51','A',0.00),(100553,1003,33,'2026-02-02 14:08:56','A',0.00),(100554,1003,33,'2026-02-02 14:08:58','A',0.00),(100555,1003,33,'2026-02-02 14:09:00','A',0.00),(100556,1003,33,'2026-02-02 14:09:07','A',0.00),(100557,1003,33,'2026-02-02 14:09:13','A',0.00),(100558,1003,33,'2026-02-02 14:09:15','A',0.00),(100559,1003,33,'2026-02-02 14:09:18','A',0.00),(100560,1003,33,'2026-02-02 14:09:18','A',0.00),(100561,1003,33,'2026-02-02 14:09:23','A',0.00),(100562,1003,33,'2026-02-02 14:09:23','A',0.00),(100563,1003,33,'2026-02-02 14:09:24','A',0.00),(100564,1003,33,'2026-02-02 14:09:26','A',0.00),(100565,1003,33,'2026-02-02 14:09:26','A',0.00),(100566,1003,33,'2026-02-02 14:09:29','A',0.00),(100567,1003,33,'2026-02-02 14:09:29','A',0.00),(100568,1003,33,'2026-02-02 14:09:31','A',0.00),(100569,1003,33,'2026-02-02 14:09:32','A',0.00),(100570,1003,33,'2026-02-02 14:09:32','A',0.00),(100571,1003,33,'2026-02-02 14:09:33','A',0.00),(100572,1003,33,'2026-02-02 14:09:33','A',0.00),(100573,1003,33,'2026-02-02 14:09:34','A',0.00),(100574,1003,33,'2026-02-02 14:09:35','A',0.00),(100575,1003,33,'2026-02-02 14:09:39','A',0.00),(100576,1003,33,'2026-02-02 14:09:39','A',0.00),(100577,1003,33,'2026-02-02 14:09:39','A',0.00),(100578,1003,33,'2026-02-02 14:09:39','A',0.00),(100579,1003,33,'2026-02-02 14:09:41','A',0.00),(100580,1003,33,'2026-02-02 14:09:41','A',0.00),(100581,1003,33,'2026-02-02 14:09:42','A',0.00),(100582,1003,33,'2026-02-02 14:09:44','A',0.00),(100583,1003,33,'2026-02-02 14:09:44','A',0.00),(100584,1003,33,'2026-02-02 14:09:46','A',0.00),(100585,1003,33,'2026-02-02 14:09:47','A',0.00),(100586,1003,33,'2026-02-02 14:09:47','A',0.00),(100587,1003,33,'2026-02-02 14:09:47','A',0.00),(100588,1003,33,'2026-02-02 14:09:49','A',0.00),(100589,1003,33,'2026-02-02 14:09:49','A',0.00),(100590,1003,33,'2026-02-02 14:09:50','A',0.00),(100591,1003,33,'2026-02-02 14:09:53','A',0.00),(100592,1003,33,'2026-02-02 14:09:53','A',0.00),(100593,1003,33,'2026-02-02 14:09:54','A',0.00),(100594,1003,33,'2026-02-02 14:09:54','A',0.00),(100595,1003,33,'2026-02-02 14:09:56','A',0.00),(100596,1003,33,'2026-02-02 14:09:56','A',0.00),(100597,1003,33,'2026-02-02 14:09:56','A',0.00),(100598,1003,33,'2026-02-02 14:09:57','A',0.00),(100599,1003,33,'2026-02-02 14:09:58','A',0.00),(100600,1003,33,'2026-02-02 14:10:00','A',0.00),(100601,1003,33,'2026-02-02 14:10:00','A',0.00),(100602,1003,33,'2026-02-02 14:10:00','A',0.00),(100603,1003,33,'2026-02-02 14:10:01','A',0.00),(100604,1003,33,'2026-02-02 14:10:02','A',0.00),(100605,1003,33,'2026-02-02 14:10:02','A',0.00),(100606,1003,33,'2026-02-02 14:10:02','A',0.00),(100607,1003,33,'2026-02-02 14:10:05','A',0.00),(100608,1003,33,'2026-02-02 14:10:07','A',0.00),(100609,1003,33,'2026-02-02 14:10:07','A',0.00),(100610,1003,33,'2026-02-02 14:10:09','A',0.00),(100611,1003,33,'2026-02-02 14:10:09','A',0.00),(100612,1003,33,'2026-02-02 14:10:10','A',0.00),(100613,1003,33,'2026-02-02 14:10:10','A',0.00),(100614,1003,33,'2026-02-02 14:10:10','A',0.00),(100615,1003,33,'2026-02-02 14:10:14','A',0.00),(100616,1003,33,'2026-02-02 14:10:17','A',0.00),(100617,1003,33,'2026-02-02 14:10:18','A',0.00),(100618,1003,33,'2026-02-02 14:10:18','A',0.00),(100619,1003,33,'2026-02-02 14:10:21','A',0.00),(100620,1003,33,'2026-02-02 14:10:22','A',0.00),(100621,1003,33,'2026-02-02 14:10:23','A',0.00),(100622,1003,33,'2026-02-02 14:10:25','A',0.00),(100623,1003,33,'2026-02-02 14:10:27','A',0.00),(100624,1003,33,'2026-02-02 14:10:27','A',0.00),(100625,1003,33,'2026-02-02 14:10:28','A',0.00),(100626,1003,33,'2026-02-02 14:10:28','A',0.00),(100627,1003,33,'2026-02-02 14:10:29','A',0.00),(100628,1003,33,'2026-02-02 14:10:30','A',0.00),(100629,1003,33,'2026-02-02 14:10:31','A',0.00),(100630,1003,33,'2026-02-02 14:10:31','A',0.00),(100631,1003,33,'2026-02-02 14:10:32','A',0.00),(100632,1003,33,'2026-02-02 14:10:32','A',0.00),(100633,1003,33,'2026-02-02 14:10:33','A',0.00),(100634,1003,33,'2026-02-02 14:10:34','A',0.00),(100635,1003,33,'2026-02-02 14:10:43','A',0.00),(100636,1003,33,'2026-02-02 14:10:43','A',0.00),(100637,1003,33,'2026-02-02 14:10:43','A',0.00),(100638,1003,33,'2026-02-02 14:10:47','A',0.00),(100639,1003,33,'2026-02-02 14:11:14','A',0.00),(100640,1003,33,'2026-02-02 14:11:52','A',0.00),(100641,1003,33,'2026-02-02 14:11:59','A',0.00),(100642,1003,33,'2026-02-02 14:12:01','A',0.00),(100643,1003,33,'2026-02-02 14:12:52','A',0.00),(100644,1003,33,'2026-02-02 14:13:24','A',0.00),(100645,1003,33,'2026-02-02 14:13:29','A',0.00),(100646,1003,33,'2026-02-02 14:13:30','A',0.00),(100647,1003,33,'2026-02-02 14:13:32','A',0.00),(100648,1003,33,'2026-02-02 14:13:33','A',0.00),(100649,1003,33,'2026-02-02 14:13:40','A',0.00),(100650,1003,33,'2026-02-02 14:13:45','A',0.00),(100651,1003,33,'2026-02-02 14:13:50','A',0.00),(100652,1003,33,'2026-02-02 14:13:52','A',0.00),(100653,1003,33,'2026-02-02 14:13:58','A',0.00),(100654,1003,33,'2026-02-02 14:14:07','A',0.00),(100655,1003,33,'2026-02-02 14:14:49','A',0.00),(100656,1003,33,'2026-02-02 14:14:52','A',0.00),(100657,1003,33,'2026-02-02 14:14:55','A',0.00),(100658,1003,33,'2026-02-02 14:14:57','A',0.00),(100659,1003,33,'2026-02-02 14:14:59','A',0.00),(100660,1003,33,'2026-02-02 14:15:00','A',0.00),(100661,1003,33,'2026-02-02 14:15:02','A',0.00),(100662,1003,33,'2026-02-02 14:15:05','A',0.00),(100663,1003,33,'2026-02-02 14:15:07','A',0.00),(100664,1003,33,'2026-02-02 14:15:09','A',0.00),(100665,1003,33,'2026-02-02 14:15:16','A',0.00),(100666,1003,33,'2026-02-02 14:15:19','A',0.00),(100667,1003,33,'2026-02-02 14:15:20','A',0.00),(100668,1003,33,'2026-02-02 14:15:21','A',0.00),(100669,1003,33,'2026-02-02 14:15:24','A',0.00),(100670,1003,33,'2026-02-02 14:15:44','A',0.00),(100671,1003,33,'2026-02-02 14:15:47','A',0.00),(100672,1003,33,'2026-02-02 14:15:56','A',0.00),(100673,1003,33,'2026-02-02 14:15:58','A',0.00),(100674,1003,33,'2026-02-02 14:16:04','A',0.00),(100675,1003,33,'2026-02-02 14:16:08','A',0.00),(100676,1003,33,'2026-02-02 14:16:12','A',0.00),(100677,1003,33,'2026-02-02 14:16:19','A',0.00),(100678,1003,33,'2026-02-02 14:16:54','A',0.00),(100679,1003,33,'2026-02-02 14:17:05','A',0.00),(100680,1003,33,'2026-02-02 14:18:01','A',0.00),(100681,1003,33,'2026-02-02 14:18:07','A',0.00),(100682,1003,33,'2026-02-02 14:18:10','A',0.00),(100683,1003,33,'2026-02-02 14:18:14','A',0.00),(100684,1003,33,'2026-02-02 14:18:35','A',0.00),(100685,1003,33,'2026-02-02 14:19:07','A',0.00),(100686,1003,33,'2026-02-02 14:19:11','A',0.00),(100687,1003,33,'2026-02-02 14:19:21','A',0.00),(100688,1003,33,'2026-02-02 14:19:24','A',0.00),(100689,1003,33,'2026-02-02 14:19:33','A',0.00),(100690,1003,33,'2026-02-02 14:23:22','A',0.00),(100691,1003,33,'2026-02-02 14:23:27','A',0.00),(100692,1003,33,'2026-02-02 14:23:38','A',0.00),(100693,1003,33,'2026-02-02 14:25:50','A',0.00),(100694,1003,33,'2026-02-02 14:25:57','A',0.00),(100695,1003,33,'2026-02-02 14:26:01','A',0.00),(100696,1003,33,'2026-02-02 14:26:02','A',0.00),(100697,1003,33,'2026-02-02 14:26:03','A',0.00),(100698,1003,33,'2026-02-02 14:26:08','A',0.00),(100699,1003,33,'2026-02-02 14:34:02','A',0.00),(100700,1003,33,'2026-02-02 14:34:04','A',0.00),(100701,1003,33,'2026-02-02 14:35:38','A',0.00),(100702,1003,33,'2026-02-02 14:37:59','A',0.00),(100703,1003,33,'2026-02-02 14:38:00','A',0.00),(100704,1003,33,'2026-02-02 14:39:32','A',0.00),(100705,1003,33,'2026-02-03 11:28:09','A',0.00),(100706,1003,33,'2026-02-03 11:28:25','A',0.00),(100707,1003,33,'2026-02-03 11:28:26','A',0.00),(100708,1003,33,'2026-02-03 11:48:38','A',0.00),(100709,1003,33,'2026-02-03 11:58:45','A',0.00),(100710,1003,33,'2026-02-03 12:01:52','A',0.00),(100711,1003,33,'2026-02-03 12:23:00','A',0.00),(100712,1003,33,'2026-02-03 12:23:38','A',0.00),(100713,1008,101,'2026-02-03 12:24:37','A',0.00),(100714,1003,33,'2026-02-03 12:38:26','A',0.00),(100715,1003,33,'2026-02-03 12:39:34','A',0.00),(100716,1003,33,'2026-02-03 12:40:15','A',0.00),(100717,1003,33,'2026-02-03 12:41:11','A',0.00),(100718,1003,33,'2026-02-03 12:41:14','A',0.00),(100719,1003,33,'2026-02-03 12:41:16','A',0.00),(100720,1003,33,'2026-02-03 12:41:19','A',0.00),(100721,1003,33,'2026-02-03 12:41:36','A',0.00),(100722,1003,33,'2026-02-03 12:41:45','A',0.00),(100723,1003,33,'2026-02-03 12:41:50','A',0.00),(100724,1003,33,'2026-02-03 12:41:55','A',0.00),(100725,1003,33,'2026-02-03 12:41:58','A',0.00),(100726,1003,33,'2026-02-03 12:42:01','A',0.00),(100727,1003,33,'2026-02-03 12:42:04','A',0.00),(100728,1003,33,'2026-02-03 12:42:07','A',0.00),(100729,1003,33,'2026-02-03 12:42:09','A',0.00),(100730,1003,33,'2026-02-03 12:42:16','A',0.00),(100731,1003,33,'2026-02-03 12:42:19','A',0.00),(100732,1003,33,'2026-02-03 12:42:21','A',0.00),(100733,1003,33,'2026-02-03 12:42:23','A',0.00),(100734,1003,33,'2026-02-03 12:42:26','A',0.00),(100735,1003,33,'2026-02-03 12:42:28','A',0.00),(100736,1003,33,'2026-02-03 12:42:31','A',0.00),(100737,1003,33,'2026-02-03 12:42:33','A',0.00),(100738,1003,33,'2026-02-03 12:42:37','A',0.00),(100739,1003,33,'2026-02-03 12:42:40','A',0.00),(100740,1003,33,'2026-02-03 12:42:47','A',0.00),(100741,1003,33,'2026-02-03 12:42:49','A',0.00),(100742,1003,33,'2026-02-03 12:42:53','A',0.00),(100743,1003,33,'2026-02-03 12:42:57','A',0.00),(100744,1003,33,'2026-02-03 12:43:01','A',0.00),(100745,1003,33,'2026-02-03 12:43:03','A',0.00),(100746,1003,33,'2026-02-03 12:43:15','A',0.00),(100747,1003,33,'2026-02-03 12:44:56','A',0.00),(100748,1003,33,'2026-02-03 12:44:58','A',0.00),(100749,1003,33,'2026-02-03 12:45:41','A',0.00),(100750,1003,33,'2026-02-03 12:45:52','A',0.00),(100751,1003,33,'2026-02-03 12:45:54','A',0.00),(100752,1003,33,'2026-02-03 12:45:56','A',0.00),(100753,1003,33,'2026-02-03 12:45:58','A',0.00),(100754,1003,33,'2026-02-03 12:46:03','A',0.00),(100755,1003,33,'2026-02-03 12:46:06','A',0.00),(100756,1003,33,'2026-02-03 12:46:07','A',0.00),(100757,1003,33,'2026-02-03 12:46:36','A',0.00),(100758,1003,33,'2026-02-03 12:46:39','A',0.00),(100759,1003,33,'2026-02-03 12:46:48','A',0.00),(100760,1003,33,'2026-02-03 12:49:46','A',0.00),(100761,1003,33,'2026-02-03 12:54:46','A',0.00),(100762,1003,33,'2026-02-03 13:10:18','A',0.00),(100763,1003,33,'2026-02-03 14:15:55','A',0.00),(100764,1003,33,'2026-02-03 14:16:36','A',0.00),(100765,1003,33,'2026-02-03 14:16:44','A',0.00),(100766,1003,33,'2026-02-03 14:18:36','A',0.00),(100767,1003,33,'2026-02-04 11:46:44','A',0.00),(100768,1003,33,'2026-02-04 11:46:45','A',0.00),(100769,1003,33,'2026-02-04 11:52:42','A',0.00),(100770,1003,33,'2026-02-04 12:07:17','A',0.00),(100771,1003,33,'2026-02-04 12:07:26','A',0.00),(100772,1003,33,'2026-02-04 12:07:27','A',0.00),(100773,1003,33,'2026-02-04 12:07:36','A',0.00),(100774,1003,33,'2026-02-04 12:07:56','A',0.00),(100775,1003,33,'2026-02-04 12:09:45','A',0.00),(100776,1003,33,'2026-02-04 12:15:07','A',0.00),(100777,1003,33,'2026-02-04 12:15:18','A',0.00),(100778,1003,33,'2026-02-04 12:15:21','A',0.00),(100779,1003,33,'2026-02-04 12:15:37','A',0.00),(100780,1003,33,'2026-02-04 12:16:27','A',0.00),(100781,1003,33,'2026-02-04 12:16:33','A',0.00),(100782,1003,33,'2026-02-04 12:16:35','A',0.00),(100783,1003,33,'2026-02-04 12:16:40','A',0.00),(100784,1003,33,'2026-02-04 12:17:32','A',0.00),(100785,1003,33,'2026-02-04 12:17:57','A',0.00),(100786,1003,33,'2026-02-04 12:18:16','A',0.00),(100787,1003,33,'2026-02-04 12:18:19','A',0.00),(100788,1003,33,'2026-02-04 12:18:23','A',0.00),(100789,1003,33,'2026-02-04 12:18:26','A',0.00),(100790,1003,33,'2026-02-04 12:18:28','A',0.00),(100791,1003,33,'2026-02-04 12:18:31','A',0.00),(100792,1003,33,'2026-02-04 12:20:26','A',0.00),(100793,1003,33,'2026-02-04 12:20:56','A',0.00),(100794,1003,33,'2026-02-04 12:21:03','A',0.00),(100795,1003,33,'2026-02-04 12:21:06','A',0.00),(100796,1003,33,'2026-02-04 12:21:08','A',0.00),(100797,1003,33,'2026-02-04 12:21:10','A',0.00),(100798,1003,33,'2026-02-04 12:21:25','A',0.00),(100799,1003,33,'2026-02-04 12:21:30','A',0.00),(100800,1003,33,'2026-02-04 12:21:35','A',0.00),(100801,1003,33,'2026-02-04 12:21:37','A',0.00),(100802,1003,33,'2026-02-04 12:21:48','A',0.00),(100803,1003,33,'2026-02-04 12:22:02','A',0.00),(100804,1003,33,'2026-02-04 12:22:18','A',0.00),(100805,1003,33,'2026-02-04 12:22:28','A',0.00),(100806,1003,33,'2026-02-04 12:22:30','A',0.00),(100807,1003,33,'2026-02-04 12:22:33','A',0.00),(100808,1003,33,'2026-02-04 12:22:35','A',0.00),(100809,1003,33,'2026-02-04 12:22:37','A',0.00),(100810,1003,33,'2026-02-04 12:22:50','A',0.00),(100811,1003,33,'2026-02-04 12:23:18','A',0.00),(100812,1003,33,'2026-02-04 12:24:07','A',0.00),(100813,1003,33,'2026-02-04 12:24:12','A',0.00),(100814,1003,33,'2026-02-04 12:28:30','A',0.00),(100815,1003,33,'2026-02-04 12:28:41','A',0.00),(100816,1003,33,'2026-02-04 12:28:43','A',0.00),(100817,1003,33,'2026-02-04 12:28:46','A',0.00),(100818,1003,33,'2026-02-04 12:29:25','A',0.00),(100819,1003,33,'2026-02-04 12:29:35','A',0.00),(100820,1003,33,'2026-02-04 12:29:39','A',0.00),(100821,1003,33,'2026-02-04 12:29:41','A',0.00),(100822,1003,33,'2026-02-04 12:29:44','A',0.00),(100823,1003,33,'2026-02-04 12:29:56','A',0.00),(100824,1003,33,'2026-02-04 12:30:02','A',0.00),(100825,1003,33,'2026-02-04 12:30:06','A',0.00),(100826,1003,33,'2026-02-04 12:35:19','A',0.00),(100827,1003,33,'2026-02-04 12:36:16','A',0.00),(100828,1003,33,'2026-02-04 12:36:24','A',0.00),(100829,1003,33,'2026-02-04 12:36:43','A',0.00),(100830,1003,33,'2026-02-04 12:36:45','A',0.00),(100831,1003,33,'2026-02-04 12:37:06','A',0.00),(100832,1003,33,'2026-02-04 12:37:07','A',0.00),(100833,1003,33,'2026-02-04 12:37:59','A',0.00),(100834,1003,33,'2026-02-04 12:38:05','A',0.00),(100835,1003,33,'2026-02-04 12:38:10','A',0.00),(100836,1003,33,'2026-02-04 12:38:14','A',0.00),(100837,1003,33,'2026-02-04 12:39:02','A',0.00),(100838,1003,33,'2026-02-04 12:39:07','A',0.00),(100839,1003,33,'2026-02-04 12:39:11','A',0.00),(100840,1003,33,'2026-02-04 12:39:24','A',0.00),(100841,1003,33,'2026-02-04 12:39:27','A',0.00),(100842,1003,33,'2026-02-04 12:39:53','A',0.00),(100843,1003,33,'2026-02-04 12:40:19','A',0.00),(100844,1003,33,'2026-02-04 12:40:42','A',0.00),(100845,1003,33,'2026-02-04 12:40:51','A',0.00),(100846,1003,33,'2026-02-04 12:40:57','A',0.00),(100847,1003,33,'2026-02-04 12:41:00','A',0.00),(100848,1003,33,'2026-02-04 12:41:01','A',0.00),(100849,1003,33,'2026-02-04 12:42:22','A',0.00),(100850,1003,33,'2026-02-04 12:43:01','A',0.00),(100851,1003,33,'2026-02-04 12:43:06','A',0.00),(100852,1003,33,'2026-02-04 12:44:18','A',0.00),(100853,1003,33,'2026-02-04 12:44:22','A',0.00),(100854,1003,33,'2026-02-04 12:45:23','A',0.00),(100855,1003,33,'2026-02-04 12:48:08','A',0.00),(100856,1003,33,'2026-02-04 12:48:20','A',0.00),(100857,1003,33,'2026-02-04 12:48:28','A',0.00),(100858,1003,33,'2026-02-04 12:48:47','A',0.00),(100859,1003,33,'2026-02-04 12:48:59','A',0.00),(100860,1003,33,'2026-02-04 12:49:05','A',0.00),(100861,1003,33,'2026-02-04 12:49:07','A',0.00),(100862,1003,33,'2026-02-04 12:49:13','A',0.00),(100863,1003,33,'2026-02-04 12:49:17','A',0.00),(100864,1003,33,'2026-02-04 12:49:22','A',0.00),(100865,1003,33,'2026-02-04 12:49:30','A',0.00),(100866,1003,33,'2026-02-04 12:49:37','A',0.00),(100867,1003,33,'2026-02-04 12:49:43','A',0.00),(100868,1003,33,'2026-02-04 12:49:49','A',0.00),(100869,1003,33,'2026-02-04 12:55:18','A',0.00),(100870,1003,33,'2026-02-04 12:55:54','A',0.00),(100871,1003,33,'2026-02-04 12:55:58','A',0.00),(100872,1003,33,'2026-02-04 12:55:59','A',0.00),(100873,1003,33,'2026-02-04 14:02:00','A',0.00),(100874,1003,33,'2026-02-04 14:17:09','A',0.00),(100875,1003,33,'2026-02-04 14:20:14','A',0.00),(100876,1003,33,'2026-02-04 14:20:17','A',0.00),(100877,1003,33,'2026-02-04 14:20:33','A',0.00),(100878,1003,33,'2026-02-04 14:20:35','A',0.00),(100879,1003,33,'2026-02-04 14:20:37','A',0.00),(100880,1003,33,'2026-02-04 14:20:43','A',0.00),(100881,1003,33,'2026-02-04 14:20:47','A',0.00),(100882,1003,33,'2026-02-04 14:20:52','A',0.00),(100883,1003,33,'2026-02-04 14:20:58','A',0.00),(100884,1003,33,'2026-02-04 14:20:59','A',0.00),(100885,1003,33,'2026-02-04 14:21:11','A',0.00),(100886,1003,33,'2026-02-04 14:21:12','A',0.00);
+
+-- -----------------------------------------------------
+-- Table `itempedido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `itempedido` (
+  `id` INT(4) NOT NULL AUTO_INCREMENT,
+  `pedido_id` INT(11) NOT NULL,
+  `produto_id` INT(11) NOT NULL,
+  `valor_unit` DECIMAL(10,2) NOT NULL,
+  `quantidade` DECIMAL(10,2) NOT NULL,
+  `desconto` DECIMAL(10,2) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_ItemPedido_Pedido1_idx` (`pedido_id` ASC) ,
+  INDEX `fk_ItemPedido_Produto1_idx` (`produto_id` ASC) ,
+  CONSTRAINT `fk_ItemPedido_Pedido1`
+    FOREIGN KEY (`pedido_id`)
+    REFERENCES `pedidos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ItemPedido_Produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `produtos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 34;
+
+INSERT INTO `itempedido` VALUES (6,100011,9,29.90,42.00,2.23),(7,100011,9,29.90,42.00,2.23),(8,100011,9,29.90,42.10,2.00),(9,100011,9,29.90,42.10,2.00),(10,100011,9,29.90,42.00,2.00),(11,100011,9,29.90,42.00,2.00),(12,100011,9,29.90,42.00,2.00),(13,100014,16,199.90,4.00,80.00),(14,100026,10,89.90,1.00,0.00),(15,100016,1,9.98,9.00,1.10),(16,100016,1,9.98,10.00,1.03),(17,100026,10,89.90,1.00,0.00),(18,100026,10,89.90,1.00,0.00),(19,100026,10,89.90,1.00,0.00),(20,100026,48,14.90,1.00,0.00),(21,100011,48,14.90,1.00,0.00),(22,100011,47,19.90,1.00,0.00),(23,100011,47,19.90,1.00,0.00),(24,100011,46,89.90,1.00,0.00),(25,100011,46,89.90,1.00,0.00),(26,100085,48,14.90,1.00,1.00),(27,100090,36,139.90,2.00,5.05),(28,100094,36,139.90,2.00,5.05),(29,100097,36,139.90,2.00,5.05),(30,100100,36,139.90,2.00,5.05),(31,100100,48,14.90,1.00,1.90),(32,100103,36,139.90,2.00,5.05),(33,100103,48,14.90,1.00,1.90);
+
+-- -----------------------------------------------------
+-- Table `produtofornecedor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `produtofornecedor` (
+  `produto_id` INT(4) NOT NULL,
+  `fornecedores_id` INT(4) NOT NULL,
+  PRIMARY KEY (`produto_id`, `fornecedores_id`),
+  INDEX `fk_Produto_has_Fornecedores_Fornecedores1_idx` (`fornecedores_id` ASC) ,
+  INDEX `fk_Produto_has_Fornecedores_Produto1_idx` (`produto_id` ASC) ,
+  CONSTRAINT `fk_Produto_has_Fornecedores_Fornecedores1`
+    FOREIGN KEY (`fornecedores_id`)
+    REFERENCES `fornecedores` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Produto_has_Fornecedores_Produto1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `produtos` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE comercialti101 ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `vw_pedido`
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- procedure sp_categoria_delete
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE PROCEDURE `sp_categoria_delete`(spid int)
+begin
+	delete from categorias
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_categoria_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_categoria_insert`(spnome varchar(40), spsigla char(3))
+begin
+	insert into categorias
+    values(0,spnome,spsigla);
+    select last_insert_id();
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_categoria_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_categoria_update`(spid int, spnome varchar(40), spsigla char(3))
+begin
+	update categorias set nome = spnome, sigla = spsigla
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_cliente_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_cliente_insert`(
+spnome varchar(100), 
+spcpf char(11), 
+sptelefone char(14), 
+spemail varchar(60), 
+spdatanasc date
+)
+begin 
+	insert into clientes 
+    values (0,spnome, spcpf, sptelefone, spemail, spdatanasc,default,1);
+    select  last_insert_id();
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_cliente_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE  PROCEDURE `sp_cliente_update`(spid int, spnome varchar(100), sptelefone char(14), spdatanasc date)
+BEGIN
+ update clientes set nome= spnome, telefone  = sptelefone, data_nasc = spdatanasc where id = spid; 
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_endereco_delete
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_endereco_delete`(spid int)
+begin
+delete from enderecos
+where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_endereco_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_endereco_insert`(
+    spcliente_id int, 
+    spcep char(8), 
+    splogradouro varchar(100),
+    spnumero varchar(40),
+    spcomplemento varchar(60),
+    spbairro varchar(60),
+    spcidade varchar(60),
+    spuf char(2),
+    sptipo_endereco char(3)
+    )
+begin
+		insert into enderecos 
+        values (0,spcliente_id, spcep, splogradouro, spnumero, spcomplemento, spbairro, spcidade, spuf, sptipo_endereco);
+        select @@identity as id;
+    end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_endereco_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_endereco_update`(
+spid int,
+spcep char(8), 
+splogradouro varchar(100),
+spnumero varchar(40),
+spcomplemento varchar(60),
+spbairro varchar(60),
+spcidade varchar(60),
+spuf char(2),
+sptipo_endereco char(3))
+begin
+	 update enderecos set cep = spcep, 
+     logradouro = splogradouro, 
+     numero = spnumero, 
+	 complemento = spcomplemento, 
+	 bairro = spbairro, 
+	 cidade = spcidade, 
+	 uf = spuf,
+	 tipo_endereco = sptipo_endereco 
+	 where id = spid;
+ end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_itempedido_delete
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_itempedido_delete`(spid int)
+begin
+	delete from itempedido
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_itempedido_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_itempedido_insert`(sppedido_id int, spproduto_id int, spquantidade decimal (10,2), spdesconto decimal(10,2))
+begin
+	insert into itempedido
+    values (0, sppedido_id, spproduto_id, (select valor_unit from produtos where id = spproduto_id), spquantidade, spdesconto);
+    select last_insert_id();
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_itempedido_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_itempedido_update`(spid int,spquantidade decimal(10,2), spdesconto decimal(10,2))
+begin
+	update itempedido set quantidade = spquantidade, desconto = spdesconto
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_pedido_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_pedido_insert`(spusuario_id int, spcliente_id int)
+begin
+	insert into pedidos
+    values(0, spusuario_id, spcliente_id,default , 'A', 0);
+    select last_insert_id() as id;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_pedido_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_pedido_update`(spid int, spstatus char(1), spdesconto decimal(10,2))
+begin
+	update pedidos set status = spstatus, desconto = spdesconto
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_produto_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_produto_insert`(
+spcod_barras varchar(60), 
+spdescricao varchar(60),
+spvalor_unit decimal(10,2),
+spunidade_venda varchar(12),
+spcategoria_id int,
+spestoque_minimo decimal(10,2),
+spclasse_desconto decimal(10,2))
+begin
+	insert into produtos
+    values(
+    0,
+    spcod_barras, 
+    spdescricao,
+    spvalor_unit, 
+    spunidade_venda,
+    spcategoria_id, 
+    spestoque_minimo,
+    spclasse_desconto,
+    null,
+    default, 
+    default);
+    select last_insert_id();
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_produto_update
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_produto_update`(
+spid int,
+spcod_barras varchar(60), 
+spdescricao varchar(60),
+spvalor_unit decimal(10,2),
+spunidade_venda varchar(12),
+spcategoria_id int,
+spestoque_minimo decimal(10,2),
+spclasse_desconto decimal(10,2))
+begin
+	update produtos set cod_barras = spcod_barras, descricao = spdescricao,
+    valor_unit = spvalor_unit, unidade_venda = spunidade_venda, categoria_id = spcategoria_id,
+    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto
+    where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_usuario_altera
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_usuario_altera`(
+-- parâmetros da procedure
+spid int, spnome varchar(60), spsenha varchar(255), spnivel int)
+begin
+	update usuarios 
+	set nome = spnome, senha = spsenha, nivel_id = spnivel where id = spid;
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_usuario_insert
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_usuario_insert`(
+-- parâmetros da procedure
+spnome varchar(60), spemail varchar(60), spsenha varchar(255), spnivel int)
+begin
+	insert into usuarios 
+	values (0,spnome, spemail, spsenha, spnivel, default);
+    select id, nome, email, nivel_id from usuarios where id = last_insert_id();
+end$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sp_venda_terminal
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE comercialti101$$
+CREATE   PROCEDURE `sp_venda_terminal`(spusuario_id int,spcpf char(11), spcodbar varchar(60))
+begin
+	insert pedidos values(0,spusuario_id,(select id from clientes where cpf = spcpf), default, 'A', 0);
+		insert itempedido values (
+			0,
+			last_insert_id(),
+			(select id from produtos where cod_barras = spcodbar),
+            (select valor_unit from produtos where cod_barras = spcodbar),
+            1,
+            0);
+	select * from itempedido where id = last_insert_id();
+end$$
+
+DELIMITER ;
+
+
+
+delimiter $$
+create procedure sp_caixa_insert(
+	spusuario_id int,
+    spsaldo_inicial decimal(10,2)
+)
+begin
+	insert into caixas
+    values(0, spusuario_id, current_timestamp, spsaldo_inicial, default);
+    select last_insert_id();
+end$$
+
+delimiter $$
+create procedure sp_caixa_update(
+	spid int,
+    spstatus char(1)
+)
+begin
+	update caixas
+    set status = spstatus where id = spid;
+end$$
+
+-- ----------------------------------
+delimiter $$
+create procedure sp_estoque_insert(
+	spproduto_id int,
+    spquantidade decimal(10,2)
+)
+begin
+	insert into estoques
+    value(spproduto_id, spquantidade, default);
+    select last_insert_id();
+end $$
+
+delimiter $$
+create procedure sp_estoque_update(
+	spproduto_id int,
+    spquantidade decimal(10,2)
+)
+begin
+	insert into estoques
+    value(spproduto_id, spquantidade, default);
+    select last_insert_id();
+end $$
+
+-- ------------------------------
+
+delimiter $$
+create procedure sp_fornecedor_insert(
+	sprazao_social varchar(100),
+    spfantasia varchar(40),
+    spcnpj char(14),
+    spcontato varchar(60),
+    sptelefone varchar(45),
+    spemail varchar(60)
+)
+begin
+	insert into fornecedores
+    values(0, sprazao_social, spfantasia, spcnpj, spcontato, sptelefone, spemail);
+    select last_insert_insert();
+end $$
+
+delimiter $$
+create procedure sp_fornecedor_delete(
+	spid int
+)
+begin
+	delete from fornecedores
+    where id = spid;
+end $$
+
+delimiter $$
+create procedure sp_fornecedor_update(
+	spid int,
+	sprazao_social varchar(100),
+    spfantasia varchar(40),
+    spcontato varchar(60),
+    sptelefone varchar(45),
+    spemail varchar(60)
+)
+begin
+	update fornecedores
+    set razao_social = sprazao_social, fantasia = spfantasia, contato = spcontato, telefone = sptelefone, email = spemail
+	where id = spid;
+end $$
+ 
+-- ---------------------
+delimiter $$
+create procedure sp_nivel_insert(
+	spnome varchar(45),
+    spsigla varchar(45)
+)
+begin 
+	insert into niveis 
+    values(0, spnome, spsigla);
+    select last_insert_id();
+end $$
+
+-- ----------------------
+delimiter $$
+create procedure sp_produtoforncedor_insert(
+	spproduto_id int,
+    spfornecedor_id int
+)
+begin
+	insert into produtofornecedor
+    values (spproduto_id, spfornecedor_id);
+end $$
+-- ----------------------
+
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+VIEW `vw_produto` AS
+    SELECT 
+        `p`.`id` AS `id`,
+        `p`.`cod_barras` AS `cod_barras`,
+        `p`.`descricao` AS `descricao`,
+        `p`.`categoria_id` AS `categoria_id`,
+        `c`.`nome` AS `categoria`,
+        `e`.`quantidade` AS `quantidade`,
+        `p`.`valor_unit` AS `valor_unit`,
+        `p`.`unidade_venda` AS `unidade_venda`,
+        `p`.`estoque_minimo` AS `estoque_minimo`,
+        `p`.`classe_desconto` AS `classe_desconto`,
+        `p`.`imagem` AS `imagem`,
+        `p`.`data_cad` AS `data_cad`,
+        `p`.`descontinuado` AS `descontinuado`,
+        `e`.`data_ultimo_movimento` AS `data_ultimo_movimento`
+    FROM
+        ((`produtos` `p`
+        JOIN `categorias` `c` ON (`p`.`categoria_id` = `c`.`id`))
+        JOIN `estoques` `e` ON (`p`.`id` = `e`.`produto_id`))
+    ORDER BY `p`.`descricao`
+
+-- -----------------------------------------------------
+-- View `vw_pedido`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `vw_pedido`;
+USE comercialti101;
+CREATE  OR REPLACE ALGORITHM=UNDEFINED   SQL SECURITY DEFINER VIEW `vw_pedido` AS select `p`.`id` AS `pedido`,`p`.`cliente_id` AS `cliente`,`ip`.`produto_id` AS `produto`,`ip`.`quantidade` AS `quantidade`,`ip`.`valor_unit` AS `valor_item`,`ip`.`desconto` AS `desc_item`,`p`.`desconto` AS `desc_pedido`,`pr`.`cod_barras` AS `cod_barras`,`pr`.`descricao` AS `descricao` from ((`pedidos` `p` join `itempedido` `ip` on(`p`.`id` = `ip`.`pedido_id`)) join `produtos` `pr` on(`ip`.`produto_id` = `pr`.`id`));
+USE comercialti101;
+
+DELIMITER $$
+USE comercialti101$$
+CREATE
+ 
+TRIGGER `trigger_gera_estoque`
+AFTER INSERT ON `produtos`
+FOR EACH ROW
+BEGIN
+INSERT INTO estoques values(new.id, 0, current_date());
+END$$
+
+USE comercialti101$$
+CREATE
+ 
+TRIGGER `trigger_baixa_estoque`
+AFTER INSERT ON `itempedido`
+FOR EACH ROW
+BEGIN
+update estoques SET quantidade = quantidade - NEW.quantidade, data_ultimo_movimento = current_date()
+where produto_id = new.produto_id
+;
+END$$
+
+
+DELIMITER ;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

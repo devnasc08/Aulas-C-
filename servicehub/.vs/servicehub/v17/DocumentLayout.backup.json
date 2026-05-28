@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmcategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcomponente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmcategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmcategorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmservicos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,59 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmServicos.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmServicos.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmServicos.cs [Projeto]",
-              "RelativeToolTip": "servicehub\\FrmServicos.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-21T17:54:45.957Z",
-              "IsPinned": true,
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmComponente.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmComponente.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmComponente.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmComponente.cs [Projeto]",
-              "RelativeToolTip": "servicehub\\FrmComponente.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T18:57:09.532Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Categoria.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
-              "RelativeDocumentMoniker": "ServiceHubClass\\Categoria.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
-              "RelativeToolTip": "ServiceHubClass\\Categoria.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAuwFIAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T18:47:49.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmComponente.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmComponente.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmComponente.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmComponente.cs",
-              "RelativeToolTip": "servicehub\\FrmComponente.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAApwJAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-26T18:57:36.389Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -90,6 +43,70 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
+              "RelativeDocumentMoniker": "ServiceHubClass\\Categoria.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
+              "RelativeToolTip": "ServiceHubClass\\Categoria.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAAAG4AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T20:05:50.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Banco.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Banco.cs",
+              "RelativeDocumentMoniker": "ServiceHubClass\\Banco.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Banco.cs",
+              "RelativeToolTip": "ServiceHubClass\\Banco.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T19:53:29.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Banco.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\Banco.cs",
+              "RelativeDocumentMoniker": "servicehub\\Banco.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\Banco.cs",
+              "RelativeToolTip": "servicehub\\Banco.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T19:53:13.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmCategorias.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmCategorias.cs",
+              "RelativeDocumentMoniker": "servicehub\\FrmCategorias.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmCategorias.cs",
+              "RelativeToolTip": "servicehub\\FrmCategorias.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAA8wCwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T19:42:57.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmCategorias.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmCategorias.cs",
+              "RelativeDocumentMoniker": "servicehub\\FrmCategorias.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmCategorias.cs [Projeto]",
+              "RelativeToolTip": "servicehub\\FrmCategorias.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T19:42:55.276Z",
+              "EditorCaption": " [Projeto]"
             }
           ]
         }
