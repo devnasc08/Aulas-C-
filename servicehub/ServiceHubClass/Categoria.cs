@@ -26,12 +26,18 @@ namespace ServiceHubClass
         public int Id { get; set; }
         public string? Nome { get ; set; }
         public string? Sigla { get; set; }
-        
+
 
         // Construtores (Métodos)
-        public Categoria() 
-        {
+
+        public Categoria()
+        {   
             Id = 0;
+        }
+
+        public Categoria(int id) 
+        {
+            Id = id;
         }
 
         public Categoria(string? nome, string? sigla)
@@ -76,7 +82,6 @@ namespace ServiceHubClass
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                // 
                 cat = new(dr.GetInt32(0), dr.GetString(1), dr.GetString(2));
             }
             dr.Close();
@@ -97,7 +102,8 @@ namespace ServiceHubClass
                 if (busca != "")
                 {
                     cmd.CommandText = "Select * from categorias " +
-                        "where nome like '%"+busca+"%' order by nome";
+                        "where nome like '%"+busca+
+                        "%' order by nome";
                     
                 }
                 else
@@ -135,18 +141,15 @@ namespace ServiceHubClass
         return atualizada;
         }
 
-        public void Excluir(int id)
+        public void Excluir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_delete";
-            cmd.Parameters.AddWithValue("id", id);
+            cmd.Parameters.AddWithValue("spid", Id);
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
-
-
-
 
     }
 }
