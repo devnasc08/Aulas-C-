@@ -27,7 +27,7 @@ namespace ServicehubClass
             StrConn = strconn;
             if (strconn == string.Empty)
                 // Expressão Regular
-                StrConn = $@"server = 10.91.47.120;database=comercialti101;user=root;password=202720";
+                StrConn = $@"server = 10.91.47.51;database=comercialti101;user=root;password=P@ssw0rd";
             MySqlConnection cn = new(StrConn);
             try
             {

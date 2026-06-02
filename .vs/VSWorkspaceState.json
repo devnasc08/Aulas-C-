@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\servicehub",
+    "\\servicehub\\servicehub"
   ],
+  "SelectedNode": "\\servicehub\\servicehub\\FrmCategorias.cs",
   "PreviewInSolutionExplorer": false
 }

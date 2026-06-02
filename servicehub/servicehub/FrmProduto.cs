@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceHubClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,36 +18,29 @@ namespace Servicehub
             InitializeComponent();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmProduto_Load(object sender, EventArgs e)
         {
+            //var categorias = Categoria.ObterLista();
+            cbCategoria.DataSource = Categoria.ObterLista();
+            cbCategoria.ValueMember = "Nome";
+            cbCategoria.DisplayMember = "Id";
+
+            dataGridView1.DataSource = Produto.ObterLista();
 
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtCodBarras.Text != string.Empty || txtDescricao.Text != string.Empty)
-            {
-                // Dados
-                string codBarras = txtCodBarras.Text;
-                string descricao = txtDescricao.Text;
-                decimal preco = udPreco.Value;
-                string unidade = txtUnidVenda.Text;
-                string categoria = cbCategoria.SelectedItem?.ToString() ?? "Sem Categoria";
-                decimal estoqueMin = udEstqMinimo.Value;
-                bool descontinuado = checkDescontinuado.Checked;
+            Produto produto = new(
+                txtCodBarras.Text,
+                txtDescricao.Text,
+                (double)nudValorUnit.Value,
+                nudUnidVenda.Text,
+                Categoria.ObterPorId(Convert.ToInt32(cbCategoria.SelectedValue)),
+                (double)nudEstqMinimo.Value,
+                (double)nudClassDesconto.Value
+                );
 
-
-                string status = descontinuado ? "Descontinuado" : "Ativo";
-                string linhaProduto = $"{codBarras} \n| {descricao.ToUpper()} \n| Preco: {preco:C2} \n| Est. Min: {estoqueMin} \n| {status}";
-
-                listBox1.Items.Add(linhaProduto);
-
-            }
         }
     }
 }
