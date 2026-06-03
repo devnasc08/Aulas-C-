@@ -20,6 +20,31 @@ namespace ServiceHubClass
 
     {
 
+        // propriedades
+
+        public int Id { get; set; }
+
+        public string? CodBarras { get; set; }
+
+        public string? Descricao { get; set; }
+
+        public double ValorUnit { get; set; }
+
+        public string? UnidadeVenda { get; set; }
+
+        public Categoria? Categoria { get; set; }
+
+        public double EstoqueMinimo { get; set; }
+
+        public double ClasseDesconto { get; set; }
+
+        public byte[] Imagem { get; set; }
+
+        public DateTime DataCad { get; set; }
+
+        public bool Descontinuado { get; set; }
+
+
         public Produto(string? codBarras, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
 
         {
@@ -92,29 +117,7 @@ namespace ServiceHubClass
 
         }
 
-        // propriedades
 
-        public int Id { get; set; }
-
-        public string? CodBarras { get; set; }
-
-        public string? Descricao { get; set; }
-
-        public double ValorUnit { get; set; }
-
-        public string? UnidadeVenda { get; set; }
-
-        public Categoria? Categoria { get; set; }
-
-        public double EstoqueMinimo { get; set; }
-
-        public double ClasseDesconto { get; set; }
-
-        public byte[] Imagem { get; set; }
-
-        public DateTime DataCad { get; set; }
-
-        public bool Descontinuado { get; set; }
 
         // Métodos (Inserir/BuscarPorId/ObterLista(texto="")/Atualizar)
 
@@ -183,13 +186,13 @@ namespace ServiceHubClass
             return atualizado;
         }
 
-        public static List <Produto> ObterPorId(int id)
+        public static List <Produto> ObterPorId()
         {
             List<Produto> produtos = new();
             //Produto produto = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from produtos where id = {id}";
+            cmd.CommandText = $"select * from produtos order by descricao";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

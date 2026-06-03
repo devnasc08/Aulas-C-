@@ -41,6 +41,10 @@ namespace Servicehub
                 (double)nudClassDesconto.Value
                 );
 
+            produto.Inserir();
+            if (produto.Id > 0)
+                MessageBox.Show($"Produto {produto.Descricao} gravado com sucesso!");
+
         }
     }
 }

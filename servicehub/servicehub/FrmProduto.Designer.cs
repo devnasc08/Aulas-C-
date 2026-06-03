@@ -130,7 +130,6 @@
             // cbCategoria
             // 
             cbCategoria.FormattingEnabled = true;
-            cbCategoria.Items.AddRange(new object[] { "Amortecedor", "Óleos e Lubrificantes", "Outros" });
             cbCategoria.Location = new Point(93, 150);
             cbCategoria.Name = "cbCategoria";
             cbCategoria.Size = new Size(402, 23);

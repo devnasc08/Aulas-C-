@@ -120,3 +120,4 @@ C:\Users\ryan.mscosta\Documents\cs\servicehub\servicehub\bin\Debug\net8.0-window
 C:\Users\ryan.mscosta\Documents\cs\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.csproj.Up2Date
 C:\Users\ryan.mscosta\Documents\cs\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.genruntimeconfig.cache
 C:\Users\ryan.mscosta\Documents\cs\servicehub\servicehub\obj\Debug\net8.0-windows\ref\Servicehub.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\servicehub\servicehub\obj\Debug\net8.0-windows\Servicehub.FrmNiveis.resources

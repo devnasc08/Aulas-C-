@@ -9,7 +9,7 @@ using System.Data;
 
 namespace ServiceHubClass
 {
-    internal class Nivel
+    public class Nivel
     {
 
         // Atributos | id nome sigla 
@@ -32,13 +32,13 @@ namespace ServiceHubClass
 
         public Nivel(int id)
         {
-            id = id;
+            Id = id;
         }
 
         public Nivel(string? nome, string? sigla )
         {
             Nome = nome;
-            Sigla = nome;
+            Sigla = sigla;
         }
         public Nivel(int id, string? nome, string? sigla)
         {
@@ -47,21 +47,19 @@ namespace ServiceHubClass
             Sigla = sigla;
         }
 
-        // Métodos 
-
-        public void Inserir()
+         public bool Inserir()
         {
+            bool inserido = true;
+            if (Id < 1) return inserido;
             var cmd = Banco.Abrir();
-            if (cmd.Connection.State == System.Data.ConnectionState.Open)
-            {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_nivel_insert";
                 cmd.Parameters.AddWithValue("spnome", Nome);
                 cmd.Parameters.AddWithValue("spsigla", Sigla);
-                Id = Convert.ToInt32(cmd.ExecuteScalar());
-                cmd.Connection.Close();
 
-            }
+            if (cmd.ExecuteNonQuery() > 0) inserido = true;
+                cmd.Connection.Close();
+            return inserido;
 
         }
 
