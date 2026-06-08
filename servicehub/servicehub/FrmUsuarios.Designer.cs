@@ -46,7 +46,7 @@
             clnNome = new DataGridViewTextBoxColumn();
             clnSigla = new DataGridViewTextBoxColumn();
             txtBuscar = new TextBox();
-            comboBox1 = new ComboBox();
+            cmbNiveis = new ComboBox();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvNiveis).BeginInit();
             SuspendLayout();
@@ -125,6 +125,7 @@
             btnCancelar.Text = "&Cancelar";
             btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // btnExcluir
             // 
@@ -142,6 +143,7 @@
             btnExcluir.Text = "E&xcluir";
             btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click_1;
             // 
             // btnPesquisar
             // 
@@ -159,6 +161,7 @@
             btnPesquisar.Text = "&Pesquisar";
             btnPesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click_1;
             // 
             // btnEdit
             // 
@@ -193,6 +196,7 @@
             btnAdd.Text = "&Adiocionar";
             btnAdd.TextImageRelation = TextImageRelation.ImageAboveText;
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click_1;
             // 
             // dgvNiveis
             // 
@@ -236,14 +240,15 @@
             txtBuscar.PlaceholderText = "Buscar Categoria";
             txtBuscar.Size = new Size(628, 23);
             txtBuscar.TabIndex = 28;
+            txtBuscar.TextChanged += txtBuscar_TextChanged_1;
             // 
-            // comboBox1
+            // cmbNiveis
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(421, 68);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 35;
+            cmbNiveis.FormattingEnabled = true;
+            cmbNiveis.Location = new Point(421, 68);
+            cmbNiveis.Name = "cmbNiveis";
+            cmbNiveis.Size = new Size(121, 23);
+            cmbNiveis.TabIndex = 35;
             // 
             // label1
             // 
@@ -260,7 +265,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(872, 620);
             Controls.Add(label1);
-            Controls.Add(comboBox1);
+            Controls.Add(cmbNiveis);
             Controls.Add(btnCancelar);
             Controls.Add(btnExcluir);
             Controls.Add(btnPesquisar);
@@ -302,7 +307,7 @@
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnSigla;
         private TextBox txtBuscar;
-        private ComboBox comboBox1;
+        private ComboBox cmbNiveis;
         private Label label1;
     }
 }

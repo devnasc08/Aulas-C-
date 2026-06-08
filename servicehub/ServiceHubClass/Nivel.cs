@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data;
+using System.Globalization;
 
 namespace ServiceHubClass
 {
@@ -49,18 +50,22 @@ namespace ServiceHubClass
 
          public bool Inserir()
         {
-            bool inserido = true;
-            if (Id < 1) return inserido;
+            bool inserido = false;
+
             var cmd = Banco.Abrir();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_nivel_insert";
+
                 cmd.Parameters.AddWithValue("spnome", Nome);
                 cmd.Parameters.AddWithValue("spsigla", Sigla);
 
-            if (cmd.ExecuteNonQuery() > 0) inserido = true;
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                inserido = true;
+            }
                 cmd.Connection.Close();
             return inserido;
-
         }
 
         // Método ObterPorId
@@ -138,6 +143,9 @@ namespace ServiceHubClass
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
+
+        
+
 
     }
 }

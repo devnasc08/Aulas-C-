@@ -101,6 +101,7 @@
             btnPesquisar.Text = "&Pesquisar";
             btnPesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // btnEdit
             // 
@@ -213,6 +214,7 @@
             dgvCategorias.CellClick += dgvCategorias_CellContentClick;
             dgvCategorias.CellContentClick += dgvCategorias_CellContentClick;
             dgvCategorias.SelectionChanged += dgvCategorias_SelectionChanged;
+            dgvCategorias.Click += dgvCategorias_SelectionChanged;
             // 
             // clnId
             // 

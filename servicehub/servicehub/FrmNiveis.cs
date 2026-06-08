@@ -40,21 +40,18 @@ namespace Servicehub
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Nivel niveis = new(txtNome.Text, txtSigla.Text);
-            niveis.Inserir();
-            if (niveis.Id > 0)
+            Nivel nivel = new(txtNome.Text, txtSigla.Text);
+            nivel.Inserir();
+            if (nivel.Id > 0)
             {
-                MessageBox.Show($"Nivel {niveis.Id} inserida com sucesso!");
+                MessageBox.Show($"Nivel {nivel.Id} inserida com sucesso!");
                 CarregaGrid();
             }
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            if (txtBuscar.Text.Length > 1)
-            {
                 CarregaGrid(txtBuscar.Text);
-            }
         }
 
         private void dgvNiveis_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -71,7 +68,7 @@ namespace Servicehub
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-
+            dgvNiveis.Rows.Clear();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -81,10 +78,11 @@ namespace Servicehub
             {
                 txtId.Clear();
                 txtNome.Clear();
+                txtSigla.Clear();
                 CarregaGrid();
                 MessageBox.Show($"Nivel {niv.Id} alterado com sucesso");
             }
-
+                
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

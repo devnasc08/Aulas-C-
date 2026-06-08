@@ -21,11 +21,11 @@ namespace Servicehub
         private void FrmProduto_Load(object sender, EventArgs e)
         {
             //var categorias = Categoria.ObterLista();
-            cbCategoria.DataSource = Categoria.ObterLista();
-            cbCategoria.ValueMember = "Nome";
-            cbCategoria.DisplayMember = "Id";
+            cmbCategoria.DataSource = Categoria.ObterLista();
+            cmbCategoria.ValueMember = "Nome";
+            cmbCategoria.DisplayMember = "Id";
 
-            dataGridView1.DataSource = Produto.ObterLista();
+            dgvProdutos.DataSource = Produto.ObterLista();
 
         }
 
@@ -36,7 +36,7 @@ namespace Servicehub
                 txtDescricao.Text,
                 (double)nudValorUnit.Value,
                 nudUnidVenda.Text,
-                Categoria.ObterPorId(Convert.ToInt32(cbCategoria.SelectedValue)),
+                Categoria.ObterPorId(Convert.ToInt32(cmbCategoria.SelectedValue)),
                 (double)nudEstqMinimo.Value,
                 (double)nudClassDesconto.Value
                 );
@@ -45,6 +45,35 @@ namespace Servicehub
             if (produto.Id > 0)
                 MessageBox.Show($"Produto {produto.Descricao} gravado com sucesso!");
 
+        }
+
+        private void CarreagaCategoria()
+        {
+            cmbCategoria.DataSource = Categoria.ObterLista();
+            cmbCategoria.DisplayMember = "Nome";
+            cmbCategoria.ValueMember = "Id";
+
+
+        }
+
+        private void CarregaGrid(string texto = "")
+        {
+            dgvProdutos.Rows.Clear();
+
+            List<Produto> produtos = Produto.ObterLista();
+            foreach (var produto in produtos)
+            {
+                dgvProdutos.Rows.Add();
+
+                int linha = dgvProdutos.Rows.Count - 1;
+                dgvProdutos.Rows[linha].Cells[0].Value = produto.Id;
+                dgvProdutos.Rows[linha].Cells[1].Value = produto.CodBarras;
+                dgvProdutos.Rows[linha].Cells[2].Value = produto.Descricao;
+                dgvProdutos.Rows[linha].Cells[3].Value = produto.preco;
+                
+
+
+            }
         }
     }
 }

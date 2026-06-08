@@ -197,7 +197,7 @@
             btnPesquisar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnPesquisar.ForeColor = Color.SteelBlue;
             btnPesquisar.Image = Properties.Resources.Search1;
-            btnPesquisar.Location = new Point(228, 169);
+            btnPesquisar.Location = new Point(229, 169);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(93, 67);
             btnPesquisar.TabIndex = 25;

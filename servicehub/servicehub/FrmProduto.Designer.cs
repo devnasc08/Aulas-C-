@@ -37,7 +37,7 @@
             lblPreco = new Label();
             btnBuscar = new Button();
             lblUnidVenda = new Label();
-            cbCategoria = new ComboBox();
+            cmbCategoria = new ComboBox();
             lblCategoria = new Label();
             lblEstqMinimo = new Label();
             lblClassDesconto = new Label();
@@ -50,12 +50,12 @@
             nudValorUnit = new NumericUpDown();
             nudClassDesconto = new NumericUpDown();
             nudEstqMinimo = new NumericUpDown();
-            dataGridView1 = new DataGridView();
+            dgvProdutos = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudValorUnit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudClassDesconto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudEstqMinimo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // txtCodBarras
@@ -127,13 +127,13 @@
             lblUnidVenda.TabIndex = 4;
             lblUnidVenda.Text = "Unidade Venda";
             // 
-            // cbCategoria
+            // cmbCategoria
             // 
-            cbCategoria.FormattingEnabled = true;
-            cbCategoria.Location = new Point(93, 150);
-            cbCategoria.Name = "cbCategoria";
-            cbCategoria.Size = new Size(402, 23);
-            cbCategoria.TabIndex = 6;
+            cmbCategoria.FormattingEnabled = true;
+            cmbCategoria.Location = new Point(93, 150);
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.Size = new Size(402, 23);
+            cmbCategoria.TabIndex = 6;
             // 
             // lblCategoria
             // 
@@ -262,26 +262,26 @@
             nudEstqMinimo.Size = new Size(120, 23);
             nudEstqMinimo.TabIndex = 7;
             // 
-            // dataGridView1
+            // dgvProdutos
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(7, 403);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(720, 150);
-            dataGridView1.TabIndex = 20;
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Location = new Point(7, 403);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.Size = new Size(720, 150);
+            dgvProdutos.TabIndex = 20;
             // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1787, 551);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvProdutos);
             Controls.Add(nudClassDesconto);
             Controls.Add(nudEstqMinimo);
             Controls.Add(nudValorUnit);
             Controls.Add(pictureBox1);
             Controls.Add(checkDescontinuado);
-            Controls.Add(cbCategoria);
+            Controls.Add(cmbCategoria);
             Controls.Add(btnCarregarImg);
             Controls.Add(btnCancelar);
             Controls.Add(btnEditar);
@@ -304,7 +304,7 @@
             ((System.ComponentModel.ISupportInitialize)nudValorUnit).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudClassDesconto).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudEstqMinimo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -319,7 +319,7 @@
         private Label lblPreco;
         private Button btnBuscar;
         private Label lblUnidVenda;
-        private ComboBox cbCategoria;
+        private ComboBox cmbCategoria;
         private Label lblCategoria;
         private Label lblEstqMinimo;
         private Label lblClassDesconto;
@@ -332,6 +332,6 @@
         private NumericUpDown nudValorUnit;
         private NumericUpDown nudClassDesconto;
         private NumericUpDown nudEstqMinimo;
-        private DataGridView dataGridView1;
+        private DataGridView dgvProdutos;
     }
 }
