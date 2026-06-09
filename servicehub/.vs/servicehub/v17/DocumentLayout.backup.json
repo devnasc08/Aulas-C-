@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\fornecedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\fornecedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehub\\frmusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B0F7A247-204B-4C53-B235-C7EB653F7545}|servicehub\\Servicehub.csproj|solutionrelative:servicehub\\frmusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\servicehub\\servicehubclass\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A89C00D2-FD97-4D54-AAA7-E2F0D7474625}|ServiceHubClass\\ServiceHubClass.csproj|solutionrelative:servicehubclass\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,8 +25,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 209,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,87 +39,68 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 211,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Fornecedor.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Fornecedor.cs",
+              "RelativeDocumentMoniker": "ServiceHubClass\\Fornecedor.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Fornecedor.cs",
+              "RelativeToolTip": "ServiceHubClass\\Fornecedor.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAswFYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-09T20:02:36.52Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "FrmUsuarios.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmUsuarios.cs",
               "RelativeDocumentMoniker": "servicehub\\FrmUsuarios.cs",
               "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmUsuarios.cs [Projeto]",
               "RelativeToolTip": "servicehub\\FrmUsuarios.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T19:47:18.246Z",
+              "WhenOpened": "2026-06-09T19:57:13.082Z",
               "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmUsuarios.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmUsuarios.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmUsuarios.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmUsuarios.cs",
-              "RelativeToolTip": "servicehub\\FrmUsuarios.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowCcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T19:28:17.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Usuario.cs",
-              "RelativeDocumentMoniker": "ServiceHubClass\\Usuario.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Usuario.cs",
-              "RelativeToolTip": "ServiceHubClass\\Usuario.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAUwLUAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T19:20:17.545Z",
-              "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 211,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Produto.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Produto.cs",
-              "RelativeDocumentMoniker": "ServiceHubClass\\Produto.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Produto.cs",
-              "RelativeToolTip": "ServiceHubClass\\Produto.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Cliente.cs",
+              "RelativeDocumentMoniker": "ServiceHubClass\\Cliente.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Cliente.cs",
+              "RelativeToolTip": "ServiceHubClass\\Cliente.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAQwK4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T20:06:22.557Z",
+              "WhenOpened": "2026-06-09T17:04:45.847Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FrmProduto.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmProduto.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmProduto.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmProduto.cs [Projeto]",
-              "RelativeToolTip": "servicehub\\FrmProduto.cs [Projeto]",
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
+              "RelativeDocumentMoniker": "ServiceHubClass\\Categoria.cs",
+              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\ServiceHubClass\\Categoria.cs",
+              "RelativeToolTip": "ServiceHubClass\\Categoria.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T20:06:38.056Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmProduto.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmProduto.cs",
-              "RelativeDocumentMoniker": "servicehub\\FrmProduto.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\servicehub\\servicehub\\FrmProduto.cs",
-              "RelativeToolTip": "servicehub\\FrmProduto.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAowEcAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T20:06:52.84Z",
+              "WhenOpened": "2026-06-09T20:09:31.413Z",
               "EditorCaption": ""
             }
           ]

@@ -66,29 +66,6 @@ namespace ServiceHubClass
         }
 
 
-        public Produto(int id, string? codBarras, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto)
-
-        {
-
-            Id = id;
-
-            CodBarras = codBarras;
-
-            Descricao = descricao;
-
-            ValorUnit = valorUnit;
-
-            UnidadeVenda = unidadeVenda;
-
-            Categoria = categoria;
-
-            EstoqueMinimo = estoqueMinimo;
-
-            ClasseDesconto = classeDesconto;
-
-        }
-
-
         public Produto(int id, string? codBarras, string? descricao, double valorUnit, string? unidadeVenda, Categoria? categoria, double estoqueMinimo, double classeDesconto, byte[] imagem, DateTime dataCad, bool descontinuado)
 
         {
@@ -145,7 +122,7 @@ namespace ServiceHubClass
 
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
 
-            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            Id = Convert.ToInt32(value: cmd.ExecuteScalar());
 
             cmd.Connection.Close();
 

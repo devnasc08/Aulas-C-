@@ -42,12 +42,12 @@
             btnEdit = new Button();
             btnAdd = new Button();
             dgvNiveis = new DataGridView();
-            clnId = new DataGridViewTextBoxColumn();
-            clnNome = new DataGridViewTextBoxColumn();
-            clnSigla = new DataGridViewTextBoxColumn();
             txtBuscar = new TextBox();
             cmbNiveis = new ComboBox();
             label1 = new Label();
+            clnId = new DataGridViewTextBoxColumn();
+            clnNome = new DataGridViewTextBoxColumn();
+            clnEmail = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvNiveis).BeginInit();
             SuspendLayout();
             // 
@@ -203,35 +203,13 @@
             dgvNiveis.AllowUserToAddRows = false;
             dgvNiveis.AllowUserToDeleteRows = false;
             dgvNiveis.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNiveis.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnSigla });
-            dgvNiveis.Location = new Point(114, 338);
+            dgvNiveis.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnEmail });
+            dgvNiveis.Location = new Point(16, 338);
             dgvNiveis.Name = "dgvNiveis";
             dgvNiveis.ReadOnly = true;
             dgvNiveis.RowHeadersVisible = false;
-            dgvNiveis.Size = new Size(628, 252);
+            dgvNiveis.Size = new Size(767, 252);
             dgvNiveis.TabIndex = 29;
-            // 
-            // clnId
-            // 
-            clnId.Frozen = true;
-            clnId.HeaderText = "Id";
-            clnId.Name = "clnId";
-            clnId.ReadOnly = true;
-            // 
-            // clnNome
-            // 
-            clnNome.Frozen = true;
-            clnNome.HeaderText = "Nome";
-            clnNome.Name = "clnNome";
-            clnNome.ReadOnly = true;
-            clnNome.Width = 428;
-            // 
-            // clnSigla
-            // 
-            clnSigla.Frozen = true;
-            clnSigla.HeaderText = "Sigla";
-            clnSigla.Name = "clnSigla";
-            clnSigla.ReadOnly = true;
             // 
             // txtBuscar
             // 
@@ -258,6 +236,29 @@
             label1.Size = new Size(39, 15);
             label1.TabIndex = 36;
             label1.Text = "Níveis";
+            // 
+            // clnId
+            // 
+            clnId.Frozen = true;
+            clnId.HeaderText = "Id";
+            clnId.Name = "clnId";
+            clnId.ReadOnly = true;
+            // 
+            // clnNome
+            // 
+            clnNome.Frozen = true;
+            clnNome.HeaderText = "Nome";
+            clnNome.Name = "clnNome";
+            clnNome.ReadOnly = true;
+            clnNome.Width = 428;
+            // 
+            // clnEmail
+            // 
+            clnEmail.Frozen = true;
+            clnEmail.HeaderText = "Email";
+            clnEmail.Name = "clnEmail";
+            clnEmail.ReadOnly = true;
+            clnEmail.Width = 240;
             // 
             // FrmUsuarios
             // 
@@ -303,11 +304,11 @@
         private Button btnEdit;
         private Button btnAdd;
         private DataGridView dgvNiveis;
-        private DataGridViewTextBoxColumn clnId;
-        private DataGridViewTextBoxColumn clnNome;
-        private DataGridViewTextBoxColumn clnSigla;
         private TextBox txtBuscar;
         private ComboBox cmbNiveis;
         private Label label1;
+        private DataGridViewTextBoxColumn clnId;
+        private DataGridViewTextBoxColumn clnNome;
+        private DataGridViewTextBoxColumn clnEmail;
     }
 }

@@ -69,7 +69,7 @@ namespace Servicehub
                 dgvProdutos.Rows[linha].Cells[0].Value = produto.Id;
                 dgvProdutos.Rows[linha].Cells[1].Value = produto.CodBarras;
                 dgvProdutos.Rows[linha].Cells[2].Value = produto.Descricao;
-                dgvProdutos.Rows[linha].Cells[3].Value = produto.preco;
+                //dgvProdutos.Rows[linha].Cells[3].Value = produto.P
                 
 
 
