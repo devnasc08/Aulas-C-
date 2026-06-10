@@ -59,7 +59,7 @@ namespace ServiceHubClass
 
 
         }
-         
+
 
         public bool Atualizar()
         {
@@ -107,6 +107,7 @@ namespace ServiceHubClass
                     dr.GetString(6)
                     );
             }
+            return true;
             dr.Close();
             cmd.Connection.Close();
         }
@@ -114,11 +115,28 @@ namespace ServiceHubClass
 
         public static List<Fornecedor> ObterLista()
         {
+            List<Fornecedor> fornecedores = new();
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Select from * fornecedores order by nome";
 
-        }
-
-
-       
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                fornecedores.Add(new(
+                dr.GetInt32(0),
+                dr.GetString(1),
+                dr.GetString(2),
+                dr.GetString(3),
+                dr.GetString(4),
+                dr.GetString(5),
+                dr.GetString(6)
+                    )
+                    );
+            }
+            dr.Close();
+            cmd.Connection.Close();
+            return fornecedores;
 
         }
     }
