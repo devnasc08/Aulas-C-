@@ -131,7 +131,7 @@
             btnAdd.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnAdd.ForeColor = Color.Black;
             btnAdd.Image = Properties.Resources.Add;
-            btnAdd.Location = new Point(41, 215);
+            btnAdd.Location = new Point(48, 224);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(93, 67);
             btnAdd.TabIndex = 4;
@@ -149,7 +149,7 @@
             btnEdit.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnEdit.ForeColor = Color.Black;
             btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.Location = new Point(145, 215);
+            btnEdit.Location = new Point(152, 224);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(93, 67);
             btnEdit.TabIndex = 5;
@@ -167,7 +167,7 @@
             btnPesquisar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnPesquisar.ForeColor = Color.Black;
             btnPesquisar.Image = Properties.Resources.Search1;
-            btnPesquisar.Location = new Point(249, 215);
+            btnPesquisar.Location = new Point(256, 224);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(93, 67);
             btnPesquisar.TabIndex = 6;
@@ -185,7 +185,7 @@
             btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.Black;
             btnExcluir.Image = Properties.Resources.Delete;
-            btnExcluir.Location = new Point(353, 215);
+            btnExcluir.Location = new Point(360, 224);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(93, 67);
             btnExcluir.TabIndex = 7;
@@ -202,7 +202,7 @@
             btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             btnCancelar.ForeColor = Color.Black;
             btnCancelar.Image = Properties.Resources.Delete;
-            btnCancelar.Location = new Point(470, 215);
+            btnCancelar.Location = new Point(477, 224);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(93, 67);
             btnCancelar.TabIndex = 8;

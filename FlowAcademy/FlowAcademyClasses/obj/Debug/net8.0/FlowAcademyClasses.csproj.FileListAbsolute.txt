@@ -1,0 +1,13 @@
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.deps.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.csproj.AssemblyReference.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.AssemblyInfoInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.AssemblyInfo.cs
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.csproj.CoreCompileInputs.cache
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.sourcelink.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\refint\FlowAcademyClasses.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.pdb
+C:\Users\kaua.nsantos3\Documents\aulasC#\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\ref\FlowAcademyClasses.dll
