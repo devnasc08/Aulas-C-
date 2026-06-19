@@ -29,114 +29,48 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNota));
-            comboBox2 = new ComboBox();
-            comboBox1 = new ComboBox();
-            btnCancelar = new Button();
-            btnExcluir = new Button();
-            btnEdit = new Button();
-            btnAdd = new Button();
-            dgvAluno = new DataGridView();
+            cmbDisciplina = new ComboBox();
+            cmbMatricula = new ComboBox();
+            dgvNota = new DataGridView();
             label1 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
+            txtNota1 = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox2 = new TextBox();
+            txtNota2 = new TextBox();
             label5 = new Label();
-            textBox3 = new TextBox();
+            txtMediaFinal = new TextBox();
             label6 = new Label();
-            textBox4 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgvAluno).BeginInit();
+            txtStatus = new TextBox();
+            btnEditar = new Button();
+            btnSalvar = new Button();
+            btnCalcular = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvNota).BeginInit();
             SuspendLayout();
             // 
-            // comboBox2
+            // cmbDisciplina
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(355, 48);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 84;
+            cmbDisciplina.FormattingEnabled = true;
+            cmbDisciplina.Location = new Point(355, 48);
+            cmbDisciplina.Name = "cmbDisciplina";
+            cmbDisciplina.Size = new Size(121, 23);
+            cmbDisciplina.TabIndex = 84;
             // 
-            // comboBox1
+            // cmbMatricula
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(92, 48);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 81;
+            cmbMatricula.FormattingEnabled = true;
+            cmbMatricula.Location = new Point(92, 48);
+            cmbMatricula.Name = "cmbMatricula";
+            cmbMatricula.Size = new Size(121, 23);
+            cmbMatricula.TabIndex = 81;
             // 
-            // btnCancelar
+            // dgvNota
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(582, 254);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(99, 67);
-            btnCancelar.TabIndex = 80;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Location = new Point(439, 254);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(99, 67);
-            btnExcluir.TabIndex = 79;
-            btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnEdit.ForeColor = Color.Black;
-            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.Location = new Point(296, 254);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(99, 67);
-            btnEdit.TabIndex = 78;
-            btnEdit.Text = "&Editar";
-            btnEdit.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnAdd.ForeColor = Color.Black;
-            btnAdd.Location = new Point(153, 254);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(99, 67);
-            btnAdd.TabIndex = 77;
-            btnAdd.Text = "&Adiocionar";
-            btnAdd.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // dgvAluno
-            // 
-            dgvAluno.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAluno.Location = new Point(75, 351);
-            dgvAluno.Name = "dgvAluno";
-            dgvAluno.Size = new Size(668, 243);
-            dgvAluno.TabIndex = 76;
+            dgvNota.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNota.Location = new Point(75, 351);
+            dgvNota.Name = "dgvNota";
+            dgvNota.Size = new Size(668, 243);
+            dgvNota.TabIndex = 76;
             // 
             // label1
             // 
@@ -156,12 +90,12 @@
             label4.TabIndex = 71;
             label4.Text = "Matrícula";
             // 
-            // textBox1
+            // txtNota1
             // 
-            textBox1.Location = new Point(92, 114);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 86;
+            txtNota1.Location = new Point(92, 114);
+            txtNota1.Name = "txtNota1";
+            txtNota1.Size = new Size(100, 23);
+            txtNota1.TabIndex = 86;
             // 
             // label2
             // 
@@ -181,12 +115,13 @@
             label3.TabIndex = 72;
             label3.Text = "Nota 2";
             // 
-            // textBox2
+            // txtNota2
             // 
-            textBox2.Location = new Point(355, 114);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 86;
+            txtNota2.Location = new Point(355, 114);
+            txtNota2.Name = "txtNota2";
+            txtNota2.Size = new Size(100, 23);
+            txtNota2.TabIndex = 86;
+            txtNota2.TextChanged += textBox2_TextChanged;
             // 
             // label5
             // 
@@ -197,13 +132,13 @@
             label5.TabIndex = 72;
             label5.Text = "Média Final";
             // 
-            // textBox3
+            // txtMediaFinal
             // 
-            textBox3.Location = new Point(93, 197);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 86;
+            txtMediaFinal.Location = new Point(93, 197);
+            txtMediaFinal.Name = "txtMediaFinal";
+            txtMediaFinal.ReadOnly = true;
+            txtMediaFinal.Size = new Size(100, 23);
+            txtMediaFinal.TabIndex = 86;
             // 
             // label6
             // 
@@ -214,31 +149,79 @@
             label6.TabIndex = 72;
             label6.Text = "Status";
             // 
-            // textBox4
+            // txtStatus
             // 
-            textBox4.Location = new Point(355, 197);
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 86;
+            txtStatus.Location = new Point(355, 197);
+            txtStatus.Name = "txtStatus";
+            txtStatus.ReadOnly = true;
+            txtStatus.Size = new Size(100, 23);
+            txtStatus.TabIndex = 86;
+            // 
+            // btnEditar
+            // 
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
+            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
+            btnEditar.Location = new Point(492, 270);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(97, 64);
+            btnEditar.TabIndex = 90;
+            btnEditar.Text = "&Editar";
+            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.FlatAppearance.BorderSize = 0;
+            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
+            btnSalvar.Location = new Point(358, 270);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(97, 64);
+            btnSalvar.TabIndex = 89;
+            btnSalvar.Text = "&Salvar";
+            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnCalcular
+            // 
+            btnCalcular.FlatAppearance.BorderSize = 0;
+            btnCalcular.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
+            btnCalcular.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
+            btnCalcular.FlatStyle = FlatStyle.Flat;
+            btnCalcular.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            btnCalcular.ForeColor = Color.Black;
+            btnCalcular.Image = (Image)resources.GetObject("btnCalcular.Image");
+            btnCalcular.Location = new Point(182, 270);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(93, 67);
+            btnCalcular.TabIndex = 88;
+            btnCalcular.Text = "&Calcular";
+            btnCalcular.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCalcular.UseVisualStyleBackColor = true;
             // 
             // FrmNota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(937, 684);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnExcluir);
-            Controls.Add(btnEdit);
-            Controls.Add(btnAdd);
+            Controls.Add(btnEditar);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnCalcular);
+            Controls.Add(txtStatus);
+            Controls.Add(txtMediaFinal);
+            Controls.Add(txtNota2);
+            Controls.Add(txtNota1);
+            Controls.Add(cmbDisciplina);
+            Controls.Add(cmbMatricula);
             Controls.Add(label6);
-            Controls.Add(dgvAluno);
+            Controls.Add(dgvNota);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -246,29 +229,28 @@
             Controls.Add(label4);
             Name = "FrmNota";
             Text = "FrmNota";
-            ((System.ComponentModel.ISupportInitialize)dgvAluno).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNota).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private Button btnCancelar;
-        private Button btnExcluir;
-        private Button btnEdit;
-        private Button btnAdd;
-        private DataGridView dgvAluno;
+        private ComboBox cmbDisciplina;
+        private ComboBox cmbMatricula;
+        private DataGridView dgvNota;
         private Label label1;
         private Label label4;
-        private TextBox textBox1;
+        private TextBox txtNota1;
         private Label label2;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txtNota2;
         private Label label5;
-        private TextBox textBox3;
+        private TextBox txtMediaFinal;
         private Label label6;
-        private TextBox textBox4;
+        private TextBox txtStatus;
+        private Button btnEditar;
+        private Button btnSalvar;
+        private Button btnCalcular;
     }
 }

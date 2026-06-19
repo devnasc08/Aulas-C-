@@ -1,314 +1,213 @@
-﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class Matricula
+    public class Matricula
     {
-
-        // ====================================
-        // PROPRIEDADES
-        // Correspondem à tabela matriculas
-        // ====================================
-
+        // Propriedades
         public int IdMatricula { get; set; }
-
         public int IdAluno { get; set; }
-
         public int IdTurma { get; set; }
-
         public DateTime DataMatricula { get; set; }
+        public string? Status { get; set; }
 
-        public string Status { get; set; }
+        // Objetos de relacionamento
+        public Aluno? Aluno { get; set; }
+        public Turma? Turma { get; set; }
 
-
-
-        // ====================================
-        // CONSTRUTOR VAZIO
-        // ====================================
-
+        // Construtor vazio
         public Matricula()
         {
-
+            IdMatricula = 0;
+            DataMatricula = DateTime.Today;
+            Status = "ativa";
         }
 
-
-
-        // ====================================
-        // CONSTRUTOR COMPLETO
-        // ====================================
-
-        public Matricula(
-            int idMatricula,
-            int idAluno,
-            int idTurma,
-            DateTime dataMatricula,
-            string status)
+        // Construtor com ID
+        public Matricula(int idMatricula)
         {
-
             IdMatricula = idMatricula;
-
-            IdAluno = idAluno;
-
-            IdTurma = idTurma;
-
-            DataMatricula = dataMatricula;
-
-            Status = status;
-
         }
 
+        // Construtor completo
+        public Matricula(int idMatricula, int idAluno, int idTurma, DateTime dataMatricula, string? status)
+        {
+            IdMatricula = idMatricula;
+            IdAluno = idAluno;
+            IdTurma = idTurma;
+            DataMatricula = dataMatricula;
+            Status = status;
+        }
 
-
-        // ====================================
-        // INSERIR MATRÍCULA
-        // ====================================
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
+            bool inserido = false;
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_matricula_insert";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
+                cmd.Parameters.AddWithValue("spidturma", IdTurma);
+                cmd.Parameters.AddWithValue("spdatamatricula", DataMatricula);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_matricula_inserir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_aluno",
-                    IdAluno);
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_turma",
-                    IdTurma);
-
-                cmd.Parameters.AddWithValue(
-                    "p_data_matricula",
-                    DataMatricula);
-
-                cmd.Parameters.AddWithValue(
-                    "p_status",
-                    Status);
-
-
-                cmd.ExecuteNonQuery();
+                IdMatricula = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdMatricula > 0;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return inserido;
         }
 
-
-
-        // ====================================
-        // ALTERAR MATRÍCULA
-        // ====================================
-
-        public bool Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
         {
+            bool atualizado = false;
+            if (IdMatricula < 1) return atualizado;
 
-            try
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_matricula_update";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
+                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
+                cmd.Parameters.AddWithValue("spidturma", IdTurma);
+                cmd.Parameters.AddWithValue("spdatamatricula", DataMatricula);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_matricula_alterar";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_matricula",
-                    IdMatricula);
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_aluno",
-                    IdAluno);
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_turma",
-                    IdTurma);
-
-                cmd.Parameters.AddWithValue(
-                    "p_data_matricula",
-                    DataMatricula);
-
-                cmd.Parameters.AddWithValue(
-                    "p_status",
-                    Status);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return atualizado;
         }
 
-
-
-        // ====================================
-        // EXCLUIR MATRÍCULA
-        // ====================================
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
+            bool excluido = false;
+            if (IdMatricula < 1) return excluido;
 
-            try
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_matricula_delete";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_matricula_excluir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_matricula",
-                    IdMatricula);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
+            return excluido;
+        }
 
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Matricula ObterPorId(int idMatricula)
+        {
+            Matricula matricula = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_matricula_getbyid";
+                cmd.Parameters.AddWithValue("spidmatricula", idMatricula);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    matricula = new Matricula(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetInt32(2),
+                        dr.GetDateTime(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4)
+                    );
+
+                    // Carrega os objetos relacionados de forma automatizada
+                    matricula.Aluno = Aluno.ObterPorId(matricula.IdAluno);
+                    matricula.Turma = Turma.ObterPorId(matricula.IdTurma);
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return matricula;
+        }
+
+        // ==========================
+        // LISTAR (Retorna List<Matricula>)
+        // ==========================
+        public static List<Matricula> ObterLista()
+        {
+            List<Matricula> matriculas = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_matricula_getall";
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    var matricula = new Matricula(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetInt32(2),
+                        dr.GetDateTime(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4)
+                    );
+
+                    matricula.Aluno = Aluno.ObterPorId(matricula.IdAluno);
+                    matricula.Turma = Turma.ObterPorId(matricula.IdTurma);
+
+                    matriculas.Add(matricula);
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return matriculas;
+        }
+
+        public bool RealizarMatricula()
+        {
+            if (!new Turma(IdTurma).PossuiVaga())
                 return false;
 
-            }
-
+            DataMatricula = DateTime.Today;
+            Status = "ativa";
+            return Inserir();
         }
-
-
-
-        // ====================================
-        // CONSULTAR POR ID
-        // ====================================
-
-        public DataTable ConsultarPorId()
-        {
-
-            DataTable dt =
-                new DataTable();
-
-            try
-            {
-
-                var cmd = Banco.Abrir();
-
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_matricula_consultar_id";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_matricula",
-                    IdMatricula);
-
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
-                cmd.Connection.Close();
-
-            }
-
-            catch
-            {
-
-            }
-
-            return dt;
-
-        }
-
-
-
-        // ====================================
-        // LISTAR TODAS AS MATRÍCULAS
-        // ====================================
-
-        public static DataTable Listar()
-        {
-
-            DataTable dt =
-                new DataTable();
-
-            try
-            {
-
-                var cmd = Banco.Abrir();
-
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_matricula_listar";
-
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
-                cmd.Connection.Close();
-
-            }
-
-            catch
-            {
-
-            }
-
-            return dt;
-
-        }
-
-
     }
 }

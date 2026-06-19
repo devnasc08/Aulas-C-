@@ -30,27 +30,27 @@
         {
             statusStrip1 = new StatusStrip();
             menuStrip1 = new MenuStrip();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
+            btnUsuarios = new Button();
+            btnAlunos = new Button();
+            btnCurso = new Button();
+            btnTurmas = new Button();
+            btnProfessores = new Button();
+            btnDisciplina = new Button();
+            btnMatriculas = new Button();
+            bntFeedbacks = new Button();
+            btnPagamentos = new Button();
+            btnFrequencia = new Button();
             button11 = new Button();
-            button12 = new Button();
-            button13 = new Button();
+            btnLogs = new Button();
+            btnNotas = new Button();
             panel1 = new Panel();
             SuspendLayout();
             // 
             // statusStrip1
             // 
-            statusStrip1.Location = new Point(0, 471);
+            statusStrip1.Location = new Point(0, 493);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.Size = new Size(832, 22);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -58,126 +58,126 @@
             // 
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(832, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
-            // button1
+            // btnUsuarios
             // 
-            button1.Location = new Point(12, 87);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnUsuarios.Location = new Point(12, 87);
+            btnUsuarios.Name = "btnUsuarios";
+            btnUsuarios.Size = new Size(75, 23);
+            btnUsuarios.TabIndex = 2;
+            btnUsuarios.Text = "Usuários";
+            btnUsuarios.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAlunos
             // 
-            button2.Location = new Point(12, 116);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 2;
-            button2.Text = "button1";
-            button2.UseVisualStyleBackColor = true;
+            btnAlunos.Location = new Point(12, 116);
+            btnAlunos.Name = "btnAlunos";
+            btnAlunos.Size = new Size(75, 23);
+            btnAlunos.TabIndex = 2;
+            btnAlunos.Text = "Alunos";
+            btnAlunos.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnCurso
             // 
-            button3.Location = new Point(12, 172);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 2;
-            button3.Text = "button1";
-            button3.UseVisualStyleBackColor = true;
+            btnCurso.Location = new Point(12, 172);
+            btnCurso.Name = "btnCurso";
+            btnCurso.Size = new Size(75, 23);
+            btnCurso.TabIndex = 2;
+            btnCurso.Text = "Cursos";
+            btnCurso.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnTurmas
             // 
-            button4.Location = new Point(12, 230);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 2;
-            button4.Text = "button1";
-            button4.UseVisualStyleBackColor = true;
+            btnTurmas.Location = new Point(12, 230);
+            btnTurmas.Name = "btnTurmas";
+            btnTurmas.Size = new Size(75, 23);
+            btnTurmas.TabIndex = 2;
+            btnTurmas.Text = "Turmas";
+            btnTurmas.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnProfessores
             // 
-            button5.Location = new Point(12, 145);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 2;
-            button5.Text = "button1";
-            button5.UseVisualStyleBackColor = true;
+            btnProfessores.Location = new Point(12, 145);
+            btnProfessores.Name = "btnProfessores";
+            btnProfessores.Size = new Size(75, 23);
+            btnProfessores.TabIndex = 2;
+            btnProfessores.Text = "Professores";
+            btnProfessores.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnDisciplina
             // 
-            button6.Location = new Point(12, 201);
-            button6.Name = "button6";
-            button6.Size = new Size(75, 23);
-            button6.TabIndex = 2;
-            button6.Text = "button1";
-            button6.UseVisualStyleBackColor = true;
+            btnDisciplina.Location = new Point(12, 201);
+            btnDisciplina.Name = "btnDisciplina";
+            btnDisciplina.Size = new Size(75, 23);
+            btnDisciplina.TabIndex = 2;
+            btnDisciplina.Text = "Disciplinas";
+            btnDisciplina.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnMatriculas
             // 
-            button7.Location = new Point(12, 259);
-            button7.Name = "button7";
-            button7.Size = new Size(75, 23);
-            button7.TabIndex = 2;
-            button7.Text = "button1";
-            button7.UseVisualStyleBackColor = true;
+            btnMatriculas.Location = new Point(12, 259);
+            btnMatriculas.Name = "btnMatriculas";
+            btnMatriculas.Size = new Size(75, 23);
+            btnMatriculas.TabIndex = 2;
+            btnMatriculas.Text = "Matrículas";
+            btnMatriculas.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // bntFeedbacks
             // 
-            button8.Location = new Point(12, 344);
-            button8.Name = "button8";
-            button8.Size = new Size(75, 23);
-            button8.TabIndex = 2;
-            button8.Text = "button1";
-            button8.UseVisualStyleBackColor = true;
+            bntFeedbacks.Location = new Point(12, 375);
+            bntFeedbacks.Name = "bntFeedbacks";
+            bntFeedbacks.Size = new Size(75, 23);
+            bntFeedbacks.TabIndex = 2;
+            bntFeedbacks.Text = "Feedbacks";
+            bntFeedbacks.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnPagamentos
             // 
-            button9.Location = new Point(12, 317);
-            button9.Name = "button9";
-            button9.Size = new Size(75, 23);
-            button9.TabIndex = 2;
-            button9.Text = "button1";
-            button9.UseVisualStyleBackColor = true;
+            btnPagamentos.Location = new Point(12, 348);
+            btnPagamentos.Name = "btnPagamentos";
+            btnPagamentos.Size = new Size(86, 23);
+            btnPagamentos.TabIndex = 2;
+            btnPagamentos.Text = "Pagamentos";
+            btnPagamentos.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnFrequencia
             // 
-            button10.Location = new Point(12, 288);
-            button10.Name = "button10";
-            button10.Size = new Size(75, 23);
-            button10.TabIndex = 2;
-            button10.Text = "button1";
-            button10.UseVisualStyleBackColor = true;
+            btnFrequencia.Location = new Point(12, 319);
+            btnFrequencia.Name = "btnFrequencia";
+            btnFrequencia.Size = new Size(75, 23);
+            btnFrequencia.TabIndex = 2;
+            btnFrequencia.Text = "Frequência";
+            btnFrequencia.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
-            button11.Location = new Point(12, 402);
+            button11.Location = new Point(12, 433);
             button11.Name = "button11";
             button11.Size = new Size(75, 23);
             button11.TabIndex = 2;
             button11.Text = "button1";
             button11.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btnLogs
             // 
-            button12.Location = new Point(12, 373);
-            button12.Name = "button12";
-            button12.Size = new Size(75, 23);
-            button12.TabIndex = 2;
-            button12.Text = "button1";
-            button12.UseVisualStyleBackColor = true;
+            btnLogs.Location = new Point(12, 404);
+            btnLogs.Name = "btnLogs";
+            btnLogs.Size = new Size(75, 23);
+            btnLogs.TabIndex = 2;
+            btnLogs.Text = "Logs";
+            btnLogs.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // btnNotas
             // 
-            button13.Location = new Point(12, 431);
-            button13.Name = "button13";
-            button13.Size = new Size(75, 23);
-            button13.TabIndex = 2;
-            button13.Text = "button1";
-            button13.UseVisualStyleBackColor = true;
+            btnNotas.Location = new Point(12, 290);
+            btnNotas.Name = "btnNotas";
+            btnNotas.Size = new Size(75, 23);
+            btnNotas.TabIndex = 2;
+            btnNotas.Text = "Notas";
+            btnNotas.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -190,21 +190,21 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 493);
+            ClientSize = new Size(832, 515);
             Controls.Add(panel1);
-            Controls.Add(button12);
-            Controls.Add(button6);
-            Controls.Add(button13);
+            Controls.Add(btnLogs);
+            Controls.Add(btnDisciplina);
+            Controls.Add(btnNotas);
             Controls.Add(button11);
-            Controls.Add(button4);
-            Controls.Add(button10);
-            Controls.Add(button2);
-            Controls.Add(button9);
-            Controls.Add(button5);
-            Controls.Add(button8);
-            Controls.Add(button3);
-            Controls.Add(button7);
-            Controls.Add(button1);
+            Controls.Add(btnTurmas);
+            Controls.Add(btnFrequencia);
+            Controls.Add(btnAlunos);
+            Controls.Add(btnPagamentos);
+            Controls.Add(btnProfessores);
+            Controls.Add(bntFeedbacks);
+            Controls.Add(btnCurso);
+            Controls.Add(btnMatriculas);
+            Controls.Add(btnUsuarios);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -219,19 +219,19 @@
 
         private StatusStrip statusStrip1;
         private MenuStrip menuStrip1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button10;
+        private Button btnUsuarios;
+        private Button btnAlunos;
+        private Button btnCurso;
+        private Button btnTurmas;
+        private Button btnProfessores;
+        private Button btnDisciplina;
+        private Button btnMatriculas;
+        private Button bntFeedbacks;
+        private Button btnPagamentos;
+        private Button btnFrequencia;
         private Button button11;
-        private Button button12;
-        private Button button13;
+        private Button btnLogs;
+        private Button btnNotas;
         private Panel panel1;
     }
 }

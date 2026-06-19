@@ -1,291 +1,211 @@
-ï»¿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class Disciplina
+    public class Disciplina
     {
-        // ====================================
-        // PROPRIEDADES
-        // Correspondem Ã  tabela disciplinas
-        // ====================================
-
+        // Propriedades
         public int IdDisciplina { get; set; }
-
         public int IdCurso { get; set; }
-
-        public string Nome { get; set; }
-
+        public string? Nome { get; set; }
         public int CargaHoraria { get; set; }
 
+        // Objeto de relacionamento
+        public Curso? Curso { get; set; }
 
-        // ====================================
-        // CONSTRUTOR VAZIO
-        // ====================================
-
+        // Construtor vazio
         public Disciplina()
         {
-
+            IdDisciplina = 0;
+            IdCurso = 0;
+            Nome = "";
+            CargaHoraria = 0;
         }
 
-
-        // ====================================
-        // CONSTRUTOR COMPLETO
-        // ====================================
-
-        public Disciplina(
-            int idDisciplina,
-            int idCurso,
-            string nome,
-            int cargaHoraria)
+        // Construtor com ID
+        public Disciplina(int idDisciplina)
         {
             IdDisciplina = idDisciplina;
+        }
 
+        // Construtor completo
+        public Disciplina(int idDisciplina, int idCurso, string? nome, int cargaHoraria)
+        {
+            IdDisciplina = idDisciplina;
             IdCurso = idCurso;
-
             Nome = nome;
-
             CargaHoraria = cargaHoraria;
         }
 
-
-        // ====================================
-        // INSERIR DISCIPLINA
-        // Procedure:
-        // sp_disciplina_inserir
-        // ====================================
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
-            try
+            bool inserido = false;
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_disciplina_insert";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
 
-                cmd.CommandText =
-                    "sp_disciplina_inserir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_curso",
-                    IdCurso);
-
-                cmd.Parameters.AddWithValue(
-                    "p_nome",
-                    Nome);
-
-                cmd.Parameters.AddWithValue(
-                    "p_carga_horaria",
-                    CargaHoraria);
-
-
-                cmd.ExecuteNonQuery();
+                IdDisciplina = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdDisciplina > 0;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-                return false;
-            }
-
+            return inserido;
         }
 
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
+        {
+            bool atualizado = false;
+            if (IdDisciplina < 1) return atualizado;
 
+            var cmd = Banco.Abrir();
 
-        // ====================================
-        // ALTERAR DISCIPLINA
-        // ====================================
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_disciplina_update";
+
+                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
+
+                cmd.Connection.Close();
+            }
+
+            return atualizado;
+        }
 
         public bool Alterar()
         {
-            try
-            {
-
-                var cmd = Banco.Abrir();
-
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_disciplina_alterar";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_disciplina",
-                    IdDisciplina);
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_curso",
-                    IdCurso);
-
-                cmd.Parameters.AddWithValue(
-                    "p_nome",
-                    Nome);
-
-                cmd.Parameters.AddWithValue(
-                    "p_carga_horaria",
-                    CargaHoraria);
-
-
-                cmd.ExecuteNonQuery();
-
-                cmd.Connection.Close();
-
-                return true;
-
-            }
-
-            catch
-            {
-
-                return false;
-
-            }
-
+            return Atualizar();
         }
 
-
-
-        // ====================================
-        // EXCLUIR DISCIPLINA
-        // ====================================
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
+            bool excluido = false;
+            if (IdDisciplina < 1) return excluido;
 
-            try
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_disciplina_delete";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_disciplina_excluir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_disciplina",
-                    IdDisciplina);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return excluido;
         }
 
-
-
-        // ====================================
-        // CONSULTAR POR ID
-        // ====================================
-
-        public DataTable ConsultarPorId()
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Disciplina ObterPorId(int idDisciplina)
         {
+            Disciplina disciplina = new();
+            var cmd = Banco.Abrir();
 
-            DataTable dt =
-                new DataTable();
-
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_disciplina_getbyid";
+                cmd.Parameters.AddWithValue("spiddisciplina", idDisciplina);
 
-                var cmd = Banco.Abrir();
+                var dr = cmd.ExecuteReader();
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                if (dr.Read())
+                {
+                    disciplina = new Disciplina(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.GetInt32(3)
+                    );
 
-                cmd.CommandText =
-                    "sp_disciplina_consultar_id";
+                    // Carrega o objeto relacionado Curso de forma automatizada
+                    disciplina.Curso = Curso.ObterPorId(disciplina.IdCurso);
+                }
 
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_disciplina",
-                    IdDisciplina);
-
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
+            return disciplina;
         }
 
-
-
-        // ====================================
-        // LISTAR TODAS AS DISCIPLINAS
-        // ====================================
-
-        public static DataTable Listar()
+        // ==========================
+        // LISTAR (Retorna List<Disciplina>)
+        // ==========================
+        public static List<Disciplina> ObterLista(string busca = "")
         {
+            List<Disciplina> disciplinas = new();
+            var cmd = Banco.Abrir();
 
-            DataTable dt =
-                new DataTable();
-
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                var cmd = Banco.Abrir();
+                // Se houver parâmetro de busca, utiliza a procedure de busca filtrada; caso contrário, a listagem geral
+                if (string.IsNullOrEmpty(busca))
+                {
+                    cmd.CommandText = "sp_disciplina_getall";
+                }
+                else
+                {
+                    cmd.CommandText = "sp_disciplina_search";
+                    cmd.Parameters.AddWithValue("spbusca", $"%{busca}%");
+                }
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                var dr = cmd.ExecuteReader();
 
-                cmd.CommandText =
-                    "sp_disciplina_listar";
+                while (dr.Read())
+                {
+                    var disciplina = new Disciplina(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.GetInt32(3)
+                    );
 
+                    // Preenche o relacionamento de chave estrangeira
+                    disciplina.Curso = Curso.ObterPorId(disciplina.IdCurso);
 
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
+                    disciplinas.Add(disciplina);
+                }
 
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
-            }
-
+            return disciplinas;
         }
     }
+}

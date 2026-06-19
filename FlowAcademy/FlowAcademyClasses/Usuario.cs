@@ -1,166 +1,239 @@
-﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Mysqlx.Notice.Warning.Types;
 
 namespace FlowAcademyClasses
 {
-    internal class Usuario
+    public class Usuario
     {
+        // Propriedades
+        public int IdUsuario { get; set; }
+        public string? Nome { get; set; }
+        public string? Email { get; set; }
+        public string? Senha { get; set; }
+        public string? NivelAcesso { get; set; } // 'administrador', 'professor', 'aluno'
+        public string? Status { get; set; }
+        public DateTime DataCriacao { get; set; }
+
+        // Construtor vazio
         public Usuario()
         {
-
+            IdUsuario = 0;
+            Nome = "";
+            Email = "";
+            Senha = "";
+            NivelAcesso = "aluno";
+            Status = "ativo";
+            DataCriacao = DateTime.Now;
         }
 
-        public Usuario(int idUsuario, string nome, string email, string senha, string perfil, string status, DateTime ultimo_login, DateTime created_at)
+        // Construtor com ID
+        public Usuario(int idUsuario)
+        {
+            IdUsuario = idUsuario;
+        }
+
+        // Construtor completo
+        public Usuario(int idUsuario, string? nome, string? email, string? senha, string? nivelAcesso, string? status, DateTime dataCriacao)
         {
             IdUsuario = idUsuario;
             Nome = nome;
             Email = email;
             Senha = senha;
-            Perfil = perfil;
+            NivelAcesso = nivelAcesso;
             Status = status;
-            Ultimo_login = ultimo_login;
-            Created_at = created_at;
+            DataCriacao = dataCriacao;
         }
 
-        public Usuario(string email, string senha)
-        { 
-
-            Email = email;
-            Senha = senha;
-        }
-
-
-
-        public int IdUsuario { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public string Perfil { get; set; }
-        public string Status { get; set; }
-        public DateTime Ultimo_login { get; set; }
-        public DateTime Created_at { get; set; }
-
-
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
-
+            bool inserido = false;
             var cmd = Banco.Abrir();
 
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_insert";
 
-            cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spemail", Email);
+                cmd.Parameters.AddWithValue("spsenha", Senha); // Idealmente criptografada
+                cmd.Parameters.AddWithValue("spnivelacesso", NivelAcesso);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-            cmd.CommandText = "sp_inserir_usuario";
+                IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdUsuario > 0;
 
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_nome", Nome);
-
-            cmd.Parameters.AddWithValue("p_email", Email);
-
-            cmd.Parameters.AddWithValue("p_senha", Senha);
-
-            cmd.Parameters.AddWithValue("p_perfil", Perfil);
-
-            cmd.Parameters.AddWithValue("p_status", Status);
-
-
-            return cmd.ExecuteNonQuery() > 0;
-
+            return inserido;
         }
 
-
-        // ====================
+        // ==========================
         // ATUALIZAR
-        // ====================
-
+        // ==========================
         public bool Atualizar()
         {
+            bool atualizado = false;
+            if (IdUsuario < 1) return atualizado;
 
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_update";
 
-            cmd.CommandText = "sp_atualizar_usuario";
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spemail", Email);
+                cmd.Parameters.AddWithValue("spsenha", Senha);
+                cmd.Parameters.AddWithValue("spnivelacesso", NivelAcesso);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
-            cmd.Parameters.AddWithValue("p_id", IdUsuario);
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_nome", Nome);
-
-            cmd.Parameters.AddWithValue("p_email", Email);
-
-            cmd.Parameters.AddWithValue("p_senha", Senha);
-
-            cmd.Parameters.AddWithValue("p_perfil", Perfil);
-
-            cmd.Parameters.AddWithValue("p_status", Status);
-
-
-            return cmd.ExecuteNonQuery() > 0;
-
+            return atualizado;
         }
 
-
-        // ====================
+        // ==========================
         // EXCLUIR
-        // ====================
-
+        // ==========================
         public bool Excluir()
         {
+            bool excluido = false;
+            if (IdUsuario < 1) return excluido;
 
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_delete";
 
-            cmd.CommandText = "sp_excluir_usuario";
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
 
-            cmd.Parameters.AddWithValue("p_id", IdUsuario);
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
+                cmd.Connection.Close();
+            }
 
-            return cmd.ExecuteNonQuery() > 0;
-
+            return excluido;
         }
 
-
-        // ====================
-        // LISTAR
-        // ====================
-
-        public List<Usuario> ObterListar()
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Usuario ObterPorId(int idUsuario)
         {
-
-            List<Usuario> user= new ();
-
+            Usuario usuario = new();
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.Text;
-
-            cmd.CommandText = $"select * from usuarios order by nome";
-
-            var dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                user.Add(new(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetString(3),
-                    dr.GetString(4),
-                    dr.GetString(5),
-                    dr.GetDateTime(6),
-                    dr.GetDateTime(7)
-                    ));
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_getbyid";
+                cmd.Parameters.AddWithValue("spidusuario", idUsuario);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    usuario = new Usuario(
+                        dr.GetInt32(0),
+                        dr.IsDBNull(1) ? null : dr.GetString(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+                        dr.IsDBNull(5) ? null : dr.GetString(5),
+                        dr.GetDateTime(6)
+                    );
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
             }
-            dr.Close();
-            cmd.Connection.Close();
-            return user;
+
+            return usuario;
+        }
+
+        // ==========================
+        // LISTAR
+        // ==========================
+        public static List<Usuario> ObterLista()
+        {
+            List<Usuario> usuarios = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_getall";
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    usuarios.Add(new Usuario(
+                        dr.GetInt32(0),
+                        dr.IsDBNull(1) ? null : dr.GetString(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+                        dr.IsDBNull(5) ? null : dr.GetString(5),
+                        dr.GetDateTime(6)
+                    ));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return usuarios;
+        }
+
+        // Efetua login validando as credenciais por procedure externa
+        public static Usuario EfetuarLogin(string email, string senha)
+        {
+            Usuario usuario = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_usuario_login";
+                cmd.Parameters.AddWithValue("spemail", email);
+                cmd.Parameters.AddWithValue("spsenha", senha);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    usuario = new Usuario(
+                        dr.GetInt32(0),
+                        dr.IsDBNull(1) ? null : dr.GetString(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+                        dr.IsDBNull(5) ? null : dr.GetString(5),
+                        dr.GetDateTime(6)
+                    );
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return usuario;
         }
     }
 }

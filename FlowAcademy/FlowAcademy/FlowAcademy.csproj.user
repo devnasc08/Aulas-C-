@@ -34,6 +34,9 @@
     <Compile Update="FrmProfessor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmTurma.cs">
       <SubType>Form</SubType>
     </Compile>

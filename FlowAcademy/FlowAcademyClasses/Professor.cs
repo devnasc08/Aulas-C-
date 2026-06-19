@@ -1,146 +1,193 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class Professor
+    public class Professor
     {
-
-        // ============================
-        // ATRIBUTOS / PROPRIEDADES
-        // ============================
-
+        // Propriedades
         public int IdProfessor { get; set; }
-
         public int IdUsuario { get; set; }
+        public string? Especializacao { get; set; }
+        public string? Titulacao { get; set; } // 'graduado', 'mestre', 'doutor'
 
-        public string Cpf { get; set; }
+        // Relacionamento com Usuário
+        public Usuario? Usuario { get; set; }
 
-        public string Especialidade { get; set; }
-
-
-        // ============================
-        // CONSTRUTOR VAZIO
-        // ============================
-
+        // Construtor vazio
         public Professor()
         {
-
+            IdProfessor = 0;
+            IdUsuario = 0;
+            Especializacao = "";
+            Titulacao = "graduado";
         }
 
-
-        // ============================
-        // CONSTRUTOR COMPLETO
-        // ============================
-
-        public Professor(
-            int idProfessor,
-            int idUsuario,
-            string cpf,
-            string especialidade)
+        // Construtor com ID
+        public Professor(int idProfessor)
         {
             IdProfessor = idProfessor;
+        }
 
+        // Construtor completo
+        public Professor(int idProfessor, int idUsuario, string? especializacao, string? titulacao)
+        {
+            IdProfessor = idProfessor;
             IdUsuario = idUsuario;
-
-            Cpf = cpf;
-
-            Especialidade = especialidade;
+            Especializacao = especializacao;
+            Titulacao = titulacao;
         }
 
-
-        // ============================
+        // ==========================
         // INSERIR
-        // ============================
-
-        public void Inserir()
+        // ==========================
+        public bool Inserir()
         {
+            bool inserido = false;
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_professor_insert";
 
-            cmd.CommandText = "sp_professor_insert";
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("spespecializacao", Especializacao);
+                cmd.Parameters.AddWithValue("sptitulacao", Titulacao);
 
-            cmd.Parameters.AddWithValue("p_id_usuario", IdUsuario);
+                IdProfessor = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdProfessor > 0;
 
-            cmd.Parameters.AddWithValue("p_cpf", Cpf);
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_especialidade", Especialidade);
-
-            cmd.ExecuteNonQuery();
-
-            cmd.Connection.Close();
+            return inserido;
         }
 
-
-        // ============================
-        // ALTERAR
-        // ============================
-
-        public void Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
         {
+            bool atualizado = false;
+            if (IdProfessor < 1) return atualizado;
+
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_professor_update";
 
-            cmd.CommandText = "sp_professor_update";
+                cmd.Parameters.AddWithValue("spidprofessor", IdProfessor);
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("spespecializacao", Especializacao);
+                cmd.Parameters.AddWithValue("sptitulacao", Titulacao);
 
-            cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
-            cmd.Parameters.AddWithValue("p_cpf", Cpf);
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_especialidade", Especialidade);
-
-            cmd.ExecuteNonQuery();
-
-            cmd.Connection.Close();
+            return atualizado;
         }
 
-
-        // ============================
+        // ==========================
         // EXCLUIR
-        // ============================
-
-        public void Excluir()
+        // ==========================
+        public bool Excluir()
         {
+            bool excluido = false;
+            if (IdProfessor < 1) return excluido;
+
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_professor_delete";
 
-            cmd.CommandText = "sp_professor_delete";
+                cmd.Parameters.AddWithValue("spidprofessor", IdProfessor);
 
-            cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
-            cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+            }
 
-            cmd.Connection.Close();
+            return excluido;
         }
 
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Professor ObterPorId(int idProfessor)
+        {
+            Professor professor = new();
+            var cmd = Banco.Abrir();
 
-        // ============================
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_professor_getbyid";
+                cmd.Parameters.AddWithValue("spidprofessor", idProfessor);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    professor = new Professor(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3)
+                    );
+
+                    professor.Usuario = Usuario.ObterPorId(professor.IdUsuario);
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return professor;
+        }
+
+        // ==========================
         // LISTAR
-        // ============================
-
-        public static DataTable Listar()
+        // ==========================
+        public static List<Professor> ObterLista()
         {
-            DataTable tabela = new DataTable();
-
+            List<Professor> professores = new();
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_professor_getall";
 
-            cmd.CommandText = "sp_professor_select";
+                var dr = cmd.ExecuteReader();
 
-            tabela.Load(cmd.ExecuteReader());
+                while (dr.Read())
+                {
+                    var prof = new Professor(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3)
+                    );
 
-            cmd.Connection.Close();
+                    prof.Usuario = Usuario.ObterPorId(prof.IdUsuario);
+                    professores.Add(prof);
+                }
 
-            return tabela;
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return professores;
         }
-
     }
 }

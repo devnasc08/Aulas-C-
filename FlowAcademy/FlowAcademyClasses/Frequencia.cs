@@ -1,20 +1,13 @@
-﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
     public class Frequencia
     {
-        // ====================================
-        // PROPRIEDADES
-        // Correspondem à tabela frequencia
-        // ====================================
-
+        // Propriedades
         public int IdFrequencia { get; set; }
 
         public int IdMatricula { get; set; }
@@ -28,22 +21,32 @@ namespace FlowAcademyClasses
         public decimal Percentual { get; set; }
 
 
+        // Objetos de relacionamento
+        public Matricula? Matricula { get; set; }
 
-        // ====================================
-        // CONSTRUTOR VAZIO
-        // ====================================
+        public Disciplina? Disciplina { get; set; }
 
+
+        // Construtor vazio
         public Frequencia()
         {
-
+            IdFrequencia = 0;
+            IdMatricula = 0;
+            IdDisciplina = 0;
+            TotalAulas = 0;
+            Presencas = 0;
+            Percentual = 0;
         }
 
 
+        // Construtor com ID
+        public Frequencia(int idFrequencia)
+        {
+            IdFrequencia = idFrequencia;
+        }
 
-        // ====================================
-        // CONSTRUTOR COMPLETO
-        // ====================================
 
+        // Construtor completo
         public Frequencia(
             int idFrequencia,
             int idMatricula,
@@ -52,303 +55,212 @@ namespace FlowAcademyClasses
             int presencas,
             decimal percentual)
         {
-
             IdFrequencia = idFrequencia;
-
             IdMatricula = idMatricula;
-
             IdDisciplina = idDisciplina;
-
             TotalAulas = totalAulas;
-
             Presencas = presencas;
-
             Percentual = percentual;
-
         }
 
 
-
-        // ====================================
-        // CALCULAR PERCENTUAL
-        // Fórmula:
-        // (Presencas * 100) / TotalAulas
-        // ====================================
-
-        public void CalcularPercentual()
-        {
-
-            if (TotalAulas > 0)
-            {
-
-                Percentual =
-                    (Presencas * 100m)
-                    / TotalAulas;
-
-            }
-
-            else
-            {
-
-                Percentual = 0;
-
-            }
-
-        }
-
-
-
-        // ====================================
-        // INSERIR FREQUÊNCIA
-        // ====================================
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
+            bool inserido = false;
 
-            try
+            CalcularPercentual();
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                CalcularPercentual();
+                cmd.CommandText = "sp_frequencia_insert";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
+                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
+                cmd.Parameters.AddWithValue("sptotalaulas", TotalAulas);
+                cmd.Parameters.AddWithValue("sppresencas", Presencas);
+                cmd.Parameters.AddWithValue("sppercentual", Percentual);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                IdFrequencia = Convert.ToInt32(cmd.ExecuteScalar());
 
-                cmd.CommandText =
-                    "sp_frequencia_inserir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_matricula",
-                    IdMatricula);
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_disciplina",
-                    IdDisciplina);
-
-                cmd.Parameters.AddWithValue(
-                    "p_total_aulas",
-                    TotalAulas);
-
-                cmd.Parameters.AddWithValue(
-                    "p_presencas",
-                    Presencas);
-
-                cmd.Parameters.AddWithValue(
-                    "p_percentual",
-                    Percentual);
-
-
-                cmd.ExecuteNonQuery();
+                inserido = IdFrequencia > 0;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return inserido;
         }
 
 
-
-        // ====================================
-        // ALTERAR FREQUÊNCIA
-        // ====================================
-
-        public bool Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
         {
+            bool atualizado = false;
 
-            try
+            if (IdFrequencia < 1)
+                return atualizado;
+
+            CalcularPercentual();
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                CalcularPercentual();
+                cmd.CommandText = "sp_frequencia_update";
 
-                var cmd = Banco.Abrir();
+                cmd.Parameters.AddWithValue("spidfrequencia", IdFrequencia);
+                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
+                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
+                cmd.Parameters.AddWithValue("sptotalaulas", TotalAulas);
+                cmd.Parameters.AddWithValue("sppresencas", Presencas);
+                cmd.Parameters.AddWithValue("sppercentual", Percentual);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
-
-                cmd.CommandText =
-                    "sp_frequencia_alterar";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_frequencia",
-                    IdFrequencia);
-
-                cmd.Parameters.AddWithValue(
-                    "p_total_aulas",
-                    TotalAulas);
-
-                cmd.Parameters.AddWithValue(
-                    "p_presencas",
-                    Presencas);
-
-                cmd.Parameters.AddWithValue(
-                    "p_percentual",
-                    Percentual);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return atualizado;
         }
 
 
-
-        // ====================================
-        // EXCLUIR FREQUÊNCIA
-        // ====================================
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
+            bool excluido = false;
 
-            try
+            if (IdFrequencia < 1)
+                return excluido;
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                var cmd = Banco.Abrir();
+                cmd.CommandText = "sp_frequencia_delete";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spidfrequencia", IdFrequencia);
 
-                cmd.CommandText =
-                    "sp_frequencia_excluir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_frequencia",
-                    IdFrequencia);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
                 cmd.Connection.Close();
-
-                return true;
-
             }
 
-            catch
-            {
-
-                return false;
-
-            }
-
+            return excluido;
         }
 
 
-
-        // ====================================
-        // CONSULTAR POR ID
-        // ====================================
-
-        public DataTable ConsultarPorId()
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Frequencia ObterPorId(int idFrequencia)
         {
+            Frequencia frequencia = new();
 
-            DataTable dt =
-                new DataTable();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                var cmd = Banco.Abrir();
+                cmd.CommandText = "sp_frequencia_getbyid";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spidfrequencia", idFrequencia);
 
-                cmd.CommandText =
-                    "sp_frequencia_consultar_id";
+                var dr = cmd.ExecuteReader();
 
+                if (dr.Read())
+                {
+                    frequencia = new Frequencia(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetInt32(2),
+                        dr.GetInt32(3),
+                        dr.GetInt32(4),
+                        dr.IsDBNull(5) ? 0 : dr.GetDecimal(5)
+                    );
 
-                cmd.Parameters.AddWithValue(
-                    "p_id_frequencia",
-                    IdFrequencia);
+                    // Carrega os relacionamentos
+                    frequencia.Matricula = Matricula.ObterPorId(frequencia.IdMatricula);
+                    frequencia.Disciplina = Disciplina.ObterPorId(frequencia.IdDisciplina);
+                }
 
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
+                dr.Close();
 
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
+            return frequencia;
         }
 
 
-
-        // ====================================
-        // LISTAR TODAS AS FREQUÊNCIAS
-        // ====================================
-
-        public static DataTable Listar()
+        // ==========================
+        // LISTAR
+        // ==========================
+        public static List<Frequencia> ObterLista()
         {
+            List<Frequencia> frequencias = new();
 
-            DataTable dt =
-                new DataTable();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                var cmd = Banco.Abrir();
+                cmd.CommandText = "sp_frequencia_getall";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                var dr = cmd.ExecuteReader();
 
-                cmd.CommandText =
-                    "sp_frequencia_listar";
+                while (dr.Read())
+                {
+                    var frequencia = new Frequencia(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetInt32(2),
+                        dr.GetInt32(3),
+                        dr.GetInt32(4),
+                        dr.IsDBNull(5) ? 0 : dr.GetDecimal(5)
+                    );
 
+                    frequencia.Matricula = Matricula.ObterPorId(frequencia.IdMatricula);
+                    frequencia.Disciplina = Disciplina.ObterPorId(frequencia.IdDisciplina);
 
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
+                    frequencias.Add(frequencia);
+                }
 
-                da.Fill(dt);
+                dr.Close();
 
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
+            return frequencias;
         }
 
 
-
-
-
+        // ==========================
+        // M�TODOS INTERNOS
+        // ==========================
+        public void CalcularPercentual()
+        {
+            if (TotalAulas > 0)
+                Percentual = (Presencas * 100m) / TotalAulas;
+            else
+                Percentual = 0;
+        }
     }
 }

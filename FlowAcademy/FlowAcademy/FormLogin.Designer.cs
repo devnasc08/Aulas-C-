@@ -31,7 +31,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            button1 = new Button();
+            btnEntrar = new Button();
             txtEmail = new TextBox();
             txtSenha = new TextBox();
             SuspendLayout();
@@ -66,14 +66,14 @@
             label3.TabIndex = 2;
             label3.Text = "Senha";
             // 
-            // button1
+            // btnEntrar
             // 
-            button1.Location = new Point(342, 343);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "Entrar";
-            button1.UseVisualStyleBackColor = true;
+            btnEntrar.Location = new Point(342, 343);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(75, 23);
+            btnEntrar.TabIndex = 3;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = true;
             // 
             // txtEmail
             // 
@@ -96,7 +96,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
-            Controls.Add(button1);
+            Controls.Add(btnEntrar);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -111,7 +111,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Button button1;
+        private Button btnEntrar;
         private TextBox txtEmail;
         private TextBox txtSenha;
     }

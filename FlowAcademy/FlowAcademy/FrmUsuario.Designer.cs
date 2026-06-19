@@ -29,248 +29,227 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
-            label1 = new Label();
-            button1 = new Button();
-            label2 = new Label();
-            button2 = new Button();
-            label3 = new Label();
-            button3 = new Button();
             label4 = new Label();
-            comboBox1 = new ComboBox();
+            cmbPerfil = new ComboBox();
             label5 = new Label();
-            comboBox2 = new ComboBox();
-            btnCancelar = new Button();
-            btnExcluir = new Button();
-            btnPesquisar = new Button();
-            btnEdit = new Button();
-            btnAdd = new Button();
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            cmbStatus = new ComboBox();
+            dgvUsers = new DataGridView();
+            txtSenha = new TextBox();
+            txtEmail = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            txtNome = new TextBox();
+            btnEditar = new Button();
+            btnSalvar = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(65, 46);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(65, 64);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(65, 100);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 0;
-            label2.Text = "label1";
-            // 
-            // button2
-            // 
-            button2.Location = new Point(65, 118);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "button1";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(65, 153);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 0;
-            label3.Text = "label1";
-            // 
-            // button3
-            // 
-            button3.Location = new Point(65, 171);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 1;
-            button3.Text = "button1";
-            button3.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(65, 213);
             label4.Name = "label4";
-            label4.Size = new Size(38, 15);
+            label4.Size = new Size(34, 15);
             label4.TabIndex = 2;
-            label4.Text = "label4";
+            label4.Text = "Perfil";
             // 
-            // comboBox1
+            // cmbPerfil
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(65, 231);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 3;
+            cmbPerfil.FormattingEnabled = true;
+            cmbPerfil.Location = new Point(65, 231);
+            cmbPerfil.Name = "cmbPerfil";
+            cmbPerfil.Size = new Size(121, 23);
+            cmbPerfil.TabIndex = 3;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(65, 268);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(39, 15);
             label5.TabIndex = 2;
-            label5.Text = "label4";
+            label5.Text = "Status";
             // 
-            // comboBox2
+            // cmbStatus
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(65, 286);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(121, 23);
-            comboBox2.TabIndex = 3;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(65, 286);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(121, 23);
+            cmbStatus.TabIndex = 3;
             // 
-            // btnCancelar
+            // dgvUsers
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(531, 314);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(99, 67);
-            btnCancelar.TabIndex = 18;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnCancelar.UseVisualStyleBackColor = true;
+            dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsers.Location = new Point(99, 430);
+            dgvUsers.Name = "dgvUsers";
+            dgvUsers.Size = new Size(530, 150);
+            dgvUsers.TabIndex = 19;
             // 
-            // btnExcluir
+            // txtSenha
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Location = new Point(412, 314);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(99, 67);
-            btnExcluir.TabIndex = 17;
-            btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnExcluir.UseVisualStyleBackColor = true;
+            txtSenha.Location = new Point(65, 151);
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(211, 23);
+            txtSenha.TabIndex = 22;
             // 
-            // btnPesquisar
+            // txtEmail
             // 
-            btnPesquisar.FlatAppearance.BorderSize = 0;
-            btnPesquisar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnPesquisar.FlatAppearance.MouseOverBackColor = Color.DodgerBlue;
-            btnPesquisar.FlatStyle = FlatStyle.Flat;
-            btnPesquisar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnPesquisar.ForeColor = Color.Black;
-            btnPesquisar.Location = new Point(308, 314);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(99, 67);
-            btnPesquisar.TabIndex = 16;
-            btnPesquisar.Text = "&Pesquisar";
-            btnPesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnPesquisar.UseVisualStyleBackColor = true;
+            txtEmail.Location = new Point(65, 102);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(211, 23);
+            txtEmail.TabIndex = 23;
             // 
-            // btnEdit
+            // label3
             // 
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnEdit.ForeColor = Color.Black;
-            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.Location = new Point(204, 314);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(99, 67);
-            btnEdit.TabIndex = 15;
-            btnEdit.Text = "&Editar";
-            btnEdit.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnEdit.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F);
+            label3.Location = new Point(65, 133);
+            label3.Name = "label3";
+            label3.Size = new Size(39, 15);
+            label3.TabIndex = 21;
+            label3.Text = "Senha";
             // 
-            // btnAdd
+            // label2
             // 
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnAdd.ForeColor = Color.Black;
-            btnAdd.Location = new Point(100, 314);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(99, 67);
-            btnAdd.TabIndex = 14;
-            btnAdd.Text = "&Adiocionar";
-            btnAdd.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnAdd.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F);
+            label2.Location = new Point(65, 84);
+            label2.Name = "label2";
+            label2.Size = new Size(36, 15);
+            label2.TabIndex = 20;
+            label2.Text = "Email";
             // 
-            // dataGridView1
+            // label1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(100, 405);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(530, 150);
-            dataGridView1.TabIndex = 19;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F);
+            label1.Location = new Point(65, 40);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 15);
+            label1.TabIndex = 20;
+            label1.Text = "Nome";
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(65, 58);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(211, 23);
+            txtNome.TabIndex = 23;
+            // 
+            // btnEditar
+            // 
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
+            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
+            btnEditar.Location = new Point(247, 360);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(97, 64);
+            btnEditar.TabIndex = 27;
+            btnEditar.Text = "&Editar";
+            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.FlatAppearance.BorderSize = 0;
+            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
+            btnSalvar.Location = new Point(99, 360);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(97, 64);
+            btnSalvar.TabIndex = 26;
+            btnSalvar.Text = "&Salvar";
+            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            button4.ForeColor = Color.Black;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(392, 357);
+            button4.Name = "button4";
+            button4.Size = new Size(93, 67);
+            button4.TabIndex = 25;
+            button4.Text = "&Cancelar";
+            button4.TextImageRelation = TextImageRelation.ImageAboveText;
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Red;
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            button5.ForeColor = Color.Black;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(536, 360);
+            button5.Name = "button5";
+            button5.Size = new Size(93, 67);
+            button5.TabIndex = 24;
+            button5.Text = "E&xcluir";
+            button5.TextImageRelation = TextImageRelation.ImageAboveText;
+            button5.UseVisualStyleBackColor = true;
             // 
             // FrmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 640);
-            Controls.Add(dataGridView1);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnExcluir);
-            Controls.Add(btnPesquisar);
-            Controls.Add(btnEdit);
-            Controls.Add(btnAdd);
-            Controls.Add(comboBox2);
-            Controls.Add(label5);
-            Controls.Add(comboBox1);
-            Controls.Add(label4);
-            Controls.Add(button3);
-            Controls.Add(label3);
-            Controls.Add(button2);
-            Controls.Add(label2);
-            Controls.Add(button1);
+            Controls.Add(btnEditar);
+            Controls.Add(btnSalvar);
+            Controls.Add(button4);
+            Controls.Add(button5);
+            Controls.Add(txtSenha);
+            Controls.Add(txtNome);
+            Controls.Add(txtEmail);
             Controls.Add(label1);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(dgvUsers);
+            Controls.Add(cmbStatus);
+            Controls.Add(label5);
+            Controls.Add(cmbPerfil);
+            Controls.Add(label4);
             Name = "FrmUsuario";
             Text = "FrmUsuario";
             Load += FrmUsuario_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUsers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private Button button1;
-        private Label label2;
-        private Button button2;
-        private Label label3;
-        private Button button3;
         private Label label4;
         private ComboBox comboBox1;
         private Label label5;
-        private ComboBox comboBox2;
-        private Button btnCancelar;
-        private Button btnExcluir;
-        private Button btnPesquisar;
-        private Button btnEdit;
-        private Button btnAdd;
-        private DataGridView dataGridView1;
+        private ComboBox cmbStatus;
+        private DataGridView dgvUsers;
+        private TextBox txtSenha;
+        private TextBox txtEmail;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox txtNome;
+        private ComboBox cmbPerfil;
+        private Button btnEditar;
+        private Button btnSalvar;
+        private Button button4;
+        private Button button5;
     }
 }

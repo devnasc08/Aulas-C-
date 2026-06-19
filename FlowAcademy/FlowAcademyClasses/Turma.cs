@@ -1,216 +1,222 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class Turma
+    public class Turma
     {
-
-        // ============================
-        // ATRIBUTOS / PROPRIEDADES
-        // ============================
-
+        // Propriedades
         public int IdTurma { get; set; }
-
         public int IdCurso { get; set; }
+        public string? CodigoTurma { get; set; }
+        public string? Periodo { get; set; } // 'matutino', 'vespertino', 'noturno'
+        public int VagasTotais { get; set; }
+        public int VagasPreenchidas { get; set; }
+        public string? Status { get; set; }
 
-        public int IdProfessor { get; set; }
+        // Objetos de Relacionamento
+        public Curso? Curso { get; set; }
 
-        public string CodigoTurma { get; set; }
-
-        public string Turno { get; set; }
-
-        public int CapacidadeMaxima { get; set; }
-
-        public DateTime DataInicio { get; set; }
-
-        public DateTime DataFim { get; set; }
-
-        public string Status { get; set; }
-
-
-        // ============================
-        // CONSTRUTOR VAZIO
-        // ============================
-
+        // Construtor vazio
         public Turma()
         {
-
+            IdTurma = 0;
+            IdCurso = 0;
+            CodigoTurma = "";
+            VagasTotais = 0;
+            VagasPreenchidas = 0;
+            Status = "planejada";
         }
 
-
-        // ============================
-        // CONSTRUTOR COMPLETO
-        // ============================
-
-        public Turma(
-            int idTurma,
-            int idCurso,
-            int idProfessor,
-            string codigoTurma,
-            string turno,
-            int capacidadeMaxima,
-            DateTime dataInicio,
-            DateTime dataFim,
-            string status)
+        // Construtor com ID
+        public Turma(int idTurma)
         {
             IdTurma = idTurma;
+        }
 
+        // Construtor completo
+        public Turma(int idTurma, int idCurso, string? codigoTurma, string? periodo, int vagasTotais, int vagasPreenchidas, string? status)
+        {
+            IdTurma = idTurma;
             IdCurso = idCurso;
-
-            IdProfessor = idProfessor;
-
             CodigoTurma = codigoTurma;
-
-            Turno = turno;
-
-            CapacidadeMaxima = capacidadeMaxima;
-
-            DataInicio = dataInicio;
-
-            DataFim = dataFim;
-
+            Periodo = periodo;
+            VagasTotais = vagasTotais;
+            VagasPreenchidas = vagasPreenchidas;
             Status = status;
         }
 
-
-        // ============================
-        // VERIFICAR STATUS
-        // ============================
-
-        /*
-         * Se a data atual ultrapassar
-         * a data final da turma,
-         * ela serÃ¡ encerrada.
-         */
-
-        public void VerificarStatus()
-        {
-            if (DateTime.Now.Date > DataFim.Date)
-            {
-                Status = "encerrada";
-            }
-            else
-            {
-                Status = "ativa";
-            }
-        }
-
-
-        // ============================
+        // ==========================
         // INSERIR
-        // ============================
-
-        public void Inserir()
+        // ==========================
+        public bool Inserir()
         {
+            bool inserido = false;
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_turma_insert";
 
-            cmd.CommandText = "sp_turma_insert";
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("spcodigoturma", CodigoTurma);
+                cmd.Parameters.AddWithValue("spperiodo", Periodo);
+                cmd.Parameters.AddWithValue("spvagastotais", VagasTotais);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-            cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
+                IdTurma = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdTurma > 0;
 
-            cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_codigo_turma", CodigoTurma);
-
-            cmd.Parameters.AddWithValue("p_turno", Turno);
-
-            cmd.Parameters.AddWithValue("p_capacidade_maxima", CapacidadeMaxima);
-
-            cmd.Parameters.AddWithValue("p_data_inicio", DataInicio);
-
-            cmd.Parameters.AddWithValue("p_data_fim", DataFim);
-
-            cmd.Parameters.AddWithValue("p_status", Status);
-
-            cmd.ExecuteNonQuery();
-
-            cmd.Connection.Close();
+            return inserido;
         }
 
-
-        // ============================
-        // ALTERAR
-        // ============================
-
-        public void Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
         {
+            bool atualizado = false;
+            if (IdTurma < 1) return atualizado;
+
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_turma_update";
 
-            cmd.CommandText = "sp_turma_update";
+                cmd.Parameters.AddWithValue("spidturma", IdTurma);
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("spcodigoturma", CodigoTurma);
+                cmd.Parameters.AddWithValue("spperiodo", Periodo);
+                cmd.Parameters.AddWithValue("spvagastotais", VagasTotais);
+                cmd.Parameters.AddWithValue("spvagaspreenchidas", VagasPreenchidas);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-            cmd.Parameters.AddWithValue("p_id_turma", IdTurma);
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
-            cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
+                cmd.Connection.Close();
+            }
 
-            cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
-
-            cmd.Parameters.AddWithValue("p_codigo_turma", CodigoTurma);
-
-            cmd.Parameters.AddWithValue("p_turno", Turno);
-
-            cmd.Parameters.AddWithValue("p_capacidade_maxima", CapacidadeMaxima);
-
-            cmd.Parameters.AddWithValue("p_data_inicio", DataInicio);
-
-            cmd.Parameters.AddWithValue("p_data_fim", DataFim);
-
-            cmd.Parameters.AddWithValue("p_status", Status);
-
-            cmd.ExecuteNonQuery();
-
-            cmd.Connection.Close();
+            return atualizado;
         }
 
-
-        // ============================
+        // ==========================
         // EXCLUIR
-        // ============================
-
-        public void Excluir()
+        // ==========================
+        public bool Excluir()
         {
+            bool excluido = false;
+            if (IdTurma < 1) return excluido;
+
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_turma_delete";
 
-            cmd.CommandText = "sp_turma_delete";
+                cmd.Parameters.AddWithValue("spidturma", IdTurma);
 
-            cmd.Parameters.AddWithValue("p_id_turma", IdTurma);
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
-            cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+            }
 
-            cmd.Connection.Close();
+            return excluido;
         }
 
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Turma ObterPorId(int idTurma)
+        {
+            Turma turma = new();
+            var cmd = Banco.Abrir();
 
-        // ============================
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_turma_getbyid";
+                cmd.Parameters.AddWithValue("spidturma", idTurma);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    turma = new Turma(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.GetInt32(4),
+                        dr.GetInt32(5),
+                        dr.IsDBNull(6) ? null : dr.GetString(6)
+                    );
+
+                    turma.Curso = Curso.ObterPorId(turma.IdCurso);
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return turma;
+        }
+
+        // ==========================
         // LISTAR
-        // ============================
-
-        public static DataTable Listar()
+        // ==========================
+        public static List<Turma> ObterLista()
         {
-            DataTable tabela = new DataTable();
-
+            List<Turma> turmas = new();
             var cmd = Banco.Abrir();
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_turma_getall";
 
-            cmd.CommandText = "sp_turma_select";
+                var dr = cmd.ExecuteReader();
 
-            tabela.Load(cmd.ExecuteReader());
+                while (dr.Read())
+                {
+                    var turma = new Turma(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.GetInt32(4),
+                        dr.GetInt32(5),
+                        dr.IsDBNull(6) ? null : dr.GetString(6)
+                    );
 
-            cmd.Connection.Close();
+                    turma.Curso = Curso.ObterPorId(turma.IdCurso);
+                    turmas.Add(turma);
+                }
 
-            return tabela;
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return turmas;
         }
 
+        // Lógica de verificação de vagas solicitada pelo método da Matrícula
+        public bool PossuiVaga()
+        {
+            if (IdTurma < 1) return false;
+
+            // Re-obtém os dados para checar de forma atualizada no banco
+            var t = ObterPorId(IdTurma);
+            return t.VagasPreenchidas < t.VagasTotais;
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class AuthService
+    public class AuthService
     {
     }
 }

@@ -1,282 +1,192 @@
-﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
-    internal class Curso
+    public class Curso
     {
-        // ====================================
-        // PROPRIEDADES
-        // Correspondem à tabela cursos
-        // ====================================
-
+        // Propriedades
         public int IdCurso { get; set; }
-
-        public string Nome { get; set; }
-
-        public string Descricao { get; set; }
-
+        public string? Nome { get; set; }
+        public string? Descricao { get; set; }
         public int CargaHoraria { get; set; }
+        public string? Status { get; set; }
 
-        public string Status { get; set; }
-
-
-        // ====================================
-        // CONSTRUTOR VAZIO
-        // ====================================
-
+        // Construtor vazio
         public Curso()
         {
-
+            IdCurso = 0;
+            Nome = "";
+            Descricao = "";
+            CargaHoraria = 0;
+            Status = "ativo";
         }
 
-
-        // ====================================
-        // CONSTRUTOR COMPLETO
-        // ====================================
-
-        public Curso(
-            int idCurso,
-            string nome,
-            string descricao,
-            int cargaHoraria,
-            string status)
+        // Construtor com ID
+        public Curso(int idCurso)
         {
             IdCurso = idCurso;
+        }
 
+        // Construtor completo
+        public Curso(int idCurso, string? nome, string? descricao, int cargaHoraria, string? status)
+        {
+            IdCurso = idCurso;
             Nome = nome;
-
             Descricao = descricao;
-
             CargaHoraria = cargaHoraria;
-
             Status = status;
         }
 
-
-        // ====================================
-        // INSERIR CURSO
-        // Chama a procedure:
-        // sp_curso_inserir
-        // ====================================
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
-            try
+            bool inserido = false;
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_curso_insert";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spdescricao", Descricao);
+                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-                cmd.CommandText =
-                    "sp_curso_inserir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_nome",
-                    Nome);
-
-                cmd.Parameters.AddWithValue(
-                    "p_descricao",
-                    Descricao);
-
-                cmd.Parameters.AddWithValue(
-                    "p_carga_horaria",
-                    CargaHoraria);
-
-
-                cmd.ExecuteNonQuery();
+                IdCurso = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdCurso > 0;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
-
+            return inserido;
         }
 
-
-        // ====================================
-        // ALTERAR CURSO
-        // ====================================
-
-        public bool Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool Atualizar()
         {
-            try
+            bool atualizado = false;
+            if (IdCurso < 1) return atualizado;
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_curso_update";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("spnome", Nome);
+                cmd.Parameters.AddWithValue("spdescricao", Descricao);
+                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
+                cmd.Parameters.AddWithValue("spstatus", Status);
 
-                cmd.CommandText =
-                    "sp_curso_alterar";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_curso",
-                    IdCurso);
-
-                cmd.Parameters.AddWithValue(
-                    "p_nome",
-                    Nome);
-
-                cmd.Parameters.AddWithValue(
-                    "p_descricao",
-                    Descricao);
-
-                cmd.Parameters.AddWithValue(
-                    "p_carga_horaria",
-                    CargaHoraria);
-
-                cmd.Parameters.AddWithValue(
-                    "p_status",
-                    Status);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
-
+            return atualizado;
         }
 
-
-        // ====================================
-        // EXCLUIR CURSO
-        // ====================================
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
-            try
+            bool excluido = false;
+            if (IdCurso < 1) return excluido;
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_curso_delete";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
 
-                cmd.CommandText =
-                    "sp_curso_excluir";
-
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_curso",
-                    IdCurso);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
-
+            return excluido;
         }
 
-
-        // ====================================
-        // CONSULTAR CURSO POR ID
-        // ====================================
-
-        public DataTable ConsultarPorId()
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Curso ObterPorId(int idCurso)
         {
-            DataTable dt =
-                new DataTable();
+            Curso curso = new();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_curso_getbyid";
+                cmd.Parameters.AddWithValue("spidcurso", idCurso);
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                var dr = cmd.ExecuteReader();
 
-                cmd.CommandText =
-                    "sp_curso_consultar_id";
+                if (dr.Read())
+                {
+                    curso = new Curso(
+                        dr.GetInt32(0),
+                        dr.IsDBNull(1) ? null : dr.GetString(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.GetInt32(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4)
+                    );
+                }
 
-
-                cmd.Parameters.AddWithValue(
-                    "p_id_curso",
-                    IdCurso);
-
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
+            return curso;
         }
 
-
-        // ====================================
-        // LISTAR TODOS OS CURSOS
-        // ====================================
-
-        public static DataTable Listar()
+        // ==========================
+        // LISTAR (Retorna List<Curso>)
+        // ==========================
+        public static List<Curso> ObterLista()
         {
-            DataTable dt =
-                new DataTable();
+            List<Curso> cursos = new();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_curso_getall";
 
-                cmd.CommandType =
-                    CommandType.StoredProcedure;
+                var dr = cmd.ExecuteReader();
 
-                cmd.CommandText =
-                    "sp_curso_listar";
+                while (dr.Read())
+                {
+                    cursos.Add(new Curso(
+                        dr.GetInt32(0),
+                        dr.IsDBNull(1) ? null : dr.GetString(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.GetInt32(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4)
+                    ));
+                }
 
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
-
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
-
-
+            return cursos;
         }
     }
 }

@@ -40,12 +40,11 @@
             txtTelefone = new TextBox();
             label8 = new Label();
             txtEndereco = new TextBox();
-            btnCancelar = new Button();
-            btnExcluir = new Button();
-            btnPesquisar = new Button();
-            btnEdit = new Button();
-            btnAdd = new Button();
-            comboBox1 = new ComboBox();
+            cmbUser = new ComboBox();
+            btnEditar = new Button();
+            btnSalvar = new Button();
+            button4 = new Button();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAluno).BeginInit();
             SuspendLayout();
             // 
@@ -139,106 +138,90 @@
             txtEndereco.Size = new Size(130, 23);
             txtEndereco.TabIndex = 2;
             // 
-            // btnCancelar
+            // cmbUser
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(608, 276);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(99, 67);
-            btnCancelar.TabIndex = 13;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnCancelar.UseVisualStyleBackColor = true;
+            cmbUser.FormattingEnabled = true;
+            cmbUser.Location = new Point(43, 42);
+            cmbUser.Name = "cmbUser";
+            cmbUser.Size = new Size(121, 23);
+            cmbUser.TabIndex = 14;
             // 
-            // btnExcluir
+            // btnEditar
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Location = new Point(489, 276);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(99, 67);
-            btnExcluir.TabIndex = 12;
-            btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnExcluir.UseVisualStyleBackColor = true;
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
+            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnEditar.Image = Properties.Resources._1410220563_05_Edit_32x32;
+            btnEditar.Location = new Point(339, 287);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(97, 64);
+            btnEditar.TabIndex = 20;
+            btnEditar.Text = "&Editar";
+            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEditar.UseVisualStyleBackColor = true;
             // 
-            // btnPesquisar
+            // btnSalvar
             // 
-            btnPesquisar.FlatAppearance.BorderSize = 0;
-            btnPesquisar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnPesquisar.FlatAppearance.MouseOverBackColor = Color.DodgerBlue;
-            btnPesquisar.FlatStyle = FlatStyle.Flat;
-            btnPesquisar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnPesquisar.ForeColor = Color.Black;
-            btnPesquisar.Location = new Point(385, 276);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(99, 67);
-            btnPesquisar.TabIndex = 11;
-            btnPesquisar.Text = "&Pesquisar";
-            btnPesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnPesquisar.UseVisualStyleBackColor = true;
+            btnSalvar.FlatAppearance.BorderSize = 0;
+            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
+            btnSalvar.Location = new Point(194, 287);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(97, 64);
+            btnSalvar.TabIndex = 19;
+            btnSalvar.Text = "&Salvar";
+            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // btnEdit
+            // button4
             // 
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatAppearance.MouseDownBackColor = Color.Silver;
-            btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
-            btnEdit.FlatStyle = FlatStyle.Flat;
-            btnEdit.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnEdit.ForeColor = Color.Black;
-            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.Location = new Point(281, 276);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(99, 67);
-            btnEdit.TabIndex = 10;
-            btnEdit.Text = "&Editar";
-            btnEdit.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnEdit.UseVisualStyleBackColor = true;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            button4.ForeColor = Color.Black;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(484, 284);
+            button4.Name = "button4";
+            button4.Size = new Size(93, 67);
+            button4.TabIndex = 18;
+            button4.Text = "&Cancelar";
+            button4.TextImageRelation = TextImageRelation.ImageAboveText;
+            button4.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
+            // button5
             // 
-            btnAdd.FlatAppearance.BorderSize = 0;
-            btnAdd.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnAdd.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnAdd.FlatStyle = FlatStyle.Flat;
-            btnAdd.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnAdd.ForeColor = Color.Black;
-            btnAdd.Location = new Point(177, 276);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(99, 67);
-            btnAdd.TabIndex = 9;
-            btnAdd.Text = "&Adiocionar";
-            btnAdd.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(43, 42);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 14;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Red;
+            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            button5.ForeColor = Color.Black;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.Location = new Point(625, 284);
+            button5.Name = "button5";
+            button5.Size = new Size(93, 67);
+            button5.TabIndex = 17;
+            button5.Text = "E&xcluir";
+            button5.TextImageRelation = TextImageRelation.ImageAboveText;
+            button5.UseVisualStyleBackColor = true;
             // 
             // FrmAluno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(912, 635);
-            Controls.Add(comboBox1);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnExcluir);
-            Controls.Add(btnPesquisar);
-            Controls.Add(btnEdit);
-            Controls.Add(btnAdd);
+            Controls.Add(btnEditar);
+            Controls.Add(btnSalvar);
+            Controls.Add(button4);
+            Controls.Add(button5);
+            Controls.Add(cmbUser);
             Controls.Add(dgvAluno);
             Controls.Add(txtEndereco);
             Controls.Add(label8);
@@ -271,11 +254,10 @@
         private TextBox txtTelefone;
         private Label label8;
         private TextBox txtEndereco;
-        private Button btnCancelar;
-        private Button btnExcluir;
-        private Button btnPesquisar;
-        private Button btnEdit;
-        private Button btnAdd;
-        private ComboBox comboBox1;
+        private ComboBox cmbUser;
+        private Button btnEditar;
+        private Button btnSalvar;
+        private Button button4;
+        private Button button5;
     }
 }

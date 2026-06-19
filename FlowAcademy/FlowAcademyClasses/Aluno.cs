@@ -1,233 +1,228 @@
-﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlowAcademyClasses
 {
     public class Aluno
     {
-        public Aluno(int idUsuario, string nome, string email, string senhaHash, string perfil, string status, DateTime? ultimoLogin, DateTime createdAt)
-        {
-            IdUsuario = idUsuario;
-            Nome = nome;
-            Email = email;
-            SenhaHash = senhaHash;
-            Perfil = perfil;
-            Status = status;
-            UltimoLogin = ultimoLogin;
-            CreatedAt = createdAt;
-        }
+        // Propriedades
+        public int IdAluno { get; set; }
+        public int IdUsuario { get; set; }
+        public string? Matricula { get; set; }
+        public string? Cpf { get; set; }
+        public string? Telefone { get; set; }
+        public DateTime? DataNascimento { get; set; }
+        public string? Endereco { get; set; }
+        public string? StatusAcademico { get; set; }
 
+        // Objeto de relacionamento
+        public Usuario? Usuario { get; set; }
+
+        // Construtor vazio
         public Aluno()
         {
-
+            IdAluno = 0;
+            IdUsuario = 0;
+            Matricula = "";
+            Cpf = "";
+            StatusAcademico = "regular";
         }
 
-        public int IdUsuario { get; set; }
+        // Construtor com ID
+        public Aluno(int idAluno)
+        {
+            IdAluno = idAluno;
+        }
 
-        public string Nome { get; set; }
+        // Construtor completo
+        public Aluno(int idAluno, int idUsuario, string? matricula, string? cpf, string? telefone, DateTime? dataNascimento, string? endereco, string? statusAcademico)
+        {
+            IdAluno = idAluno;
+            IdUsuario = idUsuario;
+            Matricula = matricula;
+            Cpf = cpf;
+            Telefone = telefone;
+            DataNascimento = dataNascimento;
+            Endereco = endereco;
+            StatusAcademico = statusAcademico;
+        }
 
-        public string Email { get; set; }
-
-        public string SenhaHash { get; set; }
-
-        public string Perfil { get; set; }
-
-        public string Status { get; set; }
-
-        public DateTime? UltimoLogin { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-
-
-        // ========================================
-        // INSERIR USUÁRIO
-        // Chama a procedure sp_usuario_inserir
-        // ========================================
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
-            try
+            bool inserido = false;
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
-
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_aluno_insert";
 
-                cmd.CommandText = "sp_usuario_inserir";
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("spmatricula", Matricula);
+                cmd.Parameters.AddWithValue("spcpf", Cpf);
+                cmd.Parameters.AddWithValue("sptelefone", Telefone);
+                cmd.Parameters.AddWithValue("spdatanascimento", DataNascimento);
+                cmd.Parameters.AddWithValue("spendereco", Endereco);
+                cmd.Parameters.AddWithValue("spstatusacademico", StatusAcademico);
 
-
-                cmd.Parameters.AddWithValue("p_nome", Nome);
-
-                cmd.Parameters.AddWithValue("p_email", Email);
-
-                cmd.Parameters.AddWithValue("p_senha_hash", SenhaHash);
-
-                cmd.Parameters.AddWithValue("p_perfil", Perfil);
-
-
-                cmd.ExecuteNonQuery();
+                IdAluno = Convert.ToInt32(cmd.ExecuteScalar());
+                inserido = IdAluno > 0;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
+            return inserido;
         }
 
-
-        // ========================================
-        // ALTERAR USUÁRIO
-        // ========================================
-
-        public bool Alterar()
+        // ==========================
+        // ATUALIZAR
+        // ==========================
+        public bool  Atualizar()
         {
-            try
+            bool atualizado = false;
+            if (IdAluno < 1) return  atualizado;
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
-
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_aluno_update";
 
-                cmd.CommandText = "sp_usuario_alterar";
+                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
+                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("spmatricula", Matricula);
+                cmd.Parameters.AddWithValue("spcpf", Cpf);
+                cmd.Parameters.AddWithValue("sptelefone", Telefone);
+                cmd.Parameters.AddWithValue("spdatanascimento", DataNascimento);
+                cmd.Parameters.AddWithValue("spendereco", Endereco);
+                cmd.Parameters.AddWithValue("spstatusacademico", StatusAcademico);
 
-
-                cmd.Parameters.AddWithValue("p_id_usuario", IdUsuario);
-
-                cmd.Parameters.AddWithValue("p_nome", Nome);
-
-                cmd.Parameters.AddWithValue("p_email", Email);
-
-                cmd.Parameters.AddWithValue("p_perfil", Perfil);
-
-                cmd.Parameters.AddWithValue("p_status", Status);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    atualizado = true;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
+            return  atualizado;
         }
 
-
-        // ========================================
-        // EXCLUIR USUÁRIO
-        // ========================================
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
-            try
+            bool excluido = false;
+            if (IdAluno < 1) return excluido;
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
-
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_aluno_delete";
 
-                cmd.CommandText = "sp_usuario_excluir";
+                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
 
-                cmd.Parameters.AddWithValue("p_id_usuario", IdUsuario);
-
-
-                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                    excluido = true;
 
                 cmd.Connection.Close();
-
-                return true;
             }
 
-            catch
-            {
-                return false;
-            }
+            return excluido;
         }
 
-
-        // ========================================
-        // CONSULTAR POR ID
-        // Retorna um DataTable
-        // ========================================
-
-        public DataTable ConsultarPorId()
+        // ==========================
+        // OBTER POR ID
+        // ==========================
+        public static Aluno ObterPorId(int idAluno)
         {
-            DataTable dt = new DataTable();
+            Aluno aluno = new();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
-
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_aluno_getbyid";
+                cmd.Parameters.AddWithValue("spidaluno", idAluno);
 
-                cmd.CommandText = "sp_usuario_consultar_id";
+                var dr = cmd.ExecuteReader();
 
+                if (dr.Read())
+                {
+                    aluno = new Aluno(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+                        dr.IsDBNull(5) ? (DateTime?)null : dr.GetDateTime(5),
+                        dr.IsDBNull(6) ? null : dr.GetString(6),
+                        dr.IsDBNull(7) ? null : dr.GetString(7)
+                    );
 
-                cmd.Parameters.AddWithValue(
-                    "p_id_usuario",
-                    IdUsuario
-                );
+                    // Carrega o relacionamento do Usuario (se aplic�vel ao seu projeto)
+                    aluno.Usuario = Usuario.ObterPorId(aluno.IdUsuario);
+                }
 
-
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
-
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
+            return aluno;
         }
 
-
-        // ========================================
-        // LISTAR TODOS
-        // ========================================
-
-        public static DataTable Listar()
+        // ==========================
+        // LISTAR (Retorna List<Aluno>)
+        // ==========================
+        public static List<Aluno> ObterLista()
         {
-            DataTable dt = new DataTable();
+            List<Aluno> alunos = new();
+            var cmd = Banco.Abrir();
 
-            try
+            if (cmd.Connection.State == ConnectionState.Open)
             {
-                var cmd = Banco.Abrir();
-
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_aluno_getall";
 
-                cmd.CommandText = "sp_usuario_listar";
+                var dr = cmd.ExecuteReader();
 
+                while (dr.Read())
+                {
+                    var aluno = new Aluno(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.IsDBNull(2) ? null : dr.GetString(2),
+                        dr.IsDBNull(3) ? null : dr.GetString(3),
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+                        dr.IsDBNull(5) ? (DateTime?)null : dr.GetDateTime(5),
+                        dr.IsDBNull(6) ? null : dr.GetString(6),
+                        dr.IsDBNull(7) ? null : dr.GetString(7)
+                    );
 
-                MySqlDataAdapter da =
-                    new MySqlDataAdapter(cmd);
+                    aluno.Usuario = Usuario.ObterPorId(aluno.IdUsuario);
+                    alunos.Add(aluno);
+                }
 
-                da.Fill(dt);
-
+                dr.Close();
                 cmd.Connection.Close();
             }
 
-            catch
-            {
-
-            }
-
-            return dt;
+            return alunos;
         }
 
+        public bool Cadastrar()
+        {
+            if (IdUsuario < 1) return false;
+            if (string.IsNullOrEmpty(Matricula)) return false;
+            if (string.IsNullOrEmpty(Cpf)) return false;
+
+            return Inserir();
+        }
     }
-
 }
