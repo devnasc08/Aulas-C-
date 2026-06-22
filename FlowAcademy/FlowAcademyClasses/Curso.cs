@@ -50,12 +50,12 @@ namespace FlowAcademyClasses
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_curso_insert";
+                cmd.CommandText = "sp_inserir_curso";
 
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spdescricao", Descricao);
-                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.Parameters.AddWithValue("p_nome", Nome);
+                cmd.Parameters.AddWithValue("p_descricao", Descricao);
+                cmd.Parameters.AddWithValue("p_carga_horaria", CargaHoraria);
+                cmd.Parameters.AddWithValue("p_status", Status);
 
                 IdCurso = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdCurso > 0;
@@ -79,13 +79,13 @@ namespace FlowAcademyClasses
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_curso_update";
+                cmd.CommandText = "sp_atualizar_curso";
 
-                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spdescricao", Descricao);
-                cmd.Parameters.AddWithValue("spcargahoraria", CargaHoraria);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.Parameters.AddWithValue("p_id", IdCurso);
+                cmd.Parameters.AddWithValue("p_nome", Nome);
+                cmd.Parameters.AddWithValue("p_descricao", Descricao);
+                cmd.Parameters.AddWithValue("p_carga_horaria", CargaHoraria);
+                cmd.Parameters.AddWithValue("p_status", Status);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     atualizado = true;
@@ -109,9 +109,9 @@ namespace FlowAcademyClasses
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_curso_delete";
+                cmd.CommandText = "sp_excluir_curso";
 
-                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
+                cmd.Parameters.AddWithValue("p_id", IdCurso);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     excluido = true;
@@ -125,28 +125,38 @@ namespace FlowAcademyClasses
         // ==========================
         // OBTER POR ID
         // ==========================
-        public static Curso ObterPorId(int idCurso)
+        public static Curso ObterPorId(int id)
         {
-            Curso curso = new();
+            Curso curso= new();
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_curso_getbyid";
-                cmd.Parameters.AddWithValue("spidcurso", idCurso);
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                    SELECT id_curso, nome, descricao, carga_horaria, status
+                    FROM cursos
+                    WHERE id_curso = @id";
+
+                cmd.Parameters.AddWithValue("@id", id);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.Read())
                 {
                     curso = new Curso(
-                        dr.GetInt32(0),
-                        dr.IsDBNull(1) ? null : dr.GetString(1),
-                        dr.IsDBNull(2) ? null : dr.GetString(2),
-                        dr.GetInt32(3),
-                        dr.IsDBNull(4) ? null : dr.GetString(4)
-                    );
+
+                    dr.GetInt32(0),
+
+                    dr.IsDBNull(1) ? null : dr.GetString(1),
+
+                    dr.IsDBNull(2) ? null : dr.GetString(2),
+
+                    dr.GetInt32(3),
+
+                    dr.IsDBNull(4) ? null : dr.GetString(4)
+                        );
                 }
 
                 dr.Close();
@@ -155,6 +165,9 @@ namespace FlowAcademyClasses
 
             return curso;
         }
+
+
+
 
         // ==========================
         // LISTAR (Retorna List<Curso>)
@@ -166,8 +179,11 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_curso_getall";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                    SELECT id_curso, nome, descricao, carga_horaria, status
+                    FROM cursos"; 
 
                 var dr = cmd.ExecuteReader();
 

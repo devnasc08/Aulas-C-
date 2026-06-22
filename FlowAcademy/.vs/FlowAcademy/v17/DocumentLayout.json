@@ -3,48 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\alertarisco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\alertarisco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\frequencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\frequencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\turma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\turma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\professor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\matricula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\matricula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kaua.nsantos3\\documents\\aulasc#\\flowacademy\\flowacademyclasses\\nota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\nota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 209,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -69,146 +29,20 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Professor.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Professor.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Professor.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Professor.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Professor.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAswMAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:44:48.972Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Turma.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Turma.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Turma.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Turma.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Turma.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAswN0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:44:12.623Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AlertaRisco.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\AlertaRisco.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\AlertaRisco.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\AlertaRisco.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\AlertaRisco.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:43:15.577Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Log.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Log.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Log.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Log.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Log.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAA7wL4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:40:57.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Frequencia.cs",
               "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Frequencia.cs",
               "RelativeDocumentMoniker": "FlowAcademyClasses\\Frequencia.cs",
               "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Frequencia.cs",
               "RelativeToolTip": "FlowAcademyClasses\\Frequencia.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAmwHYAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAANYAAAAAAAAAAAA1wOUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:40:49.408Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Matricula.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Matricula.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Matricula.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Matricula.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Matricula.cs",
-              "ViewState": "AgIAAKoAAAAAAAAAAAAYwNQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:38:30.381Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Nota.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Nota.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Nota.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Nota.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Nota.cs",
-              "ViewState": "AgIAANwAAAAAAAAAAAAYwAYBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:38:46.177Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Curso.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Curso.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Curso.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Curso.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Curso.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAYwL8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:30:28.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Disciplina.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Disciplina.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Disciplina.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Disciplina.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Disciplina.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAswNIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:31:15.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Aluno.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Aluno.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Aluno.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Aluno.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Aluno.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAywEsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:27:54.814Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Usuario.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Usuario.cs",
-              "ToolTip": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\Usuario.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Usuario.cs",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAswO4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-19T19:27:08.196Z",
+              "WhenOpened": "2026-06-22T20:06:13.091Z",
               "EditorCaption": ""
             }
           ]

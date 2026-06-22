@@ -8,5 +8,16 @@ namespace FlowAcademyClasses
 {
     public class AuthService
     {
+
+        // Login
+
+        // Logout
+
+        // PasswordHash
+
+        // VerifyPassword
+
+        // AtualizarUltimoLogin
+
     }
 }
