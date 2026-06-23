@@ -1,4 +1,3 @@
-using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -174,13 +173,16 @@ namespace FlowAcademyClasses
 
             var cmd = Banco.Abrir();
 
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "sp_frequencia_getbyid";
 
-                cmd.Parameters.AddWithValue("spidfrequencia", idFrequencia);
+                cmd.CommandText = @"SELECT id_frequencia, id_matricula, id_disciplina, total_aulas,
+                                    presencas, percentual FROM frequencia WHERE id_frequencia = @id";
+
+                cmd.Parameters.AddWithValue("@id", idFrequencia);
 
                 var dr = cmd.ExecuteReader();
 
@@ -198,15 +200,16 @@ namespace FlowAcademyClasses
                     // Carrega os relacionamentos
                     frequencia.Matricula = Matricula.ObterPorId(frequencia.IdMatricula);
                     frequencia.Disciplina = Disciplina.ObterPorId(frequencia.IdDisciplina);
+
                 }
 
                 dr.Close();
-
                 cmd.Connection.Close();
             }
-
             return frequencia;
         }
+
+
 
 
         // ==========================
@@ -218,11 +221,13 @@ namespace FlowAcademyClasses
 
             var cmd = Banco.Abrir();
 
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = "sp_frequencia_getall";
+                cmd.CommandText = @"SELECT id_frequencia, id_matricula, id_disciplina, total_aulas,
+                                    presencas, percentual FROM frequencia";
 
                 var dr = cmd.ExecuteReader();
 

@@ -10,10 +10,12 @@ namespace FlowAcademyClasses
         public int IdNota { get; set; }
         public int IdMatricula { get; set; }
         public int IdDisciplina { get; set; }
+
         public decimal? Prova1 { get; set; }
         public decimal? Prova2 { get; set; }
         public decimal? Trabalho { get; set; }
         public decimal? Comportamental { get; set; }
+
         public decimal? MediaUc { get; set; }
         public string? Status { get; set; }
         public DateTime DataLancamento { get; set; }
@@ -21,24 +23,6 @@ namespace FlowAcademyClasses
         // Objetos de relacionamento
         public Matricula? Matricula { get; set; }
         public Disciplina? Disciplina { get; set; }
-
-        public decimal Nota1
-        {
-            get { return Prova1 ?? 0; }
-            set { Prova1 = value; }
-        }
-
-        public decimal Nota2
-        {
-            get { return Prova2 ?? 0; }
-            set { Prova2 = value; }
-        }
-
-        public decimal MediaFinal
-        {
-            get { return MediaUc ?? 0; }
-            set { MediaUc = value; }
-        }
 
         // Construtor vazio
         public Nota()
@@ -55,7 +39,10 @@ namespace FlowAcademyClasses
         }
 
         // Construtor completo
-        public Nota(int idNota, int idMatricula, int idDisciplina, decimal? prova1, decimal? prova2, decimal? trabalho, decimal? comportamental, decimal? mediaUc, string? status, DateTime dataLancamento)
+        public Nota(int idNota, int idMatricula, int idDisciplina,
+                    decimal? prova1, decimal? prova2, decimal? trabalho,
+                    decimal? comportamental, decimal? mediaUc,
+                    string? status, DateTime dataLancamento)
         {
             IdNota = idNota;
             IdMatricula = idMatricula;
@@ -75,6 +62,9 @@ namespace FlowAcademyClasses
         public bool Inserir()
         {
             bool inserido = false;
+
+            CalcularMedia();
+
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
@@ -84,12 +74,15 @@ namespace FlowAcademyClasses
 
                 cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
                 cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
+
                 cmd.Parameters.AddWithValue("spprova_1", Prova1.HasValue ? Prova1.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spprova_2", Prova2.HasValue ? Prova2.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("sptrabalho", Trabalho.HasValue ? Trabalho.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spcomportamental", Comportamental.HasValue ? Comportamental.Value : (object)DBNull.Value);
+
                 cmd.Parameters.AddWithValue("spmedia_uc", MediaUc.HasValue ? MediaUc.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spstatus", string.IsNullOrEmpty(Status) ? "em_andamento" : Status);
+                cmd.Parameters.AddWithValue("spdata_lancamento", DataLancamento);
 
                 IdNota = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdNota > 0;
@@ -106,7 +99,11 @@ namespace FlowAcademyClasses
         public bool Atualizar()
         {
             bool atualizado = false;
-            if (IdNota < 1) return atualizado;
+
+            if (IdNota < 1)
+                return atualizado;
+
+            CalcularMedia();
 
             var cmd = Banco.Abrir();
 
@@ -118,10 +115,12 @@ namespace FlowAcademyClasses
                 cmd.Parameters.AddWithValue("spidnota", IdNota);
                 cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
                 cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
+
                 cmd.Parameters.AddWithValue("spprova_1", Prova1.HasValue ? Prova1.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spprova_2", Prova2.HasValue ? Prova2.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("sptrabalho", Trabalho.HasValue ? Trabalho.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spcomportamental", Comportamental.HasValue ? Comportamental.Value : (object)DBNull.Value);
+
                 cmd.Parameters.AddWithValue("spmedia_uc", MediaUc.HasValue ? MediaUc.Value : (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("spstatus", string.IsNullOrEmpty(Status) ? "em_andamento" : Status);
 
@@ -140,7 +139,9 @@ namespace FlowAcademyClasses
         public bool Excluir()
         {
             bool excluido = false;
-            if (IdNota < 1) return excluido;
+
+            if (IdNota < 1)
+                return excluido;
 
             var cmd = Banco.Abrir();
 
@@ -161,90 +162,8 @@ namespace FlowAcademyClasses
         }
 
         // ==========================
-        // OBTER POR ID
+        // MÉTODO DE CÁLCULO
         // ==========================
-        public static Nota ObterPorId(int idNota)
-        {
-            Nota nota = new();
-            var cmd = Banco.Abrir();
-
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_nota_getbyid";
-                cmd.Parameters.AddWithValue("spidnota", idNota);
-
-                var dr = cmd.ExecuteReader();
-
-                if (dr.Read())
-                {
-                    nota = new Nota(
-                        dr.GetInt32(0),
-                        dr.GetInt32(1),
-                        dr.GetInt32(2),
-                        dr.IsDBNull(3) ? (decimal?)null : dr.GetDecimal(3),
-                        dr.IsDBNull(4) ? (decimal?)null : dr.GetDecimal(4),
-                        dr.IsDBNull(5) ? (decimal?)null : dr.GetDecimal(5),
-                        dr.IsDBNull(6) ? (decimal?)null : dr.GetDecimal(6),
-                        dr.IsDBNull(7) ? (decimal?)null : dr.GetDecimal(7),
-                        dr.IsDBNull(8) ? null : dr.GetString(8),
-                        dr.GetDateTime(9)
-                    );
-
-                    nota.Matricula = Matricula.ObterPorId(nota.IdMatricula);
-                    nota.Disciplina = Disciplina.ObterPorId(nota.IdDisciplina);
-                }
-
-                dr.Close();
-                cmd.Connection.Close();
-            }
-
-            return nota;
-        }
-
-        // ==========================
-        // LISTAR (Retorna List<Nota>)
-        // ==========================
-        public static List<Nota> ObterLista()
-        {
-            List<Nota> notas = new();
-            var cmd = Banco.Abrir();
-
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_nota_getall";
-
-                var dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    var nota = new Nota(
-                        dr.GetInt32(0),
-                        dr.GetInt32(1),
-                        dr.GetInt32(2),
-                        dr.IsDBNull(3) ? (decimal?)null : dr.GetDecimal(3),
-                        dr.IsDBNull(4) ? (decimal?)null : dr.GetDecimal(4),
-                        dr.IsDBNull(5) ? (decimal?)null : dr.GetDecimal(5),
-                        dr.IsDBNull(6) ? (decimal?)null : dr.GetDecimal(6),
-                        dr.IsDBNull(7) ? (decimal?)null : dr.GetDecimal(7),
-                        dr.IsDBNull(8) ? null : dr.GetString(8),
-                        dr.GetDateTime(9)
-                    );
-
-                    nota.Matricula = Matricula.ObterPorId(nota.IdMatricula);
-                    nota.Disciplina = Disciplina.ObterPorId(nota.IdDisciplina);
-
-                    notas.Add(nota);
-                }
-
-                dr.Close();
-                cmd.Connection.Close();
-            }
-
-            return notas;
-        }
-
         public void CalcularMedia()
         {
             decimal p1 = Prova1 ?? 0;
@@ -254,10 +173,7 @@ namespace FlowAcademyClasses
 
             MediaUc = (p1 * 0.3m) + (p2 * 0.4m) + (t * 0.2m) + (c * 0.1m);
 
-            if (MediaUc >= 6.0m)
-                Status = "aprovado";
-            else
-                Status = "reprovado";
+            Status = (MediaUc >= 6.0m) ? "aprovado" : "reprovado";
         }
     }
 }

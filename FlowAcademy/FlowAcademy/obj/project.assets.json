@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    "net8.0-windows7.0": {
+    "net8.0-windows": {
       "BouncyCastle.Cryptography/2.2.1": {
         "type": "package",
         "compile": {
@@ -1799,29 +1799,29 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": [
+    "net8.0-windows": [
       "FlowAcademyClasses >= 1.0.0",
       "MySql.Data >= 8.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kaua.nsantos3\\.nuget\\packages\\": {},
+    "C:\\Users\\Kauã\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademy\\FlowAcademy.csproj",
+      "projectUniqueName": "C:\\Users\\Kauã\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FlowAcademy.csproj",
       "projectName": "FlowAcademy",
-      "projectPath": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademy\\FlowAcademy.csproj",
-      "packagesPath": "C:\\Users\\kaua.nsantos3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademy\\obj\\",
+      "projectPath": "C:\\Users\\Kauã\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FlowAcademy.csproj",
+      "packagesPath": "C:\\Users\\Kauã\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kauã\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kaua.nsantos3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kauã\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1833,11 +1833,12 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0-windows7.0": {
+        "net8.0-windows": {
+          "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\FlowAcademyClasses.csproj": {
-              "projectPath": "C:\\Users\\kaua.nsantos3\\Documents\\aulasC#\\FlowAcademy\\FlowAcademyClasses\\FlowAcademyClasses.csproj"
+            "C:\\Users\\Kauã\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademyClasses\\FlowAcademyClasses.csproj": {
+              "projectPath": "C:\\Users\\Kauã\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademyClasses\\FlowAcademyClasses.csproj"
             }
           }
         }
@@ -1852,10 +1853,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
-      "net8.0-windows7.0": {
+      "net8.0-windows": {
+        "framework": "net8.0-windows7.0",
         "targetAlias": "net8.0-windows",
         "dependencies": {
           "MySql.Data": {
@@ -1882,7 +1884,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

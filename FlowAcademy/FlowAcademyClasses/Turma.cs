@@ -7,66 +7,135 @@ namespace FlowAcademyClasses
     public class Turma
     {
         // Propriedades
+
         public int IdTurma { get; set; }
+
         public int IdCurso { get; set; }
+
+        public int IdProfessor { get; set; }
+
         public string? CodigoTurma { get; set; }
-        public string? Periodo { get; set; } // 'matutino', 'vespertino', 'noturno'
-        public int VagasTotais { get; set; }
-        public int VagasPreenchidas { get; set; }
+
+        public string? Turno { get; set; }
+
+        public string? PeriodoLetivo { get; set; }
+
+        public int CapacidadeMaxima { get; set; }
+
         public string? Status { get; set; }
 
-        // Objetos de Relacionamento
+
+        // Objetos de relacionamento
+
         public Curso? Curso { get; set; }
 
+        public Professor? Professor { get; set; }
+
+
         // Construtor vazio
+
         public Turma()
         {
             IdTurma = 0;
+
             IdCurso = 0;
+
+            IdProfessor = 0;
+
             CodigoTurma = "";
-            VagasTotais = 0;
-            VagasPreenchidas = 0;
-            Status = "planejada";
+
+            Turno = "manha";
+
+            PeriodoLetivo = "";
+
+            CapacidadeMaxima = 0;
+
+            Status = "ativa";
         }
 
+
         // Construtor com ID
+
         public Turma(int idTurma)
         {
             IdTurma = idTurma;
         }
 
+
         // Construtor completo
-        public Turma(int idTurma, int idCurso, string? codigoTurma, string? periodo, int vagasTotais, int vagasPreenchidas, string? status)
+
+        public Turma(
+
+            int idTurma,
+
+            int idCurso,
+
+            int idProfessor,
+
+            string? codigoTurma,
+
+            string? turno,
+
+            string? periodoLetivo,
+
+            int capacidadeMaxima,
+
+            string? status
+
+            )
+
         {
             IdTurma = idTurma;
+
             IdCurso = idCurso;
+
+            IdProfessor = idProfessor;
+
             CodigoTurma = codigoTurma;
-            Periodo = periodo;
-            VagasTotais = vagasTotais;
-            VagasPreenchidas = vagasPreenchidas;
+
+            Turno = turno;
+
+            PeriodoLetivo = periodoLetivo;
+
+            CapacidadeMaxima = capacidadeMaxima;
+
             Status = status;
         }
+
 
         // ==========================
         // INSERIR
         // ==========================
+
         public bool Inserir()
         {
             bool inserido = false;
+
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_turma_insert";
 
-                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
-                cmd.Parameters.AddWithValue("spcodigoturma", CodigoTurma);
-                cmd.Parameters.AddWithValue("spperiodo", Periodo);
-                cmd.Parameters.AddWithValue("spvagastotais", VagasTotais);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.CommandText = "sp_inserir_turma";
+
+                cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
+
+                cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
+
+                cmd.Parameters.AddWithValue("p_codigo_turma", CodigoTurma);
+
+                cmd.Parameters.AddWithValue("p_turno", Turno);
+
+                cmd.Parameters.AddWithValue("p_periodo_letivo", PeriodoLetivo);
+
+                cmd.Parameters.AddWithValue("p_capacidade_maxima", CapacidadeMaxima);
+
+                cmd.Parameters.AddWithValue("p_status", Status);
+
 
                 IdTurma = Convert.ToInt32(cmd.ExecuteScalar());
+
                 inserido = IdTurma > 0;
 
                 cmd.Connection.Close();
@@ -75,30 +144,48 @@ namespace FlowAcademyClasses
             return inserido;
         }
 
+
+
         // ==========================
         // ATUALIZAR
         // ==========================
+
         public bool Atualizar()
         {
             bool atualizado = false;
-            if (IdTurma < 1) return atualizado;
+
+            if (IdTurma < 1)
+
+                return atualizado;
+
 
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_turma_update";
 
-                cmd.Parameters.AddWithValue("spidturma", IdTurma);
-                cmd.Parameters.AddWithValue("spidcurso", IdCurso);
-                cmd.Parameters.AddWithValue("spcodigoturma", CodigoTurma);
-                cmd.Parameters.AddWithValue("spperiodo", Periodo);
-                cmd.Parameters.AddWithValue("spvagastotais", VagasTotais);
-                cmd.Parameters.AddWithValue("spvagaspreenchidas", VagasPreenchidas);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.CommandText = "sp_atualizar_turma";
+
+                cmd.Parameters.AddWithValue("p_id", IdTurma);
+
+                cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
+
+                cmd.Parameters.AddWithValue("p_id_professor", IdProfessor);
+
+                cmd.Parameters.AddWithValue("p_codigo_turma", CodigoTurma);
+
+                cmd.Parameters.AddWithValue("p_turno", Turno);
+
+                cmd.Parameters.AddWithValue("p_periodo_letivo", PeriodoLetivo);
+
+                cmd.Parameters.AddWithValue("p_capacidade_maxima", CapacidadeMaxima);
+
+                cmd.Parameters.AddWithValue("p_status", Status);
+
 
                 if (cmd.ExecuteNonQuery() > 0)
+
                     atualizado = true;
 
                 cmd.Connection.Close();
@@ -107,24 +194,33 @@ namespace FlowAcademyClasses
             return atualizado;
         }
 
+
+
         // ==========================
         // EXCLUIR
         // ==========================
+
         public bool Excluir()
         {
             bool excluido = false;
-            if (IdTurma < 1) return excluido;
+
+            if (IdTurma < 1)
+
+                return excluido;
+
 
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_turma_delete";
 
-                cmd.Parameters.AddWithValue("spidturma", IdTurma);
+                cmd.CommandText = "sp_excluir_turma";
+
+                cmd.Parameters.AddWithValue("p_id", IdTurma);
 
                 if (cmd.ExecuteNonQuery() > 0)
+
                     excluido = true;
 
                 cmd.Connection.Close();
@@ -133,90 +229,219 @@ namespace FlowAcademyClasses
             return excluido;
         }
 
+
+
         // ==========================
         // OBTER POR ID
         // ==========================
+
         public static Turma ObterPorId(int idTurma)
         {
             Turma turma = new();
+
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_turma_getbyid";
-                cmd.Parameters.AddWithValue("spidturma", idTurma);
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+
+                SELECT
+
+                id_turma,
+
+                id_curso,
+
+                id_professor,
+
+                codigo_turma,
+
+                turno,
+
+                periodo_letivo,
+
+                capacidade_maxima,
+
+                status
+
+                FROM turmas
+
+                WHERE id_turma = @id";
+
+                cmd.Parameters.AddWithValue("@id", idTurma);
 
                 var dr = cmd.ExecuteReader();
 
                 if (dr.Read())
                 {
                     turma = new Turma(
+
                         dr.GetInt32(0),
+
                         dr.GetInt32(1),
-                        dr.IsDBNull(2) ? null : dr.GetString(2),
+
+                        dr.GetInt32(2),
+
                         dr.IsDBNull(3) ? null : dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.GetInt32(5),
-                        dr.IsDBNull(6) ? null : dr.GetString(6)
-                    );
+
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+
+                        dr.IsDBNull(5) ? null : dr.GetString(5),
+
+                        dr.GetInt32(6),
+
+                        dr.IsDBNull(7) ? null : dr.GetString(7)
+
+                        );
 
                     turma.Curso = Curso.ObterPorId(turma.IdCurso);
+
+                    turma.Professor = Professor.ObterPorId(turma.IdProfessor);
                 }
 
                 dr.Close();
+
                 cmd.Connection.Close();
             }
 
             return turma;
         }
 
+
+
         // ==========================
         // LISTAR
         // ==========================
+
         public static List<Turma> ObterLista()
         {
             List<Turma> turmas = new();
+
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_turma_getall";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+
+                SELECT
+
+                id_turma,
+
+                id_curso,
+
+                id_professor,
+
+                codigo_turma,
+
+                turno,
+
+                periodo_letivo,
+
+                capacidade_maxima,
+
+                status
+
+                FROM turmas";
 
                 var dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    var turma = new Turma(
+                    Turma turma = new(
+
                         dr.GetInt32(0),
+
                         dr.GetInt32(1),
-                        dr.IsDBNull(2) ? null : dr.GetString(2),
+
+                        dr.GetInt32(2),
+
                         dr.IsDBNull(3) ? null : dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.GetInt32(5),
-                        dr.IsDBNull(6) ? null : dr.GetString(6)
-                    );
+
+                        dr.IsDBNull(4) ? null : dr.GetString(4),
+
+                        dr.IsDBNull(5) ? null : dr.GetString(5),
+
+                        dr.GetInt32(6),
+
+                        dr.IsDBNull(7) ? null : dr.GetString(7)
+
+                        );
 
                     turma.Curso = Curso.ObterPorId(turma.IdCurso);
+
+                    turma.Professor = Professor.ObterPorId(turma.IdProfessor);
+
                     turmas.Add(turma);
                 }
 
                 dr.Close();
+
                 cmd.Connection.Close();
             }
 
             return turmas;
         }
 
-        // Lógica de verificação de vagas solicitada pelo método da Matrícula
+
+
+        // ==========================
+        // POSSUI VAGA
+        // ==========================
+
         public bool PossuiVaga()
         {
-            if (IdTurma < 1) return false;
+            bool possui = false;
 
-            // Re-obtém os dados para checar de forma atualizada no banco
-            var t = ObterPorId(IdTurma);
-            return t.VagasPreenchidas < t.VagasTotais;
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+
+                SELECT
+
+                (
+
+                SELECT COUNT(*)
+
+                FROM matriculas
+
+                WHERE id_turma = @id
+
+                AND status = 'ativa'
+
+                ),
+
+                capacidade_maxima
+
+                FROM turmas
+
+                WHERE id_turma = @id";
+
+                cmd.Parameters.AddWithValue("@id", IdTurma);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    int matriculados = dr.GetInt32(0);
+
+                    int capacidade = dr.GetInt32(1);
+
+                    possui = matriculados < capacidade;
+                }
+
+                dr.Close();
+
+                cmd.Connection.Close();
+            }
+
+            return possui;
         }
     }
 }

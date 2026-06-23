@@ -6,6 +6,33 @@ namespace FlowAcademyClasses
 {
     public class Matricula
     {
+
+
+
+        /// <summary>
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
+        /// </summary>
+
+
+
+
+
+
+
         // Propriedades
         public int IdMatricula { get; set; }
         public int IdAluno { get; set; }
@@ -52,9 +79,9 @@ namespace FlowAcademyClasses
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_matricula_insert";
+                cmd.CommandText = "sp_inserir_matricula";
 
-                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
+                cmd.Parameters.AddWithValue("p_id_aluno", IdAluno);
                 cmd.Parameters.AddWithValue("spidturma", IdTurma);
                 cmd.Parameters.AddWithValue("spdatamatricula", DataMatricula);
                 cmd.Parameters.AddWithValue("spstatus", Status);
@@ -134,9 +161,22 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_matricula_getbyid";
-                cmd.Parameters.AddWithValue("spidmatricula", idMatricula);
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                SELECT
+
+                id_matricula,
+                id_aluno,
+                id_turma,
+                data_matricula,
+                status
+
+                FROM matriculas
+
+                WHERE id_matricula = @id";
+
+                cmd.Parameters.AddWithValue("@id", idMatricula);
 
                 var dr = cmd.ExecuteReader();
 
@@ -172,8 +212,19 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_matricula_getall";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+
+                SELECT
+
+                id_matricula,
+                id_aluno,
+                id_turma,
+                data_matricula,
+                status
+
+                FROM matriculas";   
 
                 var dr = cmd.ExecuteReader();
 

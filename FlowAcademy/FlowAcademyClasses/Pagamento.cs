@@ -6,16 +6,26 @@ namespace FlowAcademyClasses
 {
     public class Pagamento
     {
+        // ==========================
+        // PROPRIEDADES
+        // ==========================
         public int IdPagamento { get; set; }
         public int IdAluno { get; set; }
         public decimal Valor { get; set; }
         public DateTime Vencimento { get; set; }
         public string? Status { get; set; }
+
         public Aluno? Aluno { get; set; }
 
+        // ==========================
+        // CONSTRUTORES
+        // ==========================
         public Pagamento()
         {
             IdPagamento = 0;
+            IdAluno = 0;
+            Valor = 0;
+            Vencimento = DateTime.Now;
             Status = "pendente";
         }
 
@@ -33,63 +43,56 @@ namespace FlowAcademyClasses
             Status = status;
         }
 
-        public Pagamento(int idAluno, decimal valor, DateTime vencimento, string? status)
-        {
-            IdAluno = idAluno;
-            Valor = valor;
-            Vencimento = vencimento;
-            Status = status;
-        }
-
+        // ==========================
+        // INSERIR
+        // ==========================
         public bool Inserir()
         {
             bool inserido = false;
-            VerificarStatus();
 
             var cmd = Banco.Abrir();
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"insert into pagamentos (id_aluno, valor, vencimento, status)
-                    values (@id_aluno, @valor, @vencimento, @status);
-                    select last_insert_id();";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_inserir_pagamento";
 
-                cmd.Parameters.AddWithValue("@id_aluno", IdAluno);
-                cmd.Parameters.AddWithValue("@valor", Valor);
-                cmd.Parameters.AddWithValue("@vencimento", Vencimento.Date);
-                cmd.Parameters.AddWithValue("@status", string.IsNullOrEmpty(Status) ? "pendente" : Status);
+                cmd.Parameters.AddWithValue("p_id_aluno", IdAluno);
+                cmd.Parameters.AddWithValue("p_valor", Valor);
+                cmd.Parameters.AddWithValue("p_vencimento", Vencimento.Date);
+                cmd.Parameters.AddWithValue("p_status", Status ?? "pendente");
 
                 IdPagamento = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdPagamento > 0;
+
                 cmd.Connection.Close();
             }
 
             return inserido;
         }
 
+        // ==========================
+        // ATUALIZAR
+        // ==========================
         public bool Atualizar()
         {
             bool atualizado = false;
-            if (IdPagamento < 1) return atualizado;
 
-            VerificarStatus();
+            if (IdPagamento < 1)
+                return false;
 
             var cmd = Banco.Abrir();
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"update pagamentos
-                    set id_aluno = @id_aluno,
-                        valor = @valor,
-                        vencimento = @vencimento,
-                        status = @status
-                    where id_pagamento = @id_pagamento";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_atualizar_pagamento";
 
-                cmd.Parameters.AddWithValue("@id_pagamento", IdPagamento);
-                cmd.Parameters.AddWithValue("@id_aluno", IdAluno);
-                cmd.Parameters.AddWithValue("@valor", Valor);
-                cmd.Parameters.AddWithValue("@vencimento", Vencimento.Date);
-                cmd.Parameters.AddWithValue("@status", string.IsNullOrEmpty(Status) ? "pendente" : Status);
+                cmd.Parameters.AddWithValue("p_id_pagamento", IdPagamento);
+                cmd.Parameters.AddWithValue("p_id_aluno", IdAluno);
+                cmd.Parameters.AddWithValue("p_valor", Valor);
+                cmd.Parameters.AddWithValue("p_vencimento", Vencimento.Date);
+                cmd.Parameters.AddWithValue("p_status", Status ?? "pendente");
 
                 if (cmd.ExecuteNonQuery() > 0)
                     atualizado = true;
@@ -100,22 +103,24 @@ namespace FlowAcademyClasses
             return atualizado;
         }
 
-        public bool Alterar()
-        {
-            return Atualizar();
-        }
-
+        // ==========================
+        // EXCLUIR
+        // ==========================
         public bool Excluir()
         {
             bool excluido = false;
-            if (IdPagamento < 1) return excluido;
+
+            if (IdPagamento < 1)
+                return false;
 
             var cmd = Banco.Abrir();
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "delete from pagamentos where id_pagamento = @id_pagamento";
-                cmd.Parameters.AddWithValue("@id_pagamento", IdPagamento);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_excluir_pagamento";
+
+                cmd.Parameters.AddWithValue("p_id_pagamento", IdPagamento);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     excluido = true;
@@ -126,21 +131,42 @@ namespace FlowAcademyClasses
             return excluido;
         }
 
+        // ==========================
+        // OBTER POR ID (SQL PADRÃO)
+        // ==========================
         public static Pagamento ObterPorId(int idPagamento)
         {
             Pagamento pagamento = new();
+
             var cmd = Banco.Abrir();
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"select id_pagamento, id_aluno, valor, vencimento, status
-                    from pagamentos
-                    where id_pagamento = @id_pagamento";
-                cmd.Parameters.AddWithValue("@id_pagamento", idPagamento);
+
+                cmd.CommandText = @"
+                    SELECT id_pagamento,
+                           id_aluno,
+                           valor,
+                           vencimento,
+                           status
+                    FROM pagamentos
+                    WHERE id_pagamento = @id";
+
+                cmd.Parameters.AddWithValue("@id", idPagamento);
 
                 var dr = cmd.ExecuteReader();
+
                 if (dr.Read())
-                    pagamento = MontarPagamento(dr);
+                {
+                    pagamento = new Pagamento(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetDecimal(2),
+                        dr.GetDateTime(3),
+                        dr.IsDBNull(4) ? "pendente" : dr.GetString(4)
+                    );
+                }
 
                 dr.Close();
                 cmd.Connection.Close();
@@ -149,73 +175,46 @@ namespace FlowAcademyClasses
             return pagamento;
         }
 
-        public static List<Pagamento> ObterLista(string busca = "")
+        // ==========================
+        // OBTER LISTA (SQL PADRÃO)
+        // ==========================
+        public static List<Pagamento> ObterLista()
         {
-            List<Pagamento> pagamentos = new();
+            List<Pagamento> lista = new();
+
             var cmd = Banco.Abrir();
+
             if (cmd.Connection.State == ConnectionState.Open)
             {
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"select p.id_pagamento, p.id_aluno, p.valor, p.vencimento, p.status
-                    from pagamentos p
-                    inner join alunos a on a.id_aluno = p.id_aluno
-                    inner join usuarios u on u.id_usuario = a.id_usuario
-                    where u.nome like @busca or p.status like @busca
-                    order by p.vencimento";
-                cmd.Parameters.AddWithValue("@busca", $"%{busca}%");
+
+                cmd.CommandText = @"
+                    SELECT id_pagamento,
+                           id_aluno,
+                           valor,
+                           vencimento,
+                           status
+                    FROM pagamentos
+                    ORDER BY vencimento";
 
                 var dr = cmd.ExecuteReader();
+
                 while (dr.Read())
-                    pagamentos.Add(MontarPagamento(dr));
+                {
+                    lista.Add(new Pagamento(
+                        dr.GetInt32(0),
+                        dr.GetInt32(1),
+                        dr.GetDecimal(2),
+                        dr.GetDateTime(3),
+                        dr.IsDBNull(4) ? "pendente" : dr.GetString(4)
+                    ));
+                }
 
                 dr.Close();
                 cmd.Connection.Close();
             }
 
-            return pagamentos;
-        }
-
-        public static DataTable Listar()
-        {
-            DataTable tabela = new();
-            var cmd = Banco.Abrir();
-            if (cmd.Connection.State == ConnectionState.Open)
-            {
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"select p.*, u.nome as aluno
-                    from pagamentos p
-                    inner join alunos a on a.id_aluno = p.id_aluno
-                    inner join usuarios u on u.id_usuario = a.id_usuario
-                    order by p.vencimento";
-                tabela.Load(cmd.ExecuteReader());
-                cmd.Connection.Close();
-            }
-
-            return tabela;
-        }
-
-        public void VerificarStatus()
-        {
-            if (Status == "pago" || Status == "cancelado")
-                return;
-
-            Status = DateTime.Today > Vencimento.Date ? "atrasado" : "pendente";
-        }
-
-        public void RealizarPagamento()
-        {
-            Status = "pago";
-        }
-
-        private static Pagamento MontarPagamento(IDataRecord dr)
-        {
-            return new(
-                dr.GetInt32(0),
-                dr.GetInt32(1),
-                dr.GetDecimal(2),
-                dr.GetDateTime(3),
-                dr.GetString(4)
-            );
+            return lista;
         }
     }
 }
