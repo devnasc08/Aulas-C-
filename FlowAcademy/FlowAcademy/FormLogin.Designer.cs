@@ -102,6 +102,7 @@
             Controls.Add(label1);
             Name = "FormLogin";
             Text = "FormLogin";
+            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -318,5 +318,10 @@ namespace FlowAcademyF
         {
             btnEditar_Click(sender, e);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -95,6 +95,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(211, 23);
             txtSenha.TabIndex = 22;
+            txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // txtEmail
             // 

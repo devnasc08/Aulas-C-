@@ -33,11 +33,9 @@
             label2 = new Label();
             dgvAluno = new DataGridView();
             label5 = new Label();
-            txtCpf = new TextBox();
             label6 = new Label();
             txtMatricula = new TextBox();
             label7 = new Label();
-            txtTelefone = new TextBox();
             label8 = new Label();
             txtEndereco = new TextBox();
             cmbUsuario = new ComboBox();
@@ -45,6 +43,8 @@
             btnSalvar = new Button();
             button4 = new Button();
             button5 = new Button();
+            mtbCpf = new MaskedTextBox();
+            mtbTelefone = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvAluno).BeginInit();
             SuspendLayout();
             // 
@@ -83,13 +83,6 @@
             label5.TabIndex = 1;
             label5.Text = "CPF";
             // 
-            // txtCpf
-            // 
-            txtCpf.Location = new Point(43, 90);
-            txtCpf.Name = "txtCpf";
-            txtCpf.Size = new Size(130, 23);
-            txtCpf.TabIndex = 2;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -114,13 +107,6 @@
             label7.Size = new Size(52, 15);
             label7.TabIndex = 1;
             label7.Text = "Telefone";
-            // 
-            // txtTelefone
-            // 
-            txtTelefone.Location = new Point(43, 138);
-            txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(130, 23);
-            txtTelefone.TabIndex = 2;
             // 
             // label8
             // 
@@ -212,11 +198,29 @@
             button5.TextImageRelation = TextImageRelation.ImageAboveText;
             button5.UseVisualStyleBackColor = true;
             // 
+            // mtbCpf
+            // 
+            mtbCpf.Location = new Point(43, 88);
+            mtbCpf.Mask = "000.000.000-00";
+            mtbCpf.Name = "mtbCpf";
+            mtbCpf.Size = new Size(121, 23);
+            mtbCpf.TabIndex = 21;
+            // 
+            // mtbTelefone
+            // 
+            mtbTelefone.Location = new Point(43, 140);
+            mtbTelefone.Mask = "(99) 99999-9999";
+            mtbTelefone.Name = "mtbTelefone";
+            mtbTelefone.Size = new Size(121, 23);
+            mtbTelefone.TabIndex = 21;
+            // 
             // FrmAluno
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(912, 635);
+            Controls.Add(mtbTelefone);
+            Controls.Add(mtbCpf);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(button4);
@@ -225,11 +229,9 @@
             Controls.Add(dgvAluno);
             Controls.Add(txtEndereco);
             Controls.Add(label8);
-            Controls.Add(txtTelefone);
             Controls.Add(label7);
             Controls.Add(txtMatricula);
             Controls.Add(label6);
-            Controls.Add(txtCpf);
             Controls.Add(label5);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -247,11 +249,9 @@
         private Label label2;
         private DataGridView dgvAluno;
         private Label label5;
-        private TextBox txtCpf;
         private Label label6;
         private TextBox txtMatricula;
         private Label label7;
-        private TextBox txtTelefone;
         private Label label8;
         private TextBox txtEndereco;
         private ComboBox cmbUsuario;
@@ -259,5 +259,7 @@
         private Button btnSalvar;
         private Button button4;
         private Button button5;
+        private MaskedTextBox mtbCpf;
+        private MaskedTextBox mtbTelefone;
     }
 }

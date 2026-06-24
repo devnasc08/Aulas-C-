@@ -81,6 +81,7 @@
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(130, 23);
             txtCpf.TabIndex = 24;
+            txtCpf.TextChanged += txtCpf_TextChanged;
             // 
             // label5
             // 

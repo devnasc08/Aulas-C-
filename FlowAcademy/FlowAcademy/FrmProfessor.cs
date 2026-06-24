@@ -268,5 +268,9 @@ namespace FlowAcademyF
             return cpf.EndsWith(digito);
         }
 
+        private void txtCpf_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

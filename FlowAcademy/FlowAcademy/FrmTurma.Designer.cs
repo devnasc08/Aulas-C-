@@ -59,6 +59,7 @@
             cmbCurso.Name = "cmbCurso";
             cmbCurso.Size = new Size(178, 23);
             cmbCurso.TabIndex = 45;
+            cmbCurso.SelectedIndexChanged += cmbCurso_SelectedIndexChanged;
             // 
             // dgvTurma
             // 

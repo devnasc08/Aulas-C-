@@ -32,16 +32,14 @@
             menuStrip1 = new MenuStrip();
             btnUsuarios = new Button();
             btnAlunos = new Button();
-            btnCurso = new Button();
+            btnCursos = new Button();
             btnTurmas = new Button();
             btnProfessores = new Button();
-            btnDisciplina = new Button();
+            btnDisciplinas = new Button();
             btnMatriculas = new Button();
             bntFeedbacks = new Button();
             btnPagamentos = new Button();
             btnFrequencia = new Button();
-            button11 = new Button();
-            btnLogs = new Button();
             btnNotas = new Button();
             panel1 = new Panel();
             SuspendLayout();
@@ -80,14 +78,14 @@
             btnAlunos.Text = "Alunos";
             btnAlunos.UseVisualStyleBackColor = true;
             // 
-            // btnCurso
+            // btnCursos
             // 
-            btnCurso.Location = new Point(12, 172);
-            btnCurso.Name = "btnCurso";
-            btnCurso.Size = new Size(75, 23);
-            btnCurso.TabIndex = 2;
-            btnCurso.Text = "Cursos";
-            btnCurso.UseVisualStyleBackColor = true;
+            btnCursos.Location = new Point(12, 172);
+            btnCursos.Name = "btnCursos";
+            btnCursos.Size = new Size(75, 23);
+            btnCursos.TabIndex = 2;
+            btnCursos.Text = "Cursos";
+            btnCursos.UseVisualStyleBackColor = true;
             // 
             // btnTurmas
             // 
@@ -107,14 +105,14 @@
             btnProfessores.Text = "Professores";
             btnProfessores.UseVisualStyleBackColor = true;
             // 
-            // btnDisciplina
+            // btnDisciplinas
             // 
-            btnDisciplina.Location = new Point(12, 201);
-            btnDisciplina.Name = "btnDisciplina";
-            btnDisciplina.Size = new Size(75, 23);
-            btnDisciplina.TabIndex = 2;
-            btnDisciplina.Text = "Disciplinas";
-            btnDisciplina.UseVisualStyleBackColor = true;
+            btnDisciplinas.Location = new Point(12, 201);
+            btnDisciplinas.Name = "btnDisciplinas";
+            btnDisciplinas.Size = new Size(75, 23);
+            btnDisciplinas.TabIndex = 2;
+            btnDisciplinas.Text = "Disciplinas";
+            btnDisciplinas.UseVisualStyleBackColor = true;
             // 
             // btnMatriculas
             // 
@@ -152,24 +150,6 @@
             btnFrequencia.Text = "Frequência";
             btnFrequencia.UseVisualStyleBackColor = true;
             // 
-            // button11
-            // 
-            button11.Location = new Point(12, 433);
-            button11.Name = "button11";
-            button11.Size = new Size(75, 23);
-            button11.TabIndex = 2;
-            button11.Text = "button1";
-            button11.UseVisualStyleBackColor = true;
-            // 
-            // btnLogs
-            // 
-            btnLogs.Location = new Point(12, 404);
-            btnLogs.Name = "btnLogs";
-            btnLogs.Size = new Size(75, 23);
-            btnLogs.TabIndex = 2;
-            btnLogs.Text = "Logs";
-            btnLogs.UseVisualStyleBackColor = true;
-            // 
             // btnNotas
             // 
             btnNotas.Location = new Point(12, 290);
@@ -192,17 +172,15 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(832, 515);
             Controls.Add(panel1);
-            Controls.Add(btnLogs);
-            Controls.Add(btnDisciplina);
+            Controls.Add(btnDisciplinas);
             Controls.Add(btnNotas);
-            Controls.Add(button11);
             Controls.Add(btnTurmas);
             Controls.Add(btnFrequencia);
             Controls.Add(btnAlunos);
             Controls.Add(btnPagamentos);
             Controls.Add(btnProfessores);
             Controls.Add(bntFeedbacks);
-            Controls.Add(btnCurso);
+            Controls.Add(btnCursos);
             Controls.Add(btnMatriculas);
             Controls.Add(btnUsuarios);
             Controls.Add(statusStrip1);
@@ -211,6 +189,7 @@
             Name = "FrmPrincipal";
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
+            Load += FrmPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,16 +200,14 @@
         private MenuStrip menuStrip1;
         private Button btnUsuarios;
         private Button btnAlunos;
-        private Button btnCurso;
+        private Button btnCursos;
         private Button btnTurmas;
         private Button btnProfessores;
-        private Button btnDisciplina;
+        private Button btnDisciplinas;
         private Button btnMatriculas;
         private Button bntFeedbacks;
         private Button btnPagamentos;
         private Button btnFrequencia;
-        private Button button11;
-        private Button btnLogs;
         private Button btnNotas;
         private Panel panel1;
     }

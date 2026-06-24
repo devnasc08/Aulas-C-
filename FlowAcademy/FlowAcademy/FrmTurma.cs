@@ -279,5 +279,10 @@ namespace FlowAcademyF
         {
             btnEditar_Click(sender, e);
         }
+
+        private void cmbCurso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

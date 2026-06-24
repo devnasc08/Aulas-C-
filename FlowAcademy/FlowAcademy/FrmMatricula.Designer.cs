@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMatricula));
-            dtpMatricula = new DateTimePicker();
+            dtpDataMatricula = new DateTimePicker();
             cmbTurma = new ComboBox();
-            cmbAtiva = new ComboBox();
-            txtStatus = new ComboBox();
+            cmbStatus = new ComboBox();
             cmbAluno = new ComboBox();
             dgvMatricula = new DataGridView();
             label6 = new Label();
-            label9 = new Label();
             label1 = new Label();
             label8 = new Label();
             label4 = new Label();
@@ -47,12 +45,12 @@
             ((System.ComponentModel.ISupportInitialize)dgvMatricula).BeginInit();
             SuspendLayout();
             // 
-            // dtpMatricula
+            // dtpDataMatricula
             // 
-            dtpMatricula.Location = new Point(445, 26);
-            dtpMatricula.Name = "dtpMatricula";
-            dtpMatricula.Size = new Size(200, 23);
-            dtpMatricula.TabIndex = 70;
+            dtpDataMatricula.Location = new Point(445, 26);
+            dtpDataMatricula.Name = "dtpDataMatricula";
+            dtpDataMatricula.Size = new Size(200, 23);
+            dtpDataMatricula.TabIndex = 70;
             // 
             // cmbTurma
             // 
@@ -62,21 +60,13 @@
             cmbTurma.Size = new Size(121, 23);
             cmbTurma.TabIndex = 66;
             // 
-            // cmbAtiva
+            // cmbStatus
             // 
-            cmbAtiva.FormattingEnabled = true;
-            cmbAtiva.Location = new Point(524, 111);
-            cmbAtiva.Name = "cmbAtiva";
-            cmbAtiva.Size = new Size(121, 23);
-            cmbAtiva.TabIndex = 65;
-            // 
-            // txtStatus
-            // 
-            txtStatus.FormattingEnabled = true;
-            txtStatus.Location = new Point(83, 111);
-            txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(121, 23);
-            txtStatus.TabIndex = 64;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(83, 111);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(121, 23);
+            cmbStatus.TabIndex = 64;
             // 
             // cmbAluno
             // 
@@ -102,15 +92,6 @@
             label6.Size = new Size(84, 15);
             label6.TabIndex = 55;
             label6.Text = "Data Matrícula";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(524, 92);
-            label9.Name = "label9";
-            label9.Size = new Size(34, 15);
-            label9.TabIndex = 53;
-            label9.Text = "Ativa";
             // 
             // label1
             // 
@@ -214,19 +195,18 @@
             Controls.Add(btnSalvar);
             Controls.Add(button4);
             Controls.Add(button5);
-            Controls.Add(dtpMatricula);
+            Controls.Add(dtpDataMatricula);
             Controls.Add(cmbTurma);
-            Controls.Add(cmbAtiva);
-            Controls.Add(txtStatus);
+            Controls.Add(cmbStatus);
             Controls.Add(cmbAluno);
             Controls.Add(dgvMatricula);
             Controls.Add(label6);
-            Controls.Add(label9);
             Controls.Add(label1);
             Controls.Add(label8);
             Controls.Add(label4);
             Name = "FrmMatricula";
             Text = "FrmMatricula";
+            Load += FrmMatricula_Load;
             ((System.ComponentModel.ISupportInitialize)dgvMatricula).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -234,14 +214,12 @@
 
         #endregion
 
-        private DateTimePicker dtpMatricula;
+        private DateTimePicker dtpDataMatricula;
         private ComboBox cmbTurma;
-        private ComboBox cmbAtiva;
-        private ComboBox txtStatus;
+        private ComboBox cmbStatus;
         private ComboBox cmbAluno;
         private DataGridView dgvMatricula;
         private Label label6;
-        private Label label9;
         private Label label1;
         private Label label8;
         private Label label4;

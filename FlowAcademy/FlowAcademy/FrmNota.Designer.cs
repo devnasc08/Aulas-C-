@@ -111,6 +111,7 @@
             label2.Size = new Size(42, 15);
             label2.TabIndex = 72;
             label2.Text = "Nota 1";
+            label2.Click += label2_Click;
             // 
             // label3
             // 

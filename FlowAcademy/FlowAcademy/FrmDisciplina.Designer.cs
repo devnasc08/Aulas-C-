@@ -62,7 +62,7 @@
             // dgvDisciplina
             // 
             dgvDisciplina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDisciplina.Location = new Point(71, 323);
+            dgvDisciplina.Location = new Point(67, 221);
             dgvDisciplina.Name = "dgvDisciplina";
             dgvDisciplina.Size = new Size(668, 243);
             dgvDisciplina.TabIndex = 28;
@@ -109,7 +109,7 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(292, 238);
+            btnEditar.Location = new Point(288, 136);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 38;
@@ -125,7 +125,7 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(147, 238);
+            btnSalvar.Location = new Point(143, 136);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 37;
@@ -142,7 +142,7 @@
             button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button4.ForeColor = Color.Black;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(437, 235);
+            button4.Location = new Point(433, 133);
             button4.Name = "button4";
             button4.Size = new Size(93, 67);
             button4.TabIndex = 36;
@@ -159,7 +159,7 @@
             button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button5.ForeColor = Color.Black;
             button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(578, 235);
+            button5.Location = new Point(574, 133);
             button5.Name = "button5";
             button5.Size = new Size(93, 67);
             button5.TabIndex = 35;
@@ -185,6 +185,7 @@
             Controls.Add(label1);
             Name = "FrmDisciplina";
             Text = "FrmDisciplina";
+            Load += FrmDisciplina_Load;
             ((System.ComponentModel.ISupportInitialize)nudCargaHoraria).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvDisciplina).EndInit();
             ResumeLayout(false);

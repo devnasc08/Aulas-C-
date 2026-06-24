@@ -69,6 +69,7 @@
             txtPercentual.ReadOnly = true;
             txtPercentual.Size = new Size(100, 23);
             txtPercentual.TabIndex = 100;
+            txtPercentual.TextChanged += txtPercentual_TextChanged;
             // 
             // cmbDisciplina
             // 

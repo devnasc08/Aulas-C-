@@ -334,5 +334,10 @@ namespace FlowAcademyF
         {
             btnEditar_Click(sender, e);
         }
+
+        private void txtPercentual_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
