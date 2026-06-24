@@ -40,7 +40,7 @@
             txtTelefone = new TextBox();
             label8 = new Label();
             txtEndereco = new TextBox();
-            cmbUser = new ComboBox();
+            cmbUsuario = new ComboBox();
             btnEditar = new Button();
             btnSalvar = new Button();
             button4 = new Button();
@@ -138,13 +138,13 @@
             txtEndereco.Size = new Size(130, 23);
             txtEndereco.TabIndex = 2;
             // 
-            // cmbUser
+            // cmbUsuario
             // 
-            cmbUser.FormattingEnabled = true;
-            cmbUser.Location = new Point(43, 42);
-            cmbUser.Name = "cmbUser";
-            cmbUser.Size = new Size(121, 23);
-            cmbUser.TabIndex = 14;
+            cmbUsuario.FormattingEnabled = true;
+            cmbUsuario.Location = new Point(43, 42);
+            cmbUsuario.Name = "cmbUsuario";
+            cmbUsuario.Size = new Size(121, 23);
+            cmbUsuario.TabIndex = 14;
             // 
             // btnEditar
             // 
@@ -221,7 +221,7 @@
             Controls.Add(btnSalvar);
             Controls.Add(button4);
             Controls.Add(button5);
-            Controls.Add(cmbUser);
+            Controls.Add(cmbUsuario);
             Controls.Add(dgvAluno);
             Controls.Add(txtEndereco);
             Controls.Add(label8);
@@ -254,7 +254,7 @@
         private TextBox txtTelefone;
         private Label label8;
         private TextBox txtEndereco;
-        private ComboBox cmbUser;
+        private ComboBox cmbUsuario;
         private Button btnEditar;
         private Button btnSalvar;
         private Button button4;

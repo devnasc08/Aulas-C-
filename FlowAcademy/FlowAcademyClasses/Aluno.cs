@@ -196,7 +196,7 @@ namespace FlowAcademyClasses
             {
                 cmd.CommandType = CommandType.Text;
 
-                cmd.CommandText = @"SELECT id_aluno, id_usuario, matricula, cpf, telefone FROM alunos";
+                cmd.CommandText = @"SELECT id_aluno, id_usuario, matricula, cpf, telefone, endereco FROM alunos";
 
                 var dr = cmd.ExecuteReader();
 

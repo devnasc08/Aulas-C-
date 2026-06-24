@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlowAcademyClasses")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f96687b70776a8433f28ec3e7795a6e8ff61a03c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49bd5379e94418f1de635065416b560f503b7032")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlowAcademyClasses")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlowAcademyClasses")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

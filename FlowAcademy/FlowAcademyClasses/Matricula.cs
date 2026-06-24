@@ -6,45 +6,22 @@ namespace FlowAcademyClasses
 {
     public class Matricula
     {
-
-
-
-        /// <summary>
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// AJUSTAR OS NOMES DAS PROCEDURES E AS COLUNAS DE ACORDO COM O BANCO DE DADOS
-        /// </summary>
-
-
-
-
-
-
-
-        // Propriedades
+        // ==========================
+        // PROPRIEDADES
+        // ==========================
         public int IdMatricula { get; set; }
         public int IdAluno { get; set; }
         public int IdTurma { get; set; }
         public DateTime DataMatricula { get; set; }
         public string? Status { get; set; }
 
-        // Objetos de relacionamento
+        // Relacionamentos
         public Aluno? Aluno { get; set; }
         public Turma? Turma { get; set; }
 
-        // Construtor vazio
+        // ==========================
+        // CONSTRUTOR
+        // ==========================
         public Matricula()
         {
             IdMatricula = 0;
@@ -52,14 +29,8 @@ namespace FlowAcademyClasses
             Status = "ativa";
         }
 
-        // Construtor com ID
-        public Matricula(int idMatricula)
-        {
-            IdMatricula = idMatricula;
-        }
-
-        // Construtor completo
-        public Matricula(int idMatricula, int idAluno, int idTurma, DateTime dataMatricula, string? status)
+        public Matricula(int idMatricula, int idAluno, int idTurma,
+                         DateTime dataMatricula, string? status)
         {
             IdMatricula = idMatricula;
             IdAluno = idAluno;
@@ -73,18 +44,24 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Inserir()
         {
+            if (IdAluno <= 0) return false;
+            if (IdTurma <= 0) return false;
+
             bool inserido = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_inserir_matricula";
 
                 cmd.Parameters.AddWithValue("p_id_aluno", IdAluno);
-                cmd.Parameters.AddWithValue("spidturma", IdTurma);
-                cmd.Parameters.AddWithValue("spdatamatricula", DataMatricula);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.Parameters.AddWithValue("p_id_turma", IdTurma);
+                cmd.Parameters.AddWithValue("p_data_matricula", DataMatricula);
+                cmd.Parameters.AddWithValue("p_status",
+                    string.IsNullOrEmpty(Status) ? "ativa" : Status);
 
                 IdMatricula = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdMatricula > 0;
@@ -100,24 +77,25 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Atualizar()
         {
-            bool atualizado = false;
-            if (IdMatricula < 1) return atualizado;
+            if (IdMatricula < 1) return false;
 
+            bool atualizado = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_matricula_update";
+                cmd.CommandText = "sp_atualizar_matricula";
 
-                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
-                cmd.Parameters.AddWithValue("spidaluno", IdAluno);
-                cmd.Parameters.AddWithValue("spidturma", IdTurma);
-                cmd.Parameters.AddWithValue("spdatamatricula", DataMatricula);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.Parameters.AddWithValue("p_id", IdMatricula);
+                cmd.Parameters.AddWithValue("p_id_aluno", IdAluno);
+                cmd.Parameters.AddWithValue("p_id_turma", IdTurma);
+                cmd.Parameters.AddWithValue("p_data_matricula", DataMatricula);
+                cmd.Parameters.AddWithValue("p_status", Status);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    atualizado = true;
+                atualizado = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -130,20 +108,21 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Excluir()
         {
-            bool excluido = false;
-            if (IdMatricula < 1) return excluido;
+            if (IdMatricula < 1) return false;
 
+            bool excluido = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_matricula_delete";
+                cmd.CommandText = "sp_excluir_matricula";
 
-                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
+                cmd.Parameters.AddWithValue("p_id", IdMatricula);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    excluido = true;
+                excluido = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -154,7 +133,7 @@ namespace FlowAcademyClasses
         // ==========================
         // OBTER POR ID
         // ==========================
-        public static Matricula ObterPorId(int idMatricula)
+        public static Matricula ObterPorId(int id)
         {
             Matricula matricula = new();
             var cmd = Banco.Abrir();
@@ -164,19 +143,11 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT
-
-                id_matricula,
-                id_aluno,
-                id_turma,
-                data_matricula,
-                status
-
+                SELECT id_matricula, id_aluno, id_turma, data_matricula, status
                 FROM matriculas
-
                 WHERE id_matricula = @id";
 
-                cmd.Parameters.AddWithValue("@id", idMatricula);
+                cmd.Parameters.AddWithValue("@id", id);
 
                 var dr = cmd.ExecuteReader();
 
@@ -190,7 +161,6 @@ namespace FlowAcademyClasses
                         dr.IsDBNull(4) ? null : dr.GetString(4)
                     );
 
-                    // Carrega os objetos relacionados de forma automatizada
                     matricula.Aluno = Aluno.ObterPorId(matricula.IdAluno);
                     matricula.Turma = Turma.ObterPorId(matricula.IdTurma);
                 }
@@ -203,7 +173,7 @@ namespace FlowAcademyClasses
         }
 
         // ==========================
-        // LISTAR (Retorna List<Matricula>)
+        // LISTAR
         // ==========================
         public static List<Matricula> ObterLista()
         {
@@ -215,22 +185,14 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-
-                SELECT
-
-                id_matricula,
-                id_aluno,
-                id_turma,
-                data_matricula,
-                status
-
-                FROM matriculas";   
+                SELECT id_matricula, id_aluno, id_turma, data_matricula, status
+                FROM matriculas";
 
                 var dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    var matricula = new Matricula(
+                    Matricula m = new Matricula(
                         dr.GetInt32(0),
                         dr.GetInt32(1),
                         dr.GetInt32(2),
@@ -238,10 +200,10 @@ namespace FlowAcademyClasses
                         dr.IsDBNull(4) ? null : dr.GetString(4)
                     );
 
-                    matricula.Aluno = Aluno.ObterPorId(matricula.IdAluno);
-                    matricula.Turma = Turma.ObterPorId(matricula.IdTurma);
+                    m.Aluno = Aluno.ObterPorId(m.IdAluno);
+                    m.Turma = Turma.ObterPorId(m.IdTurma);
 
-                    matriculas.Add(matricula);
+                    matriculas.Add(m);
                 }
 
                 dr.Close();
@@ -251,6 +213,9 @@ namespace FlowAcademyClasses
             return matriculas;
         }
 
+        // ==========================
+        // REGRA DE NEGÓCIO
+        // ==========================
         public bool RealizarMatricula()
         {
             if (!new Turma(IdTurma).PossuiVaga())
@@ -258,6 +223,7 @@ namespace FlowAcademyClasses
 
             DataMatricula = DateTime.Today;
             Status = "ativa";
+
             return Inserir();
         }
     }

@@ -1,23 +1,90 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Data;
 
 namespace FlowAcademyClasses
 {
     public class AuthService
     {
+        // ==========================
+        // LOGIN
+        // ==========================
+        public static Usuario Login(string email, string senha)
+        {
+            string senhaHash = GerarHash(senha);
 
-        // Login
+            Usuario usuario = Usuario.EfetuarLogin(email, senhaHash);
 
-        // Logout
+            if (usuario.IdUsuario > 0)
+            {
+                AtualizarUltimoLogin(usuario.IdUsuario);
+            }
 
-        // PasswordHash
+            return usuario;
+        }
 
-        // VerifyPassword
+        // ==========================
+        // LOGOUT
+        // ==========================
+        public static void Logout()
+        {
+            // Simples, pode ser expandido depois
+            // Ex: limpar sessão ou variável global
+        }
 
-        // AtualizarUltimoLogin
+        // ==========================
+        // HASH DE SENHA
+        // ==========================
+        public static string GerarHash(string senha)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(senha);
+                byte[] hash = sha.ComputeHash(bytes);
 
+                StringBuilder builder = new StringBuilder();
+
+                foreach (byte b in hash)
+                    builder.Append(b.ToString("x2"));
+
+                return builder.ToString();
+            }
+        }
+
+        // ==========================
+        // VERIFICAR SENHA
+        // ==========================
+        public static bool VerificarSenha(string senhaDigitada, string senhaHashBanco)
+        {
+            string hashDigitado = GerarHash(senhaDigitada);
+            return hashDigitado == senhaHashBanco;
+        }
+
+        // ==========================
+        // ATUALIZAR ÚLTIMO LOGIN
+        // ==========================
+        public static void AtualizarUltimoLogin(int idUsuario)
+        {
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.Parameters.Clear();
+
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                UPDATE usuarios
+                SET ultimo_login = NOW()
+                WHERE id_usuario = @id";
+
+                cmd.Parameters.AddWithValue("@id", idUsuario);
+
+                cmd.ExecuteNonQuery();
+
+                cmd.Connection.Close();
+            }
+        }
     }
 }

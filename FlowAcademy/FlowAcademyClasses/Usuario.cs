@@ -6,16 +6,20 @@ namespace FlowAcademyClasses
 {
     public class Usuario
     {
-        // Propriedades
+        // ==========================
+        // PROPRIEDADES
+        // ==========================
         public int IdUsuario { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
         public string? Senha { get; set; }
-        public string? NivelAcesso { get; set; } // 'administrador', 'professor', 'aluno'
+        public string? NivelAcesso { get; set; }
         public string? Status { get; set; }
         public DateTime DataCriacao { get; set; }
 
-        // Construtor vazio
+        // ==========================
+        // CONSTRUTOR
+        // ==========================
         public Usuario()
         {
             IdUsuario = 0;
@@ -27,14 +31,9 @@ namespace FlowAcademyClasses
             DataCriacao = DateTime.Now;
         }
 
-        // Construtor com ID
-        public Usuario(int idUsuario)
-        {
-            IdUsuario = idUsuario;
-        }
-
-        // Construtor completo
-        public Usuario(int idUsuario, string? nome, string? email, string? senha, string? nivelAcesso, string? status, DateTime dataCriacao)
+        public Usuario(int idUsuario, string? nome, string? email,
+                       string? senha, string? nivelAcesso,
+                       string? status, DateTime dataCriacao)
         {
             IdUsuario = idUsuario;
             Nome = nome;
@@ -50,19 +49,25 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Inserir()
         {
+            if (string.IsNullOrEmpty(Nome)) return false;
+            if (string.IsNullOrEmpty(Email)) return false;
+            if (string.IsNullOrEmpty(Senha)) return false;
+
             bool inserido = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_usuario_insert";
+                cmd.Parameters.Clear();
 
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spemail", Email);
-                cmd.Parameters.AddWithValue("spsenha", Senha); // Idealmente criptografada
-                cmd.Parameters.AddWithValue("spnivelacesso", NivelAcesso);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_inserir_usuario";
+
+                cmd.Parameters.AddWithValue("p_nome", Nome);
+                cmd.Parameters.AddWithValue("p_email", Email);
+                cmd.Parameters.AddWithValue("p_senha", Senha);
+                cmd.Parameters.AddWithValue("p_perfil", NivelAcesso);
+                cmd.Parameters.AddWithValue("p_status", Status);
 
                 IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdUsuario > 0;
@@ -78,25 +83,26 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Atualizar()
         {
-            bool atualizado = false;
-            if (IdUsuario < 1) return atualizado;
+            if (IdUsuario < 1) return false;
 
+            bool atualizado = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_usuario_update";
+                cmd.CommandText = "sp_atualizar_usuario";
 
-                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
-                cmd.Parameters.AddWithValue("spnome", Nome);
-                cmd.Parameters.AddWithValue("spemail", Email);
-                cmd.Parameters.AddWithValue("spsenha", Senha);
-                cmd.Parameters.AddWithValue("spnivelacesso", NivelAcesso);
-                cmd.Parameters.AddWithValue("spstatus", Status);
+                cmd.Parameters.AddWithValue("p_id", IdUsuario);
+                cmd.Parameters.AddWithValue("p_nome", Nome);
+                cmd.Parameters.AddWithValue("p_email", Email);
+                cmd.Parameters.AddWithValue("p_senha", Senha);
+                cmd.Parameters.AddWithValue("p_perfil", NivelAcesso);
+                cmd.Parameters.AddWithValue("p_status", Status);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    atualizado = true;
+                atualizado = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -109,20 +115,21 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Excluir()
         {
-            bool excluido = false;
-            if (IdUsuario < 1) return excluido;
+            if (IdUsuario < 1) return false;
 
+            bool excluido = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_usuario_delete";
+                cmd.CommandText = "sp_excluir_usuario";
 
-                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
+                cmd.Parameters.AddWithValue("p_id", IdUsuario);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    excluido = true;
+                excluido = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -133,16 +140,22 @@ namespace FlowAcademyClasses
         // ==========================
         // OBTER POR ID
         // ==========================
-        public static Usuario ObterPorId(int idUsuario)
+        public static Usuario ObterPorId(int id)
         {
             Usuario usuario = new();
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_usuario_getbyid";
-                cmd.Parameters.AddWithValue("spidusuario", idUsuario);
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                SELECT id_usuario, nome, email, senha_hash,
+                       perfil, status, created_at
+                FROM usuarios
+                WHERE id_usuario = @id";
+
+                cmd.Parameters.AddWithValue("@id", id);
 
                 var dr = cmd.ExecuteReader();
 
@@ -176,8 +189,12 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_usuario_getall";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                SELECT id_usuario, nome, email, senha_hash,
+                       perfil, status, created_at
+                FROM usuarios";
 
                 var dr = cmd.ExecuteReader();
 
@@ -201,7 +218,9 @@ namespace FlowAcademyClasses
             return usuarios;
         }
 
-        // Efetua login validando as credenciais por procedure externa
+        // ==========================
+        // LOGIN
+        // ==========================
         public static Usuario EfetuarLogin(string email, string senha)
         {
             Usuario usuario = new();
@@ -209,10 +228,13 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_usuario_login";
-                cmd.Parameters.AddWithValue("spemail", email);
-                cmd.Parameters.AddWithValue("spsenha", senha);
+
+                cmd.Parameters.AddWithValue("p_email", email);
+                cmd.Parameters.AddWithValue("p_senha", senha);
 
                 var dr = cmd.ExecuteReader();
 

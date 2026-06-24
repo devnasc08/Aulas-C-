@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFrequencia));
-            txtPresenca = new TextBox();
+            txtPresencas = new TextBox();
             txtTotalAulas = new TextBox();
             txtPercentual = new TextBox();
             cmbDisciplina = new ComboBox();
@@ -46,13 +46,13 @@
             ((System.ComponentModel.ISupportInitialize)dgvFrequencia).BeginInit();
             SuspendLayout();
             // 
-            // txtPresenca
+            // txtPresencas
             // 
-            txtPresenca.Location = new Point(83, 218);
-            txtPresenca.Name = "txtPresenca";
-            txtPresenca.ReadOnly = true;
-            txtPresenca.Size = new Size(100, 23);
-            txtPresenca.TabIndex = 103;
+            txtPresencas.Location = new Point(83, 218);
+            txtPresencas.Name = "txtPresencas";
+            txtPresencas.ReadOnly = true;
+            txtPresencas.Size = new Size(100, 23);
+            txtPresencas.TabIndex = 103;
             // 
             // txtTotalAulas
             // 
@@ -196,7 +196,7 @@
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(btnCalcular);
-            Controls.Add(txtPresenca);
+            Controls.Add(txtPresencas);
             Controls.Add(txtTotalAulas);
             Controls.Add(txtPercentual);
             Controls.Add(cmbDisciplina);
@@ -209,6 +209,7 @@
             Controls.Add(label4);
             Name = "FrmFrequencia";
             Text = "FrmFrequencia";
+            Load += FrmFrequencia_Load;
             ((System.ComponentModel.ISupportInitialize)dgvFrequencia).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -216,7 +217,7 @@
 
         #endregion
 
-        private TextBox txtPresenca;
+        private TextBox txtPresencas;
         private TextBox txtTotalAulas;
         private TextBox txtPercentual;
         private ComboBox cmbDisciplina;

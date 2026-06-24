@@ -39,12 +39,18 @@
             label3 = new Label();
             txtNota2 = new TextBox();
             label5 = new Label();
-            txtMediaFinal = new TextBox();
+            txtMedia = new TextBox();
             label6 = new Label();
             txtStatus = new TextBox();
             btnEditar = new Button();
             btnSalvar = new Button();
             btnCalcular = new Button();
+            dtpData = new DateTimePicker();
+            label7 = new Label();
+            txtTrabalho = new TextBox();
+            txtComportamento = new TextBox();
+            label8 = new Label();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvNota).BeginInit();
             SuspendLayout();
             // 
@@ -109,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(355, 96);
+            label3.Location = new Point(295, 96);
             label3.Name = "label3";
             label3.Size = new Size(42, 15);
             label3.TabIndex = 72;
@@ -117,11 +123,10 @@
             // 
             // txtNota2
             // 
-            txtNota2.Location = new Point(355, 114);
+            txtNota2.Location = new Point(295, 114);
             txtNota2.Name = "txtNota2";
             txtNota2.Size = new Size(100, 23);
             txtNota2.TabIndex = 86;
-            txtNota2.TextChanged += textBox2_TextChanged;
             // 
             // label5
             // 
@@ -132,13 +137,13 @@
             label5.TabIndex = 72;
             label5.Text = "Média Final";
             // 
-            // txtMediaFinal
+            // txtMedia
             // 
-            txtMediaFinal.Location = new Point(93, 197);
-            txtMediaFinal.Name = "txtMediaFinal";
-            txtMediaFinal.ReadOnly = true;
-            txtMediaFinal.Size = new Size(100, 23);
-            txtMediaFinal.TabIndex = 86;
+            txtMedia.Location = new Point(93, 197);
+            txtMedia.Name = "txtMedia";
+            txtMedia.ReadOnly = true;
+            txtMedia.Size = new Size(100, 23);
+            txtMedia.TabIndex = 86;
             // 
             // label6
             // 
@@ -206,16 +211,70 @@
             btnCalcular.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCalcular.UseVisualStyleBackColor = true;
             // 
+            // dtpData
+            // 
+            dtpData.Location = new Point(601, 48);
+            dtpData.Name = "dtpData";
+            dtpData.Size = new Size(200, 23);
+            dtpData.TabIndex = 91;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(492, 96);
+            label7.Name = "label7";
+            label7.Size = new Size(53, 15);
+            label7.TabIndex = 92;
+            label7.Text = "Trabalho";
+            // 
+            // txtTrabalho
+            // 
+            txtTrabalho.Location = new Point(498, 114);
+            txtTrabalho.Name = "txtTrabalho";
+            txtTrabalho.Size = new Size(100, 23);
+            txtTrabalho.TabIndex = 93;
+            // 
+            // txtComportamento
+            // 
+            txtComportamento.Location = new Point(701, 114);
+            txtComportamento.Name = "txtComportamento";
+            txtComportamento.Size = new Size(100, 23);
+            txtComportamento.TabIndex = 93;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(701, 96);
+            label8.Name = "label8";
+            label8.Size = new Size(96, 15);
+            label8.TabIndex = 92;
+            label8.Text = "Comportamento";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(601, 30);
+            label10.Name = "label10";
+            label10.Size = new Size(31, 15);
+            label10.TabIndex = 92;
+            label10.Text = "Data";
+            // 
             // FrmNota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(937, 684);
+            Controls.Add(txtComportamento);
+            Controls.Add(txtTrabalho);
+            Controls.Add(label10);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(dtpData);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(btnCalcular);
             Controls.Add(txtStatus);
-            Controls.Add(txtMediaFinal);
+            Controls.Add(txtMedia);
             Controls.Add(txtNota2);
             Controls.Add(txtNota1);
             Controls.Add(cmbDisciplina);
@@ -229,6 +288,7 @@
             Controls.Add(label4);
             Name = "FrmNota";
             Text = "FrmNota";
+            Load += FrmNota_Load;
             ((System.ComponentModel.ISupportInitialize)dgvNota).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -246,11 +306,17 @@
         private Label label3;
         private TextBox txtNota2;
         private Label label5;
-        private TextBox txtMediaFinal;
+        private TextBox txtMedia;
         private Label label6;
         private TextBox txtStatus;
         private Button btnEditar;
         private Button btnSalvar;
         private Button btnCalcular;
+        private DateTimePicker dtpData;
+        private Label label7;
+        private TextBox txtTrabalho;
+        private TextBox txtComportamento;
+        private Label label8;
+        private Label label10;
     }
 }

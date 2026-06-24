@@ -32,7 +32,7 @@
             dtpMatricula = new DateTimePicker();
             cmbTurma = new ComboBox();
             cmbAtiva = new ComboBox();
-            cmbStatus = new ComboBox();
+            txtStatus = new ComboBox();
             cmbAluno = new ComboBox();
             dgvMatricula = new DataGridView();
             label6 = new Label();
@@ -70,13 +70,13 @@
             cmbAtiva.Size = new Size(121, 23);
             cmbAtiva.TabIndex = 65;
             // 
-            // cmbStatus
+            // txtStatus
             // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(83, 111);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(121, 23);
-            cmbStatus.TabIndex = 64;
+            txtStatus.FormattingEnabled = true;
+            txtStatus.Location = new Point(83, 111);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(121, 23);
+            txtStatus.TabIndex = 64;
             // 
             // cmbAluno
             // 
@@ -217,7 +217,7 @@
             Controls.Add(dtpMatricula);
             Controls.Add(cmbTurma);
             Controls.Add(cmbAtiva);
-            Controls.Add(cmbStatus);
+            Controls.Add(txtStatus);
             Controls.Add(cmbAluno);
             Controls.Add(dgvMatricula);
             Controls.Add(label6);
@@ -237,7 +237,7 @@
         private DateTimePicker dtpMatricula;
         private ComboBox cmbTurma;
         private ComboBox cmbAtiva;
-        private ComboBox cmbStatus;
+        private ComboBox txtStatus;
         private ComboBox cmbAluno;
         private DataGridView dgvMatricula;
         private Label label6;

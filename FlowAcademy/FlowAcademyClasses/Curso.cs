@@ -49,6 +49,8 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_inserir_curso";
 
@@ -78,6 +80,8 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_atualizar_curso";
 
@@ -108,6 +112,8 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_excluir_curso";
 

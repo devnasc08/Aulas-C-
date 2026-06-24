@@ -109,12 +109,20 @@ namespace FlowAcademyClasses
 
         public bool Inserir()
         {
+
+            if (IdCurso <= 0) return false;
+            if (IdProfessor <= 0) return false;
+            if (CapacidadeMaxima <= 0) return false;
+
             bool inserido = false;
 
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.CommandText = "sp_inserir_turma";
@@ -163,6 +171,9 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.CommandText = "sp_atualizar_turma";
@@ -213,6 +224,9 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.CommandText = "sp_excluir_turma";
@@ -443,5 +457,8 @@ namespace FlowAcademyClasses
 
             return possui;
         }
+
+
+
     }
 }

@@ -6,37 +6,27 @@ namespace FlowAcademyClasses
 {
     public class Professor
     {
-        // Propriedades
         public int IdProfessor { get; set; }
         public int IdUsuario { get; set; }
-        public string? Especializacao { get; set; }
-        public string? Titulacao { get; set; } // 'graduado', 'mestre', 'doutor'
+        public string? Cpf { get; set; }
+        public string? Especialidade { get; set; }
 
-        // Relacionamento com Usuário
         public Usuario? Usuario { get; set; }
 
-        // Construtor vazio
         public Professor()
         {
             IdProfessor = 0;
             IdUsuario = 0;
-            Especializacao = "";
-            Titulacao = "graduado";
+            Cpf = "";
+            Especialidade = "";
         }
 
-        // Construtor com ID
-        public Professor(int idProfessor)
-        {
-            IdProfessor = idProfessor;
-        }
-
-        // Construtor completo
-        public Professor(int idProfessor, int idUsuario, string? especializacao, string? titulacao)
+        public Professor(int idProfessor, int idUsuario, string? cpf, string? especialidade)
         {
             IdProfessor = idProfessor;
             IdUsuario = idUsuario;
-            Especializacao = especializacao;
-            Titulacao = titulacao;
+            Cpf = cpf;
+            Especialidade = especialidade;
         }
 
         // ==========================
@@ -44,17 +34,21 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Inserir()
         {
+            if (IdUsuario <= 0) return false;
+
             bool inserido = false;
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_professor_insert";
+                cmd.Parameters.Clear();
 
-                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
-                cmd.Parameters.AddWithValue("spespecializacao", Especializacao);
-                cmd.Parameters.AddWithValue("sptitulacao", Titulacao);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_inserir_professor";
+
+                cmd.Parameters.AddWithValue("p_id_usuario", IdUsuario);
+                cmd.Parameters.AddWithValue("p_cpf", Cpf);
+                cmd.Parameters.AddWithValue("p_especialidade", Especialidade);
 
                 IdProfessor = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdProfessor > 0;
@@ -70,23 +64,23 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Atualizar()
         {
-            bool atualizado = false;
-            if (IdProfessor < 1) return atualizado;
+            if (IdProfessor < 1) return false;
 
             var cmd = Banco.Abrir();
+            bool atualizado = false;
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_professor_update";
+                cmd.CommandText = "sp_atualizar_professor";
 
-                cmd.Parameters.AddWithValue("spidprofessor", IdProfessor);
-                cmd.Parameters.AddWithValue("spidusuario", IdUsuario);
-                cmd.Parameters.AddWithValue("spespecializacao", Especializacao);
-                cmd.Parameters.AddWithValue("sptitulacao", Titulacao);
+                cmd.Parameters.AddWithValue("p_id", IdProfessor);
+                cmd.Parameters.AddWithValue("p_cpf", Cpf);
+                cmd.Parameters.AddWithValue("p_especialidade", Especialidade);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    atualizado = true;
+                atualizado = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -99,20 +93,21 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Excluir()
         {
-            bool excluido = false;
-            if (IdProfessor < 1) return excluido;
+            if (IdProfessor < 1) return false;
 
             var cmd = Banco.Abrir();
+            bool excluido = false;
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_professor_delete";
+                cmd.CommandText = "sp_excluir_professor";
 
-                cmd.Parameters.AddWithValue("spidprofessor", IdProfessor);
+                cmd.Parameters.AddWithValue("p_id", IdProfessor);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    excluido = true;
+                excluido = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -123,16 +118,21 @@ namespace FlowAcademyClasses
         // ==========================
         // OBTER POR ID
         // ==========================
-        public static Professor ObterPorId(int idProfessor)
+        public static Professor ObterPorId(int id)
         {
             Professor professor = new();
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_professor_getbyid";
-                cmd.Parameters.AddWithValue("spidprofessor", idProfessor);
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+            SELECT id_professor, id_usuario, cpf, especialidade
+            FROM professores
+            WHERE id_professor = @id";
+
+                cmd.Parameters.AddWithValue("@id", id);
 
                 var dr = cmd.ExecuteReader();
 
@@ -165,8 +165,11 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "sp_professor_getall";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                SELECT id_professor, id_usuario, cpf, especialidade
+                FROM professores";
 
                 var dr = cmd.ExecuteReader();
 

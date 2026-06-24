@@ -12,9 +12,7 @@ namespace FlowAcademyClasses
         public int IdDisciplina { get; set; }
         public int IdCurso { get; set; }
         public string? Nome { get; set; }
-        public string? Descricao { get; set; }
         public int CargaHoraria { get; set; }
-        public string? Status { get; set; }
 
         // ==========================
         // CONSTRUTOR VAZIO
@@ -24,22 +22,18 @@ namespace FlowAcademyClasses
             IdDisciplina = 0;
             IdCurso = 0;
             Nome = "";
-            Descricao = "";
             CargaHoraria = 0;
-            Status = "ativo";
         }
 
         // ==========================
         // CONSTRUTOR COMPLETO
         // ==========================
-        public Disciplina(int idDisciplina, int idCurso, string? nome, string? descricao, int cargaHoraria, string? status)
+        public Disciplina(int idDisciplina, int idCurso, string? nome, int cargaHoraria)
         {
             IdDisciplina = idDisciplina;
             IdCurso = idCurso;
             Nome = nome;
-            Descricao = descricao;
             CargaHoraria = cargaHoraria;
-            Status = status;
         }
 
         // ==========================
@@ -52,14 +46,15 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_inserir_disciplina";
 
                 cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
                 cmd.Parameters.AddWithValue("p_nome", Nome);
-                cmd.Parameters.AddWithValue("p_descricao", Descricao);
                 cmd.Parameters.AddWithValue("p_carga_horaria", CargaHoraria);
-                cmd.Parameters.AddWithValue("p_status", Status);
 
                 IdDisciplina = Convert.ToInt32(cmd.ExecuteScalar());
                 inserido = IdDisciplina > 0;
@@ -83,15 +78,16 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_atualizar_disciplina";
 
                 cmd.Parameters.AddWithValue("p_id", IdDisciplina);
                 cmd.Parameters.AddWithValue("p_id_curso", IdCurso);
                 cmd.Parameters.AddWithValue("p_nome", Nome);
-                cmd.Parameters.AddWithValue("p_descricao", Descricao);
                 cmd.Parameters.AddWithValue("p_carga_horaria", CargaHoraria);
-                cmd.Parameters.AddWithValue("p_status", Status);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     atualizado = true;
@@ -115,6 +111,9 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_excluir_disciplina";
 
@@ -142,7 +141,7 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT id_disciplina, id_curso, nome, descricao, carga_horaria, status
+                SELECT id_disciplina, id_curso, nome, carga_horaria
                 FROM disciplinas
                 WHERE id_disciplina = @id";
 
@@ -156,9 +155,7 @@ namespace FlowAcademyClasses
                         dr.GetInt32(0),
                         dr.GetInt32(1),
                         dr.IsDBNull(2) ? null : dr.GetString(2),
-                        dr.IsDBNull(3) ? null : dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.IsDBNull(5) ? null : dr.GetString(5)
+                        dr.GetInt32(3)
                     );
                 }
 
@@ -182,7 +179,7 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT id_disciplina, id_curso, nome, descricao, carga_horaria, status
+                SELECT id_disciplina, id_curso, nome, carga_horaria
                 FROM disciplinas";
 
                 var dr = cmd.ExecuteReader();
@@ -193,9 +190,7 @@ namespace FlowAcademyClasses
                         dr.GetInt32(0),
                         dr.GetInt32(1),
                         dr.IsDBNull(2) ? null : dr.GetString(2),
-                        dr.IsDBNull(3) ? null : dr.GetString(3),
-                        dr.GetInt32(4),
-                        dr.IsDBNull(5) ? null : dr.GetString(5)
+                        dr.GetInt32(3)
                     ));
                 }
 

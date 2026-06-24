@@ -35,15 +35,15 @@
             txtDescricao = new TextBox();
             label3 = new Label();
             dgvCurso = new DataGridView();
-            nudCargaGoraria = new NumericUpDown();
-            cmbStatus = new ComboBox();
+            nudCargaHoraria = new NumericUpDown();
+            txtStatus = new ComboBox();
             label4 = new Label();
             btnEditar = new Button();
             btnSalvar = new Button();
             button4 = new Button();
             button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCurso).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nudCargaGoraria).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCargaHoraria).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -95,20 +95,20 @@
             dgvCurso.Size = new Size(668, 243);
             dgvCurso.TabIndex = 14;
             // 
-            // nudCargaGoraria
+            // nudCargaHoraria
             // 
-            nudCargaGoraria.Location = new Point(691, 65);
-            nudCargaGoraria.Name = "nudCargaGoraria";
-            nudCargaGoraria.Size = new Size(120, 23);
-            nudCargaGoraria.TabIndex = 20;
+            nudCargaHoraria.Location = new Point(691, 65);
+            nudCargaHoraria.Name = "nudCargaHoraria";
+            nudCargaHoraria.Size = new Size(120, 23);
+            nudCargaHoraria.TabIndex = 20;
             // 
-            // cmbStatus
+            // txtStatus
             // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(56, 117);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(121, 23);
-            cmbStatus.TabIndex = 21;
+            txtStatus.FormattingEnabled = true;
+            txtStatus.Location = new Point(56, 117);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(121, 23);
+            txtStatus.TabIndex = 21;
             // 
             // label4
             // 
@@ -194,8 +194,8 @@
             Controls.Add(btnSalvar);
             Controls.Add(button4);
             Controls.Add(button5);
-            Controls.Add(cmbStatus);
-            Controls.Add(nudCargaGoraria);
+            Controls.Add(txtStatus);
+            Controls.Add(nudCargaHoraria);
             Controls.Add(dgvCurso);
             Controls.Add(label3);
             Controls.Add(txtDescricao);
@@ -205,8 +205,9 @@
             Controls.Add(label1);
             Name = "FrmCurso";
             Text = "FrmCurso";
+            Load += FrmCurso_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCurso).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nudCargaGoraria).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCargaHoraria).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,8 +220,8 @@
         private TextBox txtDescricao;
         private Label label3;
         private DataGridView dgvCurso;
-        private NumericUpDown nudCargaGoraria;
-        private ComboBox cmbStatus;
+        private NumericUpDown nudCargaHoraria;
+        private ComboBox txtStatus;
         private Label label4;
         private Button btnEditar;
         private Button btnSalvar;

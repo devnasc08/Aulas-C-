@@ -40,18 +40,14 @@
             cmbTurno = new ComboBox();
             nudCapacidade = new NumericUpDown();
             label5 = new Label();
-            dtpDataInicio = new DateTimePicker();
-            label6 = new Label();
-            label7 = new Label();
-            dptDataFim = new DateTimePicker();
             label8 = new Label();
-            cmbStatus = new ComboBox();
-            label9 = new Label();
-            cmbAtiva = new ComboBox();
+            txtStatus = new ComboBox();
             btnEditar = new Button();
             btnSalvar = new Button();
             button4 = new Button();
             button5 = new Button();
+            txtPeriodoLetivo = new TextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTurma).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudCapacidade).BeginInit();
             SuspendLayout();
@@ -59,23 +55,23 @@
             // cmbCurso
             // 
             cmbCurso.FormattingEnabled = true;
-            cmbCurso.Location = new Point(69, 46);
+            cmbCurso.Location = new Point(70, 46);
             cmbCurso.Name = "cmbCurso";
-            cmbCurso.Size = new Size(121, 23);
+            cmbCurso.Size = new Size(178, 23);
             cmbCurso.TabIndex = 45;
             // 
             // dgvTurma
             // 
             dgvTurma.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTurma.Location = new Point(52, 349);
+            dgvTurma.Location = new Point(70, 338);
             dgvTurma.Name = "dgvTurma";
-            dgvTurma.Size = new Size(668, 243);
+            dgvTurma.Size = new Size(667, 131);
             dgvTurma.TabIndex = 39;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(451, 29);
+            label3.Location = new Point(70, 124);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 35;
@@ -84,7 +80,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 28);
+            label4.Location = new Point(71, 28);
             label4.Name = "label4";
             label4.Size = new Size(38, 15);
             label4.TabIndex = 36;
@@ -93,7 +89,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(246, 29);
+            label1.Location = new Point(343, 28);
             label1.Name = "label1";
             label1.Size = new Size(56, 15);
             label1.TabIndex = 36;
@@ -102,14 +98,14 @@
             // cmbProfessor
             // 
             cmbProfessor.FormattingEnabled = true;
-            cmbProfessor.Location = new Point(246, 46);
+            cmbProfessor.Location = new Point(343, 46);
             cmbProfessor.Name = "cmbProfessor";
-            cmbProfessor.Size = new Size(121, 23);
+            cmbProfessor.Size = new Size(197, 23);
             cmbProfessor.TabIndex = 45;
             // 
             // txtCodTurma
             // 
-            txtCodTurma.Location = new Point(451, 46);
+            txtCodTurma.Location = new Point(71, 144);
             txtCodTurma.Name = "txtCodTurma";
             txtCodTurma.Size = new Size(100, 23);
             txtCodTurma.TabIndex = 46;
@@ -117,7 +113,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(590, 29);
+            label2.Location = new Point(616, 29);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 36;
@@ -126,92 +122,43 @@
             // cmbTurno
             // 
             cmbTurno.FormattingEnabled = true;
-            cmbTurno.Location = new Point(590, 46);
+            cmbTurno.Location = new Point(616, 46);
             cmbTurno.Name = "cmbTurno";
             cmbTurno.Size = new Size(121, 23);
             cmbTurno.TabIndex = 45;
             // 
             // nudCapacidade
             // 
-            nudCapacidade.Location = new Point(69, 112);
+            nudCapacidade.Location = new Point(614, 144);
             nudCapacidade.Name = "nudCapacidade";
-            nudCapacidade.Size = new Size(120, 23);
+            nudCapacidade.Size = new Size(100, 23);
             nudCapacidade.TabIndex = 47;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(68, 94);
+            label5.Location = new Point(614, 124);
             label5.Name = "label5";
             label5.Size = new Size(69, 15);
             label5.TabIndex = 36;
             label5.Text = "Capacidade";
             // 
-            // dtpDataInicio
-            // 
-            dtpDataInicio.Location = new Point(220, 112);
-            dtpDataInicio.Name = "dtpDataInicio";
-            dtpDataInicio.Size = new Size(200, 23);
-            dtpDataInicio.TabIndex = 48;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(220, 94);
-            label6.Name = "label6";
-            label6.Size = new Size(63, 15);
-            label6.TabIndex = 36;
-            label6.Text = "Data Início";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(474, 94);
-            label7.Name = "label7";
-            label7.Size = new Size(54, 15);
-            label7.TabIndex = 36;
-            label7.Text = "Data Fim";
-            // 
-            // dptDataFim
-            // 
-            dptDataFim.Location = new Point(474, 112);
-            dptDataFim.Name = "dptDataFim";
-            dptDataFim.Size = new Size(200, 23);
-            dptDataFim.TabIndex = 48;
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(69, 175);
+            label8.Location = new Point(252, 124);
             label8.Name = "label8";
             label8.Size = new Size(39, 15);
             label8.TabIndex = 36;
             label8.Text = "Status";
             // 
-            // cmbStatus
+            // txtStatus
             // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(69, 194);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(121, 23);
-            cmbStatus.TabIndex = 45;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(553, 175);
-            label9.Name = "label9";
-            label9.Size = new Size(34, 15);
-            label9.TabIndex = 36;
-            label9.Text = "Ativa";
-            // 
-            // cmbAtiva
-            // 
-            cmbAtiva.FormattingEnabled = true;
-            cmbAtiva.Location = new Point(553, 194);
-            cmbAtiva.Name = "cmbAtiva";
-            cmbAtiva.Size = new Size(121, 23);
-            cmbAtiva.TabIndex = 45;
+            txtStatus.FormattingEnabled = true;
+            txtStatus.Location = new Point(252, 142);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(100, 23);
+            txtStatus.TabIndex = 45;
             // 
             // btnEditar
             // 
@@ -279,36 +226,49 @@
             button5.TextImageRelation = TextImageRelation.ImageAboveText;
             button5.UseVisualStyleBackColor = true;
             // 
+            // txtPeriodoLetivo
+            // 
+            txtPeriodoLetivo.Location = new Point(433, 144);
+            txtPeriodoLetivo.Name = "txtPeriodoLetivo";
+            txtPeriodoLetivo.Size = new Size(100, 23);
+            txtPeriodoLetivo.TabIndex = 53;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(433, 124);
+            label6.Name = "label6";
+            label6.Size = new Size(83, 15);
+            label6.TabIndex = 36;
+            label6.Text = "Periodo Letivo";
+            // 
             // FrmTurma
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 593);
+            Controls.Add(txtPeriodoLetivo);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(button4);
             Controls.Add(button5);
-            Controls.Add(dptDataFim);
-            Controls.Add(dtpDataInicio);
             Controls.Add(nudCapacidade);
             Controls.Add(txtCodTurma);
             Controls.Add(cmbTurno);
             Controls.Add(cmbProfessor);
-            Controls.Add(cmbAtiva);
-            Controls.Add(cmbStatus);
+            Controls.Add(txtStatus);
             Controls.Add(cmbCurso);
             Controls.Add(label2);
-            Controls.Add(label7);
             Controls.Add(dgvTurma);
-            Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label9);
             Controls.Add(label1);
+            Controls.Add(label6);
             Controls.Add(label8);
             Controls.Add(label3);
             Controls.Add(label4);
             Name = "FrmTurma";
             Text = "FrmTurma";
+            Load += FrmTurma_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTurma).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudCapacidade).EndInit();
             ResumeLayout(false);
@@ -328,17 +288,13 @@
         private ComboBox cmbTurno;
         private NumericUpDown nudCapacidade;
         private Label label5;
-        private DateTimePicker dtpDataInicio;
-        private Label label6;
-        private Label label7;
-        private DateTimePicker dptDataFim;
         private Label label8;
-        private ComboBox cmbStatus;
-        private Label label9;
-        private ComboBox cmbAtiva;
+        private ComboBox txtStatus;
         private Button btnEditar;
         private Button btnSalvar;
         private Button button4;
         private Button button5;
+        private TextBox txtPeriodoLetivo;
+        private Label label6;
     }
 }

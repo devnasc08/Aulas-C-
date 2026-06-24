@@ -21,7 +21,7 @@ namespace FlowAcademyClasses
         // CONSTRUTORES
         // ==========================
         public Pagamento()
-        {
+        { 
             IdPagamento = 0;
             IdAluno = 0;
             Valor = 0;

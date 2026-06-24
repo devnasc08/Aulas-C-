@@ -32,7 +32,7 @@
             label4 = new Label();
             cmbPerfil = new ComboBox();
             label5 = new Label();
-            cmbStatus = new ComboBox();
+            txtStatus = new ComboBox();
             dgvUsers = new DataGridView();
             txtSenha = new TextBox();
             txtEmail = new TextBox();
@@ -50,7 +50,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(65, 213);
+            label4.Location = new Point(420, 108);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
             label4.TabIndex = 2;
@@ -59,7 +59,7 @@
             // cmbPerfil
             // 
             cmbPerfil.FormattingEnabled = true;
-            cmbPerfil.Location = new Point(65, 231);
+            cmbPerfil.Location = new Point(418, 126);
             cmbPerfil.Name = "cmbPerfil";
             cmbPerfil.Size = new Size(121, 23);
             cmbPerfil.TabIndex = 3;
@@ -67,38 +67,38 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(65, 268);
+            label5.Location = new Point(65, 178);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
             label5.TabIndex = 2;
             label5.Text = "Status";
             // 
-            // cmbStatus
+            // txtStatus
             // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(65, 286);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(121, 23);
-            cmbStatus.TabIndex = 3;
+            txtStatus.FormattingEnabled = true;
+            txtStatus.Location = new Point(65, 196);
+            txtStatus.Name = "txtStatus";
+            txtStatus.Size = new Size(121, 23);
+            txtStatus.TabIndex = 3;
             // 
             // dgvUsers
             // 
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(99, 430);
+            dgvUsers.Location = new Point(109, 362);
             dgvUsers.Name = "dgvUsers";
             dgvUsers.Size = new Size(530, 150);
             dgvUsers.TabIndex = 19;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(65, 151);
+            txtSenha.Location = new Point(65, 132);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(211, 23);
             txtSenha.TabIndex = 22;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(65, 102);
+            txtEmail.Location = new Point(418, 66);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(211, 23);
             txtEmail.TabIndex = 23;
@@ -107,7 +107,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F);
-            label3.Location = new Point(65, 133);
+            label3.Location = new Point(66, 108);
             label3.Name = "label3";
             label3.Size = new Size(39, 15);
             label3.TabIndex = 21;
@@ -117,7 +117,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F);
-            label2.Location = new Point(65, 84);
+            label2.Location = new Point(418, 48);
             label2.Name = "label2";
             label2.Size = new Size(36, 15);
             label2.TabIndex = 20;
@@ -127,7 +127,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F);
-            label1.Location = new Point(65, 40);
+            label1.Location = new Point(64, 50);
             label1.Name = "label1";
             label1.Size = new Size(40, 15);
             label1.TabIndex = 20;
@@ -135,7 +135,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(65, 58);
+            txtNome.Location = new Point(65, 68);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(211, 23);
             txtNome.TabIndex = 23;
@@ -148,7 +148,7 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(247, 360);
+            btnEditar.Location = new Point(257, 292);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 27;
@@ -164,7 +164,7 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(99, 360);
+            btnSalvar.Location = new Point(109, 292);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 26;
@@ -181,7 +181,7 @@
             button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button4.ForeColor = Color.Black;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(392, 357);
+            button4.Location = new Point(402, 289);
             button4.Name = "button4";
             button4.Size = new Size(93, 67);
             button4.TabIndex = 25;
@@ -198,7 +198,7 @@
             button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button5.ForeColor = Color.Black;
             button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(536, 360);
+            button5.Location = new Point(546, 292);
             button5.Name = "button5";
             button5.Size = new Size(93, 67);
             button5.TabIndex = 24;
@@ -210,7 +210,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 640);
+            ClientSize = new Size(789, 585);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(button4);
@@ -222,7 +222,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(dgvUsers);
-            Controls.Add(cmbStatus);
+            Controls.Add(txtStatus);
             Controls.Add(label5);
             Controls.Add(cmbPerfil);
             Controls.Add(label4);
@@ -238,7 +238,7 @@
         private Label label4;
         private ComboBox comboBox1;
         private Label label5;
-        private ComboBox cmbStatus;
+        private ComboBox txtStatus;
         private DataGridView dgvUsers;
         private TextBox txtSenha;
         private TextBox txtEmail;

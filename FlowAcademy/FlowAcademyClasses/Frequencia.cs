@@ -68,6 +68,10 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Inserir()
         {
+            if (IdMatricula <= 0) return false;
+            if (IdDisciplina <= 0) return false;
+            if (TotalAulas <= 0) return false;
+
             bool inserido = false;
 
             CalcularPercentual();
@@ -76,18 +80,18 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_inserir_frequencia";
 
-                cmd.CommandText = "sp_frequencia_insert";
-
-                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
-                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
-                cmd.Parameters.AddWithValue("sptotalaulas", TotalAulas);
-                cmd.Parameters.AddWithValue("sppresencas", Presencas);
-                cmd.Parameters.AddWithValue("sppercentual", Percentual);
+                cmd.Parameters.AddWithValue("p_id_matricula", IdMatricula);
+                cmd.Parameters.AddWithValue("p_id_disciplina", IdDisciplina);
+                cmd.Parameters.AddWithValue("p_total_aulas", TotalAulas);
+                cmd.Parameters.AddWithValue("p_presencas", Presencas);
+                cmd.Parameters.AddWithValue("p_percentual", Percentual);
 
                 IdFrequencia = Convert.ToInt32(cmd.ExecuteScalar());
-
                 inserido = IdFrequencia > 0;
 
                 cmd.Connection.Close();
@@ -102,10 +106,9 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Atualizar()
         {
-            bool atualizado = false;
+            if (IdFrequencia < 1) return false;
 
-            if (IdFrequencia < 1)
-                return atualizado;
+            bool atualizado = false;
 
             CalcularPercentual();
 
@@ -113,19 +116,19 @@ namespace FlowAcademyClasses
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_atualizar_frequencia";
 
-                cmd.CommandText = "sp_frequencia_update";
+                cmd.Parameters.AddWithValue("p_id", IdFrequencia);
+                cmd.Parameters.AddWithValue("p_id_matricula", IdMatricula);
+                cmd.Parameters.AddWithValue("p_id_disciplina", IdDisciplina);
+                cmd.Parameters.AddWithValue("p_total_aulas", TotalAulas);
+                cmd.Parameters.AddWithValue("p_presencas", Presencas);
+                cmd.Parameters.AddWithValue("p_percentual", Percentual);
 
-                cmd.Parameters.AddWithValue("spidfrequencia", IdFrequencia);
-                cmd.Parameters.AddWithValue("spidmatricula", IdMatricula);
-                cmd.Parameters.AddWithValue("spiddisciplina", IdDisciplina);
-                cmd.Parameters.AddWithValue("sptotalaulas", TotalAulas);
-                cmd.Parameters.AddWithValue("sppresencas", Presencas);
-                cmd.Parameters.AddWithValue("sppercentual", Percentual);
-
-                if (cmd.ExecuteNonQuery() > 0)
-                    atualizado = true;
+                atualizado = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }
@@ -139,23 +142,21 @@ namespace FlowAcademyClasses
         // ==========================
         public bool Excluir()
         {
+            if (IdFrequencia < 1) return false;
+
             bool excluido = false;
-
-            if (IdFrequencia < 1)
-                return excluido;
-
             var cmd = Banco.Abrir();
 
             if (cmd.Connection.State == ConnectionState.Open)
             {
+                cmd.Parameters.Clear();
+
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "sp_excluir_frequencia";
 
-                cmd.CommandText = "sp_frequencia_delete";
+                cmd.Parameters.AddWithValue("p_id", IdFrequencia);
 
-                cmd.Parameters.AddWithValue("spidfrequencia", IdFrequencia);
-
-                if (cmd.ExecuteNonQuery() > 0)
-                    excluido = true;
+                excluido = cmd.ExecuteNonQuery() > 0;
 
                 cmd.Connection.Close();
             }

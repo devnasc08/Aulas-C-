@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProfessor));
-            cmbUser = new ComboBox();
-            dgvAluno = new DataGridView();
+            cmbUsuario = new ComboBox();
+            dgvProfessores = new DataGridView();
             txtEspecialidade = new TextBox();
             label7 = new Label();
             txtCpf = new TextBox();
@@ -40,28 +40,28 @@
             btnSalvar = new Button();
             button4 = new Button();
             button5 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvAluno).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProfessores).BeginInit();
             SuspendLayout();
             // 
-            // cmbUser
+            // cmbUsuario
             // 
-            cmbUser.FormattingEnabled = true;
-            cmbUser.Location = new Point(31, 46);
-            cmbUser.Name = "cmbUser";
-            cmbUser.Size = new Size(121, 23);
-            cmbUser.TabIndex = 31;
+            cmbUsuario.FormattingEnabled = true;
+            cmbUsuario.Location = new Point(75, 49);
+            cmbUsuario.Name = "cmbUsuario";
+            cmbUsuario.Size = new Size(121, 23);
+            cmbUsuario.TabIndex = 31;
             // 
-            // dgvAluno
+            // dgvProfessores
             // 
-            dgvAluno.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAluno.Location = new Point(101, 363);
-            dgvAluno.Name = "dgvAluno";
-            dgvAluno.Size = new Size(668, 243);
-            dgvAluno.TabIndex = 25;
+            dgvProfessores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProfessores.Location = new Point(75, 297);
+            dgvProfessores.Name = "dgvProfessores";
+            dgvProfessores.Size = new Size(668, 243);
+            dgvProfessores.TabIndex = 25;
             // 
             // txtEspecialidade
             // 
-            txtEspecialidade.Location = new Point(31, 142);
+            txtEspecialidade.Location = new Point(75, 157);
             txtEspecialidade.Name = "txtEspecialidade";
             txtEspecialidade.Size = new Size(130, 23);
             txtEspecialidade.TabIndex = 22;
@@ -69,7 +69,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(31, 122);
+            label7.Location = new Point(75, 134);
             label7.Name = "label7";
             label7.Size = new Size(78, 15);
             label7.TabIndex = 18;
@@ -77,7 +77,7 @@
             // 
             // txtCpf
             // 
-            txtCpf.Location = new Point(31, 94);
+            txtCpf.Location = new Point(75, 103);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(130, 23);
             txtCpf.TabIndex = 24;
@@ -85,7 +85,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(31, 74);
+            label5.Location = new Point(75, 80);
             label5.Name = "label5";
             label5.Size = new Size(28, 15);
             label5.TabIndex = 16;
@@ -94,7 +94,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(31, 26);
+            label2.Location = new Point(75, 26);
             label2.Name = "label2";
             label2.Size = new Size(47, 15);
             label2.TabIndex = 19;
@@ -108,7 +108,7 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(283, 279);
+            btnEditar.Location = new Point(257, 213);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 35;
@@ -124,7 +124,7 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(138, 279);
+            btnSalvar.Location = new Point(112, 213);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 34;
@@ -141,7 +141,7 @@
             button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button4.ForeColor = Color.Black;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(428, 276);
+            button4.Location = new Point(402, 210);
             button4.Name = "button4";
             button4.Size = new Size(93, 67);
             button4.TabIndex = 33;
@@ -158,7 +158,7 @@
             button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button5.ForeColor = Color.Black;
             button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(569, 276);
+            button5.Location = new Point(543, 210);
             button5.Name = "button5";
             button5.Size = new Size(93, 67);
             button5.TabIndex = 32;
@@ -175,8 +175,8 @@
             Controls.Add(btnSalvar);
             Controls.Add(button4);
             Controls.Add(button5);
-            Controls.Add(cmbUser);
-            Controls.Add(dgvAluno);
+            Controls.Add(cmbUsuario);
+            Controls.Add(dgvProfessores);
             Controls.Add(txtEspecialidade);
             Controls.Add(label7);
             Controls.Add(txtCpf);
@@ -184,15 +184,16 @@
             Controls.Add(label2);
             Name = "FrmProfessor";
             Text = "FrmProfessor";
-            ((System.ComponentModel.ISupportInitialize)dgvAluno).EndInit();
+            Load += FrmProfessor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvProfessores).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ComboBox cmbUser;
-        private DataGridView dgvAluno;
+        private ComboBox cmbUsuario;
+        private DataGridView dgvProfessores;
         private TextBox txtEspecialidade;
         private Label label7;
         private TextBox txtCpf;
