@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{9A938F0D-8EAC-4B44-92D7-DB0F4C742EA5}|FlowAcademy\\FlowAcademy.csproj|c:\\users\\kau\u00E3\\documents\\aulas-c-\\flowacademy\\flowacademy\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A938F0D-8EAC-4B44-92D7-DB0F4C742EA5}|FlowAcademy\\FlowAcademy.csproj|solutionrelative:flowacademy\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|c:\\users\\kau\u00E3\\documents\\aulas-c-\\flowacademy\\flowacademyclasses\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4809C71F-F8C8-45AC-ADEA-EC2DB1554B01}|FlowAcademyClasses\\FlowAcademyClasses.csproj|solutionrelative:flowacademyclasses\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A938F0D-8EAC-4B44-92D7-DB0F4C742EA5}|FlowAcademy\\FlowAcademy.csproj|c:\\users\\kau\u00E3\\documents\\aulas-c-\\flowacademy\\flowacademy\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9A938F0D-8EAC-4B44-92D7-DB0F4C742EA5}|FlowAcademy\\FlowAcademy.csproj|solutionrelative:flowacademy\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,44 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademyClasses\\Usuario.cs",
-              "RelativeDocumentMoniker": "FlowAcademyClasses\\Usuario.cs",
-              "ToolTip": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademyClasses\\Usuario.cs",
-              "RelativeToolTip": "FlowAcademyClasses\\Usuario.cs",
-              "ViewState": "AgIAAAUBAAAAAAAAAAAowBABAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-24T21:24:52.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FormLogin.cs",
-              "RelativeDocumentMoniker": "FlowAcademy\\FormLogin.cs",
-              "ToolTip": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FormLogin.cs",
-              "RelativeToolTip": "FlowAcademy\\FormLogin.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAiwFcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-24T21:22:57.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormLogin.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FormLogin.cs",
-              "RelativeDocumentMoniker": "FlowAcademy\\FormLogin.cs",
-              "ToolTip": "C:\\Users\\Kau\u00E3\\Documents\\Aulas-C-\\FlowAcademy\\FlowAcademy\\FormLogin.cs [Projeto]",
-              "RelativeToolTip": "FlowAcademy\\FormLogin.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-24T21:22:02.217Z",
-              "EditorCaption": " [Projeto]"
             }
           ]
         }

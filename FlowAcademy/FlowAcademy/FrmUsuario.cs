@@ -1,6 +1,7 @@
-﻿using System;
+﻿using FlowAcademyClasses;
+using System;
+using System.Data;
 using System.Windows.Forms;
-using FlowAcademyClasses;
 
 namespace FlowAcademyF
 {
@@ -13,8 +14,28 @@ namespace FlowAcademyF
             InitializeComponent();
         }
 
+
+        private void Teste()
+        {
+            var cmd = Banco.Abrir();
+
+            if (cmd == null || cmd.Connection == null)
+            {
+                System.Windows.Forms.MessageBox.Show("Erro ao abrir conexão");
+                return; // ✅ sem objeto
+            }
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                System.Windows.Forms.MessageBox.Show("Conexão OK!");
+                cmd.Connection.Close();
+            }
+        }
+
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
+
+            //Teste();
             CarregarCombos();
             CarregarGrid();
             LimparFormulario();
@@ -94,44 +115,7 @@ namespace FlowAcademyF
         // ==========================
         // SALVAR
         // ==========================
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            if (!ValidarCampos()) return;
 
-            Usuario usuario = new Usuario();
-
-            usuario.Nome = txtNome.Text;
-            usuario.Email = txtEmail.Text;
-
-            if (!string.IsNullOrEmpty(txtSenha.Text))
-                usuario.Senha = txtSenha.Text;
-
-            usuario.NivelAcesso = cmbPerfil.Text;
-            usuario.Status = txtStatus.Text;
-
-            bool sucesso;
-
-            if (idSelecionado == 0)
-            {
-                sucesso = usuario.Inserir();
-            }
-            else
-            {
-                usuario.IdUsuario = idSelecionado;
-                sucesso = usuario.Atualizar();
-            }
-
-            if (sucesso)
-            {
-                MessageBox.Show("Operação realizada com sucesso!");
-                CarregarGrid();
-                LimparFormulario();
-            }
-            else
-            {
-                MessageBox.Show("Erro ao salvar.");
-            }
-        }
 
         // ==========================
         // EDITAR
@@ -197,6 +181,45 @@ namespace FlowAcademyF
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalvar_Click_1(object sender, EventArgs e)
+        {
+            if (!ValidarCampos()) return;
+
+            Usuario usuario = new Usuario();
+
+            usuario.Nome = txtNome.Text;
+            usuario.Email = txtEmail.Text;
+
+            if (!string.IsNullOrEmpty(txtSenha.Text))
+                usuario.Senha = txtSenha.Text;
+
+            usuario.NivelAcesso = cmbPerfil.Text;
+            usuario.Status = txtStatus.Text;
+
+            bool sucesso;
+
+            if (idSelecionado == 0)
+            {
+                sucesso = usuario.Inserir();
+            }
+            else
+            {
+                usuario.IdUsuario = idSelecionado;
+                sucesso = usuario.Atualizar();
+            }
+
+            if (sucesso)
+            {
+                MessageBox.Show("Operação realizada com sucesso!");
+                CarregarGrid();
+                LimparFormulario();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao salvar.");
+            }
         }
     }
 }

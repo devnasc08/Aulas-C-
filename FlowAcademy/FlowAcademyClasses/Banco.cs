@@ -15,7 +15,7 @@ namespace FlowAcademyClasses
             StrConn = strconn;
 
             if (strconn == string.Empty)
-                StrConn = $@"server=10.91.47.67;database=flow_academy;user=root;password=P@ssw0rd";
+                StrConn = @"Server=localhost;Port=3306;Database=flow_academy;Uid=root;Pwd=;";
 
             MySqlConnection cn = new(StrConn);
             try

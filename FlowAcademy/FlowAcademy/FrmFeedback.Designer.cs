@@ -30,9 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFeedback));
             btnEditar = new Button();
-            btnSalvar = new Button();
+            btnEnviar = new Button();
             button4 = new Button();
-            button5 = new Button();
+            label1 = new Label();
+            txtFeedback = new TextBox();
+            cmbTipoFeedback = new ComboBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // btnEditar
@@ -43,29 +46,29 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
             btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(284, 266);
+            btnEditar.Location = new Point(334, 374);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 29;
-            btnEditar.Text = "&Editar";
+            btnEditar.Text = "&Apagar";
             btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             // 
-            // btnSalvar
+            // btnEnviar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(139, 266);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(97, 64);
-            btnSalvar.TabIndex = 28;
-            btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnSalvar.UseVisualStyleBackColor = true;
+            btnEnviar.FlatAppearance.BorderSize = 0;
+            btnEnviar.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnEnviar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            btnEnviar.FlatStyle = FlatStyle.Flat;
+            btnEnviar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnEnviar.Image = (Image)resources.GetObject("btnEnviar.Image");
+            btnEnviar.Location = new Point(189, 374);
+            btnEnviar.Name = "btnEnviar";
+            btnEnviar.Size = new Size(97, 64);
+            btnEnviar.TabIndex = 28;
+            btnEnviar.Text = "&Enviar";
+            btnEnviar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnEnviar.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -76,7 +79,7 @@
             button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
             button4.ForeColor = Color.Black;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(429, 263);
+            button4.Location = new Point(479, 371);
             button4.Name = "button4";
             button4.Size = new Size(93, 67);
             button4.TabIndex = 27;
@@ -84,42 +87,67 @@
             button4.TextImageRelation = TextImageRelation.ImageAboveText;
             button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // label1
             // 
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.Red;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button5.ForeColor = Color.Black;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(570, 263);
-            button5.Name = "button5";
-            button5.Size = new Size(93, 67);
-            button5.TabIndex = 26;
-            button5.Text = "E&xcluir";
-            button5.TextImageRelation = TextImageRelation.ImageAboveText;
-            button5.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(19, 42);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 15);
+            label1.TabIndex = 30;
+            label1.Text = "Digite o seu feedback: ";
+            // 
+            // txtFeedback
+            // 
+            txtFeedback.Location = new Point(23, 65);
+            txtFeedback.Multiline = true;
+            txtFeedback.Name = "txtFeedback";
+            txtFeedback.Size = new Size(490, 200);
+            txtFeedback.TabIndex = 31;
+            // 
+            // cmbTipoFeedback
+            // 
+            cmbTipoFeedback.FormattingEnabled = true;
+            cmbTipoFeedback.Location = new Point(24, 303);
+            cmbTipoFeedback.Name = "cmbTipoFeedback";
+            cmbTipoFeedback.Size = new Size(175, 23);
+            cmbTipoFeedback.TabIndex = 32;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(23, 285);
+            label2.Name = "label2";
+            label2.Size = new Size(101, 15);
+            label2.TabIndex = 30;
+            label2.Text = "Tipo de feedback:";
             // 
             // FrmFeedback
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cmbTipoFeedback);
+            Controls.Add(txtFeedback);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnEditar);
-            Controls.Add(btnSalvar);
+            Controls.Add(btnEnviar);
             Controls.Add(button4);
-            Controls.Add(button5);
             Name = "FrmFeedback";
             Text = "FrmFeedback";
+            Load += FrmFeedback_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnEditar;
-        private Button btnSalvar;
+        private Button btnEnviar;
         private Button button4;
-        private Button button5;
+        private Label label1;
+        private TextBox txtFeedback;
+        private ComboBox cmbTipoFeedback;
+        private Label label2;
     }
 }

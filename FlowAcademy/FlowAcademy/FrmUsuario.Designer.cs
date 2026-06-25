@@ -172,6 +172,7 @@
             btnSalvar.Text = "&Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click_1;
             // 
             // button4
             // 

@@ -67,11 +67,12 @@ namespace FlowAcademyClasses
 
                 cmd.Parameters.AddWithValue("p_nome", Nome);
                 cmd.Parameters.AddWithValue("p_email", Email);
-                cmd.Parameters.AddWithValue("p_senha", Senha);
+                cmd.Parameters.AddWithValue("p_senha", GerarHash(Senha)); 
                 cmd.Parameters.AddWithValue("p_perfil", NivelAcesso);
                 cmd.Parameters.AddWithValue("p_status", Status);
 
                 IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
+
                 inserido = IdUsuario > 0;
 
                 cmd.Connection.Close();
