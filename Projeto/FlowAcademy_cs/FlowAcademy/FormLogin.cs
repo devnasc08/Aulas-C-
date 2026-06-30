@@ -75,10 +75,19 @@ namespace FlowAcademy
                         MessageBoxIcon.Information);
 
                     // ABRIR SISTEMA
-                    FrmPrincipal frm = new FrmPrincipal();
-                    frm.Show();
+                    using (FrmPrincipal frm = new FrmPrincipal())
+                    {
+                        this.Hide();
+                        frm.ShowDialog();
+                    }
 
-                    this.Hide();
+                    Sessao.IdUsuario = 0;
+                    Sessao.Nome = "";
+                    Sessao.NivelAcesso = "";
+
+                    txtSenha.Clear();
+                    txtEmail.Focus();
+                    this.Show();
                 }
                 else
                 {
@@ -100,16 +109,5 @@ namespace FlowAcademy
             }
         }
 
-        // ==========================
-        // EVENTOS (opcional)
-        // ==========================
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

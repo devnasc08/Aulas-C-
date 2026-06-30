@@ -42,8 +42,8 @@
             txtIdPagamento = new TextBox();
             btnEditar = new Button();
             btnSalvar = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnCancelar = new Button();
+            btnExcluir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPagamento).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudValor).BeginInit();
             SuspendLayout();
@@ -55,6 +55,7 @@
             dgvPagamento.Name = "dgvPagamento";
             dgvPagamento.Size = new Size(444, 407);
             dgvPagamento.TabIndex = 0;
+            dgvPagamento.CellDoubleClick += dgvPagamento_CellDoubleClick;
             // 
             // label1
             // 
@@ -74,6 +75,7 @@
             // 
             // cmbStatus
             // 
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FormattingEnabled = true;
             cmbStatus.Location = new Point(92, 245);
             cmbStatus.Name = "cmbStatus";
@@ -82,7 +84,9 @@
             // 
             // nudValor
             // 
+            nudValor.DecimalPlaces = 2;
             nudValor.Location = new Point(92, 192);
+            nudValor.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudValor.Name = "nudValor";
             nudValor.Size = new Size(158, 23);
             nudValor.TabIndex = 4;
@@ -153,6 +157,7 @@
             btnEditar.Text = "&Editar";
             btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
@@ -169,40 +174,43 @@
             btnSalvar.Text = "&Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
-            // button4
+            // btnCancelar
             // 
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button4.ForeColor = Color.Black;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(52, 407);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 67);
-            button4.TabIndex = 54;
-            button4.Text = "&Cancelar";
-            button4.TextImageRelation = TextImageRelation.ImageAboveText;
-            button4.UseVisualStyleBackColor = true;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
+            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
+            btnCancelar.Location = new Point(52, 407);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(93, 67);
+            btnCancelar.TabIndex = 54;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // button5
+            // btnExcluir
             // 
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = Color.Red;
-            button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button5.ForeColor = Color.Black;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(193, 407);
-            button5.Name = "button5";
-            button5.Size = new Size(93, 67);
-            button5.TabIndex = 53;
-            button5.Text = "E&xcluir";
-            button5.TextImageRelation = TextImageRelation.ImageAboveText;
-            button5.UseVisualStyleBackColor = true;
+            btnExcluir.FlatAppearance.BorderSize = 0;
+            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
+            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
+            btnExcluir.FlatStyle = FlatStyle.Flat;
+            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            btnExcluir.ForeColor = Color.Black;
+            btnExcluir.Image = (Image)resources.GetObject("button5.Image");
+            btnExcluir.Location = new Point(193, 407);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(93, 67);
+            btnExcluir.TabIndex = 53;
+            btnExcluir.Text = "E&xcluir";
+            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // FrmPagamento
             // 
@@ -211,8 +219,8 @@
             ClientSize = new Size(908, 562);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
-            Controls.Add(button4);
-            Controls.Add(button5);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnExcluir);
             Controls.Add(dtpVencimento);
             Controls.Add(nudValor);
             Controls.Add(cmbStatus);
@@ -248,7 +256,7 @@
         private TextBox txtIdPagamento;
         private Button btnEditar;
         private Button btnSalvar;
-        private Button button4;
-        private Button button5;
+        private Button btnCancelar;
+        private Button btnExcluir;
     }
 }

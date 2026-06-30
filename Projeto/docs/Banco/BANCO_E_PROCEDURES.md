@@ -2,7 +2,7 @@
 
 ## Tabelas identificadas
 
-O arquivo `Atual.sql` contem as seguintes tabelas principais:
+Os scripts SQL disponiveis no workspace contem as seguintes tabelas principais:
 
 - `usuarios`
 - `alunos`
@@ -86,7 +86,7 @@ Foram identificadas chamadas C# para procedures como:
 
 ## Divergencia encontrada na auditoria
 
-O arquivo `Atual.sql` possui varias procedures em padrao antigo, como:
+Alguns scripts possuem procedures em padrao antigo, como:
 
 - `sp_inserir_*`
 - `sp_atualizar_*`
@@ -98,43 +98,42 @@ O Desktop chama varias procedures no padrao novo:
 - `sp_entidade_update`
 - `sp_entidade_delete`
 
-Por isso, o banco e o C# ainda nao estao totalmente alinhados.
+Por isso, o projeto manteve um script auxiliar de procedures alinhado ao C#.
 
-## Correcao aplicada na Etapa 5
+## Correcao aplicada
 
 O arquivo `procedures_para_Atual_conforme_CSharp.sql` foi revisado para ser o script de ajuste das procedures do banco conforme o projeto C#.
 
-O script agora:
+O script:
 
 - nao altera tabelas;
 - nao altera relacionamentos;
 - nao altera dados;
-- remove procedures antigas do `Atual.sql` que nao sao usadas pelo Desktop;
-- recria as 34 procedures chamadas pelas classes C#;
+- remove procedures antigas que nao sao usadas pelo Desktop;
+- recria as procedures chamadas pelas classes C#;
 - mantem os parametros usados pelos metodos `AddWithValue` das classes.
 
-Validacao estatica realizada:
+Validacao realizada:
 
-- 34 procedures chamadas pelo C#.
-- 34 procedures criadas no script auxiliar.
-- Nenhuma procedure chamada pelo C# ficou ausente no script.
+- Procedures encontradas no banco real da homologacao.
+- CRUDs principais executaram sem erro de procedure.
+- Insert, update, select, select por ID e delete foram testados tecnicamente via classes.
 
-## Procedures que faltavam em `Atual.sql` para o C#
+## Script SQL mestre
 
-Foram identificadas como faltantes no script analisado:
+Durante o congelamento foi definido que o projeto possui duas fontes SQL oficiais no workspace:
 
-- Procedures de usuario no padrao do C#.
-- Procedures de aluno no padrao do C#.
-- Procedures de professor no padrao do C#.
-- Procedures de curso no padrao do C#.
-- Procedures de disciplina no padrao do C#.
-- Procedures de turma no padrao do C#.
-- Procedures de matricula no padrao do C#.
-- Procedures de nota no padrao do C#.
-- Procedures de frequencia no padrao do C#.
+1. Estrutura e dados base: `FlowAcademy_php/web-php/database/flow_academy_banco_limpo.sql`
+2. Procedures alinhadas ao C#: `procedures_para_Atual_conforme_CSharp.sql`
 
-## Observacao sobre script auxiliar
+Ainda falta o grupo exportar ou consolidar um arquivo SQL unico para a banca, contendo estrutura final, dados de demonstracao e procedures alinhadas. Esse ponto permanece como pendencia de congelamento porque nao ha `mysqldump`/cliente MySQL disponivel neste ambiente para gerar automaticamente um dump completo do banco real.
 
-Existe no projeto um arquivo chamado `procedures_para_Atual_conforme_CSharp.sql`, que foi revisado na Etapa 5 para alinhar procedures ao C#.
+Documento de apoio: `docs/Banco/SCRIPT_SQL_MESTRE.md`.
 
-Ainda falta aplicar esse script em um banco MySQL de teste para validar execucao real. Ate esta etapa, a validacao foi estatica, por leitura dos arquivos e comparacao entre C# e SQL.
+## Observacoes de homologacao
+
+- Banco usado: `flow_academy`.
+- Servidor configurado no Desktop: `10.91.47.67`.
+- FKs principais foram conferidas.
+- Procedures do Desktop foram validadas por execucao dos CRUDs principais.
+- A conta `administrativo@flowacademy.com` nao possui a senha padrao `123456`; isso foi registrado no BUG-001.

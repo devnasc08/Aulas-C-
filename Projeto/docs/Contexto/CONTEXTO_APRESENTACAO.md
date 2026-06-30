@@ -17,6 +17,7 @@ A apresentacao deve mostrar que o Flow Academy possui dois modulos independentes
 - Regras de notas e frequencia.
 - Pagamentos.
 - Dashboard Web.
+- Documentos de homologacao.
 - Documentacao e proximos passos.
 
 ## Telas importantes
@@ -36,7 +37,20 @@ A apresentacao deve mostrar que o Flow Academy possui dois modulos independentes
 - Login Web.
 - Dashboard Web por perfil.
 
+## Homologacao
+
+Foram criados documentos para guiar a validacao final:
+
+- Plano de Testes
+- Casos de Teste
+- Matriz de Rastreabilidade
+- Relatorio de Homologacao
+- Registro de Bugs
+- Criterios de Aceite
+- Checklist Final de Entrega
+
+Esses documentos ainda precisam ser preenchidos com os resultados reais dos testes.
+
 ## Integrantes
 
 Os integrantes responsaveis por cada parte ainda nao foram identificados nos arquivos analisados. A distribuicao deve ser definida pelo grupo.
-

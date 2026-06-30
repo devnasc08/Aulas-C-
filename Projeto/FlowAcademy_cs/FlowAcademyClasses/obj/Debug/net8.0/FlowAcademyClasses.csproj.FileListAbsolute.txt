@@ -24,6 +24,9 @@ C:\Users\Kauã\Documents\Aulas-C-\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.
 C:\Users\Kauã\Documents\Aulas-C-\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\refint\FlowAcademyClasses.dll
 C:\Users\Kauã\Documents\Aulas-C-\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.pdb
 C:\Users\Kauã\Documents\Aulas-C-\FlowAcademy\FlowAcademyClasses\obj\Debug\net8.0\ref\FlowAcademyClasses.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.deps.json
+C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.dll
+C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.pdb
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.csproj.AssemblyReference.cache
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.AssemblyInfoInputs.cache
@@ -33,7 +36,4 @@ C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClass
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.dll
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\refint\FlowAcademyClasses.dll
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\FlowAcademyClasses.pdb
-C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.deps.json
-C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.dll
-C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\bin\Debug\net8.0\FlowAcademyClasses.pdb
 C:\Users\kaua.nsantos3\Documents\aulasC#\Projeto\FlowAcademy_cs\FlowAcademyClasses\obj\Debug\net8.0\ref\FlowAcademyClasses.dll

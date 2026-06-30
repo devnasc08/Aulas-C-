@@ -1,34 +1,42 @@
-# Dashboard Desktop - Planejamento
+# Dashboard Desktop - FrmPrincipal
 
 ## Objetivo
 
-O `FrmPrincipal` deve ser o dashboard principal do modulo Desktop. Ele deve abrir apos o login e controlar a navegacao conforme o perfil do usuario logado.
+O `FrmPrincipal` e o dashboard principal do modulo Desktop. Ele abre apos o login e controla a navegacao conforme o perfil do usuario logado.
 
-Nenhum novo formulario de dashboard deve ser criado.
+Nenhum novo formulario de dashboard foi criado.
 
-## Estado atual observado
+## Estado atual
 
 - O login Desktop abre o `FrmPrincipal`.
-- Existe `Sessao.cs` com dados do usuario logado.
-- O `FrmPrincipal` possui botoes para abrir telas.
-- A logica inicial de permissoes por perfil foi alinhada ao PHP.
-- Os eventos de clique do `FrmPrincipal` foram conectados no proprio formulario.
-- Ainda falta validar o fluxo visual completo com usuarios reais de cada perfil.
+- O `FrmPrincipal` usa os dados de `Sessao`.
+- A interface possui menu lateral, topo, area central e barra de status.
+- A tela inicial mostra resumo do perfil, quantidade de acessos liberados, sessao e modulo.
+- Os formularios filhos abrem dentro do painel central.
+- O botao Sair limpa a sessao e retorna para o login.
+- O perfil `financeiro` continua sendo normalizado como `administrativo`, seguindo o PHP.
+- O admin acessa tambem Notas e Frequencia.
 
-## Perfis
+## Fluxo
+
+1. Usuario faz login.
+2. `FormLogin` grava `Sessao.IdUsuario`, `Sessao.Nome` e `Sessao.NivelAcesso`.
+3. `FormLogin` abre `FrmPrincipal` com `ShowDialog()`.
+4. `FrmPrincipal` normaliza o perfil.
+5. Menus nao permitidos sao ocultados.
+6. O usuario abre apenas formularios liberados.
+7. Ao sair, a sessao e limpa e o login aparece novamente.
+
+## Perfis e menus
 
 ### Aluno
-
-Menus previstos:
 
 - Notas
 - Frequencia
 
-Observacao: o C# usa os formularios gerais `FrmNota` e `FrmFrequencia`, pois telas especificas de aluno nao foram confirmadas no Desktop.
+Observacao: o Desktop ainda usa os formularios gerais `FrmNota` e `FrmFrequencia`.
 
 ### Professor
-
-Menus previstos:
 
 - Notas
 - Frequencia
@@ -39,8 +47,6 @@ Forms relacionados:
 - `FrmFrequencia`
 
 ### Coordenacao
-
-Menus previstos:
 
 - Alunos
 - Cursos
@@ -58,8 +64,6 @@ Forms relacionados:
 
 ### Administrativo
 
-Menus previstos:
-
 - Alunos
 - Matriculas
 - Pagamentos
@@ -72,34 +76,54 @@ Forms relacionados:
 
 ### Financeiro
 
-Menus previstos:
+O banco oficial nao possui `financeiro` no enum de perfil. O PHP converte `financeiro` antigo para `administrativo`.
 
-- Pagamentos
-- Situacao financeira
-- Relatorios financeiros
-
-Observacao: o perfil `financeiro` nao aparece no enum do banco `Atual.sql`. Antes da implementacao, deve ser definido se financeiro sera perfil real ou area de administrativo.
-
-No C# atual, o valor `financeiro` e normalizado como `administrativo`, seguindo a mesma regra do PHP.
+No Desktop, `financeiro` tambem e tratado como `administrativo`.
 
 ### Admin
 
-Menus previstos:
+- Usuarios
+- Alunos
+- Professores
+- Cursos
+- Disciplinas
+- Turmas
+- Matriculas
+- Notas
+- Frequencia
+- Pagamentos
 
-- Todos os menus disponiveis.
+Forms relacionados:
 
-No C# atual, admin visualiza usuarios, alunos, professores, cursos, disciplinas, turmas, matriculas e pagamentos.
+- `FrmUsuario`
+- `FrmAluno`
+- `FrmProfessor`
+- `FrmCurso`
+- `FrmDisciplina`
+- `FrmTurma`
+- `FrmMatricula`
+- `FrmNota`
+- `FrmFrequencia`
+- `FrmPagamento`
 
-## Regras esperadas
+## Regras
 
-- Ler perfil em `Sessao.NivelAcesso`.
-- Ocultar botoes ou menus nao permitidos.
-- Abrir forms sem duplicar janelas desnecessariamente.
-- Manter mensagens simples e didaticas.
-- Nao colocar SQL no dashboard.
+- O Dashboard nao possui SQL direto.
+- O Dashboard nao chama procedures.
+- O Dashboard apenas controla a interface, sessao e abertura de Forms.
+- As regras de CRUD continuam nas classes.
+- Menus nao permitidos ficam ocultos.
+- Tentativa de acesso indevido por codigo exibe mensagem simples de permissao.
+
+## Homologacao
+
+- Menus por perfil aprovados.
+- Abertura de Forms aprovada.
+- BUG-002 corrigido: admin passou a visualizar Notas e Frequencia.
+- Build final apos correcao: 0 erros e 0 warnings.
 
 ## Pendencias
 
-- Validar situacao final do perfil financeiro no banco.
-- Validar fluxo apos login.
-- Testar abertura de cada formulario por perfil.
+- Validar manualmente logout e retorno ao login.
+- Definir em etapa futura se `FrmFeedback` entrara em algum perfil.
+- Definir em etapa futura se `FrmAlertaRisco` sera criado.

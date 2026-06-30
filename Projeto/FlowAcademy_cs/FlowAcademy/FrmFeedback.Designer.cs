@@ -29,30 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFeedback));
-            btnEditar = new Button();
+            btnLimpar = new Button();
             btnEnviar = new Button();
-            button4 = new Button();
+            btnCancelar = new Button();
             label1 = new Label();
             txtFeedback = new TextBox();
             cmbTipoFeedback = new ComboBox();
             label2 = new Label();
             SuspendLayout();
             // 
-            // btnEditar
+            // btnLimpar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(334, 374);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(97, 64);
-            btnEditar.TabIndex = 29;
-            btnEditar.Text = "&Apagar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnEditar.UseVisualStyleBackColor = true;
+            btnLimpar.FlatAppearance.BorderSize = 0;
+            btnLimpar.FlatAppearance.MouseDownBackColor = Color.Blue;
+            btnLimpar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
+            btnLimpar.FlatStyle = FlatStyle.Flat;
+            btnLimpar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
+            btnLimpar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
+            btnLimpar.Location = new Point(334, 374);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(97, 64);
+            btnLimpar.TabIndex = 29;
+            btnLimpar.Text = "&Limpar";
+            btnLimpar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // btnEnviar
             // 
@@ -69,23 +70,25 @@
             btnEnviar.Text = "&Enviar";
             btnEnviar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEnviar.UseVisualStyleBackColor = true;
+            btnEnviar.Click += btnEnviar_Click;
             // 
-            // button4
+            // btnCancelar
             // 
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button4.ForeColor = Color.Black;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(479, 371);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 67);
-            button4.TabIndex = 27;
-            button4.Text = "&Cancelar";
-            button4.TextImageRelation = TextImageRelation.ImageAboveText;
-            button4.UseVisualStyleBackColor = true;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
+            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
+            btnCancelar.Location = new Point(479, 371);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(93, 67);
+            btnCancelar.TabIndex = 27;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label1
             // 
@@ -107,6 +110,7 @@
             // cmbTipoFeedback
             // 
             cmbTipoFeedback.FormattingEnabled = true;
+            cmbTipoFeedback.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoFeedback.Location = new Point(24, 303);
             cmbTipoFeedback.Name = "cmbTipoFeedback";
             cmbTipoFeedback.Size = new Size(175, 23);
@@ -130,9 +134,9 @@
             Controls.Add(txtFeedback);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btnEditar);
+            Controls.Add(btnLimpar);
             Controls.Add(btnEnviar);
-            Controls.Add(button4);
+            Controls.Add(btnCancelar);
             Name = "FrmFeedback";
             Text = "FrmFeedback";
             Load += FrmFeedback_Load;
@@ -142,9 +146,9 @@
 
         #endregion
 
-        private Button btnEditar;
+        private Button btnLimpar;
         private Button btnEnviar;
-        private Button button4;
+        private Button btnCancelar;
         private Label label1;
         private TextBox txtFeedback;
         private ComboBox cmbTipoFeedback;

@@ -2,29 +2,34 @@
 
 ## Criterios de percentual
 
-Os percentuais abaixo indicam maturidade tecnica observada, considerando existencia de codigo, alinhamento com banco, padronizacao e risco para entrega. Eles nao representam tempo de desenvolvimento.
+Os percentuais abaixo indicam maturidade tecnica observada, considerando existencia de codigo, alinhamento com banco, padronizacao, testes executados e risco para entrega. Eles nao representam tempo de desenvolvimento.
 
 | Modulo | Situacao | Percentual | Pendencias | Dependencias | Prioridade |
 |---|---:|---:|---|---|---|
-| Login | Estavel com revisao pendente | 80% | Validar fluxo completo no Desktop e PHP | Usuarios, Banco | Alta |
-| Usuario | Parcialmente alinhado | 75% | Confirmar procedures e padrao `MontarObjeto` | Banco, Procedures | Alta |
-| Aluno | Parcialmente alinhado | 75% | Revisar classe, form e combos | Usuario, Banco | Alta |
-| Professor | Parcialmente alinhado | 75% | Revisar classe, form e combos | Usuario, Banco | Alta |
-| Curso | Parcialmente alinhado | 80% | Revisar classe, form e procedures | Banco | Alta |
-| Disciplina | Parcialmente alinhado | 75% | Revisar curso relacionado e combos | Curso | Alta |
-| Turma | Em atencao | 65% | Validar professor, curso, vaga e form | Curso, Professor | Alta |
-| Matricula | Em atencao | 65% | Validar aluno, turma e regra de vaga | Aluno, Turma | Alta |
-| Nota | Em atencao | 65% | Validar calculo, procedures e alertas | Matricula, Disciplina | Media |
-| Frequencia | Em atencao | 65% | Validar calculo, procedures e alertas | Matricula, Disciplina | Media |
-| Pagamento | Parcial | 70% | Padronizar nomes de procedures | Aluno | Media |
-| Alerta | Parcial | 55% | Confirmar tela, procedures e regra | Matricula, Nota, Frequencia | Media |
-| Dashboard | Parcialmente alinhado ao PHP | 60% | Validar fluxo visual completo e telas abertas por perfil | Login, Sessao, Forms | Alta |
+| Login | Aprovado com ressalva | 88% | Validar manualmente campos vazios, logout e retorno visual ao login; decidir reset da conta `administrativo@flowacademy.com` | Usuarios, Banco | Alta |
+| Usuario | Testado no fluxo integrado | 86% | Revisao fina de padrao `MontarObjeto()` em etapa futura | Banco, Procedures | Alta |
+| Aluno | Testado no fluxo integrado | 86% | Validacao visual do grid e mensagens | Usuario, Banco | Alta |
+| Professor | Testado no fluxo integrado | 86% | Validacao visual do grid e mensagens | Usuario, Banco | Alta |
+| Curso | Testado no fluxo integrado | 88% | Validacao visual do grid e mensagens | Banco | Alta |
+| Disciplina | Testado no fluxo integrado | 86% | Validacao visual do combo e grid | Curso | Alta |
+| Turma | Testado no fluxo integrado | 84% | Validar manualmente mensagens de FK/vagas | Curso, Professor | Alta |
+| Matricula | Testado no fluxo integrado | 84% | Validar manualmente mensagens de FK e grid | Aluno, Turma | Alta |
+| Nota | Testado no fluxo integrado | 84% | Conferir visualmente calculo/mensagens no Form | Matricula, Disciplina | Media |
+| Frequencia | Testado no fluxo integrado | 84% | Conferir visualmente calculo/mensagens no Form | Matricula, Disciplina | Media |
+| Pagamento | Testado no fluxo integrado | 84% | Avaliar futuramente ComboBox de aluno; validar mensagens | Aluno | Media |
+| Alerta | Pendente no Desktop | 55% | Nao existe `FrmAlertaRisco`; regra precisa de decisao de escopo | Matricula, Nota, Frequencia | Media |
+| Dashboard | Testado por perfil | 92% | Validar manualmente aparencia e logout durante ensaio | Login, Sessao, Forms | Alta |
 | Landing Page | Pendente de revisao | 50% | Revisar conteudo e fluxo | PHP | Baixa |
-| Banco | Estrutura mantida e procedures preparadas | 85% | Aplicar script em banco de teste | Todos os modulos | Critica |
-| Procedures | Script alinhado ao C# | 85% | Testar execucao real no MySQL | Banco, Classes | Critica |
-| PHP | Funcional com revisao pendente | 65% | Validar SQL e permissoes | Banco | Media |
-| Documentacao | Em criacao | 40% | Completar docs e atualizar apos correcoes | Auditoria | Alta |
+| Banco | Validado em homologacao | 90% | Definir/exportar script SQL mestre unico para a banca | Todos os modulos | Critica |
+| Procedures | Validadas no banco real | 92% | Manter script oficial de procedures sincronizado | Banco, Classes | Critica |
+| PHP | Funcional com revisao pendente | 65% | Validar SQL, permissoes e dashboards Web | Banco | Media |
+| Forms Desktop | Homologados tecnicamente | 88% | Testes visuais manuais de mensagens, refresh de grid e logout | Classes, Banco | Alta |
+| Homologacao | Executada parcialmente | 78% | Executar testes manuais bloqueados e preparar evidencias | Banco, Desktop, PHP | Alta |
+| Documentacao | Sincronizada com homologacao | 80% | Completar manuais finais e evidencias para banca | Auditoria | Alta |
+| Apresentacao | Em preparacao | 55% | Definir responsaveis, roteiro final, prints e ensaio | Homologacao | Media |
 
 ## Resumo
 
-O projeto possui base implementada, mas ainda nao esta pronto para testes finais. O maior bloqueio tecnico das procedures foi tratado no script auxiliar, mas ainda falta aplicar em banco de teste e validar CRUDs reais do Desktop.
+O Desktop passou na homologacao tecnica do fluxo principal: login, Dashboard por perfil, abertura dos Forms, CRUDs via classes/procedures, integridade de banco e fluxo integrado ate pagamento. O build final terminou com 0 erros e 0 warnings.
+
+As principais ressalvas atuais sao: conta `administrativo@flowacademy.com` sem senha padrao, ausencia de `FrmAlertaRisco`, testes visuais manuais ainda pendentes e necessidade de definir/exportar um script SQL mestre unico para a banca.

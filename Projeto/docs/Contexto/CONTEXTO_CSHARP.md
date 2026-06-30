@@ -6,7 +6,7 @@ O modulo Desktop foi desenvolvido com:
 
 - Windows Forms
 - C#
-- .NET Framework
+- .NET
 - MySql.Data
 
 ## Organizacao
@@ -73,12 +73,34 @@ Foram identificadas classes para:
 - Sessao
 - Banco
 
+## Forms ativos
+
+- `FormLogin`
+- `FrmPrincipal`
+- `FrmUsuario`
+- `FrmAluno`
+- `FrmProfessor`
+- `FrmCurso`
+- `FrmDisciplina`
+- `FrmTurma`
+- `FrmMatricula`
+- `FrmNota`
+- `FrmFrequencia`
+- `FrmPagamento`
+- `FrmFeedback`
+
 ## Pontos importantes
 
 - `Banco.cs` centraliza a conexao MySQL.
 - `Sessao.cs` guarda usuario logado e nivel de acesso.
 - `AuthService.cs` trata login, logout e hash de senha.
+- `FrmPrincipal` e o Dashboard Desktop e controla menus por perfil.
+- `FormLogin` abre o `FrmPrincipal` com `ShowDialog()` e volta ao login ao sair.
 - Algumas classes ainda possuem `MontarObjeto()` publico ou ausente.
 - Pagamento e AlertaRisco usam nomes antigos de procedures.
-- O build anterior nao confirmou erros de C#, mas houve falha relacionada a consulta de vulnerabilidades do NuGet.
-
+- Os Forms revisados na Etapa 4 nao possuem SQL direto.
+- `FrmFeedback` e `FrmPagamento` tiveram eventos de botoes consolidados.
+- `FrmTeste` foi removido durante o congelamento.
+- Nao existe `FrmAlertaRisco` no projeto Desktop.
+- A homologacao tecnica aprovou os CRUDs principais no banco real.
+- A compilacao final terminou com 0 erros e 0 warnings.

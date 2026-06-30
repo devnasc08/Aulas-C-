@@ -30,8 +30,8 @@ namespace FlowAcademyF
                 return;
             }
 
-            string mensagem = txtFeedback.Text;
-            string tipo = cmbTipoFeedback.SelectedItem.ToString();
+            string mensagem = txtFeedback.Text.Trim();
+            string tipo = cmbTipoFeedback.SelectedItem?.ToString() ?? "Sem tipo";
 
             MessageBox.Show(
                 $"Feedback enviado com sucesso!\n\nTipo: {tipo}\nMensagem: {mensagem}",
@@ -56,7 +56,9 @@ namespace FlowAcademyF
         private void LimparCampos()
         {
             txtFeedback.Clear();
-            cmbTipoFeedback.SelectedIndex = 0;
+
+            if (cmbTipoFeedback.Items.Count > 0)
+                cmbTipoFeedback.SelectedIndex = 0;
         }
     }
 }

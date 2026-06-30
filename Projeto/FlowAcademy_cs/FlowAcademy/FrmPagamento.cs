@@ -30,6 +30,7 @@ namespace FlowAcademy
         {
             dgvPagamento.DataSource = null;
             dgvPagamento.DataSource = Pagamento.ObterLista();
+            dgvPagamento.ClearSelection();
         }
 
         // ==========================
@@ -174,6 +175,13 @@ namespace FlowAcademy
                 idSelecionado = pagamento.IdPagamento;
                 PreencherFormulario(pagamento);
             }
+        }
+
+        private void dgvPagamento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            btnEditar_Click(sender, e);
         }
 
         // ==========================

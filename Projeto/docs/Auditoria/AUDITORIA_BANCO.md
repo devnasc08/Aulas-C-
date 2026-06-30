@@ -6,43 +6,35 @@
 - Existem chaves estrangeiras ligando usuarios, alunos, professores, cursos, turmas, matriculas, notas, frequencia, pagamentos e alertas.
 - Existem chaves unicas importantes, como email de usuario, CPF e matricula.
 - O banco possui enums para status e perfis.
+- Procedures usadas pelo Desktop foram validadas na homologacao tecnica.
 
 ## O que esta incompleto
 
-- O arquivo `Atual.sql` original nao esta totalmente alinhado com as chamadas do C#.
-- O script auxiliar `procedures_para_Atual_conforme_CSharp.sql` foi revisado para alinhar as procedures, mas ainda precisa ser aplicado em banco de teste.
-- O perfil `financeiro` nao aparece no enum de usuarios.
-- Existe procedure relacionada a feedback, mas a tabela correspondente nao foi confirmada em `Atual.sql`.
+- O projeto ainda precisa de um arquivo SQL mestre unico para a banca.
+- O perfil `financeiro` nao aparece no enum de usuarios e e tratado como `administrativo`.
+- Existe necessidade de demonstrar ou documentar Alerta de Risco, mas nao ha Form Desktop.
+- A conta `administrativo@flowacademy.com` nao usa a senha padrao esperada.
 
 ## O que precisa ser removido ou revisado
 
-- Procedures antigas foram incluidas no bloco de limpeza do script auxiliar, sem alterar tabelas ou dados.
 - Scripts SQL duplicados ou antigos devem ser identificados para evitar uso incorreto.
 - Nao se deve alterar tabelas sem decisao formal, pois o usuario pediu foco em procedures em solicitacoes anteriores.
+- O banco final de demonstracao deve ser exportado sem dados temporarios da homologacao.
 
 ## O que esta duplicado
 
-- Existem scripts SQL diferentes no projeto e fora dele.
+- Existem scripts SQL diferentes no projeto.
 - Existem procedures em padroes diferentes: `sp_inserir_*` e `sp_entidade_insert`.
 
 ## O que nao segue o padrao
 
-- O padrao definido para procedures e `sp_entidade_insert`, `sp_entidade_update` e `sp_entidade_delete`.
-- Em `Atual.sql`, varias procedures usam nomes antigos.
-- O Desktop chama procedures que nao existem no `Atual.sql` original analisado.
+- O padrao definido para procedures e `sp_entidade_insert`, `sp_entidade_update` e `sp_entidade_delete`, mas Pagamento e AlertaRisco ainda usam nomes antigos no C#.
 
-## Pendencias para proxima etapa
-
-- Definir oficialmente qual SQL e a base final.
-- Aplicar `procedures_para_Atual_conforme_CSharp.sql` em banco MySQL de teste.
-- Testar os CRUDs do Desktop contra as procedures revisadas.
-- Nao alterar estrutura de tabelas sem autorizacao.
-
-## Registro de correcao - Etapa 5
+## Registro de correcao - Procedures
 
 Problema encontrado:
 
-- `Atual.sql` possuia procedures em padrao antigo e nao possuia todas as procedures chamadas pelas classes C#.
+- Scripts anteriores possuiam procedures em padrao antigo e nao cobriam todas as chamadas das classes C#.
 
 Causa:
 
@@ -51,8 +43,8 @@ Causa:
 Correcao aplicada:
 
 - Atualizado o script `procedures_para_Atual_conforme_CSharp.sql`.
-- Adicionado bloco de limpeza de procedures antigas do `Atual.sql`.
-- Mantidas e recriadas as 34 procedures chamadas pelo C#.
+- Adicionado bloco de limpeza de procedures antigas.
+- Mantidas e recriadas as procedures chamadas pelo C#.
 
 Arquivos alterados:
 
@@ -65,6 +57,19 @@ Arquivos alterados:
 
 Resultado:
 
-- Validacao estatica sem divergencia: 34 procedures chamadas pelo C# e 34 procedures criadas no script.
-- Validacao em MySQL real ainda pendente.
-- Compilacao da solution concluida com 0 erros. Permanecem 2 warnings antigos em `FrmFeedback.cs`, sem relacao com Banco ou procedures.
+- Validacao estatica sem divergencia entre procedures chamadas e script auxiliar.
+- Validacao em banco real aprovada durante CRUDs principais.
+- Compilacao final da solution: 0 erros e 0 warnings.
+
+## Registro de homologacao
+
+- Banco `flow_academy` acessivel no servidor configurado.
+- FKs principais conferidas.
+- Inserts, updates, selects, selects por ID e deletes foram executados por classes C#.
+- Dados temporarios da homologacao foram removidos ao final do fluxo.
+
+## Pendencias para proxima etapa
+
+- Consolidar/exportar script SQL mestre unico.
+- Decidir senha oficial da conta administrativa de demonstracao.
+- Testar PHP contra o banco final.

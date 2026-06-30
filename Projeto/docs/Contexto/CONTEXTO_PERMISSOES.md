@@ -2,7 +2,7 @@
 
 ## Perfis confirmados no banco
 
-O banco `Atual.sql` possui os perfis:
+O banco analisado possui os perfis:
 
 - aluno
 - professor
@@ -12,20 +12,15 @@ O banco `Atual.sql` possui os perfis:
 
 ## Perfil financeiro
 
-O perfil financeiro foi solicitado como perfil do projeto, mas nao aparece no enum `usuarios.perfil` do banco analisado. No PHP, a area financeira parece ser acessada por usuarios administrativos e admin.
+O perfil financeiro foi solicitado durante o projeto, mas nao aparece no enum `usuarios.perfil` do banco analisado.
 
-Por isso, antes de implementar permissao financeira no Desktop, e necessario decidir se:
+No PHP, registros antigos com `financeiro` sao normalizados para `administrativo`.
 
-- financeiro sera um perfil real no banco; ou
-- financeiro sera uma area acessada por administrativo e admin.
+No Desktop, o `FrmPrincipal` segue a mesma regra: se `Sessao.NivelAcesso` vier como `financeiro`, o sistema trata como `administrativo`.
 
-Como esta etapa nao altera banco nem codigo, a decisao fica registrada como pendencia.
+## Permissoes no Desktop
 
-## Permissoes atuais no Desktop
-
-O `FrmPrincipal` deve ser o dashboard unico e controlar menus por perfil.
-
-Na implementacao atual do C#, o valor antigo `financeiro` e tratado como `administrativo`, seguindo a regra do PHP.
+O `FrmPrincipal` e o dashboard unico do Desktop e controla menus por perfil.
 
 ### Aluno
 
@@ -53,7 +48,7 @@ Na implementacao atual do C#, o valor antigo `financeiro` e tratado como `admini
 
 ### Financeiro
 
-- Tratado como administrativo no C# e no PHP.
+- Tratado como administrativo.
 
 ### Admin
 
@@ -64,8 +59,46 @@ Na implementacao atual do C#, o valor antigo `financeiro` e tratado como `admini
 - Disciplinas
 - Turmas
 - Matriculas
+- Notas
+- Frequencia
 - Pagamentos
+
+## Permissoes no PHP
+
+O PHP usa `exigirPerfil()` para proteger paginas internas.
+
+Regras observadas:
+
+- aluno acessa dashboard, boletim e frequencia.
+- professor acessa dashboard, lancamento de notas e registro de frequencia.
+- coordenacao acessa cursos, turmas, alunos e matriculas conforme paginas permitidas.
+- administrativo acessa alunos, matriculas e pagamentos.
+- admin acessa dashboard admin, logs, cadastros administrativos e tambem areas de coordenacao/administrativo.
 
 ## Estado atual
 
-O login Desktop abre o `FrmPrincipal`, que ja possui a regra inicial de exibicao de menus conforme perfil. Ainda falta validar o fluxo completo com usuarios reais e revisar os formularios abertos por cada botao.
+O Desktop e o PHP estao alinhados na regra principal de perfil:
+
+- `financeiro` antigo vira `administrativo`.
+- Menus nao permitidos ficam ocultos.
+- Cada perfil entra em uma area compativel com sua funcao.
+- O admin tambem acessa Notas e Frequencia no Desktop, permitindo demonstrar o fluxo integrado completo.
+
+## Validacao de homologacao
+
+Foram aprovados os testes de Dashboard para:
+
+- aluno
+- professor
+- coordenacao
+- administrativo
+- financeiro antigo
+- admin
+
+Ressalva: a conta `administrativo@flowacademy.com` nao usa a senha padrao `123456`. O perfil administrativo foi validado com usuario temporario criado e removido na homologacao.
+
+## Pendencias
+
+- Validar manualmente logout e retorno ao login.
+- Confirmar se `FrmFeedback` tera permissao propria em etapa futura.
+- Confirmar se `FrmAlertaRisco` sera criado no Desktop.

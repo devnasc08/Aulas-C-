@@ -82,7 +82,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(326, 23);
             txtEmail.TabIndex = 4;
-            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtSenha
             // 
@@ -90,7 +89,6 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(326, 23);
             txtSenha.TabIndex = 4;
-            txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // FormLogin
             // 

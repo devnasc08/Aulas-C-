@@ -13,6 +13,7 @@ O Flow Academy usa arquitetura simples e didatica, adequada ao curso tecnico:
 Desktop:
 
 - Forms controlam interface.
+- `FrmPrincipal` centraliza o Dashboard e a navegacao por perfil.
 - Classes concentram regras e acesso ao banco.
 - `Banco.cs` centraliza conexao.
 
@@ -39,4 +40,3 @@ Nao usar:
 ## Direcao
 
 A arquitetura deve continuar simples, consistente e facil de apresentar.
-

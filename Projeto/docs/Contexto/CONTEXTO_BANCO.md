@@ -4,9 +4,14 @@
 
 O banco MySQL e compartilhado entre Desktop e PHP.
 
-O arquivo externo analisado como referencia atual foi `Atual.sql`. Tambem existe no projeto um script auxiliar chamado `procedures_para_Atual_conforme_CSharp.sql`.
+No workspace atual, as referencias SQL principais sao:
 
-## Tabelas identificadas em `Atual.sql`
+- `FlowAcademy_php/web-php/database/flow_academy_banco_limpo.sql`
+- `procedures_para_Atual_conforme_CSharp.sql`
+
+O arquivo `Atual.sql` foi usado em etapas anteriores como referencia externa, mas nao esta dentro do workspace atual.
+
+## Tabelas identificadas
 
 - `usuarios`
 - `alunos`
@@ -48,30 +53,31 @@ O campo `usuarios.perfil` possui os perfis:
 - `administrativo`
 - `admin`
 
-O perfil `financeiro` aparece como necessidade do projeto, mas nao foi identificado como valor do enum em `Atual.sql`.
+O perfil `financeiro` aparece como necessidade do projeto, mas nao foi identificado como valor do enum. Desktop e PHP tratam `financeiro` antigo como `administrativo`.
 
 ## Procedures
 
-O arquivo `Atual.sql` possui procedures, porem a maioria usa nomes antigos como `sp_inserir_*`, `sp_atualizar_*` e `sp_excluir_*`.
-
-O C# chama principalmente procedures no padrao:
+O C# chama procedures no padrao:
 
 - `sp_entidade_insert`
 - `sp_entidade_update`
 - `sp_entidade_delete`
 
-Por isso existe divergencia entre o banco analisado e o Desktop.
+Tambem existem nomes antigos usados por Pagamento e AlertaRisco:
+
+- `sp_inserir_*`
+- `sp_atualizar_*`
+- `sp_excluir_*`
 
 Na Etapa 5, o script `procedures_para_Atual_conforme_CSharp.sql` foi revisado para alinhar o banco ao Desktop sem alterar tabelas ou dados.
 
 Estado atual:
 
-- `Atual.sql` continua sendo a referencia de estrutura das tabelas.
+- `FlowAcademy_php/web-php/database/flow_academy_banco_limpo.sql` e a referencia de estrutura/dados base disponivel no workspace.
 - `procedures_para_Atual_conforme_CSharp.sql` e o script de ajuste das procedures para o C#.
-- O script cria as 34 procedures chamadas pelas classes.
-- O script tambem remove procedures antigas do `Atual.sql` que nao sao usadas pelo Desktop.
-- A aplicacao em banco MySQL de teste ainda esta pendente.
+- As procedures foram validadas tecnicamente em banco real durante a homologacao.
+- Falta consolidar/exportar um script SQL mestre unico para a banca.
 
 ## Observacao
 
-Nesta etapa nao foram alteradas tabelas ou dados. A alteracao realizada foi somente no script SQL auxiliar de procedures.
+Nesta etapa nao foram alteradas tabelas ou dados. As correcoes de banco ficaram restritas a procedures e documentacao.
