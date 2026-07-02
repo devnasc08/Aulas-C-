@@ -50,7 +50,6 @@ namespace FlowAcademy
 
             Text = "Flow Academy - Dashboard";
             MinimumSize = new Size(1100, 700);
-            BackColor = Color.FromArgb(244, 246, 248);
 
             Controls.Remove(menuStrip1);
             Controls.Remove(statusStrip1);
@@ -62,7 +61,6 @@ namespace FlowAcademy
             estrutura.Dock = DockStyle.Fill;
             estrutura.ColumnCount = 2;
             estrutura.RowCount = 2;
-            estrutura.BackColor = Color.FromArgb(244, 246, 248);
             estrutura.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 240F));
             estrutura.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             estrutura.RowStyles.Add(new RowStyle(SizeType.Absolute, 78F));
@@ -72,7 +70,6 @@ namespace FlowAcademy
             CriarTopo();
 
             panel1.Dock = DockStyle.Fill;
-            panel1.BackColor = Color.FromArgb(244, 246, 248);
             panel1.Padding = new Padding(24);
             panel1.AutoScroll = true;
 
@@ -92,7 +89,6 @@ namespace FlowAcademy
         {
             pnlLateral = new Panel();
             pnlLateral.Dock = DockStyle.Fill;
-            pnlLateral.BackColor = Color.FromArgb(32, 36, 40);
 
             Panel pnlMarca = new Panel();
             pnlMarca.Dock = DockStyle.Top;
@@ -101,15 +97,11 @@ namespace FlowAcademy
 
             Label lblMarca = new Label();
             lblMarca.Text = "Flow Academy";
-            lblMarca.ForeColor = Color.White;
-            lblMarca.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblMarca.Dock = DockStyle.Top;
             lblMarca.Height = 34;
 
             Label lblModulo = new Label();
             lblModulo.Text = "Dashboard Desktop";
-            lblModulo.ForeColor = Color.FromArgb(218, 183, 92);
-            lblModulo.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
             lblModulo.Dock = DockStyle.Top;
             lblModulo.Height = 24;
 
@@ -126,9 +118,12 @@ namespace FlowAcademy
             btnInicio = CriarBotaoMenu("Inicio");
             flpMenu.Controls.Add(btnInicio);
 
+            AdicionarBotaoExistente(btnBoletimAluno, "Boletim / Notas");
+            AdicionarBotaoExistente(btnFrequenciaAluno, "Frequência");
             AdicionarBotaoExistente(btnUsuarios, "Usuarios");
             AdicionarBotaoExistente(btnAlunos, "Alunos");
             AdicionarBotaoExistente(btnProfessores, "Professores");
+            AdicionarBotaoExistente(btnFuncionarios, "Funcionarios");
             AdicionarBotaoExistente(btnCursos, "Cursos");
             AdicionarBotaoExistente(btnDisciplinas, "Disciplinas");
             AdicionarBotaoExistente(btnTurmas, "Turmas");
@@ -136,22 +131,16 @@ namespace FlowAcademy
             AdicionarBotaoExistente(btnNotas, "Notas");
             AdicionarBotaoExistente(btnFrequencia, "Frequencia");
             AdicionarBotaoExistente(btnPagamentos, "Pagamentos");
-            AdicionarBotaoExistente(bntFeedbacks, "Feedbacks");
-
             Panel pnlRodape = new Panel();
             pnlRodape.Dock = DockStyle.Bottom;
             pnlRodape.Height = 118;
             pnlRodape.Padding = new Padding(18, 10, 18, 16);
 
             lblUsuario = new Label();
-            lblUsuario.ForeColor = Color.White;
-            lblUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblUsuario.Dock = DockStyle.Top;
             lblUsuario.Height = 22;
 
             lblPerfil = new Label();
-            lblPerfil.ForeColor = Color.FromArgb(218, 183, 92);
-            lblPerfil.Font = new Font("Segoe UI", 8.5F);
             lblPerfil.Dock = DockStyle.Top;
             lblPerfil.Height = 22;
 
@@ -159,11 +148,6 @@ namespace FlowAcademy
             btnSair.Text = "Sair";
             btnSair.Dock = DockStyle.Bottom;
             btnSair.Height = 34;
-            btnSair.FlatStyle = FlatStyle.Flat;
-            btnSair.FlatAppearance.BorderSize = 0;
-            btnSair.BackColor = Color.FromArgb(218, 183, 92);
-            btnSair.ForeColor = Color.FromArgb(32, 36, 40);
-            btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
 
             pnlRodape.Controls.Add(btnSair);
             pnlRodape.Controls.Add(lblPerfil);
@@ -178,20 +162,15 @@ namespace FlowAcademy
         {
             pnlTopo = new Panel();
             pnlTopo.Dock = DockStyle.Fill;
-            pnlTopo.BackColor = Color.White;
             pnlTopo.Padding = new Padding(24, 12, 24, 8);
 
             lblTitulo = new Label();
             lblTitulo.Text = "Dashboard";
-            lblTitulo.Font = new Font("Segoe UI", 17F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(32, 36, 40);
             lblTitulo.Dock = DockStyle.Top;
             lblTitulo.Height = 32;
 
             lblSubtitulo = new Label();
             lblSubtitulo.Text = "Selecione uma opcao no menu lateral.";
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
-            lblSubtitulo.ForeColor = Color.FromArgb(96, 106, 116);
             lblSubtitulo.Dock = DockStyle.Top;
             lblSubtitulo.Height = 24;
 
@@ -222,18 +201,11 @@ namespace FlowAcademy
             botao.Margin = new Padding(0, 0, 0, 8);
             botao.Padding = new Padding(14, 0, 0, 0);
             botao.TextAlign = ContentAlignment.MiddleLeft;
-            botao.FlatStyle = FlatStyle.Flat;
-            botao.FlatAppearance.BorderSize = 0;
-            botao.BackColor = Color.FromArgb(32, 36, 40);
-            botao.ForeColor = Color.White;
-            botao.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
-            botao.UseVisualStyleBackColor = false;
         }
 
         private void ConfigurarStatus()
         {
             statusStrip1.Items.Clear();
-            statusStrip1.BackColor = Color.White;
             statusStrip1.SizingGrip = false;
 
             statusUsuario = new ToolStripStatusLabel();
@@ -269,7 +241,7 @@ namespace FlowAcademy
 
             if (perfil == "aluno")
             {
-                MostrarMenus(btnNotas, btnFrequencia);
+                MostrarMenus(btnBoletimAluno, btnFrequenciaAluno);
                 return;
             }
 
@@ -293,7 +265,7 @@ namespace FlowAcademy
 
             if (perfil == "admin")
             {
-                MostrarMenus(btnUsuarios, btnAlunos, btnProfessores, btnCursos,
+                MostrarMenus(btnAlunos, btnProfessores, btnFuncionarios, btnCursos,
                     btnDisciplinas, btnTurmas, btnMatriculas, btnNotas,
                     btnFrequencia, btnPagamentos);
             }
@@ -335,7 +307,7 @@ namespace FlowAcademy
 
         private string TextoBoasVindas(string perfil)
         {
-            if (perfil == "aluno") return "Acompanhe notas e frequencia.";
+            if (perfil == "aluno") return "Consulte seu boletim e sua frequencia.";
             if (perfil == "professor") return "Acesse lancamento de notas e frequencia.";
             if (perfil == "coordenacao") return "Gerencie cursos, turmas, disciplinas e matriculas.";
             if (perfil == "administrativo") return "Gerencie alunos, matriculas e pagamentos.";
@@ -351,7 +323,6 @@ namespace FlowAcademy
                 botao.Visible = false;
             }
 
-            bntFeedbacks.Visible = false;
         }
 
         private void MostrarMenus(params Button[] botoes)
@@ -383,30 +354,27 @@ namespace FlowAcademy
             btnUsuarios.Click += btnUsuarios_Click;
             btnAlunos.Click += btnAlunos_Click;
             btnProfessores.Click += btnProfessores_Click;
+            btnFuncionarios.Click += btnFuncionarios_Click;
             btnCursos.Click += btnCursos_Click;
             btnDisciplinas.Click += btnDisciplinas_Click;
             btnTurmas.Click += btnTurmas_Click;
             btnMatriculas.Click += btnMatriculas_Click;
             btnNotas.Click += btnNotas_Click;
             btnFrequencia.Click += btnFrequencia_Click;
+            btnBoletimAluno.Click += btnBoletimAluno_Click;
+            btnFrequenciaAluno.Click += btnFrequenciaAluno_Click;
             btnPagamentos.Click += btnPagamentos_Click;
-            bntFeedbacks.Click += btnFeedbacks_Click;
         }
 
         private void MarcarBotaoAtivo(Button? botao)
         {
-            btnInicio.BackColor = Color.FromArgb(32, 36, 40);
 
             foreach (Button item in botoesMenu)
             {
-                item.BackColor = Color.FromArgb(32, 36, 40);
-                item.ForeColor = Color.White;
             }
 
             if (botao != null)
             {
-                botao.BackColor = Color.FromArgb(218, 183, 92);
-                botao.ForeColor = Color.FromArgb(32, 36, 40);
             }
 
             botaoAtivo = botao;
@@ -429,18 +397,13 @@ namespace FlowAcademy
             area.FlowDirection = FlowDirection.TopDown;
             area.WrapContents = false;
             area.AutoScroll = true;
-            area.BackColor = panel1.BackColor;
 
             Label lblBoasVindas = new Label();
             lblBoasVindas.Text = "Bem-vindo, " + NomeUsuario();
-            lblBoasVindas.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            lblBoasVindas.ForeColor = Color.FromArgb(32, 36, 40);
             lblBoasVindas.Height = 42;
 
             Label lblResumo = new Label();
             lblResumo.Text = TextoBoasVindas(perfil);
-            lblResumo.Font = new Font("Segoe UI", 10F);
-            lblResumo.ForeColor = Color.FromArgb(96, 106, 116);
             lblResumo.Height = 30;
 
             TableLayoutPanel cards = CriarGridCards(perfil);
@@ -490,27 +453,20 @@ namespace FlowAcademy
             Panel card = new Panel();
             card.Dock = DockStyle.Fill;
             card.Margin = new Padding(0, 0, 12, 0);
-            card.BackColor = Color.White;
             card.Padding = new Padding(16);
 
             Label lblTituloCard = new Label();
             lblTituloCard.Text = titulo;
-            lblTituloCard.ForeColor = Color.FromArgb(96, 106, 116);
-            lblTituloCard.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTituloCard.Dock = DockStyle.Top;
             lblTituloCard.Height = 26;
 
             Label lblValorCard = new Label();
             lblValorCard.Text = valor;
-            lblValorCard.ForeColor = Color.FromArgb(32, 36, 40);
-            lblValorCard.Font = new Font("Segoe UI", 19F, FontStyle.Bold);
             lblValorCard.Dock = DockStyle.Top;
             lblValorCard.Height = 44;
 
             Label lblDetalheCard = new Label();
             lblDetalheCard.Text = detalhe;
-            lblDetalheCard.ForeColor = Color.FromArgb(124, 133, 142);
-            lblDetalheCard.Font = new Font("Segoe UI", 8.5F);
             lblDetalheCard.Dock = DockStyle.Top;
             lblDetalheCard.Height = 28;
 
@@ -525,20 +481,15 @@ namespace FlowAcademy
         {
             Panel painel = new Panel();
             painel.Height = 220;
-            painel.BackColor = Color.White;
             painel.Padding = new Padding(18);
 
             Label titulo = new Label();
             titulo.Text = "Funcionalidades liberadas";
-            titulo.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            titulo.ForeColor = Color.FromArgb(32, 36, 40);
             titulo.Dock = DockStyle.Top;
             titulo.Height = 34;
 
             Label texto = new Label();
             texto.Text = "Os botoes abaixo seguem a mesma divisao de perfis usada no modulo PHP.";
-            texto.Font = new Font("Segoe UI", 9F);
-            texto.ForeColor = Color.FromArgb(96, 106, 116);
             texto.Dock = DockStyle.Top;
             texto.Height = 28;
 
@@ -555,10 +506,6 @@ namespace FlowAcademy
                 botaoAcao.Width = 150;
                 botaoAcao.Height = 38;
                 botaoAcao.Margin = new Padding(0, 0, 10, 10);
-                botaoAcao.FlatStyle = FlatStyle.Flat;
-                botaoAcao.FlatAppearance.BorderColor = Color.FromArgb(218, 183, 92);
-                botaoAcao.BackColor = Color.White;
-                botaoAcao.ForeColor = Color.FromArgb(32, 36, 40);
                 botaoAcao.Tag = botaoMenu;
                 botaoAcao.Click += (s, e) =>
                 {
@@ -576,7 +523,6 @@ namespace FlowAcademy
                 Label vazio = new Label();
                 vazio.Text = "Nenhum menu liberado para este perfil.";
                 vazio.AutoSize = true;
-                vazio.ForeColor = Color.FromArgb(96, 106, 116);
                 acoes.Controls.Add(vazio);
             }
 
@@ -675,10 +621,28 @@ namespace FlowAcademy
             AbrirFormulario(new FrmAluno(), btnAlunos, "Alunos");
         }
 
+        private void btnBoletimAluno_Click(object? sender, EventArgs e)
+        {
+            if (!PodeAcessar(btnBoletimAluno)) { AvisarSemPermissao(); return; }
+            AbrirFormulario(new FrmBoletimAluno(), btnBoletimAluno, "Boletim / Notas");
+        }
+
+        private void btnFrequenciaAluno_Click(object? sender, EventArgs e)
+        {
+            if (!PodeAcessar(btnFrequenciaAluno)) { AvisarSemPermissao(); return; }
+            AbrirFormulario(new FrmFrequenciaAluno(), btnFrequenciaAluno, "Frequência");
+        }
+
         private void btnProfessores_Click(object? sender, EventArgs e)
         {
             if (!PodeAcessar(btnProfessores)) { AvisarSemPermissao(); return; }
             AbrirFormulario(new FrmProfessor(), btnProfessores, "Professores");
+        }
+
+        private void btnFuncionarios_Click(object? sender, EventArgs e)
+        {
+            if (!PodeAcessar(btnFuncionarios)) { AvisarSemPermissao(); return; }
+            AbrirFormulario(new FrmFuncionarios(), btnFuncionarios, "Funcionarios");
         }
 
         private void btnCursos_Click(object? sender, EventArgs e)
@@ -723,10 +687,5 @@ namespace FlowAcademy
             AbrirFormulario(new FrmPagamento(), btnPagamentos, "Pagamentos");
         }
 
-        private void btnFeedbacks_Click(object? sender, EventArgs e)
-        {
-            if (!PodeAcessar(bntFeedbacks)) { AvisarSemPermissao(); return; }
-            AbrirFormulario(new FrmFeedback(), bntFeedbacks, "Feedbacks");
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FlowAcademy
+namespace FlowAcademy
 {
     partial class FrmPagamento
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPagamento));
             dgvPagamento = new DataGridView();
             label1 = new Label();
             txtAluno = new TextBox();
@@ -42,8 +41,11 @@
             txtIdPagamento = new TextBox();
             btnEditar = new Button();
             btnSalvar = new Button();
-            btnCancelar = new Button();
-            btnExcluir = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            lblPesquisa = new Label();
+            txtPesquisa = new TextBox();
+            btnPesquisar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPagamento).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudValor).BeginInit();
             SuspendLayout();
@@ -51,176 +53,181 @@
             // dgvPagamento
             // 
             dgvPagamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPagamento.Location = new Point(381, 31);
+            dgvPagamento.Location = new Point(435, 41);
+            dgvPagamento.Margin = new Padding(3, 4, 3, 4);
             dgvPagamento.Name = "dgvPagamento";
-            dgvPagamento.Size = new Size(444, 407);
+            dgvPagamento.RowHeadersWidth = 51;
+            dgvPagamento.Size = new Size(507, 543);
             dgvPagamento.TabIndex = 0;
-            dgvPagamento.CellDoubleClick += dgvPagamento_CellDoubleClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 88);
+            label1.Location = new Point(50, 117);
             label1.Name = "label1";
-            label1.Size = new Size(42, 15);
+            label1.Size = new Size(51, 20);
             label1.TabIndex = 1;
             label1.Text = "Aluno:";
             // 
             // txtAluno
             // 
-            txtAluno.Location = new Point(92, 86);
+            txtAluno.Location = new Point(105, 115);
+            txtAluno.Margin = new Padding(3, 4, 3, 4);
             txtAluno.Name = "txtAluno";
-            txtAluno.Size = new Size(264, 23);
+            txtAluno.Size = new Size(301, 27);
             txtAluno.TabIndex = 2;
             // 
             // cmbStatus
             // 
-            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(92, 245);
+            cmbStatus.Location = new Point(105, 327);
+            cmbStatus.Margin = new Padding(3, 4, 3, 4);
             cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(158, 23);
+            cmbStatus.Size = new Size(180, 28);
             cmbStatus.TabIndex = 3;
             // 
             // nudValor
             // 
-            nudValor.DecimalPlaces = 2;
-            nudValor.Location = new Point(92, 192);
+            nudValor.Location = new Point(105, 256);
+            nudValor.Margin = new Padding(3, 4, 3, 4);
             nudValor.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudValor.Name = "nudValor";
-            nudValor.Size = new Size(158, 23);
+            nudValor.Size = new Size(181, 27);
             nudValor.TabIndex = 4;
             // 
             // dtpVencimento
             // 
-            dtpVencimento.Location = new Point(92, 139);
+            dtpVencimento.Location = new Point(105, 185);
+            dtpVencimento.Margin = new Padding(3, 4, 3, 4);
             dtpVencimento.Name = "dtpVencimento";
-            dtpVencimento.Size = new Size(263, 23);
+            dtpVencimento.Size = new Size(300, 27);
             dtpVencimento.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(44, 244);
+            label2.Location = new Point(50, 325);
             label2.Name = "label2";
-            label2.Size = new Size(42, 15);
+            label2.Size = new Size(52, 20);
             label2.TabIndex = 1;
             label2.Text = "Status:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 192);
+            label3.Location = new Point(30, 256);
             label3.Name = "label3";
-            label3.Size = new Size(60, 15);
+            label3.Size = new Size(77, 20);
             label3.TabIndex = 1;
             label3.Text = "Valor (R$):";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(13, 140);
+            label4.Location = new Point(15, 187);
             label4.Name = "label4";
-            label4.Size = new Size(73, 15);
+            label4.Size = new Size(90, 20);
             label4.TabIndex = 1;
             label4.Text = "Vencimento:";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(2, 36);
+            label5.Location = new Point(2, 48);
             label5.Name = "label5";
-            label5.Size = new Size(84, 15);
+            label5.Size = new Size(104, 20);
             label5.TabIndex = 1;
             label5.Text = "Id Pagamento:";
             // 
             // txtIdPagamento
             // 
-            txtIdPagamento.Location = new Point(92, 33);
+            txtIdPagamento.Location = new Point(105, 44);
+            txtIdPagamento.Margin = new Padding(3, 4, 3, 4);
             txtIdPagamento.Name = "txtIdPagamento";
             txtIdPagamento.ReadOnly = true;
-            txtIdPagamento.Size = new Size(264, 23);
+            txtIdPagamento.Size = new Size(301, 27);
             txtIdPagamento.TabIndex = 2;
             // 
             // btnEditar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(193, 306);
+            btnEditar.Location = new Point(221, 408);
+            btnEditar.Margin = new Padding(3, 4, 3, 4);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(97, 64);
+            btnEditar.Size = new Size(111, 85);
             btnEditar.TabIndex = 56;
             btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
-            btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(48, 306);
+            btnSalvar.Location = new Point(55, 408);
+            btnSalvar.Margin = new Padding(3, 4, 3, 4);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(97, 64);
+            btnSalvar.Size = new Size(111, 85);
             btnSalvar.TabIndex = 55;
             btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
-            btnSalvar.Click += btnSalvar_Click;
             // 
-            // btnCancelar
+            // button4
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
-            btnCancelar.Location = new Point(52, 407);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(93, 67);
-            btnCancelar.TabIndex = 54;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            button4.Location = new Point(59, 543);
+            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Name = "button4";
+            button4.Size = new Size(106, 89);
+            button4.TabIndex = 54;
+            button4.Text = "&Cancelar";
+            button4.UseVisualStyleBackColor = true;
             // 
-            // btnExcluir
+            // button5
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Image = (Image)resources.GetObject("button5.Image");
-            btnExcluir.Location = new Point(193, 407);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(93, 67);
-            btnExcluir.TabIndex = 53;
-            btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += btnExcluir_Click;
+            button5.Location = new Point(221, 543);
+            button5.Margin = new Padding(3, 4, 3, 4);
+            button5.Name = "button5";
+            button5.Size = new Size(106, 89);
+            button5.TabIndex = 53;
+            button5.Text = "E&xcluir";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // lblPesquisa
+            // 
+            lblPesquisa.AutoSize = true;
+            lblPesquisa.Location = new Point(435, 603);
+            lblPesquisa.Name = "lblPesquisa";
+            lblPesquisa.Size = new Size(111, 20);
+            lblPesquisa.TabIndex = 57;
+            lblPesquisa.Text = "Pesquisar aluno";
+            // 
+            // txtPesquisa
+            // 
+            txtPesquisa.Location = new Point(545, 599);
+            txtPesquisa.Margin = new Padding(3, 4, 3, 4);
+            txtPesquisa.Name = "txtPesquisa";
+            txtPesquisa.Size = new Size(253, 27);
+            txtPesquisa.TabIndex = 58;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.Location = new Point(817, 597);
+            btnPesquisar.Margin = new Padding(3, 4, 3, 4);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(126, 33);
+            btnPesquisar.TabIndex = 59;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // FrmPagamento
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(908, 562);
+            ClientSize = new Size(1038, 749);
+            Controls.Add(btnPesquisar);
+            Controls.Add(txtPesquisa);
+            Controls.Add(lblPesquisa);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnExcluir);
+            Controls.Add(button4);
+            Controls.Add(button5);
             Controls.Add(dtpVencimento);
             Controls.Add(nudValor);
             Controls.Add(cmbStatus);
@@ -232,6 +239,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(dgvPagamento);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmPagamento";
             Text = "FrmPagamento";
             Load += FrmPagamento_Load;
@@ -256,7 +264,10 @@
         private TextBox txtIdPagamento;
         private Button btnEditar;
         private Button btnSalvar;
-        private Button btnCancelar;
-        private Button btnExcluir;
+        private Button button4;
+        private Button button5;
+        private Label lblPesquisa;
+        private TextBox txtPesquisa;
+        private Button btnPesquisar;
     }
 }

@@ -11,6 +11,11 @@ namespace FlowAcademy
         public FrmPagamento()
         {
             InitializeComponent();
+            btnSalvar.Click += (sender, e) => btnSalvar_Click(sender ?? this, e);
+            btnEditar.Click += (sender, e) => btnEditar_Click(sender ?? this, e);
+            button4.Click += (sender, e) => btnCancelar_Click(sender ?? this, e);
+            button5.Click += (sender, e) => btnExcluir_Click(sender ?? this, e);
+            dgvPagamento.CellDoubleClick += (sender, e) => btnEditar_Click(sender ?? this, EventArgs.Empty);
         }
 
         // ==========================
@@ -29,8 +34,17 @@ namespace FlowAcademy
         private void CarregarGrid()
         {
             dgvPagamento.DataSource = null;
-            dgvPagamento.DataSource = Pagamento.ObterLista();
-            dgvPagamento.ClearSelection();
+            dgvPagamento.DataSource = Pagamento.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvPagamento.Columns["IdAluno"] != null) dgvPagamento.Columns["IdAluno"].Visible = false;
+            if (dgvPagamento.Columns["Aluno"] != null) dgvPagamento.Columns["Aluno"].Visible = false;
+
+            if (dgvPagamento.Columns["IdPagamento"] != null) dgvPagamento.Columns["IdPagamento"].HeaderText = "ID";
+            if (dgvPagamento.Columns["NomeAluno"] != null) dgvPagamento.Columns["NomeAluno"].HeaderText = "Aluno";
         }
 
         // ==========================
@@ -53,6 +67,7 @@ namespace FlowAcademy
         {
             txtIdPagamento.Clear();
             txtAluno.Clear();
+            txtPesquisa.Clear();
             nudValor.Value = 0;
             dtpVencimento.Value = DateTime.Now;
 
@@ -94,6 +109,11 @@ namespace FlowAcademy
             }
 
             return true;
+        }
+
+        private void btnPesquisar_Click(object? sender, EventArgs e)
+        {
+            CarregarGrid();
         }
 
         // ==========================
@@ -177,18 +197,16 @@ namespace FlowAcademy
             }
         }
 
-        private void dgvPagamento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-
-            btnEditar_Click(sender, e);
-        }
-
         // ==========================
         // EXCLUIR
         // ==========================
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (idSelecionado == 0 && dgvPagamento.CurrentRow != null)
+            {
+                idSelecionado = Convert.ToInt32(dgvPagamento.CurrentRow.Cells[0].Value);
+            }
+
             if (idSelecionado <= 0)
             {
                 MessageBox.Show("Selecione um registro para excluir.");

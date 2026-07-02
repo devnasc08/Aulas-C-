@@ -17,6 +17,10 @@ namespace FlowAcademyClasses
         public decimal? MediaUc { get; set; }
         public string? Status { get; set; }
         public DateTime DataLancamento { get; set; }
+        public string? CodigoMatricula { get; set; }
+        public string? NomeAluno { get; set; }
+        public string? NomeDisciplina { get; set; }
+        public string? CodigoTurma { get; set; }
 
         // Objetos relacionados
         public Matricula? Matricula { get; set; }
@@ -162,12 +166,16 @@ namespace FlowAcademyClasses
                 cmd.CommandText = @"
                     SELECT n.id_nota, n.id_matricula, n.id_disciplina,
                            n.prova_1, n.prova_2, n.trabalho, n.comportamental,
-                           n.media_uc, n.status, n.data_lancamento
+                           n.media_uc, n.status, n.data_lancamento,
+                           a.matricula, u.nome, d.nome, t.codigo_turma
                     FROM notas n
+                    INNER JOIN matriculas m ON m.id_matricula = n.id_matricula
+                    INNER JOIN alunos a ON a.id_aluno = m.id_aluno
+                    INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
+                    INNER JOIN turmas t ON t.id_turma = m.id_turma
                     INNER JOIN disciplinas d ON d.id_disciplina = n.id_disciplina
-                    WHERE d.nome LIKE @busca
-                       OR n.status LIKE @busca
-                    ORDER BY n.data_lancamento DESC";
+                    WHERE u.nome LIKE @busca
+                       ORDER BY n.data_lancamento DESC";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
@@ -218,9 +226,9 @@ namespace FlowAcademyClasses
         }
 
         // Montar objeto
-        private static Nota MontarObjeto(IDataRecord dr)
+        public static Nota MontarObjeto(IDataRecord dr)
         {
-            return new Nota(
+            Nota nota = new Nota(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.GetInt32(2),
@@ -232,6 +240,20 @@ namespace FlowAcademyClasses
                 dr.IsDBNull(8) ? null : dr.GetString(8),
                 dr.GetDateTime(9)
             );
+
+            if (dr.FieldCount > 10 && !dr.IsDBNull(10))
+                nota.CodigoMatricula = dr.GetString(10);
+
+            if (dr.FieldCount > 11 && !dr.IsDBNull(11))
+                nota.NomeAluno = dr.GetString(11);
+
+            if (dr.FieldCount > 12 && !dr.IsDBNull(12))
+                nota.NomeDisciplina = dr.GetString(12);
+
+            if (dr.FieldCount > 13 && !dr.IsDBNull(13))
+                nota.CodigoTurma = dr.GetString(13);
+
+            return nota;
         }
 
         // Regras simples

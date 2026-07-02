@@ -14,6 +14,7 @@ namespace FlowAcademyClasses
         public decimal Valor { get; set; }
         public DateTime Vencimento { get; set; }
         public string? Status { get; set; }
+        public string? NomeAluno { get; set; }
 
         public Aluno? Aluno { get; set; }
 
@@ -145,13 +146,13 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                    SELECT id_pagamento,
-                           id_aluno,
-                           valor,
-                           vencimento,
-                           status
-                    FROM pagamentos
-                    WHERE id_pagamento = @id";
+                    SELECT p.id_pagamento,
+                           p.id_aluno,
+                           p.valor,
+                           p.vencimento,
+                           p.status
+                    FROM pagamentos p
+                    WHERE p.id_pagamento = @id";
 
                 cmd.Parameters.AddWithValue("@id", idPagamento);
 
@@ -178,7 +179,7 @@ namespace FlowAcademyClasses
         // ==========================
         // OBTER LISTA (SQL PADRÃO)
         // ==========================
-        public static List<Pagamento> ObterLista()
+        public static List<Pagamento> ObterLista(string busca = "")
         {
             List<Pagamento> lista = new();
 
@@ -189,25 +190,36 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                    SELECT id_pagamento,
-                           id_aluno,
-                           valor,
-                           vencimento,
-                           status
-                    FROM pagamentos
-                    ORDER BY vencimento";
+                    SELECT p.id_pagamento,
+                           p.id_aluno,
+                           p.valor,
+                           p.vencimento,
+                           p.status,
+                           u.nome AS nome_aluno
+                    FROM pagamentos p
+                    INNER JOIN alunos a ON a.id_aluno = p.id_aluno
+                    INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
+                    WHERE u.nome LIKE @busca
+                    ORDER BY p.vencimento";
+
+                cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
                 var dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
-                    lista.Add(new Pagamento(
+                    Pagamento pagamento = new Pagamento(
                         dr.GetInt32(0),
                         dr.GetInt32(1),
                         dr.GetDecimal(2),
                         dr.GetDateTime(3),
                         dr.IsDBNull(4) ? "pendente" : dr.GetString(4)
-                    ));
+                    );
+
+                    if (!dr.IsDBNull(5))
+                        pagamento.NomeAluno = dr.GetString(5);
+
+                    lista.Add(pagamento);
                 }
 
                 dr.Close();

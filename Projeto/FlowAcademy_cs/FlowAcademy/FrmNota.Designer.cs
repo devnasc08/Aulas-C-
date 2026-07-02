@@ -1,4 +1,4 @@
-﻿namespace FlowAcademyF
+namespace FlowAcademyF
 {
     partial class FrmNota
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNota));
             cmbDisciplina = new ComboBox();
             cmbMatricula = new ComboBox();
             dgvNota = new DataGridView();
@@ -45,6 +44,8 @@
             btnEditar = new Button();
             btnSalvar = new Button();
             btnCalcular = new Button();
+            btnExcluir = new Button();
+            btnCancelar = new Button();
             dtpData = new DateTimePicker();
             label7 = new Label();
             txtTrabalho = new TextBox();
@@ -54,25 +55,27 @@
             label9 = new Label();
             txtPesquisa = new TextBox();
             btnPesquisar = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            lblTurma = new Label();
+            cmbTurma = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvNota).BeginInit();
             SuspendLayout();
             // 
             // cmbDisciplina
             // 
+            cmbDisciplina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDisciplina.FormattingEnabled = true;
-            cmbDisciplina.Location = new Point(355, 48);
+            cmbDisciplina.Location = new Point(485, 48);
             cmbDisciplina.Name = "cmbDisciplina";
-            cmbDisciplina.Size = new Size(121, 23);
+            cmbDisciplina.Size = new Size(190, 23);
             cmbDisciplina.TabIndex = 84;
             // 
             // cmbMatricula
             // 
+            cmbMatricula.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbMatricula.FormattingEnabled = true;
-            cmbMatricula.Location = new Point(92, 48);
+            cmbMatricula.Location = new Point(255, 48);
             cmbMatricula.Name = "cmbMatricula";
-            cmbMatricula.Size = new Size(121, 23);
+            cmbMatricula.Size = new Size(190, 23);
             cmbMatricula.TabIndex = 81;
             // 
             // dgvNota
@@ -87,7 +90,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(355, 31);
+            label1.Location = new Point(485, 31);
             label1.Name = "label1";
             label1.Size = new Size(58, 15);
             label1.TabIndex = 73;
@@ -96,11 +99,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(93, 30);
+            label4.Location = new Point(255, 30);
             label4.Name = "label4";
-            label4.Size = new Size(57, 15);
+            label4.Size = new Size(39, 15);
             label4.TabIndex = 71;
-            label4.Text = "Matrícula";
+            label4.Text = "Aluno";
             // 
             // txtNota1
             // 
@@ -143,7 +146,7 @@
             label5.Name = "label5";
             label5.Size = new Size(68, 15);
             label5.TabIndex = 72;
-            label5.Text = "Média Final";
+            label5.Text = "M�dia Final";
             // 
             // txtMedia
             // 
@@ -172,59 +175,57 @@
             // 
             // btnEditar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
-            btnEditar.Location = new Point(370, 270);
+            btnEditar.Location = new Point(492, 270);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 90;
             btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
-            btnSalvar.Location = new Point(228, 270);
+            btnSalvar.Location = new Point(358, 270);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 89;
             btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCalcular
             // 
-            btnCalcular.FlatAppearance.BorderSize = 0;
-            btnCalcular.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCalcular.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCalcular.FlatStyle = FlatStyle.Flat;
-            btnCalcular.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCalcular.ForeColor = Color.Black;
-            btnCalcular.Image = (Image)resources.GetObject("btnCalcular.Image");
-            btnCalcular.Location = new Point(90, 270);
+            btnCalcular.Location = new Point(182, 270);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(93, 67);
             btnCalcular.TabIndex = 88;
             btnCalcular.Text = "&Calcular";
-            btnCalcular.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCalcular.UseVisualStyleBackColor = true;
             btnCalcular.Click += btnCalcular_Click;
             // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(626, 270);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(93, 64);
+            btnExcluir.TabIndex = 94;
+            btnExcluir.Text = "E&xcluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(758, 270);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(93, 64);
+            btnCancelar.TabIndex = 95;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // dtpData
             // 
-            dtpData.Location = new Point(601, 48);
+            dtpData.Location = new Point(701, 45);
             dtpData.Name = "dtpData";
             dtpData.Size = new Size(200, 23);
             dtpData.TabIndex = 91;
@@ -266,7 +267,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(601, 30);
+            label10.Location = new Point(701, 27);
             label10.Name = "label10";
             label10.Size = new Size(31, 15);
             label10.TabIndex = 92;
@@ -298,50 +299,37 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // button1
+            // lblTurma
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button1.ForeColor = Color.Black;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(512, 276);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 67);
-            button1.TabIndex = 100;
-            button1.Text = "&Cancelar";
-            button1.TextImageRelation = TextImageRelation.ImageAboveText;
-            button1.UseVisualStyleBackColor = true;
+            lblTurma.AutoSize = true;
+            lblTurma.Location = new Point(92, 30);
+            lblTurma.Name = "lblTurma";
+            lblTurma.Size = new Size(42, 15);
+            lblTurma.TabIndex = 99;
+            lblTurma.Text = "Turma";
             // 
-            // button2
+            // cmbTurma
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.Red;
-            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            button2.ForeColor = Color.Black;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(650, 276);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 67);
-            button2.TabIndex = 99;
-            button2.Text = "E&xcluir";
-            button2.TextImageRelation = TextImageRelation.ImageAboveText;
-            button2.UseVisualStyleBackColor = true;
+            cmbTurma.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTurma.FormattingEnabled = true;
+            cmbTurma.Location = new Point(92, 48);
+            cmbTurma.Name = "cmbTurma";
+            cmbTurma.Size = new Size(130, 23);
+            cmbTurma.TabIndex = 100;
+            cmbTurma.SelectedIndexChanged += cmbTurma_SelectedIndexChanged;
             // 
             // FrmNota
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(937, 684);
-            Controls.Add(button1);
-            Controls.Add(button2);
+            Controls.Add(cmbTurma);
+            Controls.Add(lblTurma);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisa);
             Controls.Add(label9);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnExcluir);
             Controls.Add(txtComportamento);
             Controls.Add(txtTrabalho);
             Controls.Add(label10);
@@ -390,6 +378,8 @@
         private Button btnEditar;
         private Button btnSalvar;
         private Button btnCalcular;
+        private Button btnExcluir;
+        private Button btnCancelar;
         private DateTimePicker dtpData;
         private Label label7;
         private TextBox txtTrabalho;
@@ -399,7 +389,7 @@
         private Label label9;
         private TextBox txtPesquisa;
         private Button btnPesquisar;
-        private Button button1;
-        private Button button2;
+        private Label lblTurma;
+        private ComboBox cmbTurma;
     }
 }

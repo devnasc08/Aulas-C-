@@ -1,4 +1,4 @@
-﻿namespace FlowAcademy
+namespace FlowAcademy
 {
     partial class FormLogin
     {
@@ -39,30 +39,28 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(270, 31);
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(274, 45);
             label1.Name = "label1";
-            label1.Size = new Size(249, 50);
+            label1.Size = new Size(208, 40);
             label1.TabIndex = 0;
             label1.Text = "FlowAcademy";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
             label2.Location = new Point(234, 129);
             label2.Name = "label2";
-            label2.Size = new Size(59, 28);
+            label2.Size = new Size(36, 15);
             label2.TabIndex = 1;
             label2.Text = "Email";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15F);
             label3.Location = new Point(234, 215);
             label3.Name = "label3";
-            label3.Size = new Size(65, 28);
+            label3.Size = new Size(39, 15);
             label3.TabIndex = 2;
             label3.Text = "Senha";
             // 
@@ -82,6 +80,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(326, 23);
             txtEmail.TabIndex = 4;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // txtSenha
             // 
@@ -89,6 +88,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(326, 23);
             txtSenha.TabIndex = 4;
+            txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // FormLogin
             // 

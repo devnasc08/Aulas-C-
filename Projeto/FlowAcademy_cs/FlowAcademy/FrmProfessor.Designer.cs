@@ -1,4 +1,4 @@
-﻿namespace FlowAcademyF
+namespace FlowAcademyF
 {
     partial class FrmProfessor
     {
@@ -43,6 +43,13 @@
             label3 = new Label();
             txtPesquisa = new TextBox();
             btnPesquisar = new Button();
+            txtNomeUsuario = new TextBox();
+            lblEmailUsuario = new Label();
+            txtEmailUsuario = new TextBox();
+            lblSenhaUsuario = new Label();
+            txtSenhaUsuario = new TextBox();
+            lblStatusUsuario = new Label();
+            cmbStatusUsuario = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvProfessores).BeginInit();
             SuspendLayout();
             // 
@@ -53,6 +60,7 @@
             cmbUsuario.Name = "cmbUsuario";
             cmbUsuario.Size = new Size(121, 23);
             cmbUsuario.TabIndex = 31;
+            cmbUsuario.Visible = false;
             // 
             // dgvProfessores
             // 
@@ -100,77 +108,47 @@
             label2.AutoSize = true;
             label2.Location = new Point(75, 26);
             label2.Name = "label2";
-            label2.Size = new Size(47, 15);
+            label2.Size = new Size(40, 15);
             label2.TabIndex = 19;
-            label2.Text = "Usuário";
+            label2.Text = "Nome";
             // 
             // btnEditar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
             btnEditar.Location = new Point(257, 213);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 35;
             btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
             btnSalvar.Location = new Point(112, 213);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 34;
             btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
             btnCancelar.Location = new Point(402, 210);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(93, 67);
             btnCancelar.TabIndex = 33;
             btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnExcluir
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Image = (Image)resources.GetObject("button5.Image");
             btnExcluir.Location = new Point(543, 210);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(93, 67);
             btnExcluir.TabIndex = 32;
             btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
@@ -200,11 +178,76 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
+            // txtNomeUsuario
+            // 
+            txtNomeUsuario.Location = new Point(75, 49);
+            txtNomeUsuario.Name = "txtNomeUsuario";
+            txtNomeUsuario.Size = new Size(130, 23);
+            txtNomeUsuario.TabIndex = 39;
+            // 
+            // lblEmailUsuario
+            // 
+            lblEmailUsuario.AutoSize = true;
+            lblEmailUsuario.Location = new Point(225, 26);
+            lblEmailUsuario.Name = "lblEmailUsuario";
+            lblEmailUsuario.Size = new Size(41, 15);
+            lblEmailUsuario.TabIndex = 40;
+            lblEmailUsuario.Text = "E-mail";
+            // 
+            // txtEmailUsuario
+            // 
+            txtEmailUsuario.Location = new Point(225, 49);
+            txtEmailUsuario.Name = "txtEmailUsuario";
+            txtEmailUsuario.Size = new Size(180, 23);
+            txtEmailUsuario.TabIndex = 41;
+            // 
+            // lblSenhaUsuario
+            // 
+            lblSenhaUsuario.AutoSize = true;
+            lblSenhaUsuario.Location = new Point(430, 26);
+            lblSenhaUsuario.Name = "lblSenhaUsuario";
+            lblSenhaUsuario.Size = new Size(39, 15);
+            lblSenhaUsuario.TabIndex = 42;
+            lblSenhaUsuario.Text = "Senha";
+            // 
+            // txtSenhaUsuario
+            // 
+            txtSenhaUsuario.Location = new Point(430, 49);
+            txtSenhaUsuario.Name = "txtSenhaUsuario";
+            txtSenhaUsuario.PasswordChar = '*';
+            txtSenhaUsuario.Size = new Size(130, 23);
+            txtSenhaUsuario.TabIndex = 43;
+            // 
+            // lblStatusUsuario
+            // 
+            lblStatusUsuario.AutoSize = true;
+            lblStatusUsuario.Location = new Point(585, 26);
+            lblStatusUsuario.Name = "lblStatusUsuario";
+            lblStatusUsuario.Size = new Size(39, 15);
+            lblStatusUsuario.TabIndex = 44;
+            lblStatusUsuario.Text = "Status";
+            // 
+            // cmbStatusUsuario
+            // 
+            cmbStatusUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatusUsuario.FormattingEnabled = true;
+            cmbStatusUsuario.Location = new Point(585, 49);
+            cmbStatusUsuario.Name = "cmbStatusUsuario";
+            cmbStatusUsuario.Size = new Size(110, 23);
+            cmbStatusUsuario.TabIndex = 45;
+            // 
             // FrmProfessor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 618);
+            Controls.Add(cmbStatusUsuario);
+            Controls.Add(lblStatusUsuario);
+            Controls.Add(txtSenhaUsuario);
+            Controls.Add(lblSenhaUsuario);
+            Controls.Add(txtEmailUsuario);
+            Controls.Add(lblEmailUsuario);
+            Controls.Add(txtNomeUsuario);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisa);
             Controls.Add(label3);
@@ -243,5 +286,12 @@
         private Label label3;
         private TextBox txtPesquisa;
         private Button btnPesquisar;
+        private TextBox txtNomeUsuario;
+        private Label lblEmailUsuario;
+        private TextBox txtEmailUsuario;
+        private Label lblSenhaUsuario;
+        private TextBox txtSenhaUsuario;
+        private Label lblStatusUsuario;
+        private ComboBox cmbStatusUsuario;
     }
 }

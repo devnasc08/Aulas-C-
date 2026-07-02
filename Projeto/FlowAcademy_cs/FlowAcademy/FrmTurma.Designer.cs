@@ -1,4 +1,4 @@
-﻿namespace FlowAcademyF
+namespace FlowAcademyF
 {
     partial class FrmTurma
     {
@@ -79,7 +79,7 @@
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 35;
-            label3.Text = "Código Turma";
+            label3.Text = "C�digo Turma";
             // 
             // label4
             // 
@@ -166,71 +166,41 @@
             // 
             // btnEditar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
             btnEditar.Location = new Point(283, 266);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
             btnEditar.TabIndex = 52;
             btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
             btnSalvar.Location = new Point(138, 266);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
             btnSalvar.TabIndex = 51;
             btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
             btnCancelar.Location = new Point(428, 263);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(93, 67);
             btnCancelar.TabIndex = 50;
             btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnExcluir
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Image = (Image)resources.GetObject("button5.Image");
             btnExcluir.Location = new Point(569, 263);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(93, 67);
             btnExcluir.TabIndex = 49;
             btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 

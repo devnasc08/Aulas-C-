@@ -95,14 +95,16 @@ function appInicio($titulo, $area, $ativo, $prefixo = '../../')
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= e($titulo) ?> | Flow Academy Platform</title>
-  <link href="<?= e($prefixo) ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5.0.2 local: base obrigatoria de CSS do sistema PHP. -->
+  <link href="<?= e($prefixo) ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Complemento visual proprio do projeto, sempre carregado depois do Bootstrap. -->
   <link rel="stylesheet" href="<?= e($prefixo) ?>assets/css/main.css?v=20260622-2">
 </head>
 <body class="app-shell">
   <aside class="sidebar" aria-label="Navegacao principal">
     <div class="sidebar-header">
       <a class="brand" href="<?= e($prefixo . $dashboardUsuario) ?>">
-        <img class="brand-logo" src="<?= e($prefixo) ?>assets/images/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
+        <img class="brand-logo" src="<?= e($prefixo) ?>assets/img/logos/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
       </a>
     </div>
     <div class="sidebar-content">
@@ -228,7 +230,9 @@ function appFim($prefixo = '../../')
     </div>
   </div>
   <div class="toast" data-toast-root></div>
-  <script src="<?= e($prefixo) ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5.0.2 local: bundle com componentes JS usados por dropdowns, modal e interacoes. -->
+  <script src="<?= e($prefixo) ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Complemento JS proprio do projeto, carregado depois do Bootstrap. -->
   <script src="<?= e($prefixo) ?>assets/js/app.js?v=20260616-3"></script>
 </body>
 </html>

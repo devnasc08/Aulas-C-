@@ -30,6 +30,20 @@ namespace FlowAcademyF
         {
             dgvMatricula.DataSource = null;
             dgvMatricula.DataSource = Matricula.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvMatricula.Columns["IdAluno"] != null) dgvMatricula.Columns["IdAluno"].Visible = false;
+            if (dgvMatricula.Columns["IdTurma"] != null) dgvMatricula.Columns["IdTurma"].Visible = false;
+            if (dgvMatricula.Columns["Aluno"] != null) dgvMatricula.Columns["Aluno"].Visible = false;
+            if (dgvMatricula.Columns["Turma"] != null) dgvMatricula.Columns["Turma"].Visible = false;
+
+            if (dgvMatricula.Columns["IdMatricula"] != null) dgvMatricula.Columns["IdMatricula"].HeaderText = "Matricula";
+            if (dgvMatricula.Columns["NomeAluno"] != null) dgvMatricula.Columns["NomeAluno"].HeaderText = "Aluno";
+            if (dgvMatricula.Columns["CodigoTurma"] != null) dgvMatricula.Columns["CodigoTurma"].HeaderText = "Turma";
+            if (dgvMatricula.Columns["DataMatricula"] != null) dgvMatricula.Columns["DataMatricula"].HeaderText = "Data";
         }
 
         // ==========================
@@ -38,7 +52,7 @@ namespace FlowAcademyF
         private void CarregarCombos()
         {
             cmbAluno.DataSource = Aluno.ObterLista();
-            cmbAluno.DisplayMember = "Matricula";
+            cmbAluno.DisplayMember = "NomeAluno";
             cmbAluno.ValueMember = "IdAluno";
 
             cmbTurma.DataSource = Turma.ObterLista();

@@ -14,6 +14,8 @@ namespace FlowAcademyClasses
         public DateTime? DataNascimento { get; set; }
         public string? Endereco { get; set; }
         public string? StatusAcademico { get; set; }
+        public string? NomeUsuario { get; set; }
+        public string? NomeAluno { get { return NomeUsuario; } }
         public Usuario? Usuario { get; set; }
 
         public Aluno()
@@ -141,12 +143,13 @@ namespace FlowAcademyClasses
                 cmd.CommandText = @"
                     SELECT a.id_aluno, a.id_usuario, a.matricula, a.cpf,
                            a.telefone, a.data_nascimento, a.endereco,
-                           a.status_academico
+                           a.status_academico, u.nome
                     FROM alunos a
                     INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
-                    WHERE u.nome LIKE @busca
+                    WHERE u.perfil = 'aluno'
+                      AND (u.nome LIKE @busca
                        OR a.matricula LIKE @busca
-                       OR a.cpf LIKE @busca
+                       OR a.cpf LIKE @busca)
                     ORDER BY u.nome";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
@@ -174,10 +177,11 @@ namespace FlowAcademyClasses
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = @"
-                    SELECT id_aluno, id_usuario, matricula, cpf, telefone,
-                           data_nascimento, endereco, status_academico
-                    FROM alunos
-                    WHERE id_aluno = @id";
+                    SELECT a.id_aluno, a.id_usuario, a.matricula, a.cpf, a.telefone,
+                           a.data_nascimento, a.endereco, a.status_academico, u.nome
+                    FROM alunos a
+                    INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
+                    WHERE a.id_aluno = @id";
 
                 cmd.Parameters.AddWithValue("@id", id);
 
@@ -202,7 +206,7 @@ namespace FlowAcademyClasses
 
         public static Aluno MontarObjeto(IDataRecord dr)
         {
-            return new Aluno(
+            Aluno aluno = new Aluno(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.IsDBNull(2) ? null : dr.GetString(2),
@@ -212,6 +216,11 @@ namespace FlowAcademyClasses
                 dr.IsDBNull(6) ? null : dr.GetString(6),
                 dr.IsDBNull(7) ? null : dr.GetString(7)
             );
+
+            if (dr.FieldCount > 8 && !dr.IsDBNull(8))
+                aluno.NomeUsuario = dr.GetString(8);
+
+            return aluno;
         }
     }
 }

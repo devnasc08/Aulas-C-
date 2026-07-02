@@ -7,16 +7,22 @@
     <Compile Update="FrmAluno.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmBoletimAluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmCurso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmDisciplina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmFeedback.cs">
+    <Compile Update="FrmFrequencia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmFrequencia.cs">
+    <Compile Update="FrmFrequenciaAluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmMatricula.cs">
@@ -26,6 +32,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPrimeiroAcesso.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmPrincipal.cs">

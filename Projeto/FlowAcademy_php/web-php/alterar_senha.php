@@ -56,14 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alterar senha | Flow Academy Platform</title>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5.0.2 local: base obrigatoria de CSS do sistema PHP. -->
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Complemento visual proprio do projeto, sempre carregado depois do Bootstrap. -->
   <link rel="stylesheet" href="assets/css/main.css?v=20260622-2">
 </head>
 <body class="auth-shell">
   <!-- Card de primeiro acesso: bloqueia o sistema ate a senha inicial ser trocada. -->
   <main class="auth-card">
     <a class="brand" href="alterar_senha.php">
-      <img class="brand-logo" src="assets/images/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
+      <img class="brand-logo" src="assets/img/logos/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
     </a>
     <h1 class="auth-title">Alterar senha</h1>
     <p class="auth-subtitle">Antes de acessar o sistema, cadastre uma senha nova.</p>
@@ -89,7 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <div class="toast" data-toast-root></div>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5.0.2 local: bundle com componentes JS usados na tela de troca de senha. -->
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Complemento JS proprio do projeto, carregado depois do Bootstrap. -->
   <script src="assets/js/app.js?v=20260616-3"></script>
 </body>
 </html>

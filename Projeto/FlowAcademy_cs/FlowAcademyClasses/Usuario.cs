@@ -18,6 +18,7 @@ namespace FlowAcademyClasses
         public string? Senha { get; set; }
         public string? NivelAcesso { get; set; }
         public string? Status { get; set; }
+        public DateTime? UltimoLogin { get; set; }
         public DateTime DataCriacao { get; set; }
 
         // ==========================
@@ -31,12 +32,13 @@ namespace FlowAcademyClasses
             Senha = "";
             NivelAcesso = "aluno";
             Status = "ativo";
+            UltimoLogin = null;
             DataCriacao = DateTime.Now;
         }
 
         public Usuario(int idUsuario, string? nome, string? email,
                        string? senha, string? nivelAcesso,
-                       string? status, DateTime dataCriacao)
+                       string? status, DateTime? ultimoLogin, DateTime dataCriacao)
         {
             IdUsuario = idUsuario;
             Nome = nome;
@@ -44,6 +46,7 @@ namespace FlowAcademyClasses
             Senha = senha;
             NivelAcesso = nivelAcesso;
             Status = status;
+            UltimoLogin = ultimoLogin;
             DataCriacao = dataCriacao;
         }
 
@@ -155,7 +158,7 @@ namespace FlowAcademyClasses
 
                 cmd.CommandText = @"
                 SELECT id_usuario, nome, email, senha_hash,
-                       perfil, status, created_at
+                       perfil, status, ultimo_login, created_at
                 FROM usuarios
                 WHERE id_usuario = @id";
 
@@ -189,7 +192,7 @@ namespace FlowAcademyClasses
 
                 cmd.CommandText = @"
                 SELECT id_usuario, nome, email, senha_hash,
-                       perfil, status, created_at
+                       perfil, status, ultimo_login, created_at
                 FROM usuarios
                 WHERE nome LIKE @busca
                    OR email LIKE @busca
@@ -197,6 +200,37 @@ namespace FlowAcademyClasses
                 ORDER BY nome";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    usuarios.Add(MontarObjeto(dr));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return usuarios;
+        }
+
+        public static List<Usuario> ObterListaPorPerfil(string perfil)
+        {
+            List<Usuario> usuarios = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = @"
+                SELECT id_usuario, nome, email, senha_hash,
+                       perfil, status, ultimo_login, created_at
+                FROM usuarios
+                WHERE perfil = @perfil
+                ORDER BY nome";
+
+                cmd.Parameters.AddWithValue("@perfil", perfil);
 
                 var dr = cmd.ExecuteReader();
 
@@ -271,6 +305,7 @@ namespace FlowAcademyClasses
                 dr.IsDBNull(3) ? null : dr.GetString(3),
                 dr.IsDBNull(4) ? null : dr.GetString(4),
                 dr.IsDBNull(5) ? null : dr.GetString(5),
+                dr.FieldCount > 7 && !dr.IsDBNull(6) ? dr.GetDateTime(6) : null,
                 dr.GetDateTime(dr.FieldCount > 7 ? 7 : 6)
             );
         }

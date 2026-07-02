@@ -30,6 +30,16 @@ namespace FlowAcademyF
         {
             dgvDisciplina.DataSource = null;
             dgvDisciplina.DataSource = Disciplina.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvDisciplina.Columns["IdCurso"] != null) dgvDisciplina.Columns["IdCurso"].Visible = false;
+
+            if (dgvDisciplina.Columns["IdDisciplina"] != null) dgvDisciplina.Columns["IdDisciplina"].HeaderText = "ID";
+            if (dgvDisciplina.Columns["NomeCurso"] != null) dgvDisciplina.Columns["NomeCurso"].HeaderText = "Curso";
+            if (dgvDisciplina.Columns["CargaHoraria"] != null) dgvDisciplina.Columns["CargaHoraria"].HeaderText = "Carga Horaria";
         }
 
         // ==========================

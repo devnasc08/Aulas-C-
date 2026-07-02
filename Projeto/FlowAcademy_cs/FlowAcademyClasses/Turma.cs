@@ -23,6 +23,8 @@ namespace FlowAcademyClasses
         public int CapacidadeMaxima { get; set; }
 
         public string? Status { get; set; }
+        public string? NomeCurso { get; set; }
+        public string? NomeProfessor { get; set; }
 
 
         // Objetos de relacionamento
@@ -324,12 +326,14 @@ namespace FlowAcademyClasses
                 t.turno,
                 t.periodo_letivo,
                 t.capacidade_maxima,
-                t.status
+                t.status,
+                c.nome,
+                u.nome
                 FROM turmas t
                 INNER JOIN cursos c ON c.id_curso = t.id_curso
+                INNER JOIN professores p ON p.id_professor = t.id_professor
+                INNER JOIN usuarios u ON u.id_usuario = p.id_usuario
                 WHERE t.codigo_turma LIKE @busca
-                   OR t.periodo_letivo LIKE @busca
-                   OR c.nome LIKE @busca
                 ORDER BY t.periodo_letivo, t.codigo_turma";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
@@ -349,9 +353,54 @@ namespace FlowAcademyClasses
             return turmas;
         }
 
+        public static List<Turma> ObterListaPorProfessor(int idProfessor)
+        {
+            List<Turma> turmas = new();
+
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+
+                cmd.CommandText = @"
+                SELECT
+                t.id_turma,
+                t.id_curso,
+                t.id_professor,
+                t.codigo_turma,
+                t.turno,
+                t.periodo_letivo,
+                t.capacidade_maxima,
+                t.status,
+                c.nome,
+                u.nome
+                FROM turmas t
+                INNER JOIN cursos c ON c.id_curso = t.id_curso
+                INNER JOIN professores p ON p.id_professor = t.id_professor
+                INNER JOIN usuarios u ON u.id_usuario = p.id_usuario
+                WHERE t.id_professor = @id_professor
+                ORDER BY t.periodo_letivo, t.codigo_turma";
+
+                cmd.Parameters.AddWithValue("@id_professor", idProfessor);
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    turmas.Add(MontarObjeto(dr));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return turmas;
+        }
+
         public static Turma MontarObjeto(IDataRecord dr)
         {
-            return new Turma(
+            Turma turma = new Turma(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.GetInt32(2),
@@ -361,6 +410,14 @@ namespace FlowAcademyClasses
                 dr.GetInt32(6),
                 dr.IsDBNull(7) ? null : dr.GetString(7)
             );
+
+            if (dr.FieldCount > 8 && !dr.IsDBNull(8))
+                turma.NomeCurso = dr.GetString(8);
+
+            if (dr.FieldCount > 9 && !dr.IsDBNull(9))
+                turma.NomeProfessor = dr.GetString(9);
+
+            return turma;
         }
 
 

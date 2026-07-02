@@ -13,6 +13,10 @@ namespace FlowAcademyClasses
         public int TotalAulas { get; set; }
         public int Presencas { get; set; }
         public decimal Percentual { get; set; }
+        public string? CodigoMatricula { get; set; }
+        public string? NomeAluno { get; set; }
+        public string? NomeDisciplina { get; set; }
+        public string? CodigoTurma { get; set; }
 
         // Objetos relacionados
         public Matricula? Matricula { get; set; }
@@ -149,11 +153,16 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = @"
                     SELECT f.id_frequencia, f.id_matricula, f.id_disciplina,
-                           f.total_aulas, f.presencas, f.percentual
+                           f.total_aulas, f.presencas, f.percentual,
+                           a.matricula, u.nome, d.nome, t.codigo_turma
                     FROM frequencia f
+                    INNER JOIN matriculas m ON m.id_matricula = f.id_matricula
+                    INNER JOIN alunos a ON a.id_aluno = m.id_aluno
+                    INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
+                    INNER JOIN turmas t ON t.id_turma = m.id_turma
                     INNER JOIN disciplinas d ON d.id_disciplina = f.id_disciplina
-                    WHERE d.nome LIKE @busca
-                    ORDER BY d.nome";
+                    WHERE u.nome LIKE @busca
+                    ORDER BY u.nome, d.nome";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
@@ -203,9 +212,9 @@ namespace FlowAcademyClasses
         }
 
         // Montar objeto
-        private static Frequencia MontarObjeto(IDataRecord dr)
+        public static Frequencia MontarObjeto(IDataRecord dr)
         {
-            return new Frequencia(
+            Frequencia frequencia = new Frequencia(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.GetInt32(2),
@@ -213,6 +222,20 @@ namespace FlowAcademyClasses
                 dr.GetInt32(4),
                 dr.IsDBNull(5) ? 0 : dr.GetDecimal(5)
             );
+
+            if (dr.FieldCount > 6 && !dr.IsDBNull(6))
+                frequencia.CodigoMatricula = dr.GetString(6);
+
+            if (dr.FieldCount > 7 && !dr.IsDBNull(7))
+                frequencia.NomeAluno = dr.GetString(7);
+
+            if (dr.FieldCount > 8 && !dr.IsDBNull(8))
+                frequencia.NomeDisciplina = dr.GetString(8);
+
+            if (dr.FieldCount > 9 && !dr.IsDBNull(9))
+                frequencia.CodigoTurma = dr.GetString(9);
+
+            return frequencia;
         }
 
         // Regra simples

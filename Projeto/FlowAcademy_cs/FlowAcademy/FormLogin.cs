@@ -60,10 +60,25 @@ namespace FlowAcademy
             try
             {
                 // AUTENTICAÇÃO
-                Usuario usuario = Usuario.EfetuarLogin(email, senha);
+                Usuario usuario = AuthService.Login(email, senha);
 
-                if (usuario != null && usuario.IdUsuario > 0)
+                if (usuario.IdUsuario > 0)
                 {
+                    if (usuario.UltimoLogin == null)
+                    {
+                        using (FrmPrimeiroAcesso frmSenha = new FrmPrimeiroAcesso(usuario))
+                        {
+                            if (frmSenha.ShowDialog() != DialogResult.OK)
+                            {
+                                txtSenha.Clear();
+                                txtSenha.Focus();
+                                return;
+                            }
+                        }
+                    }
+
+                    AuthService.AtualizarUltimoLogin(usuario.IdUsuario);
+
                     // SESSÃO
                     Sessao.IdUsuario = usuario.IdUsuario;
                     Sessao.Nome = usuario.Nome;
@@ -75,19 +90,16 @@ namespace FlowAcademy
                         MessageBoxIcon.Information);
 
                     // ABRIR SISTEMA
+                    this.Hide();
+
                     using (FrmPrincipal frm = new FrmPrincipal())
                     {
-                        this.Hide();
                         frm.ShowDialog();
                     }
 
-                    Sessao.IdUsuario = 0;
-                    Sessao.Nome = "";
-                    Sessao.NivelAcesso = "";
-
                     txtSenha.Clear();
-                    txtEmail.Focus();
                     this.Show();
+                    txtEmail.Focus();
                 }
                 else
                 {
@@ -109,5 +121,16 @@ namespace FlowAcademy
             }
         }
 
+        // ==========================
+        // EVENTOS (opcional)
+        // ==========================
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

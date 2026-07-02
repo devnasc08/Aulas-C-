@@ -35,12 +35,14 @@
             btnCursos = new Button();
             btnTurmas = new Button();
             btnProfessores = new Button();
+            btnFuncionarios = new Button();
             btnDisciplinas = new Button();
             btnMatriculas = new Button();
-            bntFeedbacks = new Button();
             btnPagamentos = new Button();
             btnFrequencia = new Button();
             btnNotas = new Button();
+            btnBoletimAluno = new Button();
+            btnFrequenciaAluno = new Button();
             panel1 = new Panel();
             SuspendLayout();
             // 
@@ -105,6 +107,15 @@
             btnProfessores.Text = "Professores";
             btnProfessores.UseVisualStyleBackColor = true;
             // 
+            // btnFuncionarios
+            // 
+            btnFuncionarios.Location = new Point(104, 145);
+            btnFuncionarios.Name = "btnFuncionarios";
+            btnFuncionarios.Size = new Size(110, 23);
+            btnFuncionarios.TabIndex = 6;
+            btnFuncionarios.Text = "Funcionários";
+            btnFuncionarios.UseVisualStyleBackColor = true;
+            // 
             // btnDisciplinas
             // 
             btnDisciplinas.Location = new Point(12, 201);
@@ -122,15 +133,6 @@
             btnMatriculas.TabIndex = 2;
             btnMatriculas.Text = "Matrículas";
             btnMatriculas.UseVisualStyleBackColor = true;
-            // 
-            // bntFeedbacks
-            // 
-            bntFeedbacks.Location = new Point(12, 375);
-            bntFeedbacks.Name = "bntFeedbacks";
-            bntFeedbacks.Size = new Size(75, 23);
-            bntFeedbacks.TabIndex = 2;
-            bntFeedbacks.Text = "Feedbacks";
-            bntFeedbacks.UseVisualStyleBackColor = true;
             // 
             // btnPagamentos
             // 
@@ -159,6 +161,24 @@
             btnNotas.Text = "Notas";
             btnNotas.UseVisualStyleBackColor = true;
             // 
+            // btnBoletimAluno
+            // 
+            btnBoletimAluno.Location = new Point(104, 87);
+            btnBoletimAluno.Name = "btnBoletimAluno";
+            btnBoletimAluno.Size = new Size(110, 23);
+            btnBoletimAluno.TabIndex = 4;
+            btnBoletimAluno.Text = "Boletim / Notas";
+            btnBoletimAluno.UseVisualStyleBackColor = true;
+            // 
+            // btnFrequenciaAluno
+            // 
+            btnFrequenciaAluno.Location = new Point(104, 116);
+            btnFrequenciaAluno.Name = "btnFrequenciaAluno";
+            btnFrequenciaAluno.Size = new Size(110, 23);
+            btnFrequenciaAluno.TabIndex = 5;
+            btnFrequenciaAluno.Text = "Frequência";
+            btnFrequenciaAluno.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             panel1.Location = new Point(104, 27);
@@ -172,6 +192,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1796, 821);
             Controls.Add(panel1);
+            Controls.Add(btnFrequenciaAluno);
+            Controls.Add(btnBoletimAluno);
             Controls.Add(btnDisciplinas);
             Controls.Add(btnNotas);
             Controls.Add(btnTurmas);
@@ -179,7 +201,7 @@
             Controls.Add(btnAlunos);
             Controls.Add(btnPagamentos);
             Controls.Add(btnProfessores);
-            Controls.Add(bntFeedbacks);
+            Controls.Add(btnFuncionarios);
             Controls.Add(btnCursos);
             Controls.Add(btnMatriculas);
             Controls.Add(btnUsuarios);
@@ -203,12 +225,14 @@
         private Button btnCursos;
         private Button btnTurmas;
         private Button btnProfessores;
+        private Button btnFuncionarios;
         private Button btnDisciplinas;
         private Button btnMatriculas;
-        private Button bntFeedbacks;
         private Button btnPagamentos;
         private Button btnFrequencia;
         private Button btnNotas;
+        private Button btnBoletimAluno;
+        private Button btnFrequenciaAluno;
         private Panel panel1;
     }
 }

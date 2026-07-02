@@ -30,6 +30,19 @@ namespace FlowAcademy
         {
             dgvAluno.DataSource = null;
             dgvAluno.DataSource = Aluno.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvAluno.Columns["IdUsuario"] != null) dgvAluno.Columns["IdUsuario"].Visible = false;
+            if (dgvAluno.Columns["Usuario"] != null) dgvAluno.Columns["Usuario"].Visible = false;
+            if (dgvAluno.Columns["NomeAluno"] != null) dgvAluno.Columns["NomeAluno"].Visible = false;
+
+            if (dgvAluno.Columns["IdAluno"] != null) dgvAluno.Columns["IdAluno"].HeaderText = "ID";
+            if (dgvAluno.Columns["NomeUsuario"] != null) dgvAluno.Columns["NomeUsuario"].HeaderText = "Aluno";
+            if (dgvAluno.Columns["StatusAcademico"] != null) dgvAluno.Columns["StatusAcademico"].HeaderText = "Status Academico";
+            if (dgvAluno.Columns["DataNascimento"] != null) dgvAluno.Columns["DataNascimento"].HeaderText = "Data Nascimento";
         }
 
         // ==========================
@@ -37,9 +50,17 @@ namespace FlowAcademy
         // ==========================
         private void CarregarCombos()
         {
-            cmbUsuario.DataSource = Usuario.ObterLista();
-            cmbUsuario.DisplayMember = "Nome";
-            cmbUsuario.ValueMember = "IdUsuario";
+            cmbStatusUsuario.Items.Clear();
+            cmbStatusUsuario.Items.Add("ativo");
+            cmbStatusUsuario.Items.Add("inativo");
+            cmbStatusUsuario.SelectedIndex = 0;
+
+            cmbStatusAcademico.Items.Clear();
+            cmbStatusAcademico.Items.Add("regular");
+            cmbStatusAcademico.Items.Add("trancado");
+            cmbStatusAcademico.Items.Add("concluido");
+            cmbStatusAcademico.Items.Add("cancelado");
+            cmbStatusAcademico.SelectedIndex = 0;
         }
 
         // ==========================
@@ -48,13 +69,20 @@ namespace FlowAcademy
         private void LimparFormulario()
         {
             txtMatricula.Clear();
+            txtNomeUsuario.Clear();
+            txtEmailUsuario.Clear();
+            txtSenhaUsuario.Clear();
             mtbCpf.Clear();
             mtbTelefone.Clear();
             txtEndereco.Clear();
             txtPesquisa.Clear();
+            dtpDataNascimento.Value = DateTime.Today;
 
-            if (cmbUsuario.Items.Count > 0)
-                cmbUsuario.SelectedIndex = -1;
+            if (cmbStatusUsuario.Items.Count > 0)
+                cmbStatusUsuario.SelectedIndex = 0;
+
+            if (cmbStatusAcademico.Items.Count > 0)
+                cmbStatusAcademico.SelectedIndex = 0;
 
             dgvAluno.ClearSelection();
 
@@ -66,9 +94,21 @@ namespace FlowAcademy
         // ==========================
         private bool ValidarCampos()
         {
-            if (cmbUsuario.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(txtNomeUsuario.Text))
             {
-                MessageBox.Show("Selecione um usuário.");
+                MessageBox.Show("Informe o nome do aluno.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmailUsuario.Text))
+            {
+                MessageBox.Show("Informe o e-mail do aluno.");
+                return false;
+            }
+
+            if (idSelecionado == 0 && string.IsNullOrWhiteSpace(txtSenhaUsuario.Text))
+            {
+                MessageBox.Show("Informe a senha do aluno.");
                 return false;
             }
 
@@ -102,11 +142,18 @@ namespace FlowAcademy
         {
             if (aluno == null) return;
 
-            cmbUsuario.SelectedValue = aluno.IdUsuario;
+            Usuario usuario = Usuario.ObterPorId(aluno.IdUsuario);
+            txtNomeUsuario.Text = usuario.Nome;
+            txtEmailUsuario.Text = usuario.Email;
+            txtSenhaUsuario.Clear();
+            cmbStatusUsuario.Text = string.IsNullOrEmpty(usuario.Status) ? "ativo" : usuario.Status;
+
             txtMatricula.Text = aluno.Matricula;
             mtbCpf.Text = aluno.Cpf;
             mtbTelefone.Text = aluno.Telefone;
             txtEndereco.Text = aluno.Endereco;
+            dtpDataNascimento.Value = aluno.DataNascimento ?? DateTime.Today;
+            cmbStatusAcademico.Text = string.IsNullOrEmpty(aluno.StatusAcademico) ? "regular" : aluno.StatusAcademico;
         }
 
         // ==========================
@@ -131,14 +178,37 @@ namespace FlowAcademy
         {
             if (!ValidarCampos()) return;
 
+            Usuario usuario = new Usuario();
+
+            if (idSelecionado > 0)
+            {
+                Aluno alunoAtual = Aluno.ObterPorId(idSelecionado);
+                usuario.IdUsuario = alunoAtual.IdUsuario;
+            }
+
+            usuario.Nome = txtNomeUsuario.Text.Trim();
+            usuario.Email = txtEmailUsuario.Text.Trim();
+            usuario.Senha = txtSenhaUsuario.Text.Trim();
+            usuario.NivelAcesso = "aluno";
+            usuario.Status = cmbStatusUsuario.Text;
+
+            bool usuarioSalvo = idSelecionado == 0 ? usuario.Inserir() : usuario.Atualizar();
+
+            if (!usuarioSalvo)
+            {
+                MessageBox.Show("Erro ao salvar usuário do aluno.");
+                return;
+            }
+
             Aluno aluno = new Aluno();
 
-            aluno.IdUsuario = Convert.ToInt32(cmbUsuario.SelectedValue);
+            aluno.IdUsuario = usuario.IdUsuario;
             aluno.Matricula = txtMatricula.Text;
             aluno.Cpf = mtbCpf.Text;
             aluno.Telefone = mtbTelefone.Text;
             aluno.Endereco = txtEndereco.Text;
-            aluno.StatusAcademico = "regular";
+            aluno.DataNascimento = dtpDataNascimento.Value.Date;
+            aluno.StatusAcademico = cmbStatusAcademico.Text;
 
             // INSERIR
             if (idSelecionado == 0)
@@ -235,6 +305,11 @@ namespace FlowAcademy
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             CarregarGrid();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

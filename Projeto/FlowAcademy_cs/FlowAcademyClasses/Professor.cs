@@ -10,6 +10,7 @@ namespace FlowAcademyClasses
         public int IdUsuario { get; set; }
         public string? Cpf { get; set; }
         public string? Especialidade { get; set; }
+        public string? NomeUsuario { get; set; }
 
         public Usuario? Usuario { get; set; }
 
@@ -130,9 +131,10 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-            SELECT id_professor, id_usuario, cpf, especialidade
-            FROM professores
-            WHERE id_professor = @id";
+            SELECT p.id_professor, p.id_usuario, p.cpf, p.especialidade, u.nome
+            FROM professores p
+            INNER JOIN usuarios u ON u.id_usuario = p.id_usuario
+            WHERE p.id_professor = @id";
 
                 cmd.Parameters.AddWithValue("@id", id);
 
@@ -163,12 +165,13 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT p.id_professor, p.id_usuario, p.cpf, p.especialidade
+                SELECT p.id_professor, p.id_usuario, p.cpf, p.especialidade, u.nome
                 FROM professores p
                 INNER JOIN usuarios u ON u.id_usuario = p.id_usuario
-                WHERE u.nome LIKE @busca
+                WHERE u.perfil = 'professor'
+                  AND (u.nome LIKE @busca
                    OR p.cpf LIKE @busca
-                   OR p.especialidade LIKE @busca
+                   OR p.especialidade LIKE @busca)
                 ORDER BY u.nome";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
@@ -187,14 +190,49 @@ namespace FlowAcademyClasses
             return professores;
         }
 
+        public static Professor ObterPorUsuario(int idUsuario)
+        {
+            Professor professor = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = @"
+                SELECT p.id_professor, p.id_usuario, p.cpf, p.especialidade, u.nome
+                FROM professores p
+                INNER JOIN usuarios u ON u.id_usuario = p.id_usuario
+                WHERE p.id_usuario = @id_usuario";
+
+                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+
+                var dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    professor = MontarObjeto(dr);
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return professor;
+        }
+
         public static Professor MontarObjeto(IDataRecord dr)
         {
-            return new Professor(
+            Professor professor = new Professor(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.IsDBNull(2) ? null : dr.GetString(2),
                 dr.IsDBNull(3) ? null : dr.GetString(3)
             );
+
+            if (dr.FieldCount > 4 && !dr.IsDBNull(4))
+                professor.NomeUsuario = dr.GetString(4);
+
+            return professor;
         }
     }
 }

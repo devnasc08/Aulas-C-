@@ -9,7 +9,6 @@ namespace FlowAcademyF
     public partial class FrmProfessor : Form
     {
         private int idSelecionado = 0;
-
         public FrmProfessor()
         {
             InitializeComponent();
@@ -27,7 +26,18 @@ namespace FlowAcademyF
         // ==========================
         private void CarregarGrid()
         {
+            dgvProfessores.DataSource = null;
             dgvProfessores.DataSource = Professor.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvProfessores.Columns["IdUsuario"] != null) dgvProfessores.Columns["IdUsuario"].Visible = false;
+            if (dgvProfessores.Columns["Usuario"] != null) dgvProfessores.Columns["Usuario"].Visible = false;
+
+            if (dgvProfessores.Columns["IdProfessor"] != null) dgvProfessores.Columns["IdProfessor"].HeaderText = "ID";
+            if (dgvProfessores.Columns["NomeUsuario"] != null) dgvProfessores.Columns["NomeUsuario"].HeaderText = "Professor";
         }
 
         // ==========================
@@ -35,10 +45,10 @@ namespace FlowAcademyF
         // ==========================
         private void CarregarCombos()
         {
-            cmbUsuario.DataSource = Usuario.ObterLista();
-            cmbUsuario.DisplayMember = "Nome";
-            cmbUsuario.ValueMember = "IdUsuario";
-            cmbUsuario.SelectedIndex = -1;
+            cmbStatusUsuario.Items.Clear();
+            cmbStatusUsuario.Items.Add("ativo");
+            cmbStatusUsuario.Items.Add("inativo");
+            cmbStatusUsuario.SelectedIndex = 0;
         }
 
         // ==========================
@@ -46,10 +56,15 @@ namespace FlowAcademyF
         // ==========================
         private void LimparFormulario()
         {
+            txtNomeUsuario.Clear();
+            txtEmailUsuario.Clear();
+            txtSenhaUsuario.Clear();
             txtCpf.Clear();
             txtEspecialidade.Clear();
             txtPesquisa.Clear();
-            cmbUsuario.SelectedIndex = -1;
+
+            if (cmbStatusUsuario.Items.Count > 0)
+                cmbStatusUsuario.SelectedIndex = 0;
 
             dgvProfessores.ClearSelection();
 
@@ -61,9 +76,21 @@ namespace FlowAcademyF
         // ==========================
         private bool ValidarCampos()
         {
-            if (cmbUsuario.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(txtNomeUsuario.Text))
             {
-                MessageBox.Show("Selecione um usuário.");
+                MessageBox.Show("Informe o nome do professor.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmailUsuario.Text))
+            {
+                MessageBox.Show("Informe o e-mail do professor.");
+                return false;
+            }
+
+            if (idSelecionado == 0 && string.IsNullOrWhiteSpace(txtSenhaUsuario.Text))
+            {
+                MessageBox.Show("Informe a senha do professor.");
                 return false;
             }
 
@@ -94,10 +121,14 @@ namespace FlowAcademyF
 
             idSelecionado = prof.IdProfessor;
 
+            Usuario usuario = Usuario.ObterPorId(prof.IdUsuario);
+            txtNomeUsuario.Text = usuario.Nome;
+            txtEmailUsuario.Text = usuario.Email;
+            txtSenhaUsuario.Clear();
+            cmbStatusUsuario.Text = string.IsNullOrEmpty(usuario.Status) ? "ativo" : usuario.Status;
+
             txtCpf.Text = prof.Cpf;
             txtEspecialidade.Text = prof.Especialidade;
-
-            cmbUsuario.SelectedValue = prof.IdUsuario;
         }
 
         // ==========================
@@ -107,10 +138,32 @@ namespace FlowAcademyF
         {
             if (!ValidarCampos()) return;
 
+            Usuario usuario = new Usuario();
+
+            if (idSelecionado > 0)
+            {
+                Professor professorAtual = Professor.ObterPorId(idSelecionado);
+                usuario.IdUsuario = professorAtual.IdUsuario;
+            }
+
+            usuario.Nome = txtNomeUsuario.Text.Trim();
+            usuario.Email = txtEmailUsuario.Text.Trim();
+            usuario.Senha = txtSenhaUsuario.Text.Trim();
+            usuario.NivelAcesso = "professor";
+            usuario.Status = cmbStatusUsuario.Text;
+
+            bool usuarioSalvo = idSelecionado == 0 ? usuario.Inserir() : usuario.Atualizar();
+
+            if (!usuarioSalvo)
+            {
+                MessageBox.Show("Erro ao salvar usuário do professor.");
+                return;
+            }
+
             Professor professor = new Professor();
 
             professor.IdProfessor = idSelecionado;
-            professor.IdUsuario = Convert.ToInt32(cmbUsuario.SelectedValue);
+            professor.IdUsuario = usuario.IdUsuario;
             professor.Cpf = SomenteNumeros(txtCpf.Text);
             professor.Especialidade = txtEspecialidade.Text;
 
@@ -225,36 +278,7 @@ namespace FlowAcademyF
             if (cpf.Length != 11)
                 return false;
 
-            // Bloqueia CPFs inválidos conhecidos
-            if (cpf.All(c => c == cpf[0]))
-                return false;
-
-            int[] multiplicador1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-
-            string tempCpf = cpf.Substring(0, 9);
-            int soma = 0;
-
-            for (int i = 0; i < 9; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-
-            int resto = soma % 11;
-            resto = resto < 2 ? 0 : 11 - resto;
-
-            string digito = resto.ToString();
-
-            tempCpf += digito;
-            soma = 0;
-
-            for (int i = 0; i < 10; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
-
-            resto = soma % 11;
-            resto = resto < 2 ? 0 : 11 - resto;
-
-            digito += resto.ToString();
-
-            return cpf.EndsWith(digito);
+            return !cpf.All(c => c == cpf[0]);
         }
 
     }

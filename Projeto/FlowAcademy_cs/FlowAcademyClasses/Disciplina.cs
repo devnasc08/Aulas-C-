@@ -13,6 +13,7 @@ namespace FlowAcademyClasses
         public int IdCurso { get; set; }
         public string? Nome { get; set; }
         public int CargaHoraria { get; set; }
+        public string? NomeCurso { get; set; }
 
         // ==========================
         // CONSTRUTOR VAZIO
@@ -177,7 +178,7 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT d.id_disciplina, d.id_curso, d.nome, d.carga_horaria
+                SELECT d.id_disciplina, d.id_curso, d.nome, d.carga_horaria, c.nome
                 FROM disciplinas d
                 INNER JOIN cursos c ON c.id_curso = d.id_curso
                 WHERE d.nome LIKE @busca
@@ -200,14 +201,50 @@ namespace FlowAcademyClasses
             return disciplinas;
         }
 
+        public static List<Disciplina> ObterListaPorCurso(int idCurso)
+        {
+            List<Disciplina> disciplinas = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = @"
+                SELECT d.id_disciplina, d.id_curso, d.nome, d.carga_horaria, c.nome
+                FROM disciplinas d
+                INNER JOIN cursos c ON c.id_curso = d.id_curso
+                WHERE d.id_curso = @id_curso
+                ORDER BY d.nome";
+
+                cmd.Parameters.AddWithValue("@id_curso", idCurso);
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    disciplinas.Add(MontarObjeto(dr));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return disciplinas;
+        }
+
         public static Disciplina MontarObjeto(IDataRecord dr)
         {
-            return new Disciplina(
+            Disciplina disciplina = new Disciplina(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.IsDBNull(2) ? null : dr.GetString(2),
                 dr.GetInt32(3)
             );
+
+            if (dr.FieldCount > 4 && !dr.IsDBNull(4))
+                disciplina.NomeCurso = dr.GetString(4);
+
+            return disciplina;
         }
     }
 }

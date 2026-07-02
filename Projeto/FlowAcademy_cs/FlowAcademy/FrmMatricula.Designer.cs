@@ -1,4 +1,4 @@
-﻿namespace FlowAcademyF
+namespace FlowAcademyF
 {
     partial class FrmMatricula
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMatricula));
             dtpDataMatricula = new DateTimePicker();
             cmbTurma = new ComboBox();
             cmbStatus = new ComboBox();
@@ -50,34 +49,34 @@
             // 
             // dtpDataMatricula
             // 
-            dtpDataMatricula.Location = new Point(445, 26);
+            dtpDataMatricula.Location = new Point(452, 57);
             dtpDataMatricula.Name = "dtpDataMatricula";
             dtpDataMatricula.Size = new Size(200, 23);
-            dtpDataMatricula.TabIndex = 70;
+            dtpDataMatricula.TabIndex = 2;
             // 
             // cmbTurma
             // 
             cmbTurma.FormattingEnabled = true;
-            cmbTurma.Location = new Point(260, 26);
+            cmbTurma.Location = new Point(267, 57);
             cmbTurma.Name = "cmbTurma";
             cmbTurma.Size = new Size(121, 23);
-            cmbTurma.TabIndex = 66;
+            cmbTurma.TabIndex = 1;
             // 
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(83, 111);
+            cmbStatus.Location = new Point(90, 142);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(121, 23);
-            cmbStatus.TabIndex = 64;
+            cmbStatus.TabIndex = 3;
             // 
             // cmbAluno
             // 
             cmbAluno.FormattingEnabled = true;
-            cmbAluno.Location = new Point(83, 26);
+            cmbAluno.Location = new Point(90, 57);
             cmbAluno.Name = "cmbAluno";
             cmbAluno.Size = new Size(121, 23);
-            cmbAluno.TabIndex = 63;
+            cmbAluno.TabIndex = 0;
             // 
             // dgvMatricula
             // 
@@ -85,111 +84,81 @@
             dgvMatricula.Location = new Point(66, 364);
             dgvMatricula.Name = "dgvMatricula";
             dgvMatricula.Size = new Size(668, 243);
-            dgvMatricula.TabIndex = 58;
+            dgvMatricula.TabIndex = 10;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(445, 8);
+            label6.Location = new Point(452, 39);
             label6.Name = "label6";
             label6.Size = new Size(84, 15);
-            label6.TabIndex = 55;
-            label6.Text = "Data Matrícula";
+            label6.TabIndex = 14;
+            label6.Text = "Data Matr�cula";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(260, 9);
+            label1.Location = new Point(267, 40);
             label1.Name = "label1";
             label1.Size = new Size(42, 15);
-            label1.TabIndex = 52;
+            label1.TabIndex = 13;
             label1.Text = "Turma";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(83, 92);
+            label8.Location = new Point(90, 123);
             label8.Name = "label8";
             label8.Size = new Size(39, 15);
-            label8.TabIndex = 51;
+            label8.TabIndex = 15;
             label8.Text = "Status";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 8);
+            label4.Location = new Point(91, 39);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
-            label4.TabIndex = 50;
+            label4.TabIndex = 12;
             label4.Text = "Aluno";
             // 
             // btnEditar
             // 
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatAppearance.MouseDownBackColor = Color.Blue;
-            btnEditar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 192, 255);
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnEditar.Image = FlowAcademy.Properties.Resources._1410220563_05_Edit_32x32;
             btnEditar.Location = new Point(291, 245);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(97, 64);
-            btnEditar.TabIndex = 74;
+            btnEditar.TabIndex = 5;
             btnEditar.Text = "&Editar";
-            btnEditar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // btnSalvar
             // 
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatAppearance.MouseDownBackColor = Color.Lime;
-            btnSalvar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold);
-            btnSalvar.Image = (Image)resources.GetObject("btnSalvar.Image");
             btnSalvar.Location = new Point(146, 245);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(97, 64);
-            btnSalvar.TabIndex = 73;
+            btnSalvar.TabIndex = 4;
             btnSalvar.Text = "&Salvar";
-            btnSalvar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 128, 0);
-            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 255, 128);
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Image = (Image)resources.GetObject("button4.Image");
             btnCancelar.Location = new Point(436, 242);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(93, 67);
-            btnCancelar.TabIndex = 72;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "&Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnExcluir
             // 
-            btnExcluir.FlatAppearance.BorderSize = 0;
-            btnExcluir.FlatAppearance.MouseDownBackColor = Color.Red;
-            btnExcluir.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 128, 128);
-            btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Font = new Font("Arial Narrow", 11F, FontStyle.Bold);
-            btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Image = (Image)resources.GetObject("button5.Image");
             btnExcluir.Location = new Point(577, 242);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(93, 67);
-            btnExcluir.TabIndex = 71;
+            btnExcluir.TabIndex = 7;
             btnExcluir.Text = "E&xcluir";
-            btnExcluir.TextImageRelation = TextImageRelation.ImageAboveText;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
@@ -199,7 +168,7 @@
             label2.Location = new Point(66, 333);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
-            label2.TabIndex = 75;
+            label2.TabIndex = 11;
             label2.Text = "Pesquisar";
             // 
             // txtPesquisa
@@ -207,14 +176,14 @@
             txtPesquisa.Location = new Point(129, 329);
             txtPesquisa.Name = "txtPesquisa";
             txtPesquisa.Size = new Size(461, 23);
-            txtPesquisa.TabIndex = 76;
+            txtPesquisa.TabIndex = 8;
             // 
             // btnPesquisar
             // 
             btnPesquisar.Location = new Point(610, 328);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(124, 25);
-            btnPesquisar.TabIndex = 77;
+            btnPesquisar.TabIndex = 9;
             btnPesquisar.Text = "&Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;

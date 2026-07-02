@@ -51,14 +51,16 @@ try {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flow Academy Platform | Gestao Academica Presencial</title>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5.0.2 local: base obrigatoria de CSS do sistema PHP. -->
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Complemento visual proprio do projeto, sempre carregado depois do Bootstrap. -->
   <link rel="stylesheet" href="assets/css/main.css?v=20260626-landing">
 </head>
 <body class="landing-page">
   <nav class="navbar navbar-expand-lg landing-nav fixed-top">
     <div class="container">
       <a class="brand landing-brand" href="index.php" aria-label="Flow Academy">
-        <img src="assets/images/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
+        <img src="assets/img/logos/logo-flow-academy-gold.jpg" alt="Logo Flow Academy">
         <span>
           <strong>Flow Academy</strong>
           <small>Gestao Academica Presencial</small>
@@ -84,7 +86,7 @@ try {
   <main>
     <section class="school-hero" id="sobre">
       <div class="container">
-        <img class="school-hero-mark" src="assets/images/logo-flow-academy-final.png" alt="Flow Academy">
+        <img class="school-hero-mark" src="assets/img/logos/logo-flow-academy-final.png" alt="Flow Academy">
         <div class="school-hero-content">
           <span class="eyebrow">Escola tecnica presencial</span>
           <h1>Transformando estudantes em profissionais preparados para o mercado de trabalho.</h1>
@@ -330,7 +332,9 @@ try {
     </div>
 </footer>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5.0.2 local: bundle com componentes JS usados pela landing page. -->
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Complemento JS proprio do projeto, carregado depois do Bootstrap. -->
   <script src="assets/js/app.js?v=20260616-3"></script>
 </body>
 </html>

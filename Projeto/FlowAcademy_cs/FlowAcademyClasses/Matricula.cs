@@ -14,6 +14,8 @@ namespace FlowAcademyClasses
         public int IdTurma { get; set; }
         public DateTime DataMatricula { get; set; }
         public string? Status { get; set; }
+        public string? NomeAluno { get; set; }
+        public string? CodigoTurma { get; set; }
 
         // Relacionamentos
         public Aluno? Aluno { get; set; }
@@ -176,14 +178,15 @@ namespace FlowAcademyClasses
                 cmd.CommandType = CommandType.Text;
 
                 cmd.CommandText = @"
-                SELECT m.id_matricula, m.id_aluno, m.id_turma, m.data_matricula, m.status
+                SELECT m.id_matricula, m.id_aluno, m.id_turma, m.data_matricula, m.status,
+                       u.nome, t.codigo_turma
                 FROM matriculas m
                 INNER JOIN alunos a ON a.id_aluno = m.id_aluno
                 INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
                 INNER JOIN turmas t ON t.id_turma = m.id_turma
-                WHERE u.nome LIKE @busca
-                   OR a.matricula LIKE @busca
+                WHERE m.id_matricula LIKE @busca
                    OR t.codigo_turma LIKE @busca
+                   OR a.matricula LIKE @busca
                 ORDER BY m.data_matricula DESC";
 
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
@@ -202,15 +205,57 @@ namespace FlowAcademyClasses
             return matriculas;
         }
 
+        public static List<Matricula> ObterListaPorTurma(int idTurma)
+        {
+            List<Matricula> matriculas = new();
+            var cmd = Banco.Abrir();
+
+            if (cmd.Connection.State == ConnectionState.Open)
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = @"
+                SELECT m.id_matricula, m.id_aluno, m.id_turma, m.data_matricula, m.status,
+                       u.nome, t.codigo_turma
+                FROM matriculas m
+                INNER JOIN alunos a ON a.id_aluno = m.id_aluno
+                INNER JOIN usuarios u ON u.id_usuario = a.id_usuario
+                INNER JOIN turmas t ON t.id_turma = m.id_turma
+                WHERE m.id_turma = @id_turma
+                ORDER BY u.nome";
+
+                cmd.Parameters.AddWithValue("@id_turma", idTurma);
+
+                var dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    matriculas.Add(MontarObjeto(dr));
+                }
+
+                dr.Close();
+                cmd.Connection.Close();
+            }
+
+            return matriculas;
+        }
+
         public static Matricula MontarObjeto(IDataRecord dr)
         {
-            return new Matricula(
+            Matricula matricula = new Matricula(
                 dr.GetInt32(0),
                 dr.GetInt32(1),
                 dr.GetInt32(2),
                 dr.GetDateTime(3),
                 dr.IsDBNull(4) ? null : dr.GetString(4)
             );
+
+            if (dr.FieldCount > 5 && !dr.IsDBNull(5))
+                matricula.NomeAluno = dr.GetString(5);
+
+            if (dr.FieldCount > 6 && !dr.IsDBNull(6))
+                matricula.CodigoTurma = dr.GetString(6);
+
+            return matricula;
         }
 
         // ==========================

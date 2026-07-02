@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using FlowAcademyClasses;
 
@@ -25,7 +26,24 @@ namespace FlowAcademyF
         // ==========================
         private void CarregarGrid()
         {
+            dgvTurma.DataSource = null;
             dgvTurma.DataSource = Turma.ObterLista(txtPesquisa.Text.Trim());
+            AjustarGrid();
+        }
+
+        private void AjustarGrid()
+        {
+            if (dgvTurma.Columns["IdCurso"] != null) dgvTurma.Columns["IdCurso"].Visible = false;
+            if (dgvTurma.Columns["IdProfessor"] != null) dgvTurma.Columns["IdProfessor"].Visible = false;
+            if (dgvTurma.Columns["Curso"] != null) dgvTurma.Columns["Curso"].Visible = false;
+            if (dgvTurma.Columns["Professor"] != null) dgvTurma.Columns["Professor"].Visible = false;
+
+            if (dgvTurma.Columns["IdTurma"] != null) dgvTurma.Columns["IdTurma"].HeaderText = "ID";
+            if (dgvTurma.Columns["CodigoTurma"] != null) dgvTurma.Columns["CodigoTurma"].HeaderText = "Codigo";
+            if (dgvTurma.Columns["NomeCurso"] != null) dgvTurma.Columns["NomeCurso"].HeaderText = "Curso";
+            if (dgvTurma.Columns["NomeProfessor"] != null) dgvTurma.Columns["NomeProfessor"].HeaderText = "Professor";
+            if (dgvTurma.Columns["PeriodoLetivo"] != null) dgvTurma.Columns["PeriodoLetivo"].HeaderText = "Periodo Letivo";
+            if (dgvTurma.Columns["CapacidadeMaxima"] != null) dgvTurma.Columns["CapacidadeMaxima"].HeaderText = "Capacidade";
         }
 
         // ==========================
@@ -38,9 +56,12 @@ namespace FlowAcademyF
             cmbCurso.ValueMember = "IdCurso";
             cmbCurso.SelectedIndex = -1;
 
-            cmbProfessor.DataSource = Professor.ObterLista();
-            cmbProfessor.DisplayMember = "IdProfessor";
-            cmbProfessor.ValueMember = "IdProfessor"; // (ver recomendação abaixo)
+            cmbProfessor.DataSource = Professor.ObterLista()
+                .Select(p => new ProfessorComboItem(p.IdProfessor, NomeProfessor(p.IdUsuario)))
+                .OrderBy(p => p.Nome)
+                .ToList();
+            cmbProfessor.DisplayMember = "Nome";
+            cmbProfessor.ValueMember = "IdProfessor";
             cmbProfessor.SelectedIndex = -1;
 
             cmbTurno.Items.Clear();
@@ -67,7 +88,8 @@ namespace FlowAcademyF
             txtPeriodoLetivo.Clear();
             txtPesquisa.Clear();
 
-            nudCapacidade.Value = 0;
+            nudCapacidade.Minimum = 1;
+            nudCapacidade.Value = 1;
 
             dgvTurma.ClearSelection();
 
@@ -288,6 +310,24 @@ namespace FlowAcademyF
         private void dgvTurma_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnEditar_Click(sender, e);
+        }
+
+        private string NomeProfessor(int idUsuario)
+        {
+            Usuario usuario = Usuario.ObterPorId(idUsuario);
+            return string.IsNullOrWhiteSpace(usuario.Nome) ? "Professor " + idUsuario : usuario.Nome;
+        }
+
+        private class ProfessorComboItem
+        {
+            public int IdProfessor { get; set; }
+            public string Nome { get; set; }
+
+            public ProfessorComboItem(int idProfessor, string nome)
+            {
+                IdProfessor = idProfessor;
+                Nome = nome;
+            }
         }
 
     }

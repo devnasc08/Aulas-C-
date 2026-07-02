@@ -48,6 +48,7 @@ namespace FlowAcademyF
             if (txtStatus.Items.Count > 0)
                 txtStatus.SelectedIndex = 0;
 
+            lstDisciplinas.DataSource = null;
             idSelecionado = 0;
             dgvCurso.ClearSelection();
         }
@@ -75,6 +76,15 @@ namespace FlowAcademyF
             txtDescricao.Text = curso.Descricao;
             nudCargaHoraria.Value = curso.CargaHoraria;
             txtStatus.Text = curso.Status;
+            CarregarDisciplinasDoCurso(curso.IdCurso);
+        }
+
+        private void CarregarDisciplinasDoCurso(int idCurso)
+        {
+            lstDisciplinas.DataSource = null;
+
+            if (idCurso > 0)
+                lstDisciplinas.DataSource = Disciplina.ObterListaPorCurso(idCurso);
         }
 
         // ==========================
@@ -187,5 +197,9 @@ namespace FlowAcademyF
             CarregarGrid();
         }
 
+        private void lstDisciplinas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

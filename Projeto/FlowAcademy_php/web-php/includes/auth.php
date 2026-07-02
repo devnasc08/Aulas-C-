@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/funcoes.php';
+require_once __DIR__ . '/helpers.php';
 
 // Arquivo responsavel por login, sessao e permissao de acesso.
 // A sessao guarda os dados do usuario enquanto ele navega pelo sistema.

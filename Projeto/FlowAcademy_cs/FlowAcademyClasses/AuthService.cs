@@ -12,14 +12,7 @@ namespace FlowAcademyClasses
         // ==========================
         public static Usuario Login(string email, string senha)
         {
-            Usuario usuario = Usuario.EfetuarLogin(email, senha);
-
-            if (usuario.IdUsuario > 0)
-            {
-                AtualizarUltimoLogin(usuario.IdUsuario);
-            }
-
-            return usuario;
+            return Usuario.EfetuarLogin(email, senha);
         }
 
         // ==========================
